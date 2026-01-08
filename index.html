@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Nacional de Profesionistas | Búsqueda</title>
+    <title>Registro Nacional de Profesionistas | Consulta</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -20,37 +20,40 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; -webkit-font-smoothing: antialiased; }
 
-        /* Barra gob.mx */
+        /* Navbar gob.mx */
         .nav-gob { background-color: var(--gob-verde-oscuro); padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; }
-        .nav-gob img { height: 30px; }
+        .nav-gob img { height: 28px; }
         .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; font-weight: 400; }
 
-        /* Banner Institucional con Leyenda Fiel */
+        /* Banner Institucional */
         .hero { 
             background-color: var(--gob-guinda);
             background-image: linear-gradient(rgba(98, 17, 50, 0.85), rgba(98, 17, 50, 0.85)), url('https://www.gob.mx/cms/uploads/article/main_image/101254/post_C_dula_2.jpg');
             background-size: cover; background-position: center;
-            padding: 65px 10%; color: #fff; text-align: right; border-bottom: 8px solid var(--gob-oro);
+            padding: 60px 10%; color: #fff; text-align: right; border-bottom: 8px solid var(--gob-oro);
         }
-        .hero h1 { font-size: 52px; font-weight: 800; line-height: 1; margin-bottom: 10px; letter-spacing: -1px; }
-        .hero p { font-size: 22px; font-weight: 300; }
+        .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 5px; }
+        .hero p { font-size: 20px; font-weight: 300; }
 
         main { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .breadcrumb { padding: 20px 0; font-size: 14px; color: #666; }
 
-        /* Menú de Pestañas */
+        /* Card de Búsqueda */
         .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px; overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); border-bottom: 1px solid var(--gob-gris-borde); }
-        .tab-btn { padding: 15px 35px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; border-right: 1px solid var(--gob-gris-borde); transition: 0.3s; }
+        .tab-btn { padding: 15px 30px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; border-right: 1px solid var(--gob-gris-borde); }
         .tab-btn.active { background: var(--gob-guinda); color: #fff; }
 
-        /* Formularios */
-        .form-section { padding: 40px; display: none; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        /* Secciones del Formulario */
+        .form-section { padding: 40px; display: none; grid-template-columns: repeat(2, 1fr); gap: 25px; }
         .form-section.active { display: grid; }
+        
+        /* Ajuste para que los nombres ocupen 2 columnas si es necesario */
+        .full-row { grid-column: span 2; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+
         .field { display: flex; flex-direction: column; }
         .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #333; }
         .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; font-size: 14px; outline: none; }
-        .field input:focus { border-color: var(--gob-oro); }
 
         .btn-area { display: flex; justify-content: flex-end; gap: 15px; padding: 0 40px 40px; }
         .btn { padding: 12px 35px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; background: #fff; transition: 0.2s; }
@@ -58,22 +61,20 @@
         .btn-buscar:hover { background: var(--gob-guinda); color: #fff; }
         .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); }
 
-        /* Tabla de Resultados Fiel a Foto 2 */
+        /* Tabla de Resultados */
         #results-container { display: none; padding: 30px 40px; border-top: 1px solid var(--gob-gris-borde); background: #fdfdfd; }
         .res-title { text-align: center; font-size: 20px; font-weight: 600; margin-bottom: 25px; color: #444; }
         .table-responsive { width: 100%; overflow-x: auto; }
         .rnp-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 1050px; }
-        .rnp-table th { padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid #DDD; color: #333; background: #fff; }
-        .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; color: #555; vertical-align: middle; line-height: 1.3; }
+        .rnp-table th { padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid #DDD; background: #fff; }
+        .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; color: #555; vertical-align: middle; }
 
         /* Footer */
         footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 25px; margin-top: 60px; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; gap: 40px; }
         .f-col h4 { font-size: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 13px; margin-bottom: 12px; font-weight: 300; opacity: 0.9; }
+        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 12px; margin-bottom: 10px; font-weight: 300; }
         .f-bottom { text-align: center; padding-top: 30px; font-size: 11px; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
-
-        @media (max-width: 900px) { .form-section { grid-template-columns: 1fr; } .f-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -96,18 +97,21 @@
         <div class="search-card">
             <div class="tabs-menu">
                 <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">Datos generales</div>
-                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">Número de cédula / CURP</div>
+                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">Número de cédula</div>
             </div>
             
             <div id="sec-datos" class="form-section active">
                 <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre" placeholder="Nombre(s)"></div>
+                <div class="field"><label>CURP*:</label><input type="text" id="in-curp" placeholder="Ingrese CURP"></div>
                 <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1" placeholder="Primer Apellido"></div>
                 <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2" placeholder="Segundo Apellido"></div>
             </div>
 
             <div id="sec-cedula" class="form-section">
-                <div class="field"><label>Número de cédula*:</label><input type="text" id="in-folio" placeholder="Ej: 10994202"></div>
-                <div class="field"><label>CURP*:</label><input type="text" id="in-curp" placeholder="Ingrese CURP"></div>
+                <div class="field" style="grid-column: span 2;">
+                    <label>Número de cédula*:</label>
+                    <input type="text" id="in-folio" placeholder="Ej: 10994202" style="width: 50%;">
+                </div>
             </div>
 
             <div class="btn-area">
@@ -128,7 +132,7 @@
                                 <th>Género</th>
                                 <th>Institución</th>
                                 <th>Profesión</th>
-                                <th>Entidad Fed.</th>
+                                <th>Entidad</th>
                                 <th>Año</th>
                                 <th>Const.</th>
                             </tr>
@@ -165,48 +169,40 @@
             }
         }
 
-        // BASE DE DATOS DE PRUEBA (Fiel a tus fotos)
         const registros = [
-            { id: "10994202", curp: "PEAJ850101HGT", nom: "JONATHAN FRANCISCO", ap1: "PEREZ", ap2: "AYALA", gen: "MASCULINO", inst: "UNIVERSIDAD VIRTUAL DEL ESTADO DE GUANAJUATO", prof: "LICENCIATURA EN INGENIERÍA EN GESTIÓN DE TECNOLOGÍAS DE INFORMACIÓN", ent: "GUANAJUATO", anio: "2018" },
-            { id: "5920379", curp: "PEAJ850101HGT", nom: "JONATHAN FRANCISCO", ap1: "PEREZ", ap2: "AYALA", gen: "MASCULINO", inst: "C.E.T.I.S. NO. 115", prof: "TECNOLOGO EN COMUNICACIONES ELECTRÓNICAS", ent: "GUANAJUATO", anio: "2009" }
+            { id: "10994202", curp: "PEAJ850101HGT", nom: "JONATHAN FRANCISCO", ap1: "PEREZ", ap2: "AYALA", gen: "MASCULINO", inst: "UNIVERSIDAD VIRTUAL DEL ESTADO DE GUANAJUATO", prof: "LICENCIATURA EN INGENIERÍA EN GESTIÓN DE TECNOLOGÍAS DE INFORMACIÓN", ent: "GUANAJUATO", anio: "2018" }
         ];
 
         function buscarProfesionista() {
             const f = document.getElementById('in-folio').value.trim();
-            const c = document.getElementById('in-curp').value.toUpperCase().trim();
-            const n = document.getElementById('in-nombre').value.toUpperCase().trim();
+            const curpVal = document.getElementById('in-curp').value.toUpperCase().trim();
+            const nomVal = document.getElementById('in-nombre').value.toUpperCase().trim();
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
             
             let filtrados = [];
 
-            // Lógica: Si está en pestaña cédula/CURP busca por esos campos, si no por nombre
             if(document.getElementById('sec-cedula').classList.contains('active')) {
-                filtrados = registros.filter(r => r.id === f || r.curp === c);
+                // Búsqueda solo por Cédula
+                filtrados = registros.filter(r => r.id === f);
             } else {
-                filtrados = registros.filter(r => r.nom.includes(n) && n !== "");
+                // Búsqueda por Datos Generales o CURP
+                filtrados = registros.filter(r => 
+                    (r.curp === curpVal && curpVal !== "") || 
+                    (r.nom.includes(nomVal) && nomVal !== "")
+                );
             }
 
             if (filtrados.length > 0) {
                 tabla.innerHTML = filtrados.map(r => `
                     <tr>
-                        <td><b>${r.id}</b></td>
-                        <td>${r.nom}</td>
-                        <td>${r.ap1}</td>
-                        <td>${r.ap2}</td>
-                        <td>${r.gen}</td>
-                        <td>${r.inst}</td>
-                        <td style="text-transform:uppercase;">${r.prof}</td>
-                        <td>${r.ent}</td>
-                        <td>${r.anio}</td>
-                        <td style="text-align:center"><i class="far fa-file-pdf" style="color:#666; font-size:16px;"></i></td>
+                        <td><b>${r.id}</b></td><td>${r.nom}</td><td>${r.ap1}</td><td>${r.ap2}</td><td>${r.gen}</td><td>${r.inst}</td><td>${r.prof}</td><td>${r.ent}</td><td>${r.anio}</td><td style="text-align:center"><i class="far fa-file-pdf"></i></td>
                     </tr>
                 `).join('');
                 container.style.display = 'block';
                 container.scrollIntoView({ behavior: 'smooth' });
             } else {
-                alert("No se encontraron resultados con los datos proporcionados.");
-                container.style.display = 'none';
+                alert("No se encontraron resultados.");
             }
         }
     </script>
