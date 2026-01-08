@@ -1,6 +1,6 @@
 // Archivo de base de datos para Cédulas Profesionales
 const registros = [
-    { id: "10994202", curp: "PEAJ850101HGT", nom: "JONATHAN FRANCISCO", ap1: "PEREZ", ap2: "AYALA", gen: "MASCULINO", inst: "UNIVERSIDAD VIRTUAL DEL ESTADO DE GUANAJUATO", prof: "INGENIERÍA EN GESTIÓN DE TECNOLOGÍAS DE INFORMACIÓN", ent: "GUANAJUATO", anio: "2018" },
+    { id: "10994202", curp: "LOCJ900817HVZPRR01", nom: "JORGE LUIS", ap1: "LOPEZ", ap2: "CRUZ", gen: "MASCULINO", inst: "UNIVERSIDAD TRES CULTURAS", prof: "ADMINISTRACION DE EMPRESAS", ent: "ESTADO DE MEXICO", anio: "2018" },
     { id: "5920371", curp: "GARC880315MDF", nom: "MARIA FERNANDA", ap1: "GARCIA", ap2: "RODRIGUEZ", gen: "FEMENINO", inst: "UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO", prof: "LICENCIATURA EN DERECHO", ent: "CIUDAD DE MÉXICO", anio: "2012" },
     { id: "8432105", curp: "LOPE900522HGR", nom: "ALEJANDRO", ap1: "LOPEZ", ap2: "SANCHEZ", gen: "MASCULINO", inst: "INSTITUTO POLITÉCNICO NACIONAL", prof: "INGENIERÍA MECÁNICA", ent: "ESTADO DE MÉXICO", anio: "2014" },
     { id: "9564128", curp: "MART921010MJS", nom: "CLAUDIA", ap1: "MARTINEZ", ap2: "GOMEZ", gen: "FEMENINO", inst: "UNIVERSIDAD DE GUADALAJARA", prof: "LICENCIATURA EN MEDICINA", ent: "JALISCO", anio: "2016" },
