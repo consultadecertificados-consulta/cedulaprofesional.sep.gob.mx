@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Consulta de Certificado | Registro Nacional de Profesionistas</title>
+    <link rel="icon" href="https://www.gob.mx/cms/uploads/image/file/488329/favicon.png"/>
+    
+    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+    <style>
+        body { background-color: #fff; font-family: 'Montserrat', sans-serif; }
+        .navbar-gob { background-color: #0B231E; padding: 10px 0; border-bottom: 8px solid #621132; }
+        .btn-gob { background-color: #11322B; color: #fff; border-radius: 4px; padding: 10px 25px; border: none; font-weight: 500; }
+        .btn-gob:hover { background-color: #164037; color: #fff; }
+        .card-cedula { border: 1px solid #ddd; border-radius: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 30px; }
+        .header-cedula { background-color: #F4F4F4; padding: 20px; border-bottom: 2px solid #D4C19C; }
+        #DatosCertificado { display: none; }
+        #MensajeError { display: none; }
+        .label-gob { font-weight: 700; color: #545454; font-size: 13px; text-transform: uppercase; }
+        .value-gob { color: #333; font-size: 16px; margin-bottom: 15px; display: block; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-gob">
+        <div class="container">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" height="40" alt="Gobierno de México">
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="Busqueda" class="row justify-content-center mt-5">
+            <div class="col-md-8 text-center">
+                <h2 style="font-weight: 700;">Consulta de Certificado Electrónico</h2>
+                <p class="text-muted">Ingresa el número de folio para validar la autenticidad del documento en el Registro Nacional.</p>
+                
+                <div class="card card-cedula p-5 text-start">
+                    <div class="form-group">
+                        <label class="control-label" for="FolioInput">Folio de Control:</label>
+                        <input type="text" id="FolioInput" class="form-control" placeholder="Ej: 9da9226f-..." onkeypress="if(event.key==='Enter') validarFolio()">
+                    </div>
+                    <div class="text-right mt-4">
+                        <button class="btn btn-gob" onclick="validarFolio()">CONSULTAR</button>
+                    </div>
+                </div>
+
+                <div id="MensajeError" class="alert alert-danger mt-4 text-start">
+                    <p><b>Error:</b> El folio ingresado no se encuentra en la base de datos oficial. Por favor verifique los caracteres e intente de nuevo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="DatosCertificado" class="row justify-content-center mt-4">
+            <div class="col-md-10">
+                <div class="text-left mb-3">
+                    <button class="btn btn-default" onclick="regresarBusqueda()"><i class="glyphicon glyphicon-arrow-left"></i> Nueva Búsqueda</button>
+                </div>
+                
+                <div class="card card-cedula">
+                    <div class="header-cedula">
+                        <h4 style="margin:0; color:#621132; font-weight:700;">DATOS DE IDENTIFICACIÓN</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="label-gob">Nombre completo:</span>
+                                <span id="lblNombre" class="value-gob"></span>
+                                
+                                <span class="label-gob">Nivel Educativo:</span>
+                                <span id="lblNivel" class="value-gob"></span>
+
+                                <span class="label-gob">Promedio:</span>
+                                <span id="lblPromedio" class="value-gob"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="label-gob">Folio de Control:</span>
+                                <span id="lblFolio" class="value-gob" style="font-family: monospace; font-weight: bold;"></span>
+
+                                <span class="label-gob">Fecha de Emisión:</span>
+                                <span id="lblEmision" class="value-gob"></span>
+
+                                <span class="label-gob">Lugar de Expedición:</span>
+                                <span id="lblLugar" class="value-gob"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <p style="font-size: 12px; color: #777;">Este documento cuenta con firma electrónica avanzada y es válido ante cualquier autoridad federal, estatal y municipal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 100px; padding: 40px 0; background-color: #F4F4F4; border-top: 1px solid #ddd;">
+        <div class="container text-center text-muted">
+            <p>© 2026 SEP | Registro Nacional de Profesionistas | INEA</p>
+        </div>
+    </footer>
+
+    <script src="folios.js"></script>
+
+    <script>
+        function mostrarDatos(folio) {
+            const d = baseDatos[folio.toLowerCase()];
+            if (d) {
+                document.getElementById('lblNombre').innerText = d.nombre;
+                document.getElementById('lblNivel').innerText = d.nivel;
+                document.getElementById('lblPromedio').innerText = d.promedio;
+                document.getElementById('lblEmision').innerText = d.emision;
+                document.getElementById('lblLugar').innerText = d.lugar;
+                document.getElementById('lblFolio').innerText = folio.toUpperCase();
+                
+                document.getElementById('Busqueda').style.display = 'none';
+                document.getElementById('MensajeError').style.display = 'none';
+                document.getElementById('DatosCertificado').style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function validarFolio() {
+            const fInput = document.getElementById('FolioInput').value.trim().toLowerCase();
+            if (fInput === "") return;
+
+            if (baseDatos[fInput]) {
+                mostrarDatos(fInput);
+            } else {
+                document.getElementById('MensajeError').style.display = 'block';
+                document.getElementById('DatosCertificado').style.display = 'none';
+            }
+        }
+
+        function regresarBusqueda() {
+            document.getElementById('Busqueda').style.display = 'block';
+            document.getElementById('DatosCertificado').style.display = 'none';
+            document.getElementById('FolioInput').value = "";
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const folioUrl = urlParams.get('folio');
+            if (folioUrl && baseDatos[folioUrl.toLowerCase()]) {
+                mostrarDatos(folioUrl);
+            }
+        };
+    </script>
+</body>
+</html>
