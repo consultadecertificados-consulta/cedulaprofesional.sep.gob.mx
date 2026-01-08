@@ -18,78 +18,71 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fff; }
 
         /* Navbar gob.mx */
         .nav-gob { background-color: var(--gob-verde-oscuro); padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; }
         .nav-gob img { height: 28px; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; font-weight: 400; }
 
-        /* Banner Institucional */
-        .hero { 
-            background-color: var(--gob-guinda);
-            background-image: linear-gradient(rgba(98, 17, 50, 0.85), rgba(98, 17, 50, 0.85)), url('https://www.gob.mx/cms/uploads/article/main_image/101254/post_C_dula_2.jpg');
-            background-size: cover; background-position: center;
-            padding: 60px 10%; color: #fff; text-align: right; border-bottom: 8px solid var(--gob-oro);
+        /* ESPACIO DE LA FOTO (Reemplaza el texto por tu logo.png) */
+        .header-image-container {
+            width: 100%;
+            height: auto;
+            min-height: 200px; /* Ajusta esto según el alto de tu foto */
+            border-bottom: 8px solid var(--gob-oro);
+            display: block;
         }
-        .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 5px; }
-        .hero p { font-size: 20px; font-weight: 300; }
 
+        .header-image-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover; /* Esto hace que la foto cubra todo el espacio sin deformarse */
+        }
+
+        /* Resto del diseño */
         main { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .breadcrumb { padding: 20px 0; font-size: 14px; color: #666; }
 
-        /* Card de Búsqueda */
         .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px; overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); border-bottom: 1px solid var(--gob-gris-borde); }
         .tab-btn { padding: 15px 30px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; border-right: 1px solid var(--gob-gris-borde); }
         .tab-btn.active { background: var(--gob-guinda); color: #fff; }
 
-        /* Secciones del Formulario */
         .form-section { padding: 40px; display: none; grid-template-columns: repeat(2, 1fr); gap: 25px; }
         .form-section.active { display: grid; }
         
-        /* Ajuste para que los nombres ocupen 2 columnas si es necesario */
-        .full-row { grid-column: span 2; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
-
         .field { display: flex; flex-direction: column; }
         .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #333; }
-        .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; font-size: 14px; outline: none; }
+        .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; font-size: 14px; }
 
         .btn-area { display: flex; justify-content: flex-end; gap: 15px; padding: 0 40px 40px; }
-        .btn { padding: 12px 35px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; background: #fff; transition: 0.2s; }
+        .btn { padding: 12px 35px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; background: #fff; }
         .btn-buscar { border: 2px solid var(--gob-guinda); color: var(--gob-guinda); }
         .btn-buscar:hover { background: var(--gob-guinda); color: #fff; }
         .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); }
 
-        /* Tabla de Resultados */
-        #results-container { display: none; padding: 30px 40px; border-top: 1px solid var(--gob-gris-borde); background: #fdfdfd; }
-        .res-title { text-align: center; font-size: 20px; font-weight: 600; margin-bottom: 25px; color: #444; }
+        #results-container { display: none; padding: 30px 40px; border-top: 1px solid var(--gob-gris-borde); }
         .table-responsive { width: 100%; overflow-x: auto; }
-        .rnp-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 1050px; }
-        .rnp-table th { padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid #DDD; background: #fff; }
-        .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; color: #555; vertical-align: middle; }
+        .rnp-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 1000px; }
+        .rnp-table th { padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid #DDD; }
+        .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; color: #555; }
 
-        /* Footer */
         footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 25px; margin-top: 60px; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; gap: 40px; }
         .f-col h4 { font-size: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
         .f-col a { color: #fff; text-decoration: none; display: block; font-size: 12px; margin-bottom: 10px; font-weight: 300; }
-        .f-bottom { text-align: center; padding-top: 30px; font-size: 11px; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
     </style>
 </head>
 <body>
 
     <nav class="nav-gob">
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        <div class="nav-links">
-            <a href="#">Trámites</a> <a href="#">Gobierno</a> <a href="#"><i class="fas fa-search"></i></a>
-        </div>
     </nav>
 
-    <header class="hero">
-        <h1>Registro Nacional<br>de Profesionistas</h1>
-        <p>Consulta de Cédulas Profesionales</p>
-    </header>
+    <div class="header-image-container">
+        <img src="logo.png" alt="Registro Nacional de Profesionistas">
+    </div>
 
     <main>
         <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > <b>Búsqueda de Cédulas Profesionales</b></div>
@@ -101,17 +94,14 @@
             </div>
             
             <div id="sec-datos" class="form-section active">
-                <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre" placeholder="Nombre(s)"></div>
-                <div class="field"><label>CURP*:</label><input type="text" id="in-curp" placeholder="Ingrese CURP"></div>
-                <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1" placeholder="Primer Apellido"></div>
-                <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2" placeholder="Segundo Apellido"></div>
+                <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
+                <div class="field"><label>CURP*:</label><input type="text" id="in-curp"></div>
+                <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
+                <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
             </div>
 
             <div id="sec-cedula" class="form-section">
-                <div class="field" style="grid-column: span 2;">
-                    <label>Número de cédula*:</label>
-                    <input type="text" id="in-folio" placeholder="Ej: 10994202" style="width: 50%;">
-                </div>
+                <div class="field"><label>Número de cédula*:</label><input type="text" id="in-folio"></div>
             </div>
 
             <div class="btn-area">
@@ -120,21 +110,11 @@
             </div>
 
             <div id="results-container">
-                <div class="res-title">Resultados de la Búsqueda</div>
                 <div class="table-responsive">
                     <table class="rnp-table">
                         <thead>
                             <tr>
-                                <th>Núm. Cédula</th>
-                                <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Género</th>
-                                <th>Institución</th>
-                                <th>Profesión</th>
-                                <th>Entidad</th>
-                                <th>Año</th>
-                                <th>Const.</th>
+                                <th>Núm. Cédula</th><th>Nombre</th><th>Primer Apellido</th><th>Segundo Apellido</th><th>Género</th><th>Institución</th><th>Profesión</th><th>Entidad</th><th>Año</th><th>Const.</th>
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla"></tbody>
@@ -147,19 +127,16 @@
     <footer>
         <div class="f-grid">
             <div class="f-col"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 180px;"></div>
-            <div class="f-col"><h4>Enlaces</h4><a href="#">Participa</a><a href="#">Marco Jurídico</a><a href="#">Transparencia</a></div>
-            <div class="f-col"><h4>¿Qué es gob.mx?</h4><a href="#">Datos abiertos</a><a href="#">Aviso de privacidad</a></div>
-            <div class="f-col"><h4>Síguenos en</h4><div style="font-size: 20px; display: flex; gap: 15px;"><i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i></div></div>
+            <div class="f-col"><h4>Enlaces</h4><a href="#">Participa</a><a href="#">Marco Jurídico</a></div>
+            <div class="f-col"><h4>¿Qué es gob.mx?</h4><a href="#">Datos abiertos</a><a href="#">Aviso</a></div>
+            <div class="f-col"><h4>Síguenos en</h4><div style="font-size: 20px; display: flex; gap: 15px;"><i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i></div></div>
         </div>
-        <div class="f-bottom">RNP v1.6.2 | Secretaría de Educación Pública | 2026</div>
     </footer>
 
     <script>
         function switchTab(tipo) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
-            document.getElementById('results-container').style.display = 'none';
-            
             if(tipo === 'datos') {
                 document.getElementById('tab-datos').classList.add('active');
                 document.getElementById('sec-datos').classList.add('active');
@@ -180,30 +157,12 @@
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
             
-            let filtrados = [];
-
-            if(document.getElementById('sec-cedula').classList.contains('active')) {
-                // Búsqueda solo por Cédula
-                filtrados = registros.filter(r => r.id === f);
-            } else {
-                // Búsqueda por Datos Generales o CURP
-                filtrados = registros.filter(r => 
-                    (r.curp === curpVal && curpVal !== "") || 
-                    (r.nom.includes(nomVal) && nomVal !== "")
-                );
-            }
+            let filtrados = registros.filter(r => (r.id === f && f !== "") || (r.curp === curpVal && curpVal !== "") || (r.nom.includes(nomVal) && nomVal !== ""));
 
             if (filtrados.length > 0) {
-                tabla.innerHTML = filtrados.map(r => `
-                    <tr>
-                        <td><b>${r.id}</b></td><td>${r.nom}</td><td>${r.ap1}</td><td>${r.ap2}</td><td>${r.gen}</td><td>${r.inst}</td><td>${r.prof}</td><td>${r.ent}</td><td>${r.anio}</td><td style="text-align:center"><i class="far fa-file-pdf"></i></td>
-                    </tr>
-                `).join('');
+                tabla.innerHTML = filtrados.map(r => `<tr><td><b>${r.id}</b></td><td>${r.nom}</td><td>${r.ap1}</td><td>${r.ap2}</td><td>${r.gen}</td><td>${r.inst}</td><td>${r.prof}</td><td>${r.ent}</td><td>${r.anio}</td><td style="text-align:center"><i class="far fa-file-pdf"></i></td></tr>`).join('');
                 container.style.display = 'block';
-                container.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert("No se encontraron resultados.");
-            }
+            } else { alert("No se encontraron resultados."); }
         }
     </script>
 </body>
