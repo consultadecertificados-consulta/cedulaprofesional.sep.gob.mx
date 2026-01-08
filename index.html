@@ -1,153 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Consulta de Certificado | Registro Nacional de Profesionistas</title>
-    <link rel="icon" href="https://www.gob.mx/cms/uploads/image/file/488329/favicon.png"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Cédula Profesional | Registro Nacional de Profesionistas</title>
     
-    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
     <style>
-        body { background-color: #fff; font-family: 'Montserrat', sans-serif; }
-        .navbar-gob { background-color: #0B231E; padding: 10px 0; border-bottom: 8px solid #621132; }
-        .btn-gob { background-color: #11322B; color: #fff; border-radius: 4px; padding: 10px 25px; border: none; font-weight: 500; }
-        .btn-gob:hover { background-color: #164037; color: #fff; }
-        .card-cedula { border: 1px solid #ddd; border-radius: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 30px; }
-        .header-cedula { background-color: #F4F4F4; padding: 20px; border-bottom: 2px solid #D4C19C; }
-        #DatosCertificado { display: none; }
-        #MensajeError { display: none; }
-        .label-gob { font-weight: 700; color: #545454; font-size: 13px; text-transform: uppercase; }
-        .value-gob { color: #333; font-size: 16px; margin-bottom: 15px; display: block; }
+        :root {
+            --gob-guinda: #621132; 
+            --gob-guinda-claro: #9D2449;
+            --gob-oro: #9D843E;   
+            --gob-verde-oscuro: #11322B; 
+            --gob-gris-boton: #757575;   
+            --gob-verde-exito: #28a745;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #f4f4f4;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath d='M0 0l50 50L0 100' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3Cpath d='M100 0L50 50l50 50' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Encabezado Institucional */
+        nav.gob-header {
+            background-color: #0B231E;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-gob { height: 45px; }
+        .barra-oro { background-color: var(--gob-guinda); height: 8px; border-bottom: 3px solid var(--gob-oro); }
+
+        main { flex: 1; max-width: 1000px; margin: 40px auto; padding: 0 20px; text-align: center; width: 100%; }
+
+        .titulos-sep { margin-bottom: 30px; font-family: 'Montserrat', sans-serif; }
+        .titulos-sep h2 { font-weight: 700; font-size: 24px; color: #444; text-transform: uppercase; }
+        .titulos-sep h3 { font-weight: 400; font-size: 18px; color: #666; margin-top: 5px; }
+        .linea-decorativa { width: 60px; height: 3px; background: var(--gob-oro); margin: 15px auto; }
+
+        .search-container {
+            background: #ffffff;
+            border-top: 4px solid var(--gob-guinda-claro);
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .btn-buscar { 
+            background-color: var(--gob-verde-oscuro); 
+            color: white; padding: 12px 45px; border: none; border-radius: 4px;
+            font-family: 'Montserrat', sans-serif; font-weight: 700; cursor: pointer;
+        }
+
+        /* Resultados */
+        #resultado { 
+            display: none; margin-top: 30px; text-align: left; background: white; 
+            padding: 40px; border-radius: 4px; border: 1px solid #ddd;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .grid-resultados { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .info-item { font-family: 'Montserrat', sans-serif; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .info-label { font-weight: 700; color: #333; font-size: 11px; display: block; text-transform: uppercase; margin-bottom: 5px; }
+        .info-value { font-weight: 400; color: #555; font-size: 15px; display: block; }
+
+        #errorMsg { color: #d9534f; font-family: 'Montserrat'; font-weight: 600; margin-top: 15px; display: none; }
+
+        /* Footer */
+        footer { background-color: #13322B; color: white; padding: 40px 0 20px 0; font-family: 'Montserrat', sans-serif; margin-top: auto; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding: 0 20px; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.8; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; opacity: 0.6; }
+
+        @media (max-width: 600px) { .grid-resultados { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <nav class="navbar-gob">
-        <div class="container">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" height="40" alt="Gobierno de México">
+<nav class="gob-header">
+    <a href="https://www.gob.mx"><img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México"></a>
+</nav>
+<div class="barra-oro"></div>
+
+<main>
+    <div class="titulos-sep">
+        <h2>Consulta de Cédula Profesional</h2>
+        <h3>Registro Nacional de Profesionistas</h3>
+        <div class="linea-decorativa"></div>
+    </div>
+
+    <div id="seccionBusqueda" class="search-container">
+        <label style="font-family: 'Montserrat'; font-size: 14px; font-weight: 600;">Número de Cédula:</label>
+        <input type="text" id="folioInput" placeholder="EJ. 1234567" maxlength="25">
+        <button class="btn-buscar" onclick="buscar()">BUSCAR</button>
+        <p id="errorMsg">El número de cédula no se encuentra en el registro.</p>
+    </div>
+
+    <div id="resultado">
+        <div style="margin-bottom: 25px; border-left: 5px solid var(--gob-verde-exito); padding-left: 15px;">
+            <h4 style="font-family: 'Montserrat'; color: var(--gob-verde-oscuro);">Detalle del Profesionista</h4>
+            <p style="font-size: 13px; color: #666;">Información obtenida de la base de datos oficial.</p>
         </div>
-    </nav>
-
-    <main class="container">
-        <div id="Busqueda" class="row justify-content-center mt-5">
-            <div class="col-md-8 text-center">
-                <h2 style="font-weight: 700;">Consulta de Certificado Electrónico</h2>
-                <p class="text-muted">Ingresa el número de folio para validar la autenticidad del documento en el Registro Nacional.</p>
-                
-                <div class="card card-cedula p-5 text-start">
-                    <div class="form-group">
-                        <label class="control-label" for="FolioInput">Folio de Control:</label>
-                        <input type="text" id="FolioInput" class="form-control" placeholder="Ej: 9da9226f-..." onkeypress="if(event.key==='Enter') validarFolio()">
-                    </div>
-                    <div class="text-right mt-4">
-                        <button class="btn btn-gob" onclick="validarFolio()">CONSULTAR</button>
-                    </div>
-                </div>
-
-                <div id="MensajeError" class="alert alert-danger mt-4 text-start">
-                    <p><b>Error:</b> El folio ingresado no se encuentra en la base de datos oficial. Por favor verifique los caracteres e intente de nuevo.</p>
-                </div>
-            </div>
+        <div id="infoDetalle" class="grid-resultados"></div>
+        <div style="margin-top: 30px; text-align: right;">
+            <button onclick="location.reload()" style="background:none; border:none; color:var(--gob-guinda); font-weight:700; cursor:pointer; font-family:'Montserrat'; text-decoration:underline;">NUEVA CONSULTA</button>
         </div>
+    </div>
+</main>
 
-        <div id="DatosCertificado" class="row justify-content-center mt-4">
-            <div class="col-md-10">
-                <div class="text-left mb-3">
-                    <button class="btn btn-default" onclick="regresarBusqueda()"><i class="glyphicon glyphicon-arrow-left"></i> Nueva Búsqueda</button>
-                </div>
-                
-                <div class="card card-cedula">
-                    <div class="header-cedula">
-                        <h4 style="margin:0; color:#621132; font-weight:700;">DATOS DE IDENTIFICACIÓN</h4>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span class="label-gob">Nombre completo:</span>
-                                <span id="lblNombre" class="value-gob"></span>
-                                
-                                <span class="label-gob">Nivel Educativo:</span>
-                                <span id="lblNivel" class="value-gob"></span>
-
-                                <span class="label-gob">Promedio:</span>
-                                <span id="lblPromedio" class="value-gob"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <span class="label-gob">Folio de Control:</span>
-                                <span id="lblFolio" class="value-gob" style="font-family: monospace; font-weight: bold;"></span>
-
-                                <span class="label-gob">Fecha de Emisión:</span>
-                                <span id="lblEmision" class="value-gob"></span>
-
-                                <span class="label-gob">Lugar de Expedición:</span>
-                                <span id="lblLugar" class="value-gob"></span>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row text-center">
-                            <div class="col-md-12">
-                                <p style="font-size: 12px; color: #777;">Este documento cuenta con firma electrónica avanzada y es válido ante cualquier autoridad federal, estatal y municipal.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="150" style="filter: brightness(0) invert(1);">
         </div>
-    </main>
-
-    <footer style="margin-top: 100px; padding: 40px 0; background-color: #F4F4F4; border-top: 1px solid #ddd;">
-        <div class="container text-center text-muted">
-            <p>© 2026 SEP | Registro Nacional de Profesionistas | INEA</p>
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="https://www.gob.mx/que-es-gobmx">¿Qué es gob.mx?</a>
+            <a href="https://www.gob.mx/temas">Temas</a>
+            <a href="https://www.gob.mx/accesibilidad">Declaración de Accesibilidad</a>
         </div>
-    </footer>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <a href="mailto:mesadeayuda@tecnologia.gob.mx">Mesa de Ayuda</a>
+            <a href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54">Denuncias</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        SEP | Registro Nacional de Profesionistas | México 2026
+    </div>
+</footer>
 
-    <script src="folios.js"></script>
-
-    <script>
-        function mostrarDatos(folio) {
-            const d = baseDatos[folio.toLowerCase()];
-            if (d) {
-                document.getElementById('lblNombre').innerText = d.nombre;
-                document.getElementById('lblNivel').innerText = d.nivel;
-                document.getElementById('lblPromedio').innerText = d.promedio;
-                document.getElementById('lblEmision').innerText = d.emision;
-                document.getElementById('lblLugar').innerText = d.lugar;
-                document.getElementById('lblFolio').innerText = folio.toUpperCase();
-                
-                document.getElementById('Busqueda').style.display = 'none';
-                document.getElementById('MensajeError').style.display = 'none';
-                document.getElementById('DatosCertificado').style.display = 'block';
-                window.scrollTo(0, 0);
-            }
+<script src="folios.js"></script>
+<script>
+    function mostrarDatos(folio) {
+        const d = baseDatos[folio.toUpperCase()];
+        if (d) {
+            const detalle = document.getElementById('infoDetalle');
+            detalle.innerHTML = `
+                <div class="info-item"><span class="info-label">Nombre(s):</span> <span class="info-value">${d.nombre}</span></div>
+                <div class="info-item"><span class="info-label">Número de Cédula:</span> <span class="info-value">${folio.toUpperCase()}</span></div>
+                <div class="info-item"><span class="info-label">Profesión:</span> <span class="info-value">${d.plan || d.nivel}</span></div>
+                <div class="info-item"><span class="info-label">Institución:</span> <span class="info-value">${d.emisor || d.lugar}</span></div>
+                <div class="info-item"><span class="info-label">Año de Expedición:</span> <span class="info-value">${d.timbrado || d.emision}</span></div>
+                <div class="info-item"><span class="info-label">Estatus:</span> <span style="color:green; font-weight:700;">REGISTRADO</span></div>
+            `;
+            document.getElementById('seccionBusqueda').style.display = 'none';
+            document.getElementById('resultado').style.display = 'block';
         }
+    }
 
-        function validarFolio() {
-            const fInput = document.getElementById('FolioInput').value.trim().toLowerCase();
-            if (fInput === "") return;
+    function buscar() {
+        const f = document.getElementById('folioInput').value.trim().toUpperCase();
+        if (baseDatos[f]) { mostrarDatos(f); } 
+        else { document.getElementById('errorMsg').style.display = 'block'; }
+    }
 
-            if (baseDatos[fInput]) {
-                mostrarDatos(fInput);
-            } else {
-                document.getElementById('MensajeError').style.display = 'block';
-                document.getElementById('DatosCertificado').style.display = 'none';
-            }
-        }
-
-        function regresarBusqueda() {
-            document.getElementById('Busqueda').style.display = 'block';
-            document.getElementById('DatosCertificado').style.display = 'none';
-            document.getElementById('FolioInput').value = "";
-        }
-
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const folioUrl = urlParams.get('folio');
-            if (folioUrl && baseDatos[folioUrl.toLowerCase()]) {
-                mostrarDatos(folioUrl);
-            }
-        };
-    </script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const folioUrl = urlParams.get('folio');
+        if (folioUrl && baseDatos[folioUrl.toUpperCase()]) { mostrarDatos(folioUrl); }
+    };
+</script>
 </body>
 </html>
