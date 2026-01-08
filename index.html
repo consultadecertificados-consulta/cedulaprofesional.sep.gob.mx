@@ -26,6 +26,10 @@
         .nav-links { display: flex; align-items: center; }
         .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; font-weight: 400; }
 
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+        }
+
         /* Header con imagen logo.png */
         .header-image-container { width: 100%; border-bottom: 8px solid var(--gob-oro); }
         .header-image-container a { display: block; width: 100%; }
@@ -34,12 +38,12 @@
         main { max-width: 1100px; margin: 0 auto; padding: 20px; }
         .breadcrumb { padding: 20px 0; font-size: 14px; color: #666; }
 
-        /* Leyendas solicitadas */
+        /* Leyendas */
         .intro-text h2 { font-size: 30px; font-weight: 700; color: #4D4D4D; margin-bottom: 10px; }
         .linea-oro { width: 45px; height: 5px; background: var(--gob-oro); margin-bottom: 25px; }
         .intro-text p { font-size: 15.5px; line-height: 1.7; margin-bottom: 20px; text-align: justify; }
 
-        /* Card de Búsqueda y Pestañas */
+        /* Card de Búsqueda */
         .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px; overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); border-bottom: 1px solid var(--gob-gris-borde); }
         .tab-btn { padding: 15px 30px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; flex: 1; text-align: center; }
@@ -51,14 +55,12 @@
         
         @media (min-width: 768px) {
             .form-section { grid-template-columns: repeat(2, 1fr); padding: 40px; }
-            .nav-gob { padding: 12px 10%; }
         }
 
         .field { display: flex; flex-direction: column; }
         .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
         .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; font-size: 14px; width: 100%; }
 
-        /* Botones Responsivos */
         .btn-area { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 20px; }
         @media (min-width: 768px) {
             .btn-area { flex-direction: row; justify-content: flex-end; padding: 0 40px 40px; }
@@ -76,12 +78,19 @@
         .rnp-table th { padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid #DDD; }
         .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; vertical-align: middle; }
 
-        /* Footer */
-        footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 25px; margin-top: 60px; }
+        /* FOOTER COMPLETO Y RESPONSIVO */
+        footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 40px; margin-top: 60px; }
         .f-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        
         @media (min-width: 768px) {
             .f-grid { grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; }
         }
+
+        .f-col h4 { font-size: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
+        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 12px; margin-bottom: 10px; font-weight: 300; opacity: 0.8; }
+        .f-col a:hover { opacity: 1; text-decoration: underline; }
+        .f-social { font-size: 22px; display: flex; gap: 20px; margin-top: 10px; }
+        .f-logo { filter: brightness(0) invert(1); width: 200px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -105,7 +114,6 @@
             <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
             <div class="linea-oro"></div>
             <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con <b>título registrado y cédula profesional expedida</b>, cumpliendo con todos los requisitos de la ley.</p>
-            <p style="font-size: 13px; color: #777;">La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos...</p>
         </section>
 
         <div class="search-card">
@@ -144,6 +152,35 @@
             </div>
         </div>
     </main>
+
+    <footer>
+        <div class="f-grid">
+            <div class="f-col">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="f-logo" alt="Logo México">
+            </div>
+            <div class="f-col">
+                <h4>Enlaces</h4>
+                <a href="#">Participa</a>
+                <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Marco Jurídico</a>
+                <a href="#">Plataforma Nacional de Transparencia</a>
+            </div>
+            <div class="f-col">
+                <h4>¿Qué es gob.mx?</h4>
+                <a href="#">Es el portal único de trámites, información y participación ciudadana. Leer más</a>
+                <a href="#">Portal de Datos Abiertos</a>
+                <a href="#">Declaración de accesibilidad</a>
+                <a href="#">Aviso de privacidad</a>
+            </div>
+            <div class="f-col">
+                <h4>Síguenos en</h4>
+                <div class="f-social">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         function switchTab(tipo) {
