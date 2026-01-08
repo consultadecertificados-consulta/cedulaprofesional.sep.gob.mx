@@ -5,103 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Búsqueda de Cédulas Profesionales | Registro Nacional de Profesionistas</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     
     <style>
         :root {
             --gob-guinda: #621132;
             --gob-oro: #9D843E;
-            --gob-verde: #11322B;
-            --gob-gris-border: #D0D0D0;
-            --gob-texto-label: #333333;
+            --gob-verde: #13322B;
+            --gob-gris-fondo: #F2F2F2;
+            --gob-gris-borde: #D9D9D9;
             --gob-texto-p: #6F7271;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; line-height: 1.4; }
 
-        /* Barra Superior Negra */
-        .gob-nav { background-color: #0C231E; padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; }
-        .gob-nav img { height: 32px; }
-        .gob-nav-links { display: flex; gap: 25px; }
-        .gob-nav-links a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 400; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #ffffff; 
+            color: #333; 
+            -webkit-font-smoothing: antialiased;
+        }
 
-        /* Banner Guinda con Escudo */
+        /* Barra gob.mx superior */
+        .gob-nav { 
+            background-color: #0C231E; 
+            padding: 10px 10%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .gob-nav img { height: 30px; }
+
+        /* Banner Guinda Fiel a la Imagen */
         .hero-banner { 
             background-color: var(--gob-guinda);
-            background-image: linear-gradient(rgba(98, 17, 50, 0.8), rgba(98, 17, 50, 0.8)), url('https://www.gob.mx/cms/uploads/article/main_image/101254/post_C_dula_2.jpg');
+            background-image: linear-gradient(rgba(98, 17, 73, 0.85), rgba(98, 17, 73, 0.85)), url('https://www.gob.mx/cms/uploads/article/main_image/101254/post_C_dula_2.jpg');
             background-size: cover;
             background-position: center;
-            padding: 60px 10%;
+            padding: 65px 10%;
             color: #fff;
             text-align: right;
             border-bottom: 8px solid var(--gob-oro);
         }
-        .hero-banner h1 { font-size: 48px; font-weight: 700; margin-bottom: 5px; }
-        .hero-banner p { font-size: 20px; font-weight: 300; letter-spacing: 1px; }
+        .hero-banner h1 { 
+            font-size: 52px; 
+            font-weight: 800; 
+            line-height: 1; 
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .hero-banner p { 
+            font-size: 22px; 
+            font-weight: 300; 
+            letter-spacing: 0.5px;
+        }
 
-        /* Breadcrumb */
-        .breadcrumb { padding: 25px 10% 10px; font-size: 14px; color: #666; font-weight: 400; }
-        .breadcrumb b { color: #333; font-weight: 600; }
+        /* Migas de Pan */
+        .breadcrumb { padding: 25px 10% 10px; font-size: 14px; color: #666; }
+        .breadcrumb i { color: #999; margin-right: 5px; }
 
         main { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
-        .intro-text h2 { font-size: 32px; font-weight: 700; color: #4D4D4D; margin-bottom: 10px; }
-        .intro-text .linea { width: 40px; height: 4px; background-color: var(--gob-oro); margin-bottom: 20px; }
-        .intro-text p { font-size: 15px; color: var(--gob-texto-p); margin-bottom: 15px; text-align: justify; font-weight: 400; }
-
-        /* Contenedor de Búsqueda */
-        .search-box { 
-            background: #fff; border-radius: 4px; border: 1px solid #E0E0E0; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin: 40px 0; overflow: hidden;
+        /* Títulos y Leyendas */
+        .intro-section h2 { font-size: 34px; font-weight: 700; color: #4D4D4D; margin-bottom: 15px; }
+        .intro-section .linea-oro { width: 45px; height: 5px; background: var(--gob-oro); margin-bottom: 25px; }
+        .intro-section p { 
+            font-size: 15.5px; 
+            color: var(--gob-texto-p); 
+            line-height: 1.7; 
+            margin-bottom: 20px; 
+            text-align: justify;
         }
-        .search-tabs { display: flex; background: #F2F2F2; }
-        .tab { padding: 15px 30px; font-size: 14px; font-weight: 500; color: #666; cursor: pointer; border-right: 1px solid #E0E0E0; }
-        .tab.active { background: var(--gob-guinda); color: #fff; font-weight: 600; }
 
-        .search-body { padding: 40px; }
-        .search-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        /* Caja de Búsqueda */
+        .search-container { 
+            border: 1px solid var(--gob-gris-borde); 
+            margin: 40px 0; 
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .tabs-header { display: flex; background: var(--gob-gris-fondo); }
+        .tab-item { 
+            padding: 16px 35px; 
+            font-size: 14px; 
+            font-weight: 600; 
+            color: #666; 
+            border-right: 1px solid var(--gob-gris-borde);
+            cursor: pointer;
+        }
+        .tab-item.active { background: var(--gob-guinda); color: #fff; }
+
+        .form-padding { padding: 45px; }
+        .row-inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 25px; }
         
-        /* Campos específicos solicitados */
-        .form-control { display: flex; flex-direction: column; margin-bottom: 15px; }
-        .form-control label { font-size: 14px; font-weight: 700; color: var(--gob-texto-label); margin-bottom: 8px; }
-        .form-control input { 
-            padding: 12px; border: 1px solid var(--gob-gris-border); border-radius: 4px; 
-            font-size: 15px; font-family: 'Montserrat'; color: #555;
+        .field-box label { 
+            display: block; 
+            font-size: 14px; 
+            font-weight: 700; 
+            margin-bottom: 10px; 
+            color: #333;
         }
-        .form-control input::placeholder { color: #BBB; font-weight: 300; }
+        .field-box input { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid var(--gob-gris-borde); 
+            border-radius: 2px;
+            font-family: 'Montserrat';
+            font-size: 15px;
+        }
 
         /* Botonera */
-        .actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px; }
-        .btn { 
-            padding: 10px 35px; border-radius: 4px; font-family: 'Montserrat'; 
-            font-weight: 500; font-size: 15px; cursor: pointer; transition: 0.2s;
+        .button-area { display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px; }
+        .btn-g { 
+            padding: 11px 40px; 
+            border-radius: 4px; 
+            font-size: 15px; 
+            font-weight: 600; 
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .btn-buscar { border: 2px solid var(--gob-guinda); background: #fff; color: var(--gob-guinda); font-weight: 600; }
-        .btn-buscar:hover { background: var(--gob-guinda); color: #fff; }
-        .btn-limpiar { border: 2px solid var(--gob-oro); background: #fff; color: var(--gob-oro); }
-        .btn-csv { background: #A8A8A8; color: #fff; border: none; cursor: not-allowed; }
+        .btn-search { border: 2px solid var(--gob-guinda); background: #fff; color: var(--gob-guinda); }
+        .btn-search:hover { background: var(--gob-guinda); color: #fff; }
+        .btn-clear { border: 2px solid var(--gob-oro); background: #fff; color: var(--gob-oro); }
+        .btn-disabled { background: #CCC; color: #fff; border: none; cursor: not-allowed; }
 
-        /* Footer fiel a la imagen */
-        footer { background-color: var(--gob-guinda); color: #fff; padding: 60px 10% 20px; }
-        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .f-col img { height: 60px; margin-bottom: 20px; }
-        .f-col h4 { font-size: 16px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 13px; margin-bottom: 12px; opacity: 0.9; font-weight: 300; }
-        .f-bottom { text-align: center; padding-top: 25px; font-size: 12px; opacity: 0.6; }
+        /* Footer idéntico */
+        footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 30px; margin-top: 60px; }
+        .f-wrapper { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; padding-bottom: 40px; }
+        .f-logo { height: 70px; margin-bottom: 20px; }
+        .f-col h4 { 
+            font-size: 16px; 
+            font-weight: 700; 
+            margin-bottom: 25px; 
+            border-bottom: 2px solid var(--gob-oro); 
+            display: inline-block; 
+            padding-bottom: 5px;
+        }
+        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 13px; margin-bottom: 12px; font-weight: 300; }
+        .f-social i { font-size: 22px; margin-right: 15px; }
 
-        @media (max-width: 800px) { .search-grid { grid-template-columns: 1fr; } .f-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { .row-inputs, .f-wrapper { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <nav class="gob-nav">
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo Gobierno">
-        <div class="gob-nav-links">
-            <a href="#">Trámites</a>
-            <a href="#">Gobierno</a>
-            <a href="#"><i class="fas fa-search"></i></a>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo Gobierno de México">
+        <div style="display: flex; gap: 20px;">
+            <a href="#" style="color:white; text-decoration:none; font-size:13px;">Trámites</a>
+            <a href="#" style="color:white; text-decoration:none; font-size:13px;">Gobierno</a>
+            <a href="#" style="color:white;"><i class="fas fa-search"></i></a>
         </div>
     </nav>
 
@@ -115,66 +169,66 @@
     </div>
 
     <main>
-        <section class="intro-text">
+        <section class="intro-section">
             <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
-            <div class="linea"></div>
+            <div class="linea-oro"></div>
             <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
-            <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+            <p style="font-size: 13px;">La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
             
-            <p style="text-align: center; font-weight: 700; color: #333; margin-top: 30px;">¡Descarga la Constancia de Situación Profesional!</p>
-            <p style="text-align: center; font-size: 14px; color: #333;">Recuerda: <b>La emisión de la Constancia</b> es <b>completamente gratuita.</b></p>
+            <p style="text-align: center; font-weight: 700; margin-top: 30px;">¡Descarga la Constancia de Situación Profesional!</p>
+            <p style="text-align: center; font-size: 14px;">Recuerda: <b>La emisión de la Constancia</b> es <b>completamente gratuita.</b></p>
         </section>
 
-        <div class="search-box">
-            <div class="search-tabs">
-                <div class="tab">Datos generales</div>
-                <div class="tab active">Número de cédula</div>
+        <div class="search-container">
+            <div class="tabs-header">
+                <div class="tab-item">Datos generales</div>
+                <div class="tab-item active">Número de cédula</div>
             </div>
-            <div class="search-body">
-                <div class="search-grid">
-                    <div class="form-control">
+            <div class="form-padding">
+                <div class="row-inputs">
+                    <div class="field-box">
                         <label>Nombre(s)*:</label>
-                        <input type="text" id="nombreInput" placeholder="Nombre(s)">
+                        <input type="text" placeholder="Nombre(s)">
                     </div>
-                    <div class="form-control">
+                    <div class="field-box">
                         <label>Primer Apellido*:</label>
-                        <input type="text" id="pApellidoInput" placeholder="Primer Apellido">
+                        <input type="text" placeholder="Primer Apellido">
                     </div>
-                    <div class="form-control">
+                    <div class="field-box">
                         <label>Segundo Apellido:</label>
-                        <input type="text" id="sApellidoInput" placeholder="Segundo Apellido">
+                        <input type="text" placeholder="Segundo Apellido">
                     </div>
                 </div>
 
-                <div class="search-grid" style="margin-top: 10px;">
-                    <div class="form-control">
+                <div class="row-inputs" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div class="field-box">
                         <label>CURP:</label>
-                        <input type="text" id="curpInput" placeholder="CURP">
+                        <input type="text" placeholder="CURP">
                     </div>
-                    <div class="form-control">
-                        <label>Número de cédula:</label>
+                    <div class="field-box">
+                        <label>Número de cédula*:</label>
                         <input type="text" id="folioInput" placeholder="Número de cédula" onkeypress="if(event.key==='Enter') buscar()">
                     </div>
                 </div>
 
-                <div class="actions">
-                    <button class="btn btn-buscar" onclick="buscar()">Buscar</button>
-                    <button class="btn btn-limpiar" onclick="window.location.reload()">Limpiar</button>
-                    <button class="btn btn-csv" disabled>Descargar CSV</button>
+                <div class="button-area">
+                    <button class="btn-g btn-search" onclick="buscar()">Buscar</button>
+                    <button class="btn-g btn-clear" onclick="window.location.reload()">Limpiar</button>
+                    <button class="btn-g btn-disabled" disabled>Descargar CSV</button>
                 </div>
             </div>
         </div>
 
-        <div id="resultado" style="display:none; margin-top: 30px; border-top: 2px solid #EEE; padding-top: 30px;">
-            <h3 style="color: var(--gob-guinda); margin-bottom: 20px;">Resultado de la consulta:</h3>
-            <div id="detalleProfesionista" style="background: #F9F9F9; padding: 25px; border-radius: 4px;"></div>
+        <div id="resultado" style="display:none; border-top: 2px solid #EEE; padding-top: 40px;">
+            <h3 style="color: var(--gob-guinda); font-weight: 700; margin-bottom: 20px;">Información Encontrada</h3>
+            <div id="detalle" style="background: #fdfdfd; padding: 30px; border: 1px solid #EEE;"></div>
         </div>
     </main>
 
     <footer>
-        <div class="f-grid">
+        <div class="f-wrapper">
             <div class="f-col">
-                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo Blanco">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo SEP Blanco" class="f-logo" style="filter: brightness(0) invert(1);">
             </div>
             <div class="f-col">
                 <h4>Enlaces</h4>
@@ -182,25 +236,22 @@
                 <a href="#">Marco Jurídico</a>
                 <a href="#">Plataforma Nacional de Transparencia</a>
                 <a href="#">Transparencia para el pueblo</a>
-                <a href="#">Alerta</a>
             </div>
             <div class="f-col">
                 <h4>¿Qué es gob.mx?</h4>
-                <a href="#">Es el portal único de trámites e información ciudadana. <u>Leer más</u></a>
                 <a href="#">Portal de datos abiertos</a>
                 <a href="#">Declaración de accesibilidad</a>
+                <a href="#">Aviso de privacidad integral</a>
                 <a href="#">Términos y Condiciones</a>
             </div>
             <div class="f-col">
-                <h4>Denuncia contra servidores públicos</h4>
-                <p style="font-size: 13px; margin-bottom: 15px; font-weight: 600;">Síguenos en</p>
-                <div style="font-size: 22px; display: flex; gap: 15px;">
+                <h4>Síguenos en</h4>
+                <div class="f-social">
                     <i class="fab fa-facebook-f"></i>
                     <i class="fab fa-twitter"></i>
                     <i class="fab fa-instagram"></i>
-                    <i class="fab fa-youtube"></i>
                 </div>
-                <p style="margin-top: 20px; font-size: 14px;"><i class="fas fa-asterisk"></i> <b>079</b> Contacto ciudadano</p>
+                <p style="margin-top: 20px; font-size: 13px;"><b>079</b> Contacto ciudadano</p>
             </div>
         </div>
         <div class="f-bottom">
@@ -211,22 +262,19 @@
     <script src="folios.js"></script>
     <script>
         function buscar() {
-            const folio = document.getElementById('folioInput').value.trim().toUpperCase();
-            const res = document.getElementById('resultado');
-            const det = document.getElementById('detalleProfesionista');
-
-            if (baseDatos[folio]) {
-                const d = baseDatos[folio];
-                det.innerHTML = `
-                    <p><b>Nombre:</b> ${d.nombre}</p>
-                    <p><b>Profesión:</b> ${d.plan || d.nivel}</p>
-                    <p><b>Cédula:</b> ${folio}</p>
-                    <p><b>Institución:</b> ${d.emisor || d.lugar}</p>
+            const f = document.getElementById('folioInput').value.trim().toUpperCase();
+            if (baseDatos[f]) {
+                const d = baseDatos[f];
+                document.getElementById('detalle').innerHTML = `
+                    <p style="margin-bottom:10px;"><b>Nombre:</b> ${d.nombre}</p>
+                    <p style="margin-bottom:10px;"><b>Profesión:</b> ${d.plan || d.nivel}</p>
+                    <p style="margin-bottom:10px;"><b>Institución:</b> ${d.emisor || d.lugar}</p>
+                    <p><b>Estatus:</b> <span style="color:green; font-weight:700;">REGISTRADO</span></p>
                 `;
-                res.style.display = 'block';
-                res.scrollIntoView({behavior: 'smooth'});
+                document.getElementById('resultado').style.display = 'block';
+                document.getElementById('resultado').scrollIntoView({behavior: 'smooth'});
             } else {
-                alert("Cédula no encontrada en el Registro Nacional.");
+                alert("Cédula no localizada en el Registro Nacional.");
             }
         }
     </script>
