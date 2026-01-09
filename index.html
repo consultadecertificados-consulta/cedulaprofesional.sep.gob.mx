@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -16,36 +16,29 @@
             --gob-gris-fondo: #F2F2F2;
             --gob-gris-borde: #D9D9D9;
             --gob-texto-p: #6F7271;
-            --gob-texto-negro: #4D4D4D;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; -webkit-font-smoothing: antialiased; }
 
-        /* Navbar gob.mx */
+        /* Navbar */
         .nav-gob { background-color: var(--gob-verde-oscuro); padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; }
         .nav-gob img { height: 28px; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; font-weight: 400; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; }
 
-        @media (max-width: 600px) { .nav-links { display: none; } .nav-gob { padding: 12px 5%; } }
-
-        /* Header Imagen logo.png */
+        /* Header logo.png */
         .header-image-container { width: 100%; border-bottom: 8px solid var(--gob-oro); }
-        .header-image-container a { display: block; width: 100%; }
         .header-image-container img { width: 100%; height: auto; display: block; }
 
         main { max-width: 1100px; margin: 0 auto; padding: 20px; }
         .breadcrumb { padding: 20px 0; font-size: 14px; color: #666; }
 
-        /* Leyendas Oficiales */
-        .intro-container { margin-bottom: 40px; }
-        .intro-container h2 { font-size: 30px; font-weight: 700; color: var(--gob-texto-negro); margin-bottom: 10px; }
+        /* Leyendas */
+        .intro-container h2 { font-size: 30px; font-weight: 700; color: #4D4D4D; margin-bottom: 10px; }
         .linea-oro { width: 50px; height: 5px; background: var(--gob-oro); margin-bottom: 25px; }
-        .texto-principal { font-size: 16px; color: var(--gob-texto-p); line-height: 1.6; margin-bottom: 25px; text-align: justify; }
-        .texto-deslinde { font-size: 13px; color: var(--gob-texto-p); line-height: 1.6; margin-bottom: 30px; text-align: justify; }
+        .texto-p { font-size: 16px; color: var(--gob-texto-p); line-height: 1.6; margin-bottom: 20px; text-align: justify; }
 
-        /* Buscador Responsivo */
+        /* Buscador */
         .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); border-bottom: 1px solid var(--gob-gris-borde); }
         .tab-btn { padding: 15px 20px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; flex: 1; text-align: center; }
@@ -55,58 +48,51 @@
         .form-section.active { display: grid; }
         @media (min-width: 768px) { .form-section { grid-template-columns: repeat(2, 1fr); padding: 40px; } }
 
-        .field { display: flex; flex-direction: column; }
-        .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #333; }
-        .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; font-size: 14px; }
+        .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; display: block; }
+        .field input { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; }
 
         .btn-area { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 20px; }
         @media (min-width: 768px) { .btn-area { flex-direction: row; justify-content: flex-end; padding: 0 40px 40px; } }
 
-        .btn { padding: 12px 35px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; text-align: center; }
+        .btn { padding: 12px 35px; border-radius: 4px; font-weight: 600; cursor: pointer; text-align: center; }
         .btn-buscar { border: 2px solid var(--gob-guinda); color: var(--gob-guinda); background: #fff; }
         .btn-buscar:hover { background: var(--gob-guinda); color: #fff; }
         .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
-        /* Tabla de Resultados */
+        /* Tabla */
         #results-container { display: none; padding: 20px; border-top: 1px solid var(--gob-gris-borde); }
-        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .table-responsive { width: 100%; overflow-x: auto; }
         .rnp-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 1000px; }
-        .rnp-table th { padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid #DDD; }
-        .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; vertical-align: middle; }
+        .rnp-table th { padding: 12px 8px; text-align: left; border-bottom: 2px solid #DDD; }
+        .rnp-table td { padding: 15px 8px; border-bottom: 1px solid #EEE; }
 
-        /* Footer */
-        footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 40px; margin-top: 60px; }
-        .f-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
-        @media (min-width: 768px) { .f-grid { grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; } }
-        .f-col h4 { font-size: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 12px; margin-bottom: 10px; opacity: 0.8; }
-        .f-logo { filter: brightness(0) invert(1); width: 200px; margin-bottom: 20px; }
+        /* Efecto Icono PDF */
+        .fa-file-pdf:hover { transform: scale(1.2); transition: 0.2s; color: #9D2449 !important; }
+
+        footer { background: var(--gob-guinda); color: #fff; padding: 40px 10%; margin-top: 60px; }
     </style>
 </head>
 <body>
 
     <nav class="nav-gob">
-        <a href="https://www.gob.mx/"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México"></a>
+        <a href="#"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg"></a>
         <div class="nav-links">
-            <a href="https://www.gob.mx/tramites">Trámites</a>
-            <a href="https://www.gob.mx/gobierno">Gobierno</a>
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
         </div>
     </nav>
 
     <div class="header-image-container">
-        <a href="index.html"><img src="logo.png" alt="Registro Nacional de Profesionistas"></a>
+        <img src="logo.png" alt="Encabezado">
     </div>
 
     <main>
-        <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > <b>Búsqueda de Cédulas Profesionales</b></div>
+        <div class="breadcrumb">Inicio > <b>Búsqueda de Cédulas Profesionales</b></div>
 
         <section class="intro-container">
             <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
             <div class="linea-oro"></div>
-            <p class="texto-principal">Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con <b>título registrado y cédula profesional expedida</b>, cumpliendo con todos los requisitos de la ley.</p>
-            <p class="texto-deslinde">... oficial.</p>
-            <p style="text-align: center; font-weight: 700;">¡Descarga la Constancia de Situación Profesional!</p>
-            <p style="font-size: 15px; margin-bottom: 20px;">Recuerda: <b>La emisión de la Constancia</b> es <b>completamente gratuita.</b></p>
+            <p class="texto-p">Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.</p>
         </section>
 
         <div class="search-card">
@@ -147,24 +133,7 @@
     </main>
 
     <footer>
-        <div class="f-grid">
-            <div class="f-col"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="f-logo"></div>
-            <div class="f-col">
-                <h4>Enlaces</h4>
-                <a href="#">Participa</a>
-                <a href="#">Publicaciones Oficiales</a>
-                <a href="#">Marco Jurídico</a>
-            </div>
-            <div class="f-col">
-                <h4>¿Qué es gob.mx?</h4>
-                <a href="#">Es el portal único de trámites e información.</a>
-                <a href="#">Aviso de privacidad</a>
-            </div>
-            <div class="f-col">
-                <h4>Síguenos en</h4>
-                <div style="font-size: 20px; display: flex; gap: 15px;"><i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i></div>
-            </div>
-        </div>
+        <p>© 2026 Gobierno de México - Registro Nacional de Profesionistas</p>
     </footer>
 
     <script src="folios.js"></script>
@@ -189,14 +158,19 @@
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
             
-            // "registros" proviene de folios.js
             let filtrados = registros.filter(r => (r.id === f && f !== "") || (r.curp === curpVal && curpVal !== "") || (r.nom.includes(nomVal) && nomVal !== ""));
 
             if (filtrados.length > 0) {
                 tabla.innerHTML = filtrados.map(r => `
                     <tr>
                         <td><b>${r.id}</b></td><td>${r.nom}</td><td>${r.ap1}</td><td>${r.ap2}</td><td>${r.gen}</td><td>${r.inst}</td><td>${r.prof}</td><td>${r.ent}</td><td>${r.anio}</td>
-                        <td style="text-align:center"><i class="far fa-file-pdf" style="cursor:pointer; color:#621132;"></i></td>
+                        <td style="text-align:center">
+                            ${r.archivo ? `
+                                <a href="constancias/${r.archivo}" download="${r.id}_Constancia.pdf">
+                                    <i class="far fa-file-pdf" style="cursor:pointer; color:#621132; font-size: 18px;"></i>
+                                </a>
+                            ` : `<i class="far fa-file-pdf" style="color:#ccc;"></i>`}
+                        </td>
                     </tr>
                 `).join('');
                 container.style.display = 'block';
