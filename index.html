@@ -36,20 +36,16 @@
         main { max-width: 1150px; margin: 0 auto; padding: 10px 20px; }
         .breadcrumb { padding: 20px 0; font-size: 16px; color: #4D4D4D; font-weight: 600; }
 
-        /* SECCIÓN DE LEYES Y TEXTOS (DEBAJO DE PORTADA) */
-        .legal-section { margin-top: 20px; margin-bottom: 40px; }
-        .legal-section h2 { font-size: 36px; font-weight: 700; color: #333; margin-bottom: 15px; line-height: 1.2; }
-        .linea-oro { width: 55px; height: 6px; background: var(--gob-oro); margin-bottom: 30px; }
+        /* SECCIÓN DE TEXTOS SOLICITADA */
+        .intro-container { text-align: left; margin-top: 20px; }
+        .intro-container h2 { font-size: clamp(24px, 6vw, 42px); font-weight: 700; color: #333; line-height: 1.1; margin-bottom: 20px; }
+        .linea-oro { width: 55px; height: 6px; background: var(--gob-oro); margin-bottom: 25px; }
         
-        .legal-content { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
-        @media (min-width: 768px) { .legal-content { grid-template-columns: 1fr 1fr; } }
-        
-        .legal-text { font-size: 15px; color: #6F7271; line-height: 1.6; text-align: justify; font-weight: 300; }
-        .legal-text b { font-weight: 700; color: #4D4D4D; }
+        .texto-gris { font-size: clamp(16px, 4vw, 20px); color: #6F7271; line-height: 1.4; margin-bottom: 30px; font-weight: 300; }
+        .texto-deslinde { font-size: 14px; color: #6F7271; line-height: 1.5; margin-bottom: 40px; font-weight: 300; text-align: justify; }
 
-        .download-notice { background: #f9f9f9; padding: 25px; text-align: center; border-radius: 4px; margin-bottom: 40px; }
-        .download-notice h3 { font-size: 20px; font-weight: 700; color: #333; margin-bottom: 10px; }
-        .download-notice p { font-size: 18px; font-weight: 300; }
+        .cta-titulo { font-size: 22px; font-weight: 700; color: #333; text-align: center; margin-bottom: 20px; }
+        .texto-final { font-size: 18px; text-align: center; color: #333; margin-bottom: 40px; font-weight: 300; }
 
         /* Buscador */
         .search-card { border: 1px solid #eee; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 50px; background: #fdfdfd; }
@@ -61,9 +57,7 @@
         .form-section.active { display: block; }
 
         .grid-inputs { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
-        @media (min-width: 768px) { 
-            .grid-inputs.triple { grid-template-columns: repeat(3, 1fr); }
-        }
+        @media (min-width: 768px) { .grid-inputs.triple { grid-template-columns: repeat(3, 1fr); } }
 
         .field { display: flex; flex-direction: column; }
         .field label { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: #333; }
@@ -109,23 +103,20 @@
     <main>
         <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
 
-        <section class="legal-section">
+        <section class="intro-container">
             <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
             <div class="linea-oro"></div>
             
-            <div class="legal-content">
-                <div class="legal-text">
-                    Al ingresar los datos solicitados en cualquiera de las opciones de búsqueda, los resultados te mostrarán si la persona profesionista cuenta con título registrado y cédula profesional expedida por la <b>Dirección General de Profesiones</b> de la Secretaría de Educación Pública. Esta consulta garantiza la autenticidad de los documentos presentados para el ejercicio profesional.
-                </div>
-                <div class="legal-text">
-                    La información publicada en este sitio se realiza en estricto apego a la <b>Política de Datos Abiertos</b>. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso o reproducción de los datos en sitios web distintos al oficial. Para mayor información, consulte nuestro <b>Aviso de Privacidad</b>.
-                </div>
-            </div>
+            <p class="texto-gris">
+                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
+            </p>
 
-            <div class="download-notice">
-                <h3>¡Descarga la Constancia de Situación Profesional!</h3>
-                <p>Recuerda: La emisión de la Constancia es <b>completamente gratuita.</b></p>
-            </div>
+            <p class="texto-deslinde">
+                La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.
+            </p>
+
+            <h3 class="cta-titulo">¡Descarga la Constancia de Situación Profesional!,</h3>
+            <p class="texto-final">Recuerda: <b>La emisión de la Constancia</b> es <b>completamente gratuita.</b></p>
         </section>
 
         <div class="search-card">
