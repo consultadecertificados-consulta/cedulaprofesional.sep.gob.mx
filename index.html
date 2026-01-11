@@ -25,7 +25,7 @@
         .nav-gob img { height: 28px; }
         .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; }
 
-        /* HEADER / PORTADA - Corregido para Móvil */
+        /* HEADER / PORTADA */
         .header-image-container { 
             width: 100%; 
             border-bottom: 8px solid var(--gob-oro);
@@ -36,7 +36,7 @@
             width: 100%; 
             height: auto; 
             display: block;
-            object-fit: contain; /* Asegura que la imagen se vea completa */
+            object-fit: contain;
         }
 
         main { max-width: 1000px; margin: 0 auto; padding: 10px 20px; }
@@ -53,7 +53,7 @@
         .cta-titulo { font-size: 22px; font-weight: 700; color: #333; text-align: center; margin-bottom: 20px; }
         .texto-final { font-size: 18px; text-align: center; color: #333; margin-bottom: 40px; font-weight: 300; }
 
-        /* Buscador - Corregido Orden de Celdas */
+        /* Buscador */
         .search-card { border: 1px solid #eee; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 50px; background: #fdfdfd; }
         .tabs-menu { display: flex; background: #eeeeee; }
         .tab-btn { padding: 15px 20px; font-size: 14px; cursor: pointer; border-right: 1px solid #ddd; flex: 1; text-align: center; }
@@ -62,10 +62,9 @@
         .form-section { padding: 25px; display: none; }
         .form-section.active { display: block; }
 
-        /* Grid Responsivo para mantener orden */
         .grid-inputs { 
             display: grid; 
-            grid-template-columns: 1fr; /* Por defecto 1 columna para móvil */
+            grid-template-columns: 1fr; 
             gap: 15px; 
             margin-bottom: 15px; 
         }
@@ -88,12 +87,13 @@
         .btn-csv { background: #b3b3b3; color: #fff; border: none; cursor: not-allowed; }
 
         /* Tabla Responsiva */
-        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 20px; border: 1px solid #eee; }
+        #results-container { display: none; margin-top: 20px; }
+        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #eee; }
         .rnp-table { width: 100%; border-collapse: collapse; min-width: 900px; font-size: 13px; }
         .rnp-table th { border-bottom: 2px solid var(--gob-oro); padding: 12px; text-align: left; background: #f9f9f9; }
         .rnp-table td { padding: 15px 12px; border-bottom: 1px solid #eee; }
 
-        /* Footer Funcional */
+        /* Footer */
         .main-footer { background-color: var(--gob-verde-oscuro); color: #fff; padding: 50px 10%; margin-top: 50px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-col h5 { font-size: 16px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
@@ -130,7 +130,7 @@
             </p>
 
             <p class="texto-deslinde">
-                La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.
+                La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación.
             </p>
 
             <h3 class="cta-titulo">¡Descarga la Constancia de Situación Profesional!</h3>
@@ -192,16 +192,7 @@
             <div class="footer-col">
                 <h5>Enlaces Rápidos</h5>
                 <ul>
-                    <li><a href="https://www.gob.mx/participa" target="_blank">Participa</a></li>
-                    <li><a href="https://www.gob.mx/publicaciones" target="_blank">Publicaciones Oficiales</a></li>
-                    <li><a href="https://www.gob.mx/transparencia" target="_blank">Transparencia</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Legal</h5>
-                <ul>
-                    <li><a href="http://www.ordenjuridico.gob.mx/" target="_blank">Marco Jurídico</a></li>
-                    <li><a href="https://datos.gob.mx/" target="_blank">Datos Abiertos</a></li>
+                    <li><a href="https://www.gob.mx/transparencia">Transparencia</a></li>
                 </ul>
             </div>
         </div>
@@ -222,34 +213,50 @@
         }
 
         function buscarProfesionista() {
-            const f = document.getElementById('in-folio').value.trim();
+            const folioVal = document.getElementById('in-folio').value.trim();
             const curpVal = document.getElementById('in-curp').value.toUpperCase().trim();
             const nomVal = document.getElementById('in-nombre').value.toUpperCase().trim();
+            const ap1Val = document.getElementById('in-ap1').value.toUpperCase().trim();
+            
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
             
-            if (typeof registros === 'undefined') return;
+            if (typeof registros === 'undefined') {
+                alert("Error: El archivo de datos no se ha cargado correctamente.");
+                return;
+            }
 
             let filtrados = registros.filter(r => {
-                if (f !== "") return r.id === f;
-                return (r.curp === curpVal && curpVal !== "") || (r.nom.includes(nomVal) && nomVal !== "");
+                // Prioridad 1: Búsqueda por número de cédula (ID)
+                if (folioVal !== "") {
+                    return r.id === folioVal;
+                }
+                // Prioridad 2: Búsqueda por CURP
+                if (curpVal !== "") {
+                    return r.curp === curpVal;
+                }
+                // Prioridad 3: Búsqueda por Nombre y Primer Apellido
+                if (nomVal !== "" && ap1Val !== "") {
+                    return r.nom.includes(nomVal) && r.ap1.includes(ap1Val);
+                }
+                return false;
             });
 
             if (filtrados.length > 0) {
                 tabla.innerHTML = filtrados.map(r => `
                     <tr>
                         <td><b>${r.id}</b></td>
-                        <td>${r.nom} ${r.ap1}</td>
+                        <td>${r.nom} ${r.ap1} ${r.ap2 || ''}</td>
                         <td>${r.inst}</td>
                         <td>${r.prof}</td>
                         <td>${r.anio}</td>
-                        <td><a href="CONSTANCIAS/${r.id}.pdf" download style="color:var(--gob-guinda);"><i class="far fa-file-pdf"></i> PDF</a></td>
+                        <td><a href="CONSTANCIAS/${r.id}.pdf" download style="color:var(--gob-guinda); text-decoration:none;"><i class="far fa-file-pdf"></i> PDF</a></td>
                     </tr>
                 `).join('');
                 container.style.display = 'block';
                 container.scrollIntoView({ behavior: 'smooth' });
             } else { 
-                alert("No hay resultados."); 
+                alert("No se encontraron resultados con los criterios ingresados."); 
                 container.style.display = 'none';
             }
         }
