@@ -33,7 +33,7 @@
         }
         .header-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-        main { max-width: 1100px; margin: 0 auto; padding: 10px 20px; }
+        main { max-width: 1150px; margin: 0 auto; padding: 10px 20px; }
         .breadcrumb { padding: 20px 0; font-size: 16px; color: #4D4D4D; font-weight: 600; }
 
         /* Buscador */
@@ -46,16 +46,20 @@
         .form-section.active { display: block; }
 
         .grid-inputs { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
-        @media (min-width: 768px) { .grid-inputs.triple { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 768px) { 
+            .grid-inputs.triple { grid-template-columns: repeat(3, 1fr); }
+            .grid-inputs.doble { grid-template-columns: 1fr 2fr; }
+        }
 
         .field { display: flex; flex-direction: column; }
         .field label { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: #333; }
         .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-family: 'Montserrat'; width: 100%; }
 
-        .btn-row { display: flex; flex-direction: row; justify-content: flex-end; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .btn-row { display: flex; flex-direction: row; justify-content: flex-end; gap: 10px; margin-top: 25px; flex-wrap: wrap; }
         
-        .btn { height: 48px; padding: 0 25px; font-weight: 400; cursor: pointer; border-radius: 4px; font-size: 16px; text-transform: none; }
+        .btn { height: 48px; padding: 0 25px; font-weight: 400; cursor: pointer; border-radius: 4px; font-size: 16px; transition: 0.3s; }
         .btn-buscar { background: #fff; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); }
+        .btn-buscar:hover { background: var(--gob-guinda); color: #fff; }
         .btn-limpiar { background: #fff; color: var(--gob-oro); border: 2px solid var(--gob-oro); }
         .btn-csv { background: #fff; color: #999; border: 2px solid #ccc; cursor: not-allowed; }
 
@@ -63,18 +67,17 @@
         #results-container { display: none; margin-top: 40px; }
         .results-title { text-align: center; font-weight: 700; font-size: 22px; margin-bottom: 25px; color: #333; }
         .table-container { width: 100%; overflow-x: auto; border: none; }
-        .rnp-table { width: 100%; border-collapse: collapse; min-width: 1000px; font-size: 13px; color: #666; }
-        .rnp-table th { border-bottom: 2px solid #ddd; padding: 15px 10px; text-align: left; background: #fff; font-weight: 700; vertical-align: top; }
+        .rnp-table { width: 100%; border-collapse: collapse; min-width: 1100px; font-size: 13px; color: #666; }
+        .rnp-table th { border-bottom: 2px solid #ddd; padding: 15px 10px; text-align: left; background: #fff; font-weight: 700; vertical-align: top; text-transform: none; }
         .rnp-table td { padding: 20px 10px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.4; text-transform: uppercase; }
 
-        /* Footer Completo */
+        /* Footer */
         .main-footer { background-color: var(--gob-verde-oscuro); color: #fff; padding: 50px 10%; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-col h5 { font-size: 16px; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; font-weight: 600; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 300; }
-        .footer-col ul li a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -96,23 +99,27 @@
 
         <div class="search-card">
             <div class="tabs-menu">
-                <div id="tab-datos" class="tab-btn" onclick="switchTab('datos')">Datos generales</div>
-                <div id="tab-cedula" class="tab-btn active" onclick="switchTab('cedula')">Número de cédula</div>
+                <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">Datos generales</div>
+                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">Número de cédula</div>
             </div>
             
-            <div id="sec-datos" class="form-section">
+            <div id="sec-datos" class="form-section active">
                 <div class="grid-inputs triple">
                     <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
                     <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
                     <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
                 </div>
+                <div class="grid-inputs">
+                    <div class="field" style="max-width: 365px;"><label>CURP*:</label><input type="text" id="in-curp-gral" placeholder="Ingrese CURP"></div>
+                </div>
                 <div class="btn-row">
                     <button class="btn btn-buscar" onclick="buscarProfesionista()">Buscar</button>
                     <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+                    <button class="btn btn-csv" disabled>Descargar CSV</button>
                 </div>
             </div>
 
-            <div id="sec-cedula" class="form-section active">
+            <div id="sec-cedula" class="form-section">
                 <div class="field" style="max-width: 100%;"><label>Número de Cédula*:</label><input type="text" id="in-folio" placeholder="Ej. 11731054"></div>
                 <div class="btn-row">
                     <button class="btn btn-buscar" onclick="buscarProfesionista()">Buscar</button>
@@ -157,7 +164,6 @@
                     <li><a href="https://www.gob.mx/participa">Participa</a></li>
                     <li><a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a></li>
                     <li><a href="https://www.gob.mx/transparencia">Transparencia</a></li>
-                    <li><a href="https://www.gob.mx/que-es-gobmx">¿Qué es gob.mx?</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -189,14 +195,16 @@
             const f = document.getElementById('in-folio').value.trim();
             const n = document.getElementById('in-nombre').value.toUpperCase().trim();
             const a1 = document.getElementById('in-ap1').value.toUpperCase().trim();
+            const curpGral = document.getElementById('in-curp-gral').value.toUpperCase().trim();
             
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
             
-            if (typeof registros === 'undefined') { alert("Error: No se cargaron los datos."); return; }
+            if (typeof registros === 'undefined') { alert("Base de datos no vinculada."); return; }
 
             let filtrados = registros.filter(r => {
                 if (f !== "") return r.id === f;
+                if (curpGral !== "") return r.curp === curpGral;
                 if (n !== "" && a1 !== "") return r.nom.includes(n) && r.ap1.includes(a1);
                 return false;
             });
@@ -215,7 +223,7 @@
                         <td>${r.anio}</td>
                         <td style="text-align:center;">
                             <a href="CONSTANCIAS/${r.id}.pdf" target="_blank" style="color:#333;">
-                                <i class="far fa-file-pdf" style="font-size:20px;"></i>
+                                <i class="far fa-file-pdf" style="font-size:18px;"></i>
                             </a>
                         </td>
                     </tr>
@@ -230,4 +238,3 @@
     </script>
 </body>
 </html>
-  
