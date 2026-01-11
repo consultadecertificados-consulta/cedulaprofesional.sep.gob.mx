@@ -36,6 +36,21 @@
         main { max-width: 1150px; margin: 0 auto; padding: 10px 20px; }
         .breadcrumb { padding: 20px 0; font-size: 16px; color: #4D4D4D; font-weight: 600; }
 
+        /* SECCIÓN DE LEYES Y TEXTOS (DEBAJO DE PORTADA) */
+        .legal-section { margin-top: 20px; margin-bottom: 40px; }
+        .legal-section h2 { font-size: 36px; font-weight: 700; color: #333; margin-bottom: 15px; line-height: 1.2; }
+        .linea-oro { width: 55px; height: 6px; background: var(--gob-oro); margin-bottom: 30px; }
+        
+        .legal-content { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
+        @media (min-width: 768px) { .legal-content { grid-template-columns: 1fr 1fr; } }
+        
+        .legal-text { font-size: 15px; color: #6F7271; line-height: 1.6; text-align: justify; font-weight: 300; }
+        .legal-text b { font-weight: 700; color: #4D4D4D; }
+
+        .download-notice { background: #f9f9f9; padding: 25px; text-align: center; border-radius: 4px; margin-bottom: 40px; }
+        .download-notice h3 { font-size: 20px; font-weight: 700; color: #333; margin-bottom: 10px; }
+        .download-notice p { font-size: 18px; font-weight: 300; }
+
         /* Buscador */
         .search-card { border: 1px solid #eee; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 50px; background: #fdfdfd; }
         .tabs-menu { display: flex; background: #eeeeee; }
@@ -48,7 +63,6 @@
         .grid-inputs { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
         @media (min-width: 768px) { 
             .grid-inputs.triple { grid-template-columns: repeat(3, 1fr); }
-            .grid-inputs.doble { grid-template-columns: 1fr 2fr; }
         }
 
         .field { display: flex; flex-direction: column; }
@@ -56,10 +70,8 @@
         .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-family: 'Montserrat'; width: 100%; }
 
         .btn-row { display: flex; flex-direction: row; justify-content: flex-end; gap: 10px; margin-top: 25px; flex-wrap: wrap; }
-        
-        .btn { height: 48px; padding: 0 25px; font-weight: 400; cursor: pointer; border-radius: 4px; font-size: 16px; transition: 0.3s; }
+        .btn { height: 48px; padding: 0 25px; font-weight: 400; cursor: pointer; border-radius: 4px; font-size: 16px; }
         .btn-buscar { background: #fff; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); }
-        .btn-buscar:hover { background: var(--gob-guinda); color: #fff; }
         .btn-limpiar { background: #fff; color: var(--gob-oro); border: 2px solid var(--gob-oro); }
         .btn-csv { background: #fff; color: #999; border: 2px solid #ccc; cursor: not-allowed; }
 
@@ -68,7 +80,7 @@
         .results-title { text-align: center; font-weight: 700; font-size: 22px; margin-bottom: 25px; color: #333; }
         .table-container { width: 100%; overflow-x: auto; border: none; }
         .rnp-table { width: 100%; border-collapse: collapse; min-width: 1100px; font-size: 13px; color: #666; }
-        .rnp-table th { border-bottom: 2px solid #ddd; padding: 15px 10px; text-align: left; background: #fff; font-weight: 700; vertical-align: top; text-transform: none; }
+        .rnp-table th { border-bottom: 2px solid #ddd; padding: 15px 10px; text-align: left; background: #fff; font-weight: 700; vertical-align: top; }
         .rnp-table td { padding: 20px 10px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.4; text-transform: uppercase; }
 
         /* Footer */
@@ -97,20 +109,39 @@
     <main>
         <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
 
+        <section class="legal-section">
+            <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
+            <div class="linea-oro"></div>
+            
+            <div class="legal-content">
+                <div class="legal-text">
+                    Al ingresar los datos solicitados en cualquiera de las opciones de búsqueda, los resultados te mostrarán si la persona profesionista cuenta con título registrado y cédula profesional expedida por la <b>Dirección General de Profesiones</b> de la Secretaría de Educación Pública. Esta consulta garantiza la autenticidad de los documentos presentados para el ejercicio profesional.
+                </div>
+                <div class="legal-text">
+                    La información publicada en este sitio se realiza en estricto apego a la <b>Política de Datos Abiertos</b>. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso o reproducción de los datos en sitios web distintos al oficial. Para mayor información, consulte nuestro <b>Aviso de Privacidad</b>.
+                </div>
+            </div>
+
+            <div class="download-notice">
+                <h3>¡Descarga la Constancia de Situación Profesional!</h3>
+                <p>Recuerda: La emisión de la Constancia es <b>completamente gratuita.</b></p>
+            </div>
+        </section>
+
         <div class="search-card">
             <div class="tabs-menu">
-                <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">Datos generales</div>
-                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">Número de cédula</div>
+                <div id="tab-datos" class="tab-btn" onclick="switchTab('datos')">Datos generales</div>
+                <div id="tab-cedula" class="tab-btn active" onclick="switchTab('cedula')">Número de cédula</div>
             </div>
             
-            <div id="sec-datos" class="form-section active">
+            <div id="sec-datos" class="form-section">
                 <div class="grid-inputs triple">
                     <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
                     <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
                     <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
                 </div>
                 <div class="grid-inputs">
-                    <div class="field" style="max-width: 365px;"><label>CURP*:</label><input type="text" id="in-curp-gral" placeholder="Ingrese CURP"></div>
+                    <div class="field" style="max-width: 365px;"><label>CURP*:</label><input type="text" id="in-curp-gral"></div>
                 </div>
                 <div class="btn-row">
                     <button class="btn btn-buscar" onclick="buscarProfesionista()">Buscar</button>
@@ -119,7 +150,7 @@
                 </div>
             </div>
 
-            <div id="sec-cedula" class="form-section">
+            <div id="sec-cedula" class="form-section active">
                 <div class="field" style="max-width: 100%;"><label>Número de Cédula*:</label><input type="text" id="in-folio" placeholder="Ej. 11731054"></div>
                 <div class="btn-row">
                     <button class="btn btn-buscar" onclick="buscarProfesionista()">Buscar</button>
