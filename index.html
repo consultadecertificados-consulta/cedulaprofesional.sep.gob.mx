@@ -20,152 +20,149 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: var(--gob-texto-negro); -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; -webkit-font-smoothing: antialiased; }
 
         /* Navbar gob.mx */
         .nav-gob { background-color: var(--gob-verde-oscuro); padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; }
         .nav-gob img { height: 28px; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; font-weight: 400; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 13px; margin-left: 20px; }
 
         /* Header Imagen logo.png */
         .header-image-container { width: 100%; border-bottom: 8px solid var(--gob-oro); }
         .header-image-container img { width: 100%; height: auto; display: block; }
 
-        main { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .breadcrumb { padding: 15px 0; font-size: 13px; color: #666; }
-
-        /* Leyendas Oficiales */
-        .intro-container { margin-bottom: 30px; }
-        .intro-container h2 { font-size: 26px; font-weight: 700; color: var(--gob-texto-negro); margin-bottom: 8px; }
-        .linea-oro { width: 45px; height: 4px; background: var(--gob-oro); margin-bottom: 20px; }
-        .texto-principal { font-size: 15px; color: var(--gob-texto-p); line-height: 1.5; margin-bottom: 15px; }
+        main { max-width: 1100px; margin: 0 auto; padding: 20px; }
         
-        /* LEYENDA SOLICITADA */
-        .texto-deslinde { 
-            font-size: 12px; 
-            color: #777; 
+        /* Breadcrumb fiel a imagen */
+        .breadcrumb { padding: 20px 0; font-size: 20px; color: #4D4D4D; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .breadcrumb i { font-size: 18px; }
+
+        /* Estilo fiel a la imagen enviada */
+        .intro-container { text-align: center; margin-top: 20px; margin-bottom: 40px; }
+        .intro-container h2 { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #333; 
+            line-height: 1.2;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        .linea-decorativa { width: 60px; height: 6px; background: var(--gob-oro); margin: 0 auto 30px; opacity: 0.8; }
+        
+        .texto-gris { 
+            font-size: 18px; 
+            color: #666; 
             line-height: 1.5; 
-            margin-bottom: 25px; 
-            text-align: justify; 
-            background: #f9f9f9; 
-            padding: 15px; 
-            border-left: 4px solid var(--gob-gris-borde);
+            margin-bottom: 35px; 
+            text-align: justify;
+            font-weight: 300;
         }
 
-        /* Buscador Lineal y Compacto */
-        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
+        .texto-deslinde-oficial {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-constancia { font-size: 22px; font-weight: 700; color: #333; margin-bottom: 25px; }
+        
+        .texto-gratuita { font-size: 18px; color: #333; margin-bottom: 40px; font-weight: 300; }
+        .texto-gratuita b { font-weight: 700; }
+
+        /* Buscador Lineal con CURP */
+        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; overflow: hidden; margin-bottom: 50px; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); }
-        .tab-btn { padding: 12px 20px; font-size: 13px; font-weight: 600; color: #666; cursor: pointer; flex: 1; text-align: center; border-bottom: 2px solid transparent; }
-        .tab-btn.active { background: #fff; color: var(--gob-guinda); border-bottom: 2px solid var(--gob-guinda); }
+        .tab-btn { padding: 15px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; flex: 1; text-align: center; border-bottom: 3px solid transparent; }
+        .tab-btn.active { background: #fff; color: var(--gob-guinda); border-bottom-color: var(--gob-guinda); }
 
-        /* Formulario en una sola línea */
-        .form-section { 
-            padding: 20px; 
-            display: none; 
-            flex-wrap: wrap; 
-            gap: 15px; 
-            align-items: flex-end; 
-            background: #fff;
-        }
+        .form-section { padding: 25px; display: none; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
         .form-section.active { display: flex; }
 
-        .field { flex: 1; min-width: 180px; }
-        .field label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; display: block; color: #555; }
-        .field input { 
-            width: 100%; 
-            padding: 8px 10px; 
-            border: 1px solid #CCC; 
-            border-radius: 2px; 
-            font-family: 'Montserrat'; 
-            font-size: 13px; 
-            height: 38px;
-        }
+        .field { flex: 1; min-width: 150px; }
+        .field label { font-size: 11px; font-weight: 700; margin-bottom: 6px; display: block; color: #333; }
+        .field input { width: 100%; padding: 10px; border: 1px solid #CCC; border-radius: 4px; font-size: 13px; font-family: 'Montserrat'; }
 
-        .btn-area-lineal { display: flex; gap: 10px; }
-        .btn { 
-            height: 38px; 
-            padding: 0 25px; 
-            border-radius: 2px; 
-            font-weight: 600; 
-            font-size: 13px; 
-            cursor: pointer; 
-            transition: 0.2s;
-        }
+        .btn-area { display: flex; gap: 10px; }
+        .btn { height: 40px; padding: 0 20px; font-weight: 600; font-size: 13px; cursor: pointer; border-radius: 4px; }
         .btn-buscar { background: var(--gob-guinda); color: #fff; border: none; }
-        .btn-buscar:hover { background: #4a0d26; }
         .btn-limpiar { background: #fff; color: var(--gob-oro); border: 1px solid var(--gob-oro); }
 
         /* Tabla */
-        #results-container { display: none; margin-top: 20px; }
+        #results-container { display: none; }
         .table-responsive { width: 100%; overflow-x: auto; }
-        .rnp-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 1000px; }
-        .rnp-table th { background: #f8f8f8; padding: 12px 8px; text-align: left; font-weight: 700; border-bottom: 2px solid var(--gob-oro); }
-        .rnp-table td { padding: 12px 8px; border-bottom: 1px solid #EEE; }
+        .rnp-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 900px; }
+        .rnp-table th { border-bottom: 2px solid var(--gob-oro); padding: 12px 8px; text-align: left; background: #fdfdfd; }
+        .rnp-table td { padding: 12px 8px; border-bottom: 1px solid #eee; }
 
-        /* Footer SEP Estilo Oficial */
-        .main-footer {
-            background-color: var(--gob-verde-oscuro);
-            background-image: url('https://framework-gb.cdn.gob.mx/landing/img/bg-footer.png');
-            background-position: right bottom;
-            background-repeat: no-repeat;
-            color: #fff;
-            padding: 40px 10%;
-            margin-top: 50px;
-        }
+        /* Footer */
+        .main-footer { background: var(--gob-verde-oscuro); color: #fff; padding: 50px 10%; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-col h5 { font-size: 14px; margin-bottom: 15px; border-bottom: 1px solid var(--gob-oro); display: inline-block; padding-bottom: 4px; }
+        .footer-col h5 { font-size: 15px; margin-bottom: 15px; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 8px; }
-        .footer-col ul li a { color: #fff; text-decoration: none; font-size: 12px; font-weight: 300; }
-        .footer-col ul li a:hover { color: var(--gob-oro); }
+        .footer-col ul li a { color: #fff; text-decoration: none; font-size: 13px; font-weight: 300; line-height: 2; }
     </style>
 </head>
 <body>
 
     <nav class="nav-gob">
-        <a href="https://www.gob.mx/"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México"></a>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
         <div class="nav-links">
-            <a href="https://www.gob.mx/tramites">Trámites</a>
-            <a href="https://www.gob.mx/gobierno">Gobierno</a>
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
         </div>
     </nav>
 
     <div class="header-image-container">
-        <img src="logo.png" alt="SEP - Registro Nacional de Profesionistas">
+        <img src="logo.png" alt="SEP">
     </div>
 
     <main>
-        <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas</div>
+        <div class="breadcrumb">
+            <i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales
+        </div>
 
         <section class="intro-container">
-            <h2>Consulta de Cédulas Profesionales</h2>
-            <div class="linea-oro"></div>
-            <p class="texto-principal">Este sistema permite validar de forma rápida y gratuita si una persona cuenta con el registro oficial para ejercer su profesión.</p>
+            <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
+            <div class="linea-decorativa"></div>
             
-            <div class="texto-deslinde">
+            <p class="texto-gris">
+                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
+            </p>
+
+            <p class="texto-deslinde-oficial">
                 La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.
-            </div>
+            </p>
+
+            <h3 class="cta-constancia">¡Descarga la Constancia de Situación Profesional!</h3>
+            
+            <p class="texto-gratuita">
+                Recuerda: <b>La emisión de la Constancia</b> es <b>completamente gratuita.</b>
+            </p>
         </section>
 
         <div class="search-card">
             <div class="tabs-menu">
-                <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">Búsqueda por Datos Personales</div>
-                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">Búsqueda por Número de Cédula</div>
+                <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">Datos Personales</div>
+                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">Número de Cédula</div>
             </div>
             
             <div id="sec-datos" class="form-section active">
-                <div class="field"><label>Nombre(s):</label><input type="text" id="in-nombre"></div>
-                <div class="field"><label>Primer Apellido:</label><input type="text" id="in-ap1"></div>
+                <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
+                <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
                 <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
-                <div class="btn-area-lineal">
+                <div class="field"><label>CURP*:</label><input type="text" id="in-curp" maxlength="18"></div>
+                <div class="btn-area">
                     <button class="btn btn-buscar" onclick="buscarProfesionista()">Buscar</button>
                     <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
                 </div>
             </div>
 
             <div id="sec-cedula" class="form-section">
-                <div class="field"><label>Número de Cédula:</label><input type="text" id="in-folio" placeholder="Ej. 1234567"></div>
-                <div class="btn-area-lineal">
+                <div class="field" style="max-width: 300px;"><label>Número de Cédula*:</label><input type="text" id="in-folio"></div>
+                <div class="btn-area">
                     <button class="btn btn-buscar" onclick="buscarProfesionista()">Consultar</button>
                 </div>
             </div>
@@ -176,7 +173,7 @@
                 <table class="rnp-table">
                     <thead>
                         <tr>
-                            <th>Cédula</th><th>Nombre</th><th>Primer Apellido</th><th>Segundo Apellido</th><th>Institución</th><th>Profesión</th><th>Año</th><th>PDF</th>
+                            <th>Cédula</th><th>Nombre completo</th><th>CURP</th><th>Institución</th><th>Profesión</th><th>Año</th><th>Descarga</th>
                         </tr>
                     </thead>
                     <tbody id="cuerpoTabla"></tbody>
@@ -188,29 +185,20 @@
     <footer class="main-footer">
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="180" style="margin-bottom: 20px;">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="200">
             </div>
             <div class="footer-col">
                 <h5>Enlaces</h5>
                 <ul>
-                    <li><a href="https://www.gob.mx/participa">Participa</a></li>
-                    <li><a href="https://www.gob.mx/publicaciones">Publicaciones</a></li>
-                    <li><a href="https://www.gob.mx/transparencia">Transparencia</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Contacto</h5>
-                <ul>
-                    <li><a href="#">Mesa de ayuda</a></li>
-                    <li><a href="#">Reportar error</a></li>
+                    <li><a href="#">Participa</a></li>
+                    <li><a href="#">Publicaciones Oficiales</a></li>
+                    <li><a href="#">Transparencia</a></li>
                 </ul>
             </div>
         </div>
-        <p style="text-align: center; font-size: 11px; margin-top: 30px; font-weight: 300;">© 2026 Registro Nacional de Profesionistas - SEP</p>
     </footer>
 
     <script src="folios.js"></script>
-
     <script>
         function switchTab(tipo) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -226,8 +214,8 @@
 
         function buscarProfesionista() {
             const f = document.getElementById('in-folio').value.trim();
+            const curpVal = document.getElementById('in-curp').value.toUpperCase().trim();
             const nomVal = document.getElementById('in-nombre').value.toUpperCase().trim();
-            const ap1Val = document.getElementById('in-ap1').value.toUpperCase().trim();
             
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
@@ -236,29 +224,29 @@
 
             let filtrados = registros.filter(r => {
                 if (f !== "") return r.id === f;
-                return (r.nom.includes(nomVal) && nomVal !== "") && (r.ap1.includes(ap1Val) && ap1Val !== "");
+                return (r.curp === curpVal && curpVal !== "") || (r.nom.includes(nomVal) && nomVal !== "");
             });
 
             if (filtrados.length > 0) {
                 tabla.innerHTML = filtrados.map(r => `
                     <tr>
                         <td><b>${r.id}</b></td>
-                        <td>${r.nom}</td>
-                        <td>${r.ap1}</td>
-                        <td>${r.ap2}</td>
+                        <td>${r.nom} ${r.ap1} ${r.ap2}</td>
+                        <td>${r.curp}</td>
                         <td>${r.inst}</td>
                         <td>${r.prof}</td>
                         <td>${r.anio}</td>
-                        <td style="text-align:center"><a href="CONSTANCIAS/${r.id}.pdf" download><i class="far fa-file-pdf" style="color:var(--gob-guinda); font-size:16px;"></i></a></td>
+                        <td style="text-align:center">
+                            <a href="CONSTANCIAS/${r.id}.pdf" download style="color:var(--gob-guinda);"><i class="far fa-file-pdf"></i></a>
+                        </td>
                     </tr>
                 `).join('');
                 container.style.display = 'block';
             } else { 
-                alert("No se encontraron registros."); 
+                alert("Sin resultados."); 
                 container.style.display = 'none';
             }
         }
     </script>
 </body>
 </html>
-           
