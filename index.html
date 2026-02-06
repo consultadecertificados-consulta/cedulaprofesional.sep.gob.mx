@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
   <style>
-    /* COLORES INSTITUCIONALES FORZADOS */
     :root {
       --gob-guinda: #621132;
       --gob-negro: #1F1F1F;
@@ -19,19 +18,18 @@
 
     body { font-family: 'Montserrat', sans-serif !important; margin: 0; padding: 0; background: #fff; }
 
-    /* HEADER DOBLE */
-    .navbar-guinda { background-color: var(--gob-guinda) !important; border: none !important; margin: 0 !important; border-radius: 0 !important; }
-    .navbar-negra { background-color: var(--gob-negro) !important; border-bottom: 8px solid var(--gob-oro) !important; min-height: 45px !important; margin: 0 !important; border-radius: 0 !important; }
+    /* NAVBARS */
+    .navbar-guinda { background-color: var(--gob-guinda) !important; border: none !important; margin: 0 !important; }
+    .navbar-negra { background-color: var(--gob-negro) !important; border-bottom: 8px solid var(--gob-oro) !important; min-height: 45px !important; margin: 0 !important; }
     
-    .navbar-toggle { border: none !important; margin-top: 8px !important; background: transparent !important; }
+    .navbar-toggle { border: none !important; background: transparent !important; }
     .navbar-toggle .icon-bar { background-color: white !important; }
 
-    /* SEGUNDO MENÚ DESPLEGABLE (ESTILO IMAGEN) */
-    #navNegra { background-color: var(--gob-guinda); text-align: center; }
+    /* SEGUNDO MENÚ DESPLEGABLE COLOR VINO */
+    #navNegra { background-color: var(--gob-guinda) !important; text-align: center; border: none; }
     #navNegra ul { list-style: none; padding: 20px 0; margin: 0; }
-    #navNegra ul li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    #navNegra ul li a { color: white; text-decoration: none; font-size: 18px; font-weight: 300; display: block; }
-    #navNegra ul li a i { margin-left: 8px; font-size: 14px; }
+    #navNegra ul li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    #navNegra ul li a { color: white !important; text-decoration: none; font-size: 17px; font-weight: 300; display: block; }
 
     /* BANNER */
     .banner-rnp {
@@ -39,7 +37,7 @@
       background-image: url('https://cedulaprofesional.sep.gob.mx/cedula/images/pleca_cedula.png');
       background-size: cover;
       color: white;
-      padding: 60px 5%;
+      padding: 50px 5%;
     }
 
     /* RESULTADOS */
@@ -48,12 +46,13 @@
     .mujer-icono img { width: 70px; }
     .card-res { max-width: 600px; margin: 0 auto; }
     .label-res { font-weight: 700; color: #333; font-size: 13px; margin-bottom: 5px; }
-    .value-res { text-transform: uppercase; font-size: 19px; color: #545454; margin-bottom: 25px; }
+    .value-res { text-transform: uppercase; font-size: 18px; color: #545454; margin-bottom: 25px; }
 
-    /* FOOTER ÚNICO */
-    .footer-final { background-color: var(--gob-guinda) !important; color: white; padding: 60px 5% 40px; margin-top: 60px; }
-    .footer-final h5 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 20px; font-size: 16px; }
+    /* PIE DE PÁGINA (SIN LOGO INICIAL) */
+    .footer-final { background-color: var(--gob-guinda) !important; color: white; padding: 40px 5%; margin-top: 60px; }
+    .footer-final h5 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 20px; font-size: 16px; font-weight: 600; }
     .footer-final a { color: white; text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; font-weight: 300; }
+    .social-icons { font-size: 22px; display: flex; gap: 20px; }
   </style>
 </head>
 <body>
@@ -82,11 +81,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navNegra">
         <ul>
-          <li><a href="#">Inicio <i class="fas fa-caret-down"></i></a></li>
-          <li><a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#">Inicio <i class="fas fa-angle-down"></i></a></li>
+          <li><a href="#">Cédulas Profesionales <i class="fas fa-angle-down"></i></a></li>
           <li><a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a></li>
           <li><a href="#">Cédulas Estatales</a></li>
-          <li><a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#">Datos Abiertos <i class="fas fa-angle-down"></i></a></li>
           <li><a href="#">Contacto</a></li>
         </ul>
       </div>
@@ -95,35 +94,35 @@
 
   <div class="banner-rnp">
     <div class="container">
-      <h1 style="font-weight: 700; font-size: 38px; margin: 0;">Registro Nacional de Profesionistas</h1>
+      <h1 style="font-weight: 700; font-size: 36px; margin: 0;">Registro Nacional de Profesionistas</h1>
       <p style="font-size: 18px; font-weight: 300; margin-top: 10px;">Consulta de Cédulas Profesionales</p>
     </div>
   </div>
 
   <main class="container">
     <div style="padding: 20px 0; font-size: 15px; color: #4D4D4D;">
-      <a href="#" style="color:#4D4D4D; text-decoration:none;"><i class="fas fa-home"></i> Inicio</a> > Búsqueda de Cédulas Profesionales
+      <i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales
     </div>
 
-    <h2 style="font-weight: 700; font-size: 32px; margin-top: 20px;">Realiza tu búsqueda de forma segura y confiable.</h2>
-    <div style="width: 55px; height: 6px; background: #9D843E; margin: 20px 0;"></div>
+    <h2 style="font-weight: 700; font-size: 30px; margin-top: 20px;">Realiza tu búsqueda de forma segura y confiable.</h2>
+    <div style="width: 55px; height: 6px; background: var(--gob-oro); margin: 20px 0;"></div>
 
-    <div class="panel panel-default" style="border-radius: 8px; overflow: hidden; margin-top: 30px;">
-      <div style="display: flex; background: #f5f5f5; border-bottom: 1px solid #ddd;">
-        <div style="padding: 15px; flex: 1; text-align: center; color: #666; font-weight: 600;">Datos generales</div>
-        <div style="padding: 15px; flex: 1; text-align: center; background: #621132; color: white; font-weight: 600;">Número de cédula</div>
+    <div class="panel panel-default" style="border-radius: 4px; overflow: hidden; margin-top: 30px; border: 1px solid #ddd;">
+      <div style="display: flex; background: #f5f5f5;">
+        <div style="padding: 15px; flex: 1; text-align: center; color: #666; font-weight: 600; border-right: 1px solid #ddd;">Datos generales</div>
+        <div style="padding: 15px; flex: 1; text-align: center; background: var(--gob-guinda); color: white; font-weight: 600;">Número de cédula</div>
       </div>
       <div class="panel-body" style="padding: 40px;">
-        <label style="font-weight: 700;">Número de Cédula*:</label>
+        <label style="font-weight: 700; margin-bottom: 10px; display: block;">Número de Cédula*:</label>
         <input type="text" id="in-folio" class="form-control" placeholder="Ej. 11731054" style="height: 45px;">
         <div style="margin-top: 25px; text-align: right;">
-          <button onclick="buscarProfesionista()" class="btn" style="background: white; color: #621132; border: 2px solid #621132; padding: 10px 35px; font-weight: 700;">Buscar</button>
+          <button onclick="buscarProfesionista()" class="btn" style="background: white; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); padding: 10px 35px; font-weight: 700;">Buscar</button>
         </div>
       </div>
     </div>
 
     <div id="results-container">
-      <div class="mujer-icono"><img src="mujer-indigena.png" alt="Logo"></div>
+      <div class="mujer-icono"><img src="mujer-indigena.png" alt="Icono"></div>
       <div class="card-res">
         <div class="label-res">NOMBRE:</div>
         <div id="res-nombre" class="value-res"></div>
@@ -143,22 +142,23 @@
   <footer class="footer-final">
     <div class="container">
       <div class="row">
-        <div class="col-md-3"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="180" style="margin-bottom: 25px;"></div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <h5>Enlaces</h5>
           <a href="#">Participa</a>
           <a href="#">Publicaciones Oficiales</a>
           <a href="#">Plataforma Nacional de Transparencia</a>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <h5>Contacto</h5>
           <a href="#">Denuncia contra servidores públicos</a>
           <a href="#">Mesa de Ayuda</a>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <h5>Síguenos en</h5>
-          <div style="font-size: 20px; display: flex; gap: 15px;">
-            <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i>
+          <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
           </div>
         </div>
       </div>
