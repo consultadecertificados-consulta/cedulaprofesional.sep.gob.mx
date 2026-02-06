@@ -10,26 +10,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
   <style>
-    /* 1. COLORES FORZADOS (GUINDA Y NEGRO) */
-    .navbar-guinda {
-      background-color: #621132 !important;
-      border: none !important;
-      margin: 0 !important;
-      border-radius: 0 !important;
+    /* COLORES INSTITUCIONALES FORZADOS */
+    :root {
+      --gob-guinda: #621132;
+      --gob-negro: #1F1F1F;
+      --gob-oro: #9D843E;
     }
-    .navbar-negra {
-      background-color: #1F1F1F !important;
-      border-bottom: 8px solid #9D843E !important;
-      min-height: 45px !important;
-      margin: 0 !important;
-      border-radius: 0 !important;
-    }
+
+    body { font-family: 'Montserrat', sans-serif !important; margin: 0; padding: 0; background: #fff; }
+
+    /* HEADER DOBLE */
+    .navbar-guinda { background-color: var(--gob-guinda) !important; border: none !important; margin: 0 !important; border-radius: 0 !important; }
+    .navbar-negra { background-color: var(--gob-negro) !important; border-bottom: 8px solid var(--gob-oro) !important; min-height: 45px !important; margin: 0 !important; border-radius: 0 !important; }
     
-    /* 2. MENÚS HAMBURGUESA BLANCOS */
-    .navbar-toggle { border: none !important; margin-top: 8px !important; }
+    .navbar-toggle { border: none !important; margin-top: 8px !important; background: transparent !important; }
     .navbar-toggle .icon-bar { background-color: white !important; }
 
-    /* 3. BANNER DE INICIO (UNA SOLA VEZ) */
+    /* SEGUNDO MENÚ DESPLEGABLE (ESTILO IMAGEN) */
+    #navNegra { background-color: var(--gob-guinda); text-align: center; }
+    #navNegra ul { list-style: none; padding: 20px 0; margin: 0; }
+    #navNegra ul li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    #navNegra ul li a { color: white; text-decoration: none; font-size: 18px; font-weight: 300; display: block; }
+    #navNegra ul li a i { margin-left: 8px; font-size: 14px; }
+
+    /* BANNER */
     .banner-rnp {
       background-color: #701132;
       background-image: url('https://cedulaprofesional.sep.gob.mx/cedula/images/pleca_cedula.png');
@@ -38,34 +42,18 @@
       padding: 60px 5%;
     }
 
-    /* 4. RESULTADOS (CARTA LIMPIA) */
-    #results-container {
-      display: none;
-      margin-top: 80px;
-      position: relative;
-      border-top: 1px solid #ddd;
-      padding-top: 50px;
-    }
-    .mujer-icono {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: -35px;
-    }
+    /* RESULTADOS */
+    #results-container { display: none; margin-top: 80px; position: relative; border-top: 1px solid #ddd; padding-top: 50px; }
+    .mujer-icono { position: absolute; width: 100%; text-align: center; top: -35px; }
     .mujer-icono img { width: 70px; }
     .card-res { max-width: 600px; margin: 0 auto; }
     .label-res { font-weight: 700; color: #333; font-size: 13px; margin-bottom: 5px; }
     .value-res { text-transform: uppercase; font-size: 19px; color: #545454; margin-bottom: 25px; }
 
-    /* 5. PIE DE PÁGINA ÚNICO */
-    .footer-final {
-      background-color: #621132 !important;
-      color: white;
-      padding: 60px 5% 40px;
-    }
-    .footer-final h5 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 20px; }
+    /* FOOTER ÚNICO */
+    .footer-final { background-color: var(--gob-guinda) !important; color: white; padding: 60px 5% 40px; margin-top: 60px; }
+    .footer-final h5 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 20px; font-size: 16px; }
     .footer-final a { color: white; text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; font-weight: 300; }
-    .social-links i { font-size: 20px; margin-right: 15px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -93,7 +81,15 @@
         <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
       </button>
       <div class="collapse navbar-collapse" id="navNegra">
-        </div>
+        <ul>
+          <li><a href="#">Inicio <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a></li>
+          <li><a href="#">Cédulas Estatales</a></li>
+          <li><a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -112,11 +108,7 @@
     <h2 style="font-weight: 700; font-size: 32px; margin-top: 20px;">Realiza tu búsqueda de forma segura y confiable.</h2>
     <div style="width: 55px; height: 6px; background: #9D843E; margin: 20px 0;"></div>
 
-    <p style="color: #666; font-size: 17px; margin-bottom: 35px;">
-      Consulta los datos registrados ante la Secretaría de Educación Pública.
-    </p>
-
-    <div class="panel panel-default" style="border-radius: 8px; overflow: hidden;">
+    <div class="panel panel-default" style="border-radius: 8px; overflow: hidden; margin-top: 30px;">
       <div style="display: flex; background: #f5f5f5; border-bottom: 1px solid #ddd;">
         <div style="padding: 15px; flex: 1; text-align: center; color: #666; font-weight: 600;">Datos generales</div>
         <div style="padding: 15px; flex: 1; text-align: center; background: #621132; color: white; font-weight: 600;">Número de cédula</div>
@@ -151,9 +143,7 @@
   <footer class="footer-final">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
-          <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="180" style="margin-bottom: 25px;">
-        </div>
+        <div class="col-md-3"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="180" style="margin-bottom: 25px;"></div>
         <div class="col-md-3">
           <h5>Enlaces</h5>
           <a href="#">Participa</a>
@@ -167,10 +157,8 @@
         </div>
         <div class="col-md-3">
           <h5>Síguenos en</h5>
-          <div class="social-links">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
+          <div style="font-size: 20px; display: flex; gap: 15px;">
+            <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i>
           </div>
         </div>
       </div>
@@ -194,8 +182,6 @@
         document.getElementById('res-institucion').innerText = r.inst;
         res.style.display = 'block';
         res.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        alert("Cédula no encontrada");
       }
     }
   </script>
