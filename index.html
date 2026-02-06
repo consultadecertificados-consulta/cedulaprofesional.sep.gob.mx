@@ -13,39 +13,38 @@
         :root {
             --gob-guinda: #621132;
             --gob-oro: #9D843E;
+            --gob-negro: #1F1F1F;
         }
 
-        body { font-family: 'Montserrat', sans-serif !important; background-color: #fff; padding-top: 60px; }
+        body { font-family: 'Montserrat', sans-serif !important; background-color: #fff; margin: 0; padding: 0; }
 
-        /* Ajuste de Navbar para doble menú */
-        .navbar-gobmx .navbar-toggle { float: right; margin-right: 15px; }
-        .navbar-gobmx .navbar-toggle.left { float: left; margin-left: 15px; margin-right: 0; }
+        /* --- NAVBAR DOBLE (ESTILO IMAGEN) --- */
+        /* Parte Superior Guinda */
+        .nav-superior { background-color: var(--gob-guinda); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .nav-superior img { height: 45px; }
+        
+        /* Parte Inferior Negra */
+        .nav-inferior { background-color: var(--gob-negro); padding: 8px 5%; display: flex; align-items: center; border-bottom: 8px solid var(--gob-oro); }
 
-        /* LOGO SEP */
-        .header-sep { border-bottom: 8px solid var(--gob-oro); padding: 20px 0; background-color: #fff; }
-        .header-sep img { max-width: 400px; width: 85%; margin-left: 5%; }
+        /* Botón Hamburguesa Blanco */
+        .btn-hamburguesa { background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 5px 10px; }
 
+        /* CONTENIDO PRINCIPAL */
         main { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-        /* BREADCRUMB */
-        .breadcrumb { background: none; padding: 10px 0; font-size: 14px; list-style: none; display: flex; }
-        .breadcrumb li + li:before { content: "/\00a0"; padding: 0 5px; color: #ccc; }
-        .breadcrumb a { color: #545454; text-decoration: none; }
+        .breadcrumb { background: none; padding: 20px 0; font-size: 18px; color: #4D4D4D; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .breadcrumb a { color: #4D4D4D; text-decoration: none; }
 
         /* TEXTOS */
-        .linea-oro { width: 60px; height: 6px; background: var(--gob-oro); margin: 20px 0; }
-        h2 { font-weight: 700; color: #333; font-size: 28px; }
-        .texto-gris { color: #6F7271; font-size: 18px; font-weight: 300; margin-bottom: 15px; }
-        .texto-deslinde { font-size: 13px; color: #6F7271; text-align: justify; margin-bottom: 30px; }
+        .titulo-principal { font-size: 34px; font-weight: 700; color: #333; line-height: 1.1; margin-top: 20px; text-align: left; }
+        .linea-oro { width: 55px; height: 6px; background: var(--gob-oro); margin: 25px 0; }
 
         /* BUSCADOR */
-        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
-        .tab-item { padding: 15px; cursor: pointer; font-weight: 600; color: #666; flex: 1; text-align: center; }
+        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; margin: 40px 0; background: #fdfdfd; }
+        .tab-item { padding: 15px; cursor: pointer; font-weight: 600; flex: 1; text-align: center; background: #eee; }
         .tab-item.active { background: var(--gob-guinda); color: #fff; }
-        .form-body { padding: 25px; }
-        .btn-buscar { background: #fff; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); padding: 10px 30px; border-radius: 4px; font-weight: 600; float: right; cursor: pointer; }
+        .btn-buscar { background: #fff; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); padding: 10px 30px; border-radius: 4px; font-weight: 600; cursor: pointer; float: right; }
 
-        /* RESULTADOS (DISEÑO SOLICITADO) */
+        /* RESULTADOS */
         #results-container { display: none; margin-top: 60px; position: relative; border-top: 1px solid #eee; padding-top: 50px; }
         .logo-mujer { position: absolute; width: 100%; text-align: center; top: -35px; }
         .logo-mujer img { width: 70px; }
@@ -53,78 +52,47 @@
         .card-label { font-weight: 700; color: #333; font-size: 13px; margin-bottom: 5px; }
         .card-value { text-transform: uppercase; font-size: 18px; color: #545454; margin-bottom: 25px; }
         .linea-divisoria { border: 0; border-top: 1px solid #ddd; margin: 5px 0 25px 0; }
+
+        /* FOOTER CORREGIDO */
+        .main-footer { background-color: #12322B; color: #fff; padding: 40px 5%; margin-top: 60px; }
+        .footer-links a { color: #fff; text-decoration: none; font-size: 14px; display: block; margin-bottom: 10px; font-weight: 300; }
+        .footer-links a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top navbar-gobmx">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle left collapsed" data-toggle="collapse" data-target="#menuGob" aria-expanded="false">
-                    <span class="sr-only">Menú</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-                <a class="navbar-brand" href="https://www.gob.mx/">
-                    <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="128" height="48" alt="Gobierno de México">
-                </a>
-
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMain" aria-expanded="false">
-                    <span class="sr-only">Navegación</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <div id="navbarMain" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="https://www.gob.mx/tramites">Trámites</a></li>
-                    <li><a href="https://www.gob.mx/gobierno">Gobierno</a></li>
-                </ul>
-            </div>
-
-            <div id="menuGob" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="visible-xs"><a href="https://www.gob.mx/">Inicio</a></li>
-                    <li class="visible-xs"><a href="https://www.gob.mx/busqueda">Búsqueda</a></li>
-                </ul>
-            </div>
+    <header>
+        <div class="nav-superior">
+            <a href="https://www.gob.mx/"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México"></a>
+            <button class="btn-hamburguesa"><i class="fas fa-bars"></i></button>
         </div>
-    </nav>
-
-    <div class="header-sep">
-        <img src="logo.png" alt="Secretaría de Educación Pública">
-    </div>
+        <div class="nav-inferior">
+            <button class="btn-hamburguesa"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
 
     <main>
-        <ul class="breadcrumb">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="consultas.html">Consultas</a></li>
-            <li class="active">Título Autenticado</li>
-        </ul>
+        <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Inicio</a> 
+            <span> > Búsqueda de Cédulas Profesionales</span>
+        </div>
 
         <section>
-            <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
+            <h1 class="titulo-principal">Realiza tu búsqueda de forma segura y confiable.</h1>
             <div class="linea-oro"></div>
-            <p class="texto-gris">Consulta los datos registrados ante la Secretaría de Educación Pública.</p>
-            <p class="texto-deslinde">La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos. La Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso en sitios no oficiales.</p>
         </section>
 
         <div class="search-card">
-            <div style="display: flex; background: #f5f5f5;">
+            <div style="display: flex;">
                 <div class="tab-item">Datos generales</div>
                 <div class="tab-item active">Número de cédula</div>
             </div>
-            <div class="form-body">
-                <div style="margin-bottom: 20px;">
-                    <label style="display:block; font-weight:700; margin-bottom:8px;">Número de Cédula*:</label>
-                    <input type="text" id="in-folio" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:4px;" placeholder="Ej. 11731054">
+            <div style="padding: 25px;">
+                <label style="display:block; font-weight:700; margin-bottom:8px;">Número de Cédula*:</label>
+                <input type="text" id="in-folio" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:4px;" placeholder="Ej. 11731054">
+                <div style="margin-top:20px; overflow:hidden;">
+                    <button class="btn-buscar" onclick="buscarProfesionista()">Buscar</button>
                 </div>
-                <button class="btn-buscar" onclick="buscarProfesionista()">Buscar</button>
-                <div style="clear:both;"></div>
             </div>
         </div>
 
@@ -135,11 +103,10 @@
             <div class="card-resultado">
                 <div class="card-label">NOMBRE:</div>
                 <div id="res-nombre" class="card-value"></div>
-                
                 <div class="card-label">CARRERA:</div>
                 <div id="res-carrera" class="card-value"></div>
-                
-                <hr class="linea-divisoria"> <div class="card-label">NIVEL:</div>
+                <hr class="linea-divisoria">
+                <div class="card-label">NIVEL:</div>
                 <div id="res-nivel" class="card-value"></div>
                 <div class="card-label">FOLIO DIGITAL:</div>
                 <div id="res-folio" class="card-value"></div>
@@ -150,22 +117,24 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="150" alt="Gobierno de México"></div>
-                <div class="col-sm-3">
-                    <h5>Enlaces</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="https://www.gob.mx/participa">Participa</a></li>
-                        <li><a href="https://www.gob.mx/publicaciones">Publicaciones</a></li>
-                    </ul>
-                </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+            <div>
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="180" style="margin-bottom: 20px;">
+            </div>
+            <div class="footer-links">
+                <h5 style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px;">Enlaces</h5>
+                <a href="https://www.gob.mx/participa">Participa</a>
+                <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+                <a href="https://www.gob.mx/transparencia">Transparencia</a>
+            </div>
+            <div class="footer-links">
+                <h5 style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px;">Contacto</h5>
+                <a href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54">Denuncias</a>
+                <a href="mailto:mesa_ayuda@tecnologia.gob.mx">Mesa de Ayuda</a>
             </div>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
     <script src="folios.js"></script>
     <script>
         function buscarProfesionista() {
