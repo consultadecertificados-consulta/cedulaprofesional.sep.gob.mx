@@ -14,22 +14,22 @@
       --gob-guinda: #621132;
       --gob-negro: #1F1F1F;
       --gob-oro: #9D843E;
+      --gob-gris-texto: #6F7271;
     }
 
-    body { font-family: 'Montserrat', sans-serif !important; margin: 0; padding: 0; background: #fff; }
+    body { font-family: 'Montserrat', sans-serif !important; margin: 0; padding: 0; background: #fff; color: #333; }
 
-    /* NAVBARS */
+    /* HEADER */
     .navbar-guinda { background-color: var(--gob-guinda) !important; border: none !important; margin: 0 !important; }
     .navbar-negra { background-color: var(--gob-negro) !important; border-bottom: 8px solid var(--gob-oro) !important; min-height: 45px !important; margin: 0 !important; }
-    
     .navbar-toggle { border: none !important; background: transparent !important; }
     .navbar-toggle .icon-bar { background-color: white !important; }
 
-    /* SEGUNDO MENÚ DESPLEGABLE COLOR VINO */
-    #navNegra { background-color: var(--gob-guinda) !important; text-align: center; border: none; }
-    #navNegra ul { list-style: none; padding: 20px 0; margin: 0; }
-    #navNegra ul li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    #navNegra ul li a { color: white !important; text-decoration: none; font-size: 17px; font-weight: 300; display: block; }
+    /* MENÚ DESPLEGABLE VINO */
+    #navNegra { background-color: var(--gob-guinda) !important; }
+    #navNegra ul { list-style: none; padding: 0; margin: 0; text-align: center; }
+    #navNegra ul li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    #navNegra ul li a { color: white !important; text-decoration: none; display: block; padding: 15px; font-weight: 300; font-size: 16px; }
 
     /* BANNER */
     .banner-rnp {
@@ -37,22 +37,33 @@
       background-image: url('https://cedulaprofesional.sep.gob.mx/cedula/images/pleca_cedula.png');
       background-size: cover;
       color: white;
-      padding: 50px 5%;
+      padding: 60px 5%;
     }
 
-    /* RESULTADOS */
-    #results-container { display: none; margin-top: 80px; position: relative; border-top: 1px solid #ddd; padding-top: 50px; }
-    .mujer-icono { position: absolute; width: 100%; text-align: center; top: -35px; }
-    .mujer-icono img { width: 70px; }
-    .card-res { max-width: 600px; margin: 0 auto; }
-    .label-res { font-weight: 700; color: #333; font-size: 13px; margin-bottom: 5px; }
-    .value-res { text-transform: uppercase; font-size: 18px; color: #545454; margin-bottom: 25px; }
+    /* CONTENIDO */
+    .leyenda-legal { color: var(--gob-gris-texto); font-size: 14px; line-height: 1.6; margin-bottom: 20px; text-align: justify; }
+    .descarga-texto { font-weight: 700; text-align: center; margin: 30px 0; font-size: 18px; }
 
-    /* PIE DE PÁGINA (SIN LOGO INICIAL) */
-    .footer-final { background-color: var(--gob-guinda) !important; color: white; padding: 40px 5%; margin-top: 60px; }
-    .footer-final h5 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 20px; font-size: 16px; font-weight: 600; }
-    .footer-final a { color: white; text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; font-weight: 300; }
-    .social-icons { font-size: 22px; display: flex; gap: 20px; }
+    /* BUSCADOR */
+    .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; margin-top: 20px; }
+    .tabs-container { display: flex; background: #f5f5f5; border-bottom: 1px solid #ddd; }
+    .tab-item { padding: 15px; flex: 1; text-align: center; color: #666; font-weight: 600; cursor: pointer; }
+    .tab-item.active { background: var(--gob-guinda); color: white; }
+    
+    .form-group label { font-weight: 700; font-size: 14px; margin-bottom: 5px; }
+    .form-control { height: 40px; border-radius: 2px; border: 1px solid #ccc; box-shadow: none; }
+
+    /* BOTONES */
+    .btn-row { margin-top: 30px; text-align: right; display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+    .btn-buscar { background: white; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); padding: 8px 30px; font-weight: 700; }
+    .btn-limpiar { background: white; color: var(--gob-oro); border: 2px solid var(--gob-oro); padding: 8px 30px; font-weight: 700; }
+    .btn-descargar { background: #b0b0b0; color: white; border: none; padding: 10px 30px; font-weight: 700; border-radius: 4px; }
+
+    /* FOOTER */
+    .footer-final { background-color: var(--gob-guinda); color: white; padding: 40px 5%; margin-top: 60px; }
+    .footer-final h5 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 15px; font-size: 16px; font-weight: 600; }
+    .footer-final a { color: white; text-decoration: none; font-size: 13px; display: block; margin-bottom: 8px; font-weight: 300; }
+    .social-icons { font-size: 20px; display: flex; gap: 15px; margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -69,6 +80,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#" style="color:white">Trámites</a></li>
           <li><a href="#" style="color:white">Gobierno</a></li>
+          <li><a href="#" style="color:white"><i class="fas fa-search"></i></a></li>
         </ul>
       </div>
     </div>
@@ -81,11 +93,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navNegra">
         <ul>
-          <li><a href="#">Inicio <i class="fas fa-angle-down"></i></a></li>
-          <li><a href="#">Cédulas Profesionales <i class="fas fa-angle-down"></i></a></li>
+          <li><a href="#">Inicio <i class="fas fa-chevron-down"></i></a></li>
+          <li><a href="#">Cédulas Profesionales <i class="fas fa-chevron-down"></i></a></li>
           <li><a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a></li>
           <li><a href="#">Cédulas Estatales</a></li>
-          <li><a href="#">Datos Abiertos <i class="fas fa-angle-down"></i></a></li>
+          <li><a href="#">Datos Abiertos <i class="fas fa-chevron-down"></i></a></li>
           <li><a href="#">Contacto</a></li>
         </ul>
       </div>
@@ -94,47 +106,61 @@
 
   <div class="banner-rnp">
     <div class="container">
-      <h1 style="font-weight: 700; font-size: 36px; margin: 0;">Registro Nacional de Profesionistas</h1>
-      <p style="font-size: 18px; font-weight: 300; margin-top: 10px;">Consulta de Cédulas Profesionales</p>
+      <h1 style="font-weight: 700; font-size: 38px; margin: 0;">Registro Nacional de Profesionistas</h1>
+      <p style="font-size: 18px; font-weight: 300;">Consulta de Cédulas Profesionales</p>
     </div>
   </div>
 
   <main class="container">
-    <div style="padding: 20px 0; font-size: 15px; color: #4D4D4D;">
-      <i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales
+    <div style="padding: 20px 0; font-size: 14px; color: #4D4D4D;">
+      <i class="fas fa-home"></i> Inicio > <strong>Búsqueda de Cédulas Profesionales</strong>
     </div>
 
-    <h2 style="font-weight: 700; font-size: 30px; margin-top: 20px;">Realiza tu búsqueda de forma segura y confiable.</h2>
+    <h2 style="font-weight: 700; font-size: 32px;">Realiza tu búsqueda de forma segura y confiable.</h2>
     <div style="width: 55px; height: 6px; background: var(--gob-oro); margin: 20px 0;"></div>
 
-    <div class="panel panel-default" style="border-radius: 4px; overflow: hidden; margin-top: 30px; border: 1px solid #ddd;">
-      <div style="display: flex; background: #f5f5f5;">
-        <div style="padding: 15px; flex: 1; text-align: center; color: #666; font-weight: 600; border-right: 1px solid #ddd;">Datos generales</div>
-        <div style="padding: 15px; flex: 1; text-align: center; background: var(--gob-guinda); color: white; font-weight: 600;">Número de cédula</div>
-      </div>
-      <div class="panel-body" style="padding: 40px;">
-        <label style="font-weight: 700; margin-bottom: 10px; display: block;">Número de Cédula*:</label>
-        <input type="text" id="in-folio" class="form-control" placeholder="Ej. 11731054" style="height: 45px;">
-        <div style="margin-top: 25px; text-align: right;">
-          <button onclick="buscarProfesionista()" class="btn" style="background: white; color: var(--gob-guinda); border: 2px solid var(--gob-guinda); padding: 10px 35px; font-weight: 700;">Buscar</button>
-        </div>
-      </div>
-    </div>
+    <p class="leyenda-legal">
+      Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
+    </p>
+    <p class="leyenda-legal">
+      La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.
+    </p>
 
-    <div id="results-container">
-      <div class="mujer-icono"><img src="mujer-indigena.png" alt="Icono"></div>
-      <div class="card-res">
-        <div class="label-res">NOMBRE:</div>
-        <div id="res-nombre" class="value-res"></div>
-        <div class="label-res">CARRERA:</div>
-        <div id="res-carrera" class="value-res"></div>
-        <hr style="border-top: 1px solid #ddd; margin: 5px 0 25px 0;">
-        <div class="label-res">NIVEL:</div>
-        <div id="res-nivel" class="value-res"></div>
-        <div class="label-res">FOLIO DIGITAL:</div>
-        <div id="res-folio" class="value-res"></div>
-        <div class="label-res">INSTITUCIÓN EMISORA:</div>
-        <div id="res-institucion" class="value-res"></div>
+    <div class="descarga-texto">¡Descarga la Constancia de Situación Profesional!</div>
+    <p style="text-align:center; font-size: 15px;">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
+
+    <div class="search-card">
+      <div class="tabs-container">
+        <div class="tab-item active">Datos generales</div>
+        <div class="tab-item">Número de cédula</div>
+      </div>
+      <div style="padding: 30px;">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>Nombre(s)*:</label>
+            <input type="text" class="form-control" placeholder="Nombre(s)">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Primer Apellido*:</label>
+            <input type="text" class="form-control" placeholder="Primer Apellido">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Segundo Apellido:</label>
+            <input type="text" class="form-control" placeholder="Segundo Apellido">
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+          <div class="col-md-4 form-group">
+            <label>CURP:</label>
+            <input type="text" class="form-control" placeholder="CURP">
+          </div>
+        </div>
+        
+        <div class="btn-row">
+          <button class="btn btn-buscar">Buscar</button>
+          <button class="btn btn-limpiar">Limpiar</button>
+          <button class="btn btn-descargar" disabled>Descargar CSV</button>
+        </div>
       </div>
     </div>
   </main>
@@ -145,21 +171,31 @@
         <div class="col-md-4">
           <h5>Enlaces</h5>
           <a href="#">Participa</a>
-          <a href="#">Publicaciones Oficiales</a>
+          <a href="#">Marco Jurídico</a>
           <a href="#">Plataforma Nacional de Transparencia</a>
+          <a href="#">Transparencia para el pueblo</a>
+          <a href="#">Alerta</a>
         </div>
         <div class="col-md-4">
           <h5>Contacto</h5>
-          <a href="#">Denuncia contra servidores públicos</a>
-          <a href="#">Mesa de Ayuda</a>
-        </div>
-        <div class="col-md-4">
-          <h5>Síguenos en</h5>
+          <a href="#" style="font-weight: 700; text-decoration: underline;">Denuncia contra servidores públicos</a>
+          <h5 style="border:none; margin-top:20px;">Síguenos en</h5>
           <div class="social-icons">
             <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
+            <i class="fa-brands fa-x-twitter"></i>
             <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
           </div>
+          <div style="margin-top: 20px; font-size: 13px;">
+            <i class="fas fa-asterisk"></i> <strong>079</strong> <small>Comunícate, estamos para ayudarte</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5>¿Qué es gob.mx?</h5>
+          <p style="font-size: 13px; font-weight: 300;">Es el portal único de trámites, información y participación ciudadana. <a href="#" style="display:inline; text-decoration:underline;">Leer más</a></p>
+          <a href="#">Portal de datos abiertos</a>
+          <a href="#">Declaración de accesibilidad</a>
+          <a href="#">Términos y Condiciones</a>
         </div>
       </div>
     </div>
@@ -167,23 +203,5 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
-  <script src="folios.js"></script>
-  <script>
-    function buscarProfesionista() {
-      const f = document.getElementById('in-folio').value.trim();
-      const res = document.getElementById('results-container');
-      if (typeof registros === 'undefined') return;
-      let r = registros.find(x => x.id === f);
-      if (r) {
-        document.getElementById('res-nombre').innerText = r.nom + " " + r.ap1 + " " + (r.ap2 || "");
-        document.getElementById('res-carrera').innerText = r.prof;
-        document.getElementById('res-nivel').innerText = r.nivel || "LICENCIATURA";
-        document.getElementById('res-folio').innerText = r.id;
-        document.getElementById('res-institucion').innerText = r.inst;
-        res.style.display = 'block';
-        res.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  </script>
 </body>
 </html>
