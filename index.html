@@ -1,112 +1,249 @@
-<style>
-        /* --- ESTILOS REPARADOS PARA EL FOOTER --- */
-        .footer-rnp {
-            background-color: #621132; /* Guinda institucional */
-            color: white;
-            padding: 60px 8% 40px;
-            font-family: 'Montserrat', sans-serif;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Cédulas Profesionales | Registro Nacional de Profesionistas</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gob-verde-oscuro: #0C231E; /* Barra Trámites */
+            --gob-vino: #621132;         /* Barra RNP / Footer */
+            --gob-vino-dark: #480721;    /* Hover / Barra móvil */
+            --gob-oro: #9D843E;          /* Detalles */
+            --gob-gris-f: #F2F2F2;       /* Fondo Tabs */
+            --gob-texto: #4D4D4D;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 40px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.4; }
 
-        .footer-logo img {
-            width: 200px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 25px;
-        }
-
-        .footer-col h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #9D843E; /* Línea oro */
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .footer-col a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            font-size: 13.5px;
-            margin-bottom: 12px;
-            opacity: 0.85;
-            transition: opacity 0.3s;
-            line-height: 1.4;
-        }
-
-        .footer-col a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        .footer-col p {
-            font-size: 13.5px;
-            opacity: 0.85;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        /* Redes Sociales */
-        .social-media {
+        /* --- NAVEGACIÓN 1: TRÁMITES / GOBIERNO (OSCURO) --- */
+        .nav-gob-dark {
+            background-color: var(--gob-verde-oscuro);
+            padding: 12px 8%;
             display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-media a {
-            font-size: 22px;
-            opacity: 1;
-        }
-
-        /* Sección de contacto 079 */
-        .contact-info {
-            margin-top: 25px;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            font-size: 14px;
+            position: relative;
+            z-index: 2000;
         }
+        .logo-gob { height: 30px; }
+        .menu-tramites { display: flex; gap: 25px; align-items: center; }
+        .menu-tramites a { color: white; text-decoration: none; font-size: 14px; font-weight: 300; }
+        .btn-ham-dark { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
 
-        .contact-info i {
-            font-size: 18px;
-            color: #9D843E;
+        /* --- NAVEGACIÓN 2: SECCIONES RNP (VINO) --- */
+        .nav-rnp-vino {
+            background-color: var(--gob-vino);
+            padding: 0 8%;
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
         }
-
-        .contact-info b {
-            font-size: 16px;
+        .menu-rnp-desktop { display: flex; gap: 30px; align-items: center; }
+        .menu-rnp-desktop a { 
+            color: white; text-decoration: none; font-size: 14px; 
+            font-weight: 400; padding: 15px 0; transition: 0.3s;
         }
+        .menu-rnp-desktop a:hover { opacity: 0.8; }
+        .btn-ham-vino { display: none; background: none; border: none; color: white; font-size: 22px; cursor: pointer; width: 100%; text-align: left; padding: 12px 0; }
 
-        /* Versión del sistema */
-        .version-bar {
-            background-color: #480721; /* Bermeñón más oscuro */
-            color: rgba(255,255,255,0.5);
-            text-align: center;
-            padding: 10px 0;
-            font-size: 11px;
+        /* MENÚS DESPLEGABLES MÓVIL */
+        .mobile-dropdown {
+            display: none;
+            flex-direction: column;
             width: 100%;
+            text-align: center;
+        }
+        .mobile-dropdown.dark-bg { background-color: var(--gob-verde-oscuro); }
+        .mobile-dropdown.vino-bg { background-color: var(--gob-vino); }
+        .mobile-dropdown a {
+            color: white; text-decoration: none; padding: 15px;
+            font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        @media (max-width: 768px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: left;
-            }
+        /* --- BANNER PRINCIPAL --- */
+        .hero-rnp {
+            background: var(--gob-vino) url('https://www.gob.mx/cms/uploads/article/main_image/101850/PORTADA_CEDULA.jpg') center/cover no-repeat;
+            height: 220px;
+            border-bottom: 8px solid var(--gob-oro);
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-end; 
+            padding-right: 10%; 
+            color: white;
+        }
+        .hero-text { text-align: right; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+        .hero-text h1 { font-size: 30px; font-weight: 700; }
+        .hero-text p { font-size: 16px; font-weight: 300; margin-top: 5px; }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        main { max-width: 1100px; margin: 0 auto; padding: 20px 5%; }
+        .breadcrumb { font-size: 14px; margin: 20px 0; color: #666; font-weight: 500; }
+        .breadcrumb b { color: var(--gob-texto); }
+
+        .section-title { font-size: 32px; font-weight: 700; color: var(--gob-texto); margin-top: 30px; }
+        .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 20px 0; }
+        
+        .text-info { font-size: 14.5px; color: #6F7271; text-align: justify; margin-bottom: 20px; line-height: 1.6; }
+        .download-notice { text-align: center; font-weight: 700; font-size: 18px; margin: 35px 0; color: var(--gob-texto); }
+
+        /* --- CARD DE BÚSQUEDA --- */
+        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .tabs { display: flex; background: var(--gob-gris-f); border-bottom: 1px solid #ddd; }
+        .tab { padding: 15px 30px; cursor: pointer; font-weight: 600; font-size: 14px; color: #666; transition: 0.3s; }
+        .tab.active { background: var(--gob-vino); color: white; }
+        
+        .form-grid { padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .field { display: flex; flex-direction: column; }
+        .field label { font-weight: 700; font-size: 14px; margin-bottom: 10px; color: #333; }
+        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; }
+        .field input:focus { border-color: var(--gob-vino); }
+
+        .actions { display: flex; justify-content: flex-end; gap: 15px; padding: 0 40px 40px; }
+        .btn { padding: 11px 35px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 15px; transition: 0.3s; }
+        .btn-buscar { border: 1px solid var(--gob-vino); background: white; color: var(--gob-vino); }
+        .btn-buscar:hover { background: var(--gob-vino); color: white; }
+        .btn-limpiar { border: 1px solid var(--gob-oro); background: white; color: var(--gob-oro); }
+        .btn-limpiar:hover { background: var(--gob-oro); color: white; }
+        .btn-csv { background: #BDBDBD; border: none; color: white; cursor: not-allowed; }
+
+        /* --- FOOTER REPARADO --- */
+        footer { background-color: var(--gob-vino); color: white; padding: 60px 8% 40px; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+        .footer-col h4 { font-size: 16px; font-weight: 600; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13.5px; margin-bottom: 12px; opacity: 0.85; transition: 0.3s; }
+        .footer-col a:hover { opacity: 1; text-decoration: underline; }
+        .footer-col p { font-size: 13.5px; opacity: 0.85; line-height: 1.6; margin-bottom: 15px; }
+        
+        .social-media { display: flex; gap: 20px; margin-top: 20px; }
+        .social-media a { font-size: 20px; opacity: 1; display: inline; }
+        .contact-info { margin-top: 25px; display: flex; align-items: center; gap: 12px; font-size: 14px; }
+        .contact-info i { color: var(--gob-oro); }
+
+        .version-bar { background-color: var(--gob-vino-dark); color: rgba(255,255,255,0.5); text-align: center; padding: 12px 0; font-size: 11px; }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 992px) {
+            .menu-tramites, .menu-rnp-desktop { display: none; }
+            .btn-ham-dark, .btn-ham-vino { display: block; }
+            .nav-rnp-vino { background-color: var(--gob-vino-dark); justify-content: flex-start; }
+            .hero-rnp { height: 180px; justify-content: center; padding: 0; text-align: center; }
+            .hero-text { text-align: center; }
+            .form-grid { padding: 25px; }
+            .actions { flex-direction: column; }
+            .btn { width: 100%; }
         }
     </style>
+</head>
+<body>
 
-    <footer class="footer-rnp">
-        <div class="footer-container">
-            <div class="footer-col footer-logo">
-                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+    <nav class="nav-gob-dark">
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob" alt="Logo Gobierno">
+        <div class="menu-tramites">
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
+            <a href="#"><i class="fas fa-search"></i></a>
+        </div>
+        <button class="btn-ham-dark" onclick="toggleMenu('dropTramites')"><i class="fas fa-bars"></i></button>
+    </nav>
+    <div id="dropTramites" class="mobile-dropdown dark-bg">
+        <a href="#">Trámites</a>
+        <a href="#">Gobierno</a>
+    </div>
+
+    <nav class="nav-rnp-vino">
+        <button class="btn-ham-vino" onclick="toggleMenu('dropRNP')"><i class="fas fa-bars"></i></button>
+        <div class="menu-rnp-desktop">
+            <a href="#">Inicio <i class="fas fa-caret-down"></i></a>
+            <a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
+            <a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
+            <a href="#">Cédulas Estatales</a>
+            <a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a>
+            <a href="#">Contacto</a>
+        </div>
+    </nav>
+    <div id="dropRNP" class="mobile-dropdown vino-bg">
+        <a href="#">Inicio <i class="fas fa-caret-down"></i></a>
+        <a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
+        <a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
+        <a href="#">Cédulas Estatales</a>
+        <a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a>
+        <a href="#">Contacto</a>
+    </div>
+
+    <div class="hero-rnp">
+        <div class="hero-text">
+            <h1>Registro Nacional de Profesionistas</h1>
+            <p>Consulta de Cédulas Profesionales</p>
+        </div>
+    </div>
+
+    <main>
+        <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > <b>Búsqueda de Cédulas Profesionales</b></div>
+        
+        <section>
+            <h2 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h2>
+            <div class="oro-line"></div>
+            
+            <p class="text-info">
+                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
+            </p>
+            
+            <p class="text-info">
+                La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.
+            </p>
+
+            <div class="download-notice">¡Descarga la Constancia de Situación Profesional!</div>
+            
+            <p style="font-size: 15px; margin-bottom: 20px;">Recuerda: <b>La emisión de la Constancia</b> es <b>completamente gratuita.</b></p>
+        </section>
+
+        <div class="search-card">
+            <div class="tabs">
+                <div class="tab active">Datos generales</div>
+                <div class="tab">Número de cédula</div>
+            </div>
+            
+            <div class="form-grid">
+                <div class="field">
+                    <label>Nombre(s)*:</label>
+                    <input type="text" placeholder="Nombre(s)">
+                </div>
+                <div class="field">
+                    <label>Primer Apellido*:</label>
+                    <input type="text" placeholder="Primer Apellido">
+                </div>
+                <div class="field">
+                    <label>Segundo Apellido:</label>
+                    <input type="text" placeholder="Segundo Apellido">
+                </div>
+                <div class="field">
+                    <label>CURP:</label>
+                    <input type="text" placeholder="CURP">
+                </div>
             </div>
 
+            <div class="actions">
+                <button class="btn btn-buscar">Buscar</button>
+                <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+                <button class="btn btn-csv" disabled title="No disponible">Descargar CSV</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 190px; margin-bottom: 20px;" alt="Logo">
+            </div>
             <div class="footer-col">
                 <h4>Enlaces</h4>
                 <a href="#">Datos abiertos de la SABG</a>
@@ -115,28 +252,23 @@
                 <a href="#">Transparencia para el pueblo</a>
                 <a href="#">Alerta</a>
             </div>
-
             <div class="footer-col">
                 <h4>¿Qué es gob.mx?</h4>
-                <p>Es el portal único de trámites, información y participación ciudadana. <a href="#" style="display:inline; text-decoration: underline; opacity: 1;">Leer más</a></p>
-                
+                <p>Es el portal único de trámites, información y participación ciudadana. <a href="#" style="display:inline; text-decoration: underline;">Leer más</a></p>
                 <a href="#">Portal de datos abiertos</a>
                 <a href="#">Declaración de accesibilidad</a>
                 <a href="#">Términos y Condiciones</a>
-                <a href="#">Aviso de privacidad</a>
+                <a href="#">Aviso de Privacidad</a>
             </div>
-
             <div class="footer-col">
-                <a href="#" style="font-weight: 700; text-decoration: underline; margin-bottom: 25px;">Denuncia contra servidores públicos</a>
-                
+                <a href="#" style="font-weight: 700; text-decoration: underline; margin-bottom: 20px; display: block;">Denuncia contra servidores públicos</a>
                 <h4>Síguenos en</h4>
                 <div class="social-media">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-
                 <div class="contact-info">
                     <i class="fas fa-phone-alt"></i>
                     <span><b>079</b> Comunícate, estamos para ayudarte</span>
@@ -145,31 +277,24 @@
         </div>
     </footer>
 
-    <div class="version-bar">
-        RNP v1.6.7
-    </div>
+    <div class="version-bar">RNP v1.6.7</div>
 
     <script>
         function toggleMenu(id) {
             var menu = document.getElementById(id);
-            // Si el menú está oculto (display: none o vacío), lo mostramos
             if (menu.style.display === "flex") {
                 menu.style.display = "none";
             } else {
-                // Cerramos otros menús abiertos para que no se encimen
-                document.querySelectorAll('.mobile-dropdown').forEach(function(el) {
-                    el.style.display = 'none';
-                });
+                // Cerrar otros menús móviles si están abiertos
+                document.querySelectorAll('.mobile-dropdown').forEach(m => m.style.display = 'none');
                 menu.style.display = "flex";
             }
         }
 
-        // Cerrar menús al redimensionar a PC
+        // Limpiar menús al redimensionar a pantalla grande
         window.addEventListener('resize', function() {
             if (window.innerWidth > 992) {
-                document.querySelectorAll('.mobile-dropdown').forEach(function(el) {
-                    el.style.display = 'none';
-                });
+                document.querySelectorAll('.mobile-dropdown').forEach(m => m.style.display = 'none');
             }
         });
     </script>
