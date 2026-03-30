@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <style>
         :root {
-            --gob-vino: #621132;        /* Color superior (Imagen 1) */
-            --gob-borgoña: #480721;     /* Color inferior barra y version-bar */
+            --gob-vino: #621132;        /* Barra Superior */
+            --gob-borgoña: #480721;     /* Barra Inferior y detalles */
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
         }
@@ -17,117 +17,131 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; }
 
+        /* HEADER */
         header { width: 100%; position: relative; z-index: 1000; }
 
-        /* BARRA 1: Más ancha y color Vino */
-        .nav-gob {
+        /* BARRA 1: VINO (ANCHA) */
+        .nav-superior {
             background-color: var(--gob-vino);
-            padding: 20px 8%; /* Más ancha verticalmente */
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo-gob-mex { height: 45px; } /* Logo más grande */
+        .logo-gob-mex { height: 45px; }
         
-        .menu-pc-superior { display: flex; gap: 20px; align-items: center; }
-        .menu-pc-superior a { color: white; text-decoration: none; font-size: 15px; font-weight: 400; }
+        .links-pc-sup { display: flex; gap: 25px; }
+        .links-pc-sup a { color: white; text-decoration: none; font-size: 15px; font-weight: 400; }
 
-        /* BARRA 2: Borgoña */
-        .nav-rnp {
+        /* BARRA 2: BORGOÑA (MENÚ DESPLEGADO EN PC) */
+        .nav-inferior {
             background-color: var(--gob-borgoña);
-            padding: 10px 8%;
+            padding: 0 8%;
+            min-height: 55px;
             display: flex;
             align-items: center;
-            min-height: 55px;
+            justify-content: center;
         }
-
-        .btn-ham {
-            background: none;
-            border: none;
+        
+        .links-pc-inf {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .links-pc-inf a {
             color: white;
-            font-size: 28px;
-            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 15px 0;
+            display: block;
+            transition: opacity 0.3s;
         }
+        .links-pc-inf a:hover { opacity: 0.8; }
 
-        /* PORTADA: Se mueve con el flujo */
+        /* CONTROLES MÓVIL */
+        .btn-ham { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+        .mobile-menu { display: none; flex-direction: column; width: 100%; background-color: var(--gob-borgoña); }
+        .mobile-menu a { color: white; padding: 15px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
+
+        /* PORTADA */
         .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); }
         .hero-section img { width: 100%; height: auto; display: block; }
 
-        /* CONTENIDO */
-        main { max-width: 1100px; margin: 0 auto; padding: 40px 5%; background: #fff; }
+        /* MAIN CONTENT */
+        main { max-width: 1100px; margin: 0 auto; padding: 40px 5%; }
         .breadcrumb { font-size: 14px; margin-bottom: 20px; color: #666; }
         .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 20px 0; }
 
-        /* BUSCADOR */
+        /* FORMULARIO */
         .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
         .tabs { display: flex; background: #F2F2F2; }
         .tab { padding: 15px 25px; cursor: pointer; font-weight: 600; font-size: 14px; }
         .tab.active { background: var(--gob-vino); color: white; }
-        
         .form-grid { padding: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .field { display: flex; flex-direction: column; }
         .field label { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
         .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
-
         .actions { display: flex; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
         .btn { padding: 10px 30px; border-radius: 4px; cursor: pointer; font-weight: 600; border: 1px solid; }
         .btn-buscar { border-color: var(--gob-vino); color: var(--gob-vino); background: #fff; }
         .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
-        /* DROPDOWNS */
-        .mobile-dropdown {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            background-color: var(--gob-borgoña);
-        }
-        .mobile-dropdown a { color: white; padding: 15px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
-
-        /* FOOTER COMPLETO (Imagen 1) */
+        /* FOOTER REPARADO CON TODOS LOS LINKS */
         footer { background-color: var(--gob-vino); color: white; padding: 60px 8% 40px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
         .footer-col h4 { font-size: 16px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
         .footer-col a { color: white; text-decoration: none; display: block; font-size: 13.5px; margin-bottom: 12px; opacity: 0.9; }
-        
         .social-media { display: flex; gap: 15px; font-size: 22px; margin-top: 15px; }
         .contact-079 { margin-top: 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; }
         .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.5); text-align: center; padding: 12px; font-size: 11px; }
 
+        /* MEDIA QUERIES PARA MÓVIL */
         @media (max-width: 992px) {
-            .menu-pc-superior { display: none; }
+            .links-pc-sup, .links-pc-inf { display: none; }
             .btn-ham { display: block; }
-            .nav-gob { padding: 15px 5%; }
+            .nav-superior { padding: 15px 5%; }
+            .nav-inferior { justify-content: flex-start; }
+            .actions { flex-direction: column; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <nav class="nav-gob">
+    <nav class="nav-superior">
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex" alt="Gobierno de México">
-        <div class="menu-pc-superior">
+        <div class="links-pc-sup">
             <a href="#">Trámites</a>
             <a href="#">Gobierno</a>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
-        <button class="btn-ham" onclick="toggleMenu('dropGob')"><i class="fas fa-bars"></i></button>
+        <button class="btn-ham" onclick="toggleMenu('mobileSup')"><i class="fas fa-bars"></i></button>
     </nav>
-    <div id="dropGob" class="mobile-dropdown" style="background-color: var(--gob-vino);">
+    <div id="mobileSup" class="mobile-menu" style="background-color: var(--gob-vino);">
         <a href="#">Trámites</a>
         <a href="#">Gobierno</a>
     </div>
 
-    <nav class="nav-rnp">
-        <button class="btn-ham" onclick="toggleMenu('dropRNP')"><i class="fas fa-bars"></i></button>
-        <div id="dropRNP" class="mobile-dropdown">
-            <a href="#">Inicio</a>
-            <a href="#">Cédulas Profesionales</a>
-            <a href="#">Especialistas</a>
-            <a href="#">Cédulas Estatales</a>
-            <a href="#">Datos Abiertos</a>
-            <a href="#">Contacto</a>
-        </div>
+    <nav class="nav-inferior">
+        <button class="btn-ham" onclick="toggleMenu('mobileInf')"><i class="fas fa-bars"></i></button>
+        <ul class="links-pc-inf">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Cédulas Profesionales</a></li>
+            <li><a href="#">Especialistas</a></li>
+            <li><a href="#">Cédulas Estatales</a></li>
+            <li><a href="#">Datos Abiertos</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
     </nav>
+    <div id="mobileInf" class="mobile-menu">
+        <a href="#">Inicio</a>
+        <a href="#">Cédulas Profesionales</a>
+        <a href="#">Especialistas</a>
+        <a href="#">Cédulas Estatales</a>
+        <a href="#">Datos Abiertos</a>
+        <a href="#">Contacto</a>
+    </div>
 </header>
 
 <div class="hero-section">
@@ -140,7 +154,7 @@
     <div class="oro-line"></div>
     
     <p style="font-size: 14.5px; line-height: 1.6; margin-bottom: 25px; color: #666;">
-        Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.
+        Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
     </p>
 
     <div class="search-card">
@@ -156,7 +170,7 @@
         </div>
         <div class="actions">
             <button class="btn btn-buscar">Buscar</button>
-            <button class="btn btn-limpiar">Limpiar</button>
+            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
         </div>
     </div>
 </main>
