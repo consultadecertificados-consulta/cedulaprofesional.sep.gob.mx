@@ -28,22 +28,27 @@
         .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
         .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
+        /* PORTADA (HERO) */
+        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); background: #f4f4f4; line-height: 0; }
+        .hero-section img { width: 100%; height: auto; max-height: 400px; object-fit: cover; display: block; }
+
         /* MAIN */
         main { max-width: 1200px; margin: 0 auto; padding: 40px 5%; text-align: center; }
         .breadcrumb { font-size: 18px; color: #666; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .section-title { font-size: 38px; font-weight: 700; color: #333; margin-bottom: 15px; }
         .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 30px; }
 
-        /* LEYENDAS (Imagen 1000057962) */
+        /* LEYENDAS */
         .leyenda-contenedor { text-align: justify; font-size: 15px; color: #545454; margin-bottom: 25px; }
         .constancia-promo { font-size: 20px; font-weight: 700; margin: 30px 0 10px; }
 
-        /* FORMULARIO Y TABS */
+        /* BUSCADOR */
         .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; margin-top: 30px; text-align: left; }
         .tabs { display: flex; background: var(--gris-claro); }
         .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 500; }
         .tab.active { background: var(--gob-vino); color: white; }
-        
+        .tab.punteada { border: 1px dashed #fff; }
+
         .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 30px; }
         .field { display: flex; flex-direction: column; }
         .field label { font-weight: 700; margin-bottom: 8px; }
@@ -56,21 +61,19 @@
         .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: white; }
         .btn-csv { border-color: #ccc; color: #999; background: white; cursor: not-allowed; }
 
-        /* TABLA DE RESULTADOS (Imagen 1000057965) */
+        /* TABLA RESULTADOS */
         .results-container { padding: 30px; border-top: 1px solid #eee; display: none; overflow-x: auto; }
         .results-title { text-align: center; font-weight: 700; margin-bottom: 20px; font-size: 18px; }
         table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
         th { border-bottom: 2px solid #eee; padding: 10px; color: #666; }
         td { padding: 15px 10px; border-bottom: 1px solid #eee; }
-        .pagination { display: flex; justify-content: center; gap: 5px; margin-top: 20px; }
-        .page-btn { padding: 5px 12px; border: 1px solid #ddd; background: white; cursor: pointer; }
-        .page-btn.active { background: var(--gob-borgoña); color: white; border: none; }
 
         /* FOOTER */
-        footer { background-color: var(--gob-vino); color: white; padding: 40px 8%; text-align: left; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-col h4 { border-bottom: 2px solid var(--gob-oro); padding-bottom: 5px; margin-bottom: 15px; cursor: pointer; }
-        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 8px; opacity: 0.8; }
+        footer { background-color: var(--gob-vino); color: white; padding: 50px 8% 20px; text-align: left; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { border-bottom: 2px solid var(--gob-oro); padding-bottom: 8px; margin-bottom: 15px; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.8; }
+        .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.4); text-align: center; padding: 15px; font-size: 12px; }
 
         @media (max-width: 992px) {
             .menu-pc { display: none; flex-direction: column; width: 100%; position: absolute; left: 0; top: 100%; background: inherit; }
@@ -80,9 +83,10 @@
             .full-width { grid-column: span 1; }
             .nav-superior { justify-content: space-between; }
             .btn-ham-sup { order: 2; }
-            .nav-inferior { justify-content: flex-start; }
             .footer-col .content { display: none; }
             .footer-col.active .content { display: block; }
+            .footer-col h4 { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+            .footer-col h4::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
         }
     </style>
 </head>
@@ -92,7 +96,10 @@
     <nav class="nav-superior">
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex">
         <button class="btn-ham btn-ham-sup" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
-        <ul id="mSup" class="menu-pc"><li><a href="#">Trámites</a></li><li><a href="#">Gobierno</a></li></ul>
+        <ul id="mSup" class="menu-pc">
+            <li><a href="#">Trámites</a></li>
+            <li><a href="#">Gobierno</a></li>
+        </ul>
     </nav>
     <nav class="nav-inferior">
         <button class="btn-ham" onclick="toggleM('mInf')"><i class="fas fa-bars"></i></button>
@@ -106,13 +113,18 @@
     </nav>
 </header>
 
+<div class="hero-section">
+    <img src="logo.png" alt="Registro Nacional de Profesionistas">
+</div>
+
 <main>
     <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
     <div class="oro-line"></div>
 
     <div class="leyenda-contenedor">
-        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p><br>
+        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
+        <br>
         <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
     </div>
 
@@ -146,42 +158,89 @@
             <p class="results-title">Resultados de la Búsqueda</p>
             <table>
                 <thead>
-                    <tr><th>Núm. Cédula</th><th>Nombre</th><th>Primer Apellido</th><th>Segundo Apellido</th><th>Género</th><th>Institución</th><th>Profesión</th><th>Entidad</th><th>Año</th><th>Constancia</th></tr>
+                    <tr>
+                        <th>Núm. Cédula</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Género</th>
+                        <th>Institución</th>
+                        <th>Profesión</th>
+                        <th>Entidad</th>
+                        <th>Año</th>
+                        <th>Constancia</th>
+                    </tr>
                 </thead>
                 <tbody id="res-body"></tbody>
             </table>
-            <div class="pagination"><button class="page-btn">«</button><button class="page-btn active">1</button><button class="page-btn">»</button></div>
         </div>
     </div>
 </main>
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-col"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: invert(1);"></div>
-        <div class="footer-col"><h4>Enlaces</h4><a href="#">Datos abiertos</a><a href="#">Transparencia</a></div>
-        <div class="footer-col" onclick="this.classList.toggle('active')">
-            <h4>¿Qué es gob.mx? <i class="fas fa-chevron-down" style="font-size: 10px;"></i></h4>
-            <div class="content"><a href="#">Aviso de privacidad</a><a href="#">Términos y condiciones</a></div>
+        <div class="footer-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 180px; margin-bottom: 20px;">
+        </div>
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="#">Datos abiertos</a>
+            <a href="#">Transparencia</a>
+            <a href="#">Marco Jurídico</a>
+        </div>
+        <div class="footer-col" id="col-gob" onclick="toggleF()">
+            <h4>¿Qué es gob.mx? <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: 10px;"></i></h4>
+            <div class="content">
+                <a href="#">Aviso de privacidad</a>
+                <a href="#">Términos y condiciones</a>
+            </div>
         </div>
     </div>
 </footer>
+<div class="version-bar">RNP v1.6.7</div>
 
 <script src="folios.js"></script>
 <script>
     function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
+    
+    function toggleF() {
+        if (window.innerWidth <= 992) {
+            document.getElementById('col-gob').classList.toggle('active');
+        }
+    }
+
     function switchT(t) {
         document.getElementById('f-dat').style.display = t === 'dat' ? 'grid' : 'none';
         document.getElementById('f-ced').style.display = t === 'ced' ? 'grid' : 'none';
-        document.getElementById('t-dat').className = t === 'dat' ? 'tab active' : 'tab';
-        document.getElementById('t-ced').className = t === 'ced' ? 'tab active' : 'tab';
+        
+        const tD = document.getElementById('t-dat');
+        const tC = document.getElementById('t-ced');
+        
+        if(t === 'dat') {
+            tD.className = 'tab active';
+            tC.className = 'tab';
+        } else {
+            tC.className = 'tab active punteada';
+            tD.className = 'tab';
+        }
     }
+
     function buscar() {
         document.getElementById('res').style.display = 'block';
-        document.getElementById('res-body').innerHTML = `<tr>
-            <td>11731054</td><td>ROBERTO CARLOS</td><td>ARAUJO</td><td>PARRA</td><td>MASCULINO</td>
-            <td>UNIVERSIDAD DE GUANAJUATO</td><td>LICENCIATURA EN INGENIERÍA BIOMÉDICA</td><td>GUANAJUATO</td><td>2019</td>
-            <td style="text-align:center;"><i class="far fa-file-pdf" style="cursor:pointer;" onclick="descargarConstancia()"></i></td>
-        </tr>`;
+        document.getElementById('res-body').innerHTML = `
+            <tr>
+                <td>11731054</td>
+                <td>ROBERTO CARLOS</td>
+                <td>ARAUJO</td>
+                <td>PARRA</td>
+                <td>MASCULINO</td>
+                <td>UNIVERSIDAD DE GUANAJUATO</td>
+                <td>LICENCIATURA EN INGENIERÍA BIOMÉDICA</td>
+                <td>GUANAJUATO</td>
+                <td>2019</td>
+                <td style="text-align:center;"><i class="far fa-file-pdf" style="cursor:pointer; color: #666; font-size: 18px;"></i></td>
+            </tr>
+        `;
     }
 </script>
 </body>
