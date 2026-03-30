@@ -24,63 +24,77 @@
         /* Barra Superior */
         .nav-gob { 
             background-color: var(--gob-guinda); 
-            padding: 10px 5%; 
+            padding: 15px 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             position: sticky;
             top: 0;
             z-index: 1001;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .nav-gob img { height: 22px; }
+        .nav-gob .logo-link img { height: 28px; display: block; }
 
-        .menu-ham {
+        .menu-ham-trigger {
             color: white;
-            font-size: 18px;
+            font-size: 24px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            opacity: 0.8;
         }
 
-        /* Menú Lateral Desplegable */
+        /* Menú Desplegable (Estilo de la foto) */
         .gob-menu-overlay {
             position: fixed;
             top: 0;
-            right: -100%;
+            left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            height: 0; /* Altura inicial */
+            background-color: var(--gob-guinda);
             z-index: 2000;
-            transition: 0.3s;
+            transition: height 0.4s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .gob-menu-overlay.active { right: 0; }
+        .gob-menu-overlay.active { height: 100vh; }
 
-        .gob-menu-content {
-            background: #fff;
-            width: 85%;
-            max-width: 320px;
-            height: 100%;
-            padding: 30px 20px;
-            float: right;
-            overflow-y: auto;
+        .header-menu-open {
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .close-menu { font-size: 28px; float: right; cursor: pointer; color: #333; }
-        .menu-section-title {
-            color: var(--gob-guinda);
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            margin: 25px 0 10px;
-            font-weight: 700;
-            font-size: 13px;
-            text-transform: uppercase;
+
+        .menu-options-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: -50px; /* Centrado visual */
         }
-        .gob-menu-content a {
-            display: block;
-            color: #333;
+
+        .menu-link {
+            color: white;
             text-decoration: none;
-            padding: 10px 0;
-            font-size: 14px;
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .search-icon-large {
+            color: white;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .close-menu-btn {
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
         }
 
         /* Header Logo */
@@ -88,86 +102,70 @@
         .header-image-container img { width: 100%; height: auto; display: block; }
 
         main { width: 100%; max-width: 1100px; margin: 0 auto; padding: 15px; }
-        
         .breadcrumb { padding: 10px 0 20px; font-size: 13px; color: #666; }
-
-        /* Introducción */
         .intro-container h2 { font-size: 24px; font-weight: 700; color: var(--gob-texto-negro); margin-bottom: 10px; line-height: 1.2; }
         .linea-oro { width: 40px; height: 4px; background: var(--gob-oro); margin-bottom: 20px; }
-        .texto-principal, .texto-deslinde { font-size: 14px; color: var(--gob-texto-p); line-height: 1.5; margin-bottom: 20px; text-align: left; }
-        .descarga-aviso { font-size: 17px; font-weight: 700; margin-bottom: 15px; text-align: center; }
 
         /* Card de Búsqueda */
-        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; overflow: hidden; margin-top: 10px; }
+        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); }
-        .tab-btn { flex: 1; padding: 12px 5px; font-size: 13px; text-align: center; cursor: pointer; color: #666; font-weight: 600; border-bottom: 2px solid transparent; }
+        .tab-btn { flex: 1; padding: 15px 5px; font-size: 13px; text-align: center; cursor: pointer; color: #666; font-weight: 600; }
         .tab-btn.active { background: var(--gob-guinda); color: #fff; }
 
         .form-section { padding: 20px; display: none; flex-direction: column; gap: 15px; }
         .form-section.active { display: flex; }
         
-        /* Ajuste para Desktop (3 columnas) */
-        @media (min-width: 768px) {
-            .form-section.active { display: grid; grid-template-columns: repeat(3, 1fr); }
-            .intro-container h2 { font-size: 32px; }
-            .nav-gob img { height: 28px; }
-        }
-
-        .field label { font-size: 14px; font-weight: 700; margin-bottom: 8px; display: block; }
-        .field input { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-size: 15px; }
+        .field label { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .field input { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-size: 16px; }
 
         .btn-area { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 20px; }
-        @media (min-width: 600px) { .btn-area { flex-direction: row; justify-content: flex-end; } }
+        .btn { padding: 14px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; text-align: center; border: 2px solid var(--gob-guinda); }
+        .btn-buscar { color: var(--gob-guinda); background: #fff; }
+        .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
-        .btn { padding: 14px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; text-align: center; width: 100%; }
-        @media (min-width: 600px) { .btn { width: auto; min-width: 150px; } }
+        #results-container { display: none; padding: 20px 10px; overflow-x: auto; }
+        .rnp-table { width: 100%; border-collapse: collapse; min-width: 600px; font-size: 12px; }
+        .rnp-table th { background: #eee; padding: 10px; text-align: left; }
+        .rnp-table td { padding: 10px; border-bottom: 1px solid #eee; }
 
-        .btn-buscar { border: 2px solid var(--gob-guinda); color: var(--gob-guinda); background: #fff; }
-        .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); background: #fff; }
+        footer { background: var(--gob-guinda); color: #fff; padding: 40px 5%; margin-top: 50px; text-align: center; }
 
-        /* Resultados Mobile */
-        #results-container { display: none; padding: 20px 10px; border-top: 1px solid #ddd; background: #fafafa; }
-        .res-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; text-align: center; }
-        
-        .table-responsive { 
-            width: 100%; 
-            overflow-x: auto; 
-            -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
-            border: 1px solid #ddd;
+        /* Desktop Adjustments */
+        @media (min-width: 768px) {
+            .form-section.active { display: grid; grid-template-columns: repeat(3, 1fr); }
+            .btn-area { flex-direction: row; justify-content: flex-end; }
+            .btn { width: auto; min-width: 160px; }
+            .nav-gob .logo-link img { height: 32px; }
         }
-        .rnp-table { width: 100%; border-collapse: collapse; min-width: 800px; background: #fff; }
-        .rnp-table th { background: #eee; padding: 10px; font-size: 12px; text-align: left; border-bottom: 2px solid #ddd; }
-        .rnp-table td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 12px; }
-
-        /* Footer */
-        footer { background: var(--gob-guinda); color: #fff; padding: 40px 5%; margin-top: 50px; }
-        .f-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        @media (min-width: 768px) { .f-grid { grid-template-columns: repeat(4, 1fr); } }
-        .f-col h4 { font-size: 14px; margin-bottom: 15px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 5px; display: inline-block; }
-        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <div class="gob-menu-overlay" id="menuOverlay" onclick="toggleMenu()">
-        <div class="gob-menu-content" onclick="event.stopPropagation()">
-            <span class="close-menu" onclick="toggleMenu()">&times;</span>
-            <div style="clear:both"></div>
-            <div class="menu-section-title">Enlaces</div>
-            <a href="#">Participa</a>
-            <a href="#">Datos</a>
-            <a href="#">Publicaciones Oficiales</a>
-            <div class="menu-section-title">Temas</div>
-            <a href="#">Educación</a>
-            <a href="#">Salud</a>
-            <a href="#">Seguridad</a>
+    <div class="gob-menu-overlay" id="menuOverlay">
+        <div class="header-menu-open">
+            <a href="https://www.gob.mx/" class="logo-link">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+            </a>
+            <div class="close-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="menu-options-container">
+            <a href="https://www.gob.mx/tramites" class="menu-link">Trámites</a>
+            <a href="https://www.gob.mx/gobierno" class="menu-link">Gobierno</a>
+            <div class="search-icon-large">
+                <i class="fas fa-search"></i>
+            </div>
         </div>
     </div>
 
     <nav class="nav-gob">
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gob">
-        <div class="menu-ham" onclick="toggleMenu()">
-            <span style="font-size: 12px;">MENÚ</span> <i class="fas fa-bars"></i>
+        <a href="https://www.gob.mx/" class="logo-link">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+        </a>
+        <div class="menu-ham-trigger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
         </div>
     </nav>
 
@@ -176,92 +174,70 @@
     </div>
 
     <main>
-        <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > <b>Búsqueda</b></div>
+        <div class="breadcrumb">Inicio > <b>Búsqueda de Cédulas</b></div>
 
         <section class="intro-container">
-            <h2>Realiza tu búsqueda de forma segura</h2>
+            <h2>Búsqueda de Cédulas Profesionales</h2>
             <div class="linea-oro"></div>
-            <p class="texto-principal">Los resultados muestran que la persona cuenta con título registrado y cédula profesional expedida.</p>
+            <p class="texto-principal">Consulta el Registro Nacional de Profesionistas de manera oficial.</p>
         </section>
 
         <div class="search-card">
             <div class="tabs-menu">
                 <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">DATOS GENERALES</div>
-                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">NÚM. CÉDULA</div>
+                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">NÚMERO DE CÉDULA</div>
             </div>
             
             <div id="sec-datos" class="form-section active">
                 <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
                 <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
                 <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
-                <div class="field"><label>CURP:</label><input type="text" id="in-curp"></div>
             </div>
 
             <div id="sec-cedula" class="form-section">
-                <div class="field"><label>Número de cédula*:</label><input type="text" id="in-folio"></div>
+                <div class="field"><label>Número de Cédula*:</label><input type="text" id="in-folio"></div>
             </div>
 
             <div class="btn-area">
-                <button class="btn btn-buscar" onclick="buscarProfesionista()">BUSCAR</button>
+                <button class="btn btn-buscar" onclick="buscar()">BUSCAR</button>
                 <button class="btn btn-limpiar" onclick="location.reload()">LIMPIAR</button>
             </div>
         </div>
 
         <div id="results-container">
-            <div class="res-title">Resultados</div>
-            <div class="table-responsive">
-                <table class="rnp-table">
-                    <thead>
-                        <tr>
-                            <th>Cédula</th><th>Nombre</th><th>Apellidos</th><th>Institución</th><th>Profesión</th><th>Año</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpoTabla"></tbody>
-                </table>
-            </div>
-            <p style="font-size: 10px; color: #999; margin-top: 10px;">* Deslice hacia la derecha para ver más columnas.</p>
+            <table class="rnp-table">
+                <thead>
+                    <tr><th>Cédula</th><th>Nombre Completo</th><th>Institución</th></tr>
+                </thead>
+                <tbody id="cuerpoTabla"></tbody>
+            </table>
         </div>
     </main>
 
     <footer>
-        <div class="f-grid">
-            <div class="f-col"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 150px;"></div>
-            <div class="f-col"><h4>Enlaces</h4><a href="#">Participa</a><a href="#">Transparencia</a></div>
-            <div class="f-col"><h4>Contacto</h4><a href="#">Ayuda</a><a href="#">Quejas</a></div>
-        </div>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 150px; margin-bottom: 10px;">
+        <p style="font-size: 12px; opacity: 0.7;">© 2026 Gobierno de México</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            document.getElementById('menuOverlay').classList.toggle('active');
+            const overlay = document.getElementById('menuOverlay');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
         }
 
         function switchTab(tipo) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
-            if(tipo === 'datos') {
-                document.getElementById('tab-datos').classList.add('active');
-                document.getElementById('sec-datos').classList.add('active');
-            } else {
-                document.getElementById('tab-cedula').classList.add('active');
-                document.getElementById('sec-cedula').classList.add('active');
-            }
+            document.getElementById('tab-' + tipo).classList.add('active');
+            document.getElementById('sec-' + tipo).classList.add('active');
         }
 
-        function buscarProfesionista() {
+        function buscar() {
             const tabla = document.getElementById('cuerpoTabla');
             const container = document.getElementById('results-container');
-            // Datos de prueba corregidos para visualización móvil
-            const registros = [{ id: "10994202", nom: "JONATHAN", ap: "PEREZ AYALA", inst: "UVEG", prof: "ING. GESTIÓN TI", anio: "2018" }];
-            
-            tabla.innerHTML = registros.map(r => `
-                <tr>
-                    <td><b>${r.id}</b></td><td>${r.nom}</td><td>${r.ap}</td><td>${r.inst}</td><td>${r.prof}</td><td>${r.anio}</td>
-                </tr>
-            `).join('');
-            
+            tabla.innerHTML = `<tr><td>10994202</td><td>JONATHAN FRANCISCO PEREZ AYALA</td><td>UVEG</td></tr>`;
             container.style.display = 'block';
-            window.scrollTo({ top: container.offsetTop - 50, behavior: 'smooth' });
         }
     </script>
 </body>
