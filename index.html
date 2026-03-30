@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <style>
         :root {
-            --gob-vino: #621132;
-            --gob-borgoña: #480721;
+            --gob-vino: #621132;    /* Barra Superior */
+            --gob-borgoña: #480721; /* Barra Inferior */
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
         }
@@ -17,72 +17,70 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; }
 
-        header { width: 100%; position: sticky; top: 0; z-index: 1000; }
+        header { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 
-        /* BARRA 1: VINO */
+        /* NAV 1: VINO */
         .nav-superior {
             background-color: var(--gob-vino);
-            padding: 20px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo-gob-mex { height: 45px; }
-        .links-pc-sup { display: flex; gap: 25px; }
-        .links-pc-sup a { color: white; text-decoration: none; font-size: 15px; }
+        .logo-gob-mex { height: 40px; }
+        .links-pc-sup { display: flex; gap: 20px; }
+        .links-pc-sup a { color: white; text-decoration: none; font-size: 14px; }
 
-        /* BARRA 2: BORGOÑA */
+        /* NAV 2: BORGOÑA */
         .nav-inferior {
             background-color: var(--gob-borgoña);
             padding: 0 8%;
-            min-height: 55px;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .links-pc-inf { display: flex; gap: 30px; list-style: none; }
-        .links-pc-inf a { color: white; text-decoration: none; font-size: 14px; padding: 15px 0; display: block; }
+        .links-pc-inf { display: flex; gap: 25px; list-style: none; }
+        .links-pc-inf a { color: white; text-decoration: none; font-size: 13px; padding: 15px 0; }
 
         /* BOTONES MÓVIL */
-        .btn-ham { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+        .btn-ham { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
         .mobile-menu { display: none; flex-direction: column; width: 100%; background-color: var(--gob-borgoña); }
         .mobile-menu a { color: white; padding: 15px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
 
-        /* PORTADA AJUSTADA */
-        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); overflow: hidden; }
-        .hero-section img { width: 100%; height: auto; display: block; object-fit: cover; }
+        /* PORTADA */
+        .hero-section { width: 100%; background-color: #fff; border-bottom: 8px solid var(--gob-oro); overflow: hidden; }
+        .hero-section img { width: 100%; height: auto; max-height: 450px; object-fit: contain; display: block; margin: 0 auto; }
 
         /* MAIN */
-        main { max-width: 1100px; margin: 0 auto; padding: 40px 5%; }
+        main { max-width: 1100px; margin: 0 auto; padding: 30px 5%; }
         .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 20px 0; }
 
-        /* FOOTER CON DESPLEGABLES */
-        footer { background-color: var(--gob-vino); color: white; padding: 40px 8%; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        /* FOOTER */
+        footer { background-color: var(--gob-vino); color: white; padding: 40px 8% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
-        .footer-col h4 { 
-            font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); 
-            padding-bottom: 5px; display: block; width: 100%;
-        }
-        .footer-col .content { display: block; }
-        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.9; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 5px; display: block; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.8; }
 
-        .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.5); text-align: center; padding: 12px; font-size: 11px; }
+        /* ESTILO ESPECÍFICO PARA EL DESPLEGABLE "¿QUÉ ES GOB?" */
+        .footer-col.expandable h4 { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .footer-col.expandable h4::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: 0.3s; }
+        .footer-col.expandable.active h4::after { transform: rotate(180deg); }
+        .footer-col.expandable .content { display: block; }
 
-        /* MEDIA QUERIES */
+        .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.4); text-align: center; padding: 12px; font-size: 11px; }
+
+        /* RESPONSIVO */
         @media (max-width: 992px) {
             .links-pc-sup, .links-pc-inf { display: none; }
             .btn-ham { display: block; }
-            
-            /* Portada más ancha y larga hacia abajo en móvil */
-            .hero-section img { min-height: 450px; object-position: center; }
+            .nav-superior { padding: 10px 5%; }
+            .hero-section img { max-height: 280px; }
 
-            /* Footer Acordeón en móvil */
-            .footer-col h4 { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-            .footer-col h4::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
-            .footer-col.active h4::after { content: '\f106'; }
-            .footer-col .content { display: none; padding-top: 10px; }
-            .footer-col.active .content { display: block; }
+            /* Solo la columna de "¿Qué es gob?" se oculta en móvil inicialmente */
+            .footer-col.expandable .content { display: none; padding-top: 10px; }
+            .footer-col.expandable.active .content { display: block; }
         }
     </style>
 </head>
@@ -108,7 +106,6 @@
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Cédulas Profesionales</a></li>
             <li><a href="#">Especialistas</a></li>
-            <li><a href="#">Cédulas Estatales</a></li>
             <li><a href="#">Datos Abiertos</a></li>
             <li><a href="#">Contacto</a></li>
         </ul>
@@ -117,53 +114,53 @@
         <a href="#">Inicio</a>
         <a href="#">Cédulas Profesionales</a>
         <a href="#">Especialistas</a>
-        <a href="#">Cédulas Estatales</a>
         <a href="#">Datos Abiertos</a>
         <a href="#">Contacto</a>
     </div>
 </header>
 
 <div class="hero-section">
-    <img src="logo.png" alt="Portada">
+    <img src="logo.png" alt="RNP">
 </div>
 
 <main>
     <div style="font-size: 14px; color: #666;"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas</div>
-    <h2 style="margin-top: 10px;">Realiza tu búsqueda de forma segura y confiable.</h2>
+    <h2 style="margin-top: 15px; font-size: 26px;">Realiza tu búsqueda de forma segura y confiable.</h2>
     <div class="oro-line"></div>
-    <p style="margin-bottom: 20px; line-height: 1.6;">Al ingresar los datos, podrás consultar si la persona cuenta con cédula profesional vigente.</p>
-    
-    </main>
+    <p style="line-height: 1.6; margin-bottom: 20px;">Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.</p>
+</main>
 
 <footer>
     <div class="footer-grid">
         <div class="footer-col" style="border:none;">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 180px;">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 160px; margin-bottom: 15px;">
         </div>
         
-        <div class="footer-col" onclick="toggleFooter(this)">
+        <div class="footer-col">
             <h4>Enlaces</h4>
             <div class="content">
-                <a href="#">Datos abiertos de la SABG</a>
+                <a href="#">Datos abiertos</a>
                 <a href="#">Marco Jurídico</a>
-                <a href="#">Plataforma de Transparencia</a>
+                <a href="#">Transparencia</a>
                 <a href="#">Alerta</a>
             </div>
         </div>
 
-        <div class="footer-col" onclick="toggleFooter(this)">
+        <div class="footer-col expandable" onclick="toggleGob(this)">
             <h4>¿Qué es gob.mx?</h4>
             <div class="content">
-                <p style="font-size: 13px; margin-bottom: 10px;">Es el portal único de trámites e información del Gobierno.</p>
-                <a href="#">Declaración de accesibilidad</a>
-                <a href="#">Aviso de Privacidad</a>
-                <a href="#">Términos y Condiciones</a>
+                <p style="font-size: 12px; margin-bottom: 10px; opacity: 0.8; line-height: 1.4;">
+                    Es el portal único de trámites, información y participación ciudadana. 
+                </p>
+                <a href="#">Accesibilidad</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
             </div>
         </div>
 
         <div class="footer-col">
             <h4>Síguenos en</h4>
-            <div class="content" style="display:block;">
+            <div class="content">
                 <div style="font-size: 20px; display: flex; gap: 15px;">
                     <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i>
                 </div>
@@ -180,7 +177,7 @@
         m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
     }
 
-    function toggleFooter(element) {
+    function toggleGob(element) {
         if (window.innerWidth <= 992) {
             element.classList.toggle('active');
         }
