@@ -1,36 +1,26 @@
 <!doctype html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8">
-  <title>Registro Nacional de Profesionistas</title>
+  <title>Búsqueda de Cédulas Profesionales | Registro Nacional de Profesionistas</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   
   <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   
-  <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-
   <style>
-    /* ======================================================
-       1. BLOQUEO DE DUPLICADOS (OCULTAR MENÚS AUTOMÁTICOS)
-       ====================================================== */
-    /* Ocultamos cualquier header, nav o footer que traiga el framework por defecto */
-    header, 
-    nav.navbar, 
-    .navbar-default, 
-    .main-footer, 
-    footer.main-footer,
-    #cabecera,
-    #pie { 
-        display: none !important; 
+    /* 1. ELIMINAR TODO RASTRO DEL PRIMER HTML */
+    header, footer, .navbar, .main-footer, #cabecera, #pie, .gobmx-footer {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        height: 0 !important;
     }
 
-    /* ======================================================
-       2. ESTILOS DEL SEGUNDO HTML (PERSONALIZADO)
-       ====================================================== */
+    /* 2. ESTILOS COMPLETOS DEL SEGUNDO HTML */
     :root {
       --gob-guinda: #621132;
       --gob-oro: #9D843E;
@@ -41,31 +31,24 @@
       --gob-texto-negro: #4D4D4D;
     }
 
-    body { font-family: 'Montserrat', sans-serif; background-color: #fff; margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; overflow-x: hidden; }
 
-    /* Nav Única (Clase personalizada para que NO se oculte) */
-    .mi-nav-superior { 
-        display: flex !important; 
-        background-color: var(--gob-verde-oscuro); 
-        padding: 12px 10%; 
-        justify-content: space-between; 
-        align-items: center; 
-    }
-    .mi-nav-superior img { height: 28px; }
+    /* Barra Superior Segundo HTML */
+    .nav-gob-final { background-color: var(--gob-verde-oscuro); padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 9999; }
+    .nav-gob-final img { height: 28px; }
 
-    /* Header con logo.png */
-    .header-image-container { width: 100%; border-bottom: 8px solid var(--gob-oro); }
-    .header-image-container img { width: 100%; display: block; }
+    /* Header con tu logo.png */
+    .header-branding { width: 100%; border-bottom: 8px solid var(--gob-oro); }
+    .header-branding img { width: 100%; display: block; }
 
     main { max-width: 1100px; margin: 0 auto; padding: 20px; }
     
-    /* Breadcrumb y Contenido */
     .breadcrumb { padding: 20px 0 30px; font-size: 15px; color: #666; font-weight: 500; }
-    .intro-container h2 { font-size: 34px; font-weight: 700; color: var(--gob-texto-negro); margin-bottom: 10px; }
     .linea-oro { width: 50px; height: 5px; background: var(--gob-oro); margin-bottom: 25px; }
 
-    /* Card de Búsqueda */
-    .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden; }
+    /* Card de Búsqueda y Casillas */
+    .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden; background: #fff; }
     .tabs-menu { display: flex; background: var(--gob-gris-fondo); border-bottom: 1px solid var(--gob-gris-borde); }
     .tab-btn { padding: 15px 35px; font-size: 15px; font-weight: 500; color: #666; cursor: pointer; }
     .tab-btn.active { background: var(--gob-guinda); color: #fff; font-weight: 600; }
@@ -75,21 +58,15 @@
     
     .field { display: flex; flex-direction: column; }
     .field label { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
-    .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; }
+    .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; font-family: 'Montserrat'; font-size: 14px; }
 
     .btn-area { display: flex; justify-content: flex-end; gap: 15px; padding: 0 40px 40px; }
-    .btn { padding: 12px 40px; border-radius: 4px; font-weight: 600; cursor: pointer; }
-    .btn-buscar { border: 2px solid var(--gob-guinda); color: var(--gob-guinda); background: #fff; }
-    .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); background: #fff; }
+    .btn { padding: 12px 40px; border-radius: 4px; font-weight: 600; cursor: pointer; border: 2px solid transparent; }
+    .btn-buscar { border-color: var(--gob-guinda); color: var(--gob-guinda); background: #fff; }
+    .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
-    /* Footer Único (Clase personalizada) */
-    .mi-footer-completo { 
-        display: block !important; 
-        background: var(--gob-guinda); 
-        color: #fff; 
-        padding: 60px 10% 30px; 
-        margin-top: 80px; 
-    }
+    /* PIE DE PÁGINA SEGUNDO HTML */
+    .footer-final { background: var(--gob-guinda); color: #fff; padding: 60px 10% 30px; margin-top: 80px; position: relative; z-index: 9999; }
     .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; }
     .f-col h4 { font-size: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
     .f-col a { color: #fff; text-decoration: none; display: block; font-size: 13px; margin-bottom: 12px; opacity: 0.9; }
@@ -98,14 +75,12 @@
 
 <body>
 
-  <nav class="mi-nav-superior">
+  <nav class="nav-gob-final">
     <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-    <div style="color: white; font-size: 20px; cursor: pointer;">
-        <i class="fas fa-bars"></i>
-    </div>
+    <div style="color: white; font-size: 20px;"><i class="fas fa-bars"></i></div>
   </nav>
 
-  <div class="header-image-container">
+  <div class="header-branding">
     <img src="logo.png" alt="Registro Nacional de Profesionistas">
   </div>
 
@@ -114,9 +89,11 @@
         <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > <b>Búsqueda de Cédulas Profesionales</b></div>
 
         <section class="intro-container">
-            <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
+            <h2 style="font-size: 34px; font-weight: 700; color: var(--gob-texto-negro); margin-bottom: 10px;">Realiza tu búsqueda de forma segura y confiable.</h2>
             <div class="linea-oro"></div>
-            <p style="color: var(--gob-texto-p); line-height: 1.6;">Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
+            <p style="font-size: 16px; color: var(--gob-texto-p); line-height: 1.6; margin-bottom: 25px; text-align: justify;">
+                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.
+            </p>
         </section>
 
         <div class="search-card">
@@ -146,36 +123,30 @@
     </main>
   </app-root>
 
-  <footer class="mi-footer-completo">
+  <footer class="footer-final">
     <div class="f-grid">
         <div class="f-col">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 190px;">
         </div>
         <div class="f-col">
             <h4>Enlaces</h4>
-            <a href="#">Participa</a>
-            <a href="#">Marco Jurídico</a>
-            <a href="#">Transparencia</a>
+            <a href="#">Participa</a><a href="#">Marco Jurídico</a><a href="#">Transparencia</a>
         </div>
         <div class="f-col">
             <h4>¿Qué es gob.mx?</h4>
-            <a href="#">Datos abiertos</a>
-            <a href="#">Declaración de accesibilidad</a>
+            <a href="#">Datos abiertos</a><a href="#">Declaración de accesibilidad</a>
         </div>
         <div class="f-col">
             <h4>Síguenos en</h4>
-            <div style="font-size: 20px; display: flex; gap: 15px;">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-twitter"></i>
-            </div>
+            <div style="font-size: 20px; display: flex; gap: 15px;"><i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i></div>
         </div>
     </div>
   </footer>
 
-  <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   
   <script>
+    // Lógica de navegación del Segundo HTML
     function switchTab(tipo) {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
@@ -186,9 +157,6 @@
             document.getElementById('tab-cedula').classList.add('active');
             document.getElementById('sec-cedula').classList.add('active');
         }
-    }
-    function buscarProfesionista() {
-        alert("Búsqueda iniciada...");
     }
   </script>
 
