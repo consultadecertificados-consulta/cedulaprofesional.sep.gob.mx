@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Búsqueda de Cédulas Profesionales | Registro Nacional de Profesionistas</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,21 +11,19 @@
     <style>
         :root {
             --gob-guinda: #621132;
-            --gob-borgona: #480721; /* Tono Borgoña solicitado */
+            --gob-borgona: #480721; /* Color Borgoña solicitado */
             --gob-oro: #9D843E;
             --gob-gris-fondo: #F2F2F2;
+            --gob-gris-borde: #D9D9D9;
             --gob-texto-p: #6F7271;
+            --gob-texto-negro: #4D4D4D;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #fff; 
-            overflow-x: hidden;
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fff; overflow-x: hidden; }
 
-        /* Cabeceras fijas */
-        .header-fixed-group {
+        /* CABECERAS FIJAS */
+        .header-fixed-container {
             position: fixed;
             top: 0;
             width: 100%;
@@ -42,9 +40,8 @@
         
         .logo-gob-link img { height: 40px; filter: brightness(0) invert(1); }
 
-        /* BARRA SEGUNDA - COLOR BORGOÑA */
         .nav-gob-sec {
-            background-color: var(--gob-borgona);
+            background-color: var(--gob-borgona); /* BARRA BORGOÑA */
             padding: 12px 5%;
             display: flex;
             align-items: center;
@@ -52,7 +49,7 @@
 
         .menu-ham-btn {
             color: white;
-            font-size: 26px;
+            font-size: 24px;
             cursor: pointer;
             background: none;
             border: none;
@@ -60,127 +57,102 @@
 
         /* MENÚS DESPLEGABLES */
         .gob-dropdown-menu {
-            background-color: var(--gob-guinda);
+            background-color: var(--gob-borgona);
             width: 100%;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s ease-out;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: fixed;
-            top: 64px;
-            z-index: 1001;
-        }
-        
-        /* Segundo menú en Borgoña */
-        .gob-dropdown-menu-2 {
-            background-color: var(--gob-borgona);
-            top: 110px;
+            top: 110px; /* Debajo de las barras */
             z-index: 999;
         }
 
-        .gob-dropdown-menu.active {
-            max-height: 550px;
-            padding: 20px 0;
-        }
+        .gob-dropdown-menu.active { max-height: 500px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        .menu-item {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 300;
-            margin: 12px 0;
-            text-align: center;
-            width: 90%;
-        }
+        .menu-item { color: white; text-decoration: none; font-size: 18px; margin: 12px 0; font-weight: 300; width: 90%; text-align: center; }
 
-        /* EFECTO PARALLAX: LA PORTADA SE UNDE */
-        .parallax-container {
-            position: fixed; 
-            top: 110px; 
+        /* PORTADA FIJA (EFECTO QUE SE UNDE) */
+        .parallax-hero {
+            position: fixed;
+            top: 110px;
             left: 0;
             width: 100%;
-            height: 420px; 
+            height: 450px;
             z-index: 1;
             border-bottom: 8px solid var(--gob-oro);
         }
 
-        .parallax-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .parallax-hero img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* CONTENIDO QUE SE DESLIZA POR ENCIMA */
-        .scroll-content {
+        /* CONTENIDO QUE SE DESLIZA HACIA ARRIBA */
+        .main-scroll-wrapper {
             position: relative;
-            z-index: 2; 
-            margin-top: 530px; /* Altura de navs + portada */
-            background-color: white; 
+            z-index: 2;
+            margin-top: 560px; /* Espacio para que se vea la portada al inicio */
+            background-color: white;
             box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
-            min-height: 100vh;
         }
 
-        main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        main { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         
-        .breadcrumb { padding: 20px 0; font-size: 18px; color: #666; display: flex; align-items: center; gap: 8px; }
+        .breadcrumb { padding-bottom: 20px; font-size: 16px; color: #666; display: flex; align-items: center; gap: 8px; }
         .intro-container h2 { font-size: 32px; font-weight: 700; color: #4D4D4D; margin-bottom: 15px; }
         .linea-oro { width: 60px; height: 6px; background: var(--gob-oro); margin-bottom: 30px; }
 
-        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
+        /* BUSCADOR (CELDAS ORIGINALES) */
+        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; overflow: hidden; margin-top: 20px; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); }
         .tab-btn { flex: 1; padding: 18px; font-size: 14px; text-align: center; cursor: pointer; font-weight: 700; color: #666; }
         .tab-btn.active { background: var(--gob-guinda); color: #fff; }
 
-        .form-section { padding: 30px; display: none; }
-        .form-section.active { display: block; }
-        .field { margin-bottom: 20px; }
-        .field label { font-size: 14px; font-weight: 700; display: block; margin-bottom: 8px; }
-        .field input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
+        .form-section { padding: 30px; display: none; gap: 20px; }
+        .form-section.active { display: flex; flex-direction: column; }
+        @media (min-width: 768px) { .form-section.active { display: grid; grid-template-columns: repeat(3, 1fr); } }
+
+        .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; display: block; }
+        .field input { width: 100%; padding: 14px; border: 1px solid #CCC; border-radius: 4px; }
 
         .btn-area { display: flex; justify-content: flex-end; gap: 10px; padding: 0 30px 30px; }
-        .btn { padding: 12px 35px; border-radius: 4px; font-weight: 700; cursor: pointer; border: 2px solid var(--gob-guinda); }
+        .btn { padding: 14px 40px; border-radius: 4px; font-weight: 700; border: 2px solid var(--gob-guinda); cursor: pointer; }
         .btn-buscar { background: #fff; color: var(--gob-guinda); }
+
+        /* FOOTER */
+        footer { background: var(--gob-guinda); color: #fff; padding: 60px 10%; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .f-col h4 { font-size: 15px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; }
+        .f-col a { color: #fff; text-decoration: none; display: block; margin-bottom: 10px; font-size: 13px; font-weight: 300; }
     </style>
 </head>
 <body>
 
-    <div class="header-fixed-group">
+    <div class="header-fixed-container">
         <nav class="nav-gob">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-            <button class="menu-ham-btn" onclick="toggleMenu('dropdownMenu1')">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="menu-ham-btn"><i class="fas fa-bars"></i></div>
         </nav>
 
         <nav class="nav-gob-sec">
-            <button class="menu-ham-btn" onclick="toggleMenu('dropdownMenu2')">
+            <button class="menu-ham-btn" onclick="toggleBorgoñaMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
     </div>
 
-    <div class="gob-dropdown-menu" id="dropdownMenu1">
-        <a href="#" class="menu-item">Trámites</a>
-        <a href="#" class="menu-item">Gobierno</a>
-        <i class="fas fa-search" style="color:white; font-size:20px; margin-top:10px;"></i>
-    </div>
-
-    <div class="gob-dropdown-menu gob-dropdown-menu-2" id="dropdownMenu2">
+    <div class="gob-dropdown-menu" id="borgoñaMenu">
         <a href="#" class="menu-item">Inicio <i class="fas fa-caret-down"></i></a>
         <a href="#" class="menu-item">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
-        <a href="#" class="menu-item">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
-        <a href="#" class="menu-item">Cédulas Estatales</a>
-        <a href="#" class="menu-item">Datos Abiertos <i class="fas fa-caret-down"></i></a>
+        <a href="#" class="menu-item">Especialistas</a>
         <a href="#" class="menu-item">Contacto</a>
     </div>
 
-    <div class="parallax-container">
-        <img src="banner.png" alt="Registro Nacional de Profesionistas">
+    <div class="parallax-hero">
+        <img src="logo.png" alt="Registro Nacional de Profesionistas">
     </div>
 
-    <div class="scroll-content">
+    <div class="main-scroll-wrapper">
         <main>
             <div class="breadcrumb">
                 <i class="fas fa-home"></i> Inicio <b> > Búsqueda de Cédulas Profesionales</b>
@@ -189,7 +161,7 @@
             <section class="intro-container">
                 <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
                 <div class="linea-oro"></div>
-                <p class="texto-principal" style="color: var(--gob-texto-p); line-height: 1.6;">
+                <p class="texto-principal" style="color: #6F7271; line-height: 1.6;">
                     Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.
                 </p>
             </section>
@@ -203,10 +175,11 @@
                 <div id="sec-datos" class="form-section active">
                     <div class="field"><label>Nombre(s)*:</label><input type="text"></div>
                     <div class="field"><label>Primer Apellido*:</label><input type="text"></div>
+                    <div class="field"><label>Segundo Apellido:</label><input type="text"></div>
                 </div>
 
                 <div id="sec-cedula" class="form-section">
-                    <div class="field"><label>Número de Cédula*:</label><input type="text"></div>
+                    <div class="field"><label>Número de Cédula*:</label><input type="text" placeholder="Ej. 10994202"></div>
                 </div>
 
                 <div class="btn-area">
@@ -214,14 +187,26 @@
                 </div>
             </div>
         </main>
+
+        <footer>
+            <div class="f-grid">
+                <div class="f-col"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="200" style="filter: brightness(0) invert(1);"></div>
+                <div class="f-col">
+                    <h4>Enlaces</h4>
+                    <a href="#">Participa</a>
+                    <a href="#">Transparencia</a>
+                </div>
+                <div class="f-col">
+                    <h4>Contacto</h4>
+                    <a href="#">Mesa de ayuda</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
-        function toggleMenu(id) {
-            const menu = document.getElementById(id);
-            const active = menu.classList.contains('active');
-            document.querySelectorAll('.gob-dropdown-menu').forEach(m => m.classList.remove('active'));
-            if (!active) menu.classList.add('active');
+        function toggleBorgoñaMenu() {
+            document.getElementById('borgoñaMenu').classList.toggle('active');
         }
 
         function switchTab(tipo) {
