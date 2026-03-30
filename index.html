@@ -24,7 +24,7 @@
         /* BARRA SUPERIOR */
         .nav-gob { 
             background-color: var(--gob-guinda); 
-            padding: 10px 5%; 
+            padding: 12px 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -32,92 +32,98 @@
             z-index: 1001;
         }
         
-        /* Solo el Escudo Nacional como en la foto */
+        /* Logo con texto en BLANCO */
+        .logo-gob-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 10px;
+        }
         .logo-gob-link img {
             height: 45px;
-            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(10deg);
+            filter: brightness(0) invert(1); /* Escudo Blanco */
         }
+        .logo-text-stack {
+            display: flex;
+            flex-direction: column;
+            color: white; /* Texto Blanco */
+            line-height: 1.1;
+        }
+        .logo-text-stack .gob-txt { font-size: 15px; font-weight: 400; }
+        .logo-text-stack .mex-txt { font-size: 19px; font-weight: 700; }
 
-        /* Botón hamburguesa (Solo visible en móvil) */
+        /* NAVEGACIÓN PC (Alineada a la derecha) */
+        .gob-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .menu-item {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        .search-icon-menu { color: white; font-size: 17px; cursor: pointer; }
+
+        /* Botón hamburguesa (Solo móvil) */
         .menu-ham-btn {
             color: white;
             font-size: 24px;
             cursor: pointer;
             background: none;
             border: none;
-            display: none; /* Se oculta en PC */
+            display: none;
         }
 
-        /* MENÚ DE NAVEGACIÓN */
-        .gob-dropdown-menu {
-            background-color: var(--gob-guinda);
-            width: 100%;
-            display: flex;
-            flex-direction: row; /* Horizontal en PC */
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            padding: 15px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .menu-item {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        .search-icon-menu { color: white; font-size: 18px; cursor: pointer; }
-
-        /* PORTADA / BANNER (Se mantiene intacta) */
-        .header-image-container { width: 100%; border-bottom: 8px solid var(--gob-oro); }
-        .header-image-container img { width: 100%; height: auto; display: block; }
-
-        /* DISEÑO RESPONSIVO PARA MÓVIL */
-        @media (max-width: 768px) {
-            .menu-ham-btn { display: block; } /* Aparece el botón */
+        /* DISEÑO MÓVIL */
+        @media (max-width: 992px) {
+            .menu-ham-btn { display: block; }
             
-            .gob-dropdown-menu {
-                flex-direction: column; /* Vertical en móvil */
+            .gob-nav-container {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--gob-guinda);
+                flex-direction: column;
+                gap: 0;
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease-out;
                 padding: 0;
-                border: none;
             }
 
-            .gob-dropdown-menu.active {
+            .gob-nav-container.active {
                 max-height: 300px;
                 padding-bottom: 30px;
+                border-top: 1px solid rgba(255,255,255,0.1);
             }
 
-            .menu-item { margin: 15px 0; font-size: 22px; }
+            .menu-item { margin: 20px 0; font-size: 22px; }
         }
 
-        /* CONTENIDO PRINCIPAL */
+        /* PORTADA / BANNER */
+        .header-image-container { width: 100%; border-bottom: 8px solid var(--gob-oro); }
+        .header-image-container img { width: 100%; height: auto; display: block; }
+
+        /* CONTENIDO */
         main { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        
         .breadcrumb { padding: 25px 0; font-size: 16px; color: #666; display: flex; align-items: center; gap: 8px; }
-        .breadcrumb b { color: #555; }
-
-        .intro-container h2 { font-size: 30px; font-weight: 700; color: #4D4D4D; margin-bottom: 12px; }
+        .intro-container h2 { font-size: 28px; font-weight: 700; color: #4D4D4D; margin-bottom: 12px; }
         .linea-oro { width: 50px; height: 5px; background: var(--gob-oro); margin-bottom: 25px; }
-        .texto-principal { font-size: 16px; color: var(--gob-texto-p); line-height: 1.6; text-align: justify; }
 
-        /* CARD DE BÚSQUEDA */
-        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; margin-top: 20px; overflow: hidden; }
+        /* FORMULARIO */
+        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; margin-top: 10px; overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); }
         .tab-btn { flex: 1; padding: 16px; font-size: 13px; text-align: center; cursor: pointer; font-weight: 700; color: #666; }
         .tab-btn.active { background: var(--gob-guinda); color: #fff; }
-
         .form-section { padding: 25px; display: none; gap: 20px; }
         .form-section.active { display: flex; flex-direction: column; }
         @media (min-width: 768px) { .form-section.active { display: grid; grid-template-columns: repeat(3, 1fr); } }
-
-        .field label { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-        .field input { padding: 12px; border: 1px solid #CCC; border-radius: 4px; }
+        .field label { font-size: 14px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .field input { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 4px; }
 
         .btn-area { display: flex; flex-direction: column; gap: 10px; padding: 0 25px 25px; }
         @media (min-width: 768px) { .btn-area { flex-direction: row; justify-content: flex-end; } }
@@ -125,12 +131,12 @@
         .btn-buscar { background: #fff; color: var(--gob-guinda); }
         .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
-        /* FOOTER OFICIAL CON LINKS */
+        /* FOOTER */
         footer { background: var(--gob-guinda); color: #fff; padding: 50px 10% 30px; margin-top: 50px; }
         .f-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         @media (min-width: 768px) { .f-grid { grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; } }
         .f-col h4 { font-size: 14px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 12px; margin-bottom: 10px; font-weight: 300; opacity: 0.9; }
+        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 12px; margin-bottom: 10px; opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -138,19 +144,24 @@
     <nav class="nav-gob">
         <a href="https://www.gob.mx/" class="logo-gob-link">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Escudo Nacional">
+            <div class="logo-text-stack">
+                <span class="gob-txt">Gobierno de</span>
+                <span class="mex-txt">México</span>
+            </div>
         </a>
+
+        <div class="gob-nav-container" id="navMenu">
+            <a href="https://www.gob.mx/tramites" class="menu-item">Trámites</a>
+            <a href="https://www.gob.mx/gobierno" class="menu-item">Gobierno</a>
+            <div class="search-icon-menu">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
         <button class="menu-ham-btn" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
-
-    <div class="gob-dropdown-menu" id="dropdownMenu">
-        <a href="https://www.gob.mx/tramites" class="menu-item">Trámites</a>
-        <a href="https://www.gob.mx/gobierno" class="menu-item">Gobierno</a>
-        <div class="search-icon-menu">
-            <i class="fas fa-search"></i>
-        </div>
-    </div>
 
     <div class="header-image-container">
         <img src="logo.png" alt="Registro Nacional de Profesionistas">
@@ -165,7 +176,7 @@
             <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
             <div class="linea-oro"></div>
             <p class="texto-principal">
-                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
+                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.
             </p>
         </section>
 
@@ -176,17 +187,17 @@
             </div>
             
             <div id="sec-datos" class="form-section active">
-                <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
-                <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
-                <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
+                <div class="field"><label>Nombre(s)*:</label><input type="text"></div>
+                <div class="field"><label>Primer Apellido*:</label><input type="text"></div>
+                <div class="field"><label>Segundo Apellido:</label><input type="text"></div>
             </div>
 
             <div id="sec-cedula" class="form-section">
-                <div class="field"><label>Número de Cédula*:</label><input type="text" id="in-folio"></div>
+                <div class="field"><label>Número de Cédula*:</label><input type="text"></div>
             </div>
 
             <div class="btn-area">
-                <button class="btn btn-buscar" onclick="alert('Buscando...')">BUSCAR</button>
+                <button class="btn btn-buscar">BUSCAR</button>
                 <button class="btn btn-limpiar" onclick="location.reload()">LIMPIAR</button>
             </div>
         </div>
@@ -199,28 +210,25 @@
             </div>
             <div class="f-col">
                 <h4>Enlaces</h4>
-                <a href="https://www.gob.mx/participa">Participa</a>
-                <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-                <a href="http://www.ordenjuridico.gob.mx/">Marco Jurídico</a>
-                <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+                <a href="#">Participa</a>
+                <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Marco Jurídico</a>
             </div>
             <div class="f-col">
                 <h4>¿Qué es gob.mx?</h4>
-                <a href="https://www.gob.mx/que-es-gobmx">Es el portal único de trámites e información.</a>
-                <a href="https://www.gob.mx/temas">Temas</a>
+                <a href="#">Portal único de trámites e información.</a>
+                <a href="#">Temas</a>
             </div>
             <div class="f-col">
                 <h4>Contacto</h4>
-                <a href="mailto:mesadeayuda@gobmx.info">Mesa de ayuda</a>
-                <a href="https://www.gob.mx/tramites/denuncia">Denuncia</a>
+                <a href="#">Mesa de ayuda</a>
             </div>
         </div>
     </footer>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('dropdownMenu');
-            menu.classList.toggle('active');
+            document.getElementById('navMenu').classList.toggle('active');
         }
 
         function switchTab(tipo) {
