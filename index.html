@@ -19,48 +19,74 @@
 
         header { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 
-        /* BARRA 1: VINO (MÁS ANCHA) */
+        /* NAV 1: VINO (MÁS ANCHA) */
         .nav-superior {
             background-color: var(--gob-vino);
-            padding: 20px 8%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo-gob-mex { height: 45px; }
+        .logo-gob-mex { height: 40px; order: 2; } /* Logo al centro/derecha en móvil */
         
-        /* BARRA 2: BORGOÑA */
+        /* NAV 2: BORGOÑA */
         .nav-inferior {
             background-color: var(--gob-borgoña);
-            padding: 0 8%;
-            min-height: 55px;
+            padding: 0 5%;
+            min-height: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
-        /* MENÚS PC (DESPLEGADOS) */
-        .links-pc-sup { display: flex; gap: 25px; }
-        .links-pc-sup a { color: white; text-decoration: none; font-size: 15px; }
-        .links-pc-inf { display: flex; gap: 30px; list-style: none; }
+        /* BOTONES HAMBURGUESA - PEGADOS A LA IZQUIERDA */
+        .btn-ham {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+            padding: 10px 0;
+            order: 1; /* Forzar posición a la izquierda */
+        }
+
+        /* MENÚS PC */
+        .links-pc-sup { display: flex; gap: 25px; order: 3; }
+        .links-pc-sup a { color: white; text-decoration: none; font-size: 14px; }
+        .links-pc-inf { display: flex; gap: 30px; list-style: none; margin: 0 auto; }
         .links-pc-inf a { color: white; text-decoration: none; font-size: 14px; padding: 15px 0; display: block; }
 
-        /* BOTONES HAMBURGUESA (MÓVIL) */
-        .btn-ham { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
-        .mobile-menu { display: none; flex-direction: column; width: 100%; background-color: var(--gob-borgoña); }
-        .mobile-menu a { color: white; padding: 15px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        /* MENÚS DESPLEGABLES MÓVIL (SIN ESCALONAR) */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 100%; /* Justo debajo de su respectiva barra */
+            background-color: inherit; /* Toma el color de la barra padre */
+            z-index: 999;
+        }
+        .mobile-menu a {
+            color: white;
+            padding: 18px 5%;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 15px;
+            width: 100%;
+            display: block;
+        }
 
         /* PORTADA */
-        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); overflow: hidden; background: #fff; }
+        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); background: #fff; line-height: 0; }
         .hero-section img { width: 100%; height: auto; max-height: 450px; object-fit: contain; display: block; margin: 0 auto; }
 
         /* FOOTER */
         footer { background-color: var(--gob-vino); color: white; padding: 40px 8% 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 5px; display: block; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 5px; }
         .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.8; }
 
-        /* SÓLO "¿QUÉ ES GOB?" ES DESPLEGABLE EN MÓVIL */
+        /* DESPLEGABLE "¿QUÉ ES GOB?" */
         .footer-col.expandable h4 { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         .footer-col.expandable .content { display: block; }
 
@@ -69,34 +95,34 @@
         @media (max-width: 992px) {
             .links-pc-sup, .links-pc-inf { display: none; }
             .btn-ham { display: block; }
-            .nav-superior { padding: 15px 5%; }
+            .nav-superior { justify-content: flex-start; gap: 20px; }
+            .logo-gob-mex { height: 35px; order: 2; }
             .hero-section img { max-height: 280px; }
 
-            /* Funcionalidad desplegable footer */
+            /* Footer Móvil */
             .footer-col.expandable .content { display: none; padding-top: 10px; }
             .footer-col.expandable.active .content { display: block; }
             .footer-col.expandable h4::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
-            .footer-col.expandable.active h4::after { content: '\f106'; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <nav class="nav-superior">
+    <nav class="nav-superior" style="position: relative;">
+        <button class="btn-ham" onclick="toggleMenu('mobileSup')"><i class="fas fa-bars"></i></button>
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex">
         <div class="links-pc-sup">
             <a href="#">Trámites</a>
             <a href="#">Gobierno</a>
         </div>
-        <button class="btn-ham" onclick="toggleMenu('mobileSup')"><i class="fas fa-bars"></i></button>
+        <div id="mobileSup" class="mobile-menu" style="background-color: var(--gob-vino);">
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
+        </div>
     </nav>
-    <div id="mobileSup" class="mobile-menu" style="background-color: var(--gob-vino);">
-        <a href="#">Trámites</a>
-        <a href="#">Gobierno</a>
-    </div>
 
-    <nav class="nav-inferior">
+    <nav class="nav-inferior" style="position: relative;">
         <button class="btn-ham" onclick="toggleMenu('mobileInf')"><i class="fas fa-bars"></i></button>
         <ul class="links-pc-inf">
             <li><a href="#">Inicio</a></li>
@@ -105,14 +131,15 @@
             <li><a href="#">Datos Abiertos</a></li>
             <li><a href="#">Contacto</a></li>
         </ul>
+        <div id="mobileInf" class="mobile-menu" style="background-color: var(--gob-borgoña);">
+            <a href="#">Inicio</a>
+            <a href="#">Cédulas Profesionales</a>
+            <a href="#">Especialistas</a>
+            <a href="#">Cédulas Estatales</a>
+            <a href="#">Datos Abiertos</a>
+            <a href="#">Contacto</a>
+        </div>
     </nav>
-    <div id="mobileInf" class="mobile-menu">
-        <a href="#">Inicio</a>
-        <a href="#">Cédulas Profesionales</a>
-        <a href="#">Especialistas</a>
-        <a href="#">Datos Abiertos</a>
-        <a href="#">Contacto</a>
-    </div>
 </header>
 
 <div class="hero-section">
@@ -121,42 +148,35 @@
 
 <main>
     <div style="font-size: 14px; color: #666;"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas</div>
-    <h2 style="margin-top: 15px; font-size: 26px;">Realiza tu búsqueda de forma segura y confiable.</h2>
+    <h2 style="margin-top: 15px; font-size: 24px;">Realiza tu búsqueda de forma segura y confiable.</h2>
     <div class="oro-line"></div>
 </main>
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-col" style="border:none;">
+        <div class="footer-col">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 160px; margin-bottom: 15px;">
         </div>
-        
         <div class="footer-col">
             <h4>Enlaces</h4>
             <div class="content">
                 <a href="#">Datos abiertos</a>
                 <a href="#">Marco Jurídico</a>
-                <a href="#">Transparencia</a>
                 <a href="#">Alerta</a>
             </div>
         </div>
-
         <div class="footer-col expandable" onclick="toggleGob(this)">
             <h4>¿Qué es gob.mx?</h4>
             <div class="content">
                 <p style="font-size: 12px; opacity: 0.8; line-height: 1.4; margin-bottom: 10px;">Portal único de trámites e información ciudadana.</p>
                 <a href="#">Accesibilidad</a>
                 <a href="#">Privacidad</a>
-                <a href="#">Términos</a>
             </div>
         </div>
-
         <div class="footer-col">
             <h4>Síguenos en</h4>
-            <div class="content">
-                <div style="font-size: 20px; display: flex; gap: 15px;">
-                    <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i>
-                </div>
+            <div style="font-size: 20px; display: flex; gap: 15px;">
+                <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i>
             </div>
         </div>
     </div>
@@ -167,10 +187,10 @@
 <script>
     function toggleMenu(id) {
         let m = document.getElementById(id);
-        let current = m.style.display;
-        // Cierra otros menús al abrir uno
+        let isVisible = m.style.display === 'flex';
+        // Cerrar otros menús móviles al abrir uno
         document.querySelectorAll('.mobile-menu').forEach(el => el.style.display = 'none');
-        m.style.display = (current === 'flex') ? 'none' : 'flex';
+        m.style.display = isVisible ? 'none' : 'flex';
     }
 
     function toggleGob(element) {
