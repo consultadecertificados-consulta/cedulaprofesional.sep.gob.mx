@@ -12,132 +12,74 @@
             --gob-borgoña: #480721; 
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
-            --gob-gris-f: #F2F2F2;
+            --gris-claro: #F2F2F2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; }
 
+        /* HEADER DISPOSICIÓN IMAGEN 1000057956 */
         header { position: sticky; top: 0; z-index: 1000; width: 100%; }
+        .nav-superior { background-color: var(--gob-vino); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo-gob-mex { height: 45px; }
+        .btn-ham-right { color: white; background: none; border: none; font-size: 28px; cursor: pointer; }
 
-        /* NAVEGACIÓN MÓVIL DISPOSICIÓN */
-        .nav-superior {
-            background-color: var(--gob-vino);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-gob-mex { height: 40px; }
-        .btn-ham-right { order: 2; color: white; background: none; border: none; font-size: 26px; cursor: pointer; }
+        .nav-inferior { background-color: var(--gob-borgoña); padding: 10px 5%; display: flex; align-items: center; }
+        .btn-ham-left { color: white; background: none; border: none; font-size: 28px; cursor: pointer; }
 
-        .nav-inferior {
-            background-color: var(--gob-borgoña);
-            padding: 0 5%;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-        }
-        .btn-ham-left { color: white; background: none; border: none; font-size: 26px; cursor: pointer; }
-
-        /* MENÚS DESPLEGABLES (Estilo Imagen 1) */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 100%;
-            z-index: 999;
-            text-align: center;
-        }
-        .mobile-menu a {
-            color: white; padding: 20px 5%; text-decoration: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 18px;
-            display: block;
-        }
+        /* MENÚ DESPLEGABLE IMAGEN 1000057952 */
+        .mobile-menu { display: none; flex-direction: column; width: 100%; background-color: var(--gob-borgoña); text-align: center; padding: 20px 0; }
+        .mobile-menu a { color: white; padding: 15px; text-decoration: none; font-size: 18px; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .mobile-menu a i { font-size: 12px; margin-left: 5px; }
 
         /* PORTADA */
-        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); line-height: 0; }
-        .hero-section img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; margin: 0 auto; }
+        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); }
+        .hero-section img { width: 100%; height: auto; display: block; }
 
-        /* SECCIÓN TÍTULOS CENTRADOS (Imagen 3) */
-        main { max-width: 1100px; margin: 0 auto; padding: 30px 5%; text-align: center; }
+        /* SECCIÓN TEXTOS IMAGEN 1000057959 y 1000057962 */
+        main { max-width: 900px; margin: 0 auto; padding: 30px 5%; text-align: center; }
+        .breadcrumb { font-size: 22px; color: #666; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 10px; }
         
-        .breadcrumb-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; color: #666; }
-        .breadcrumb-container i { font-size: 24px; margin-bottom: 5px; }
-        .breadcrumb-text { font-size: 22px; font-weight: 500; }
+        .section-title { font-size: 38px; font-weight: 700; color: #333; margin-bottom: 20px; line-height: 1.1; }
+        .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 30px; }
 
-        .section-title { 
-            font-size: 36px; /* Letra más grande como pediste */
-            font-weight: 700; 
-            color: #333; 
-            margin: 20px auto;
-            max-width: 800px;
-            line-height: 1.2;
-        }
+        .leyenda-parrafo { text-align: justify; font-size: 15px; color: #545454; margin-bottom: 25px; }
+        .constancia-header { font-size: 20px; font-weight: 700; margin: 40px 0 10px; color: #333; }
+        .gratuita-sub { font-size: 18px; margin-bottom: 40px; }
 
-        /* TARJETA BUSCADOR (Imagen 4 y 5) */
-        .search-card { 
-            border: 1px solid #eee; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            overflow: hidden; 
-            text-align: left;
-            margin-top: 40px;
-        }
-        .tabs { display: flex; background: var(--gob-gris-f); }
-        .tab { 
-            flex: 1; 
-            padding: 15px; 
-            text-align: center; 
-            font-size: 16px; 
-            cursor: pointer; 
-            color: #666;
-            transition: 0.3s;
-        }
-        .tab.active { background: var(--gob-vino); color: white; }
+        /* TARJETA BUSCADOR IMAGEN 1000057960 y 1000057963 */
+        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: left; }
+        .tabs { display: flex; background: var(--gris-claro); border-bottom: 1px solid #ccc; }
+        .tab { flex: 1; padding: 18px; text-align: center; font-size: 16px; cursor: pointer; color: #333; border: 1px solid transparent; }
+        
+        /* Estilo exacto pestaña activa "Número de cédula" */
+        .tab.active-cedula { background: var(--gob-vino); color: white; border: 1px dashed #fff; font-weight: 500; }
+        .tab.active-datos { background: var(--gob-vino); color: white; font-weight: 500; }
 
-        .form-content { padding: 30px; }
-        .field { display: flex; flex-direction: column; margin-bottom: 20px; }
-        .field label { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #333; }
-        .field input { 
-            padding: 12px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            font-size: 16px; 
-            background-color: #fff;
-        }
+        .form-content { padding: 40px 30px; }
+        .field { margin-bottom: 25px; }
+        .field label { font-size: 19px; font-weight: 700; display: block; margin-bottom: 12px; color: #333; }
+        .field input { width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; color: #666; background: #fdfdfd; }
 
-        /* BOTONES DENTRO DEL MARCO (Imagen 4) */
-        .form-actions { 
-            display: flex; 
-            justify-content: flex-start; 
-            gap: 10px; 
-            padding: 0 30px 30px; 
-        }
-        .btn { 
-            padding: 12px 25px; 
-            border-radius: 4px; 
-            font-weight: 500; 
-            cursor: pointer; 
-            font-size: 15px; 
-            border: 2px solid;
-            background: #fff;
-        }
-        .btn-search { border-color: var(--gob-vino); color: var(--gob-vino); }
-        .btn-clear { border-color: var(--gob-oro); color: var(--gob-oro); }
-        .btn-csv { background: #b3b3b3; color: white; border-color: #b3b3b3; }
+        /* Botones dentro del marco */
+        .form-actions { display: flex; gap: 12px; padding: 0 30px 40px; }
+        .btn { flex: 1; padding: 14px; border-radius: 4px; font-size: 16px; font-weight: 500; cursor: pointer; text-align: center; border: 2px solid; background: #fff; }
+        .btn-buscar { border-color: var(--gob-vino); color: var(--gob-vino); }
+        .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); }
+        .btn-csv { border-color: #b3b3b3; color: white; background: #b3b3b3; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
         /* FOOTER */
-        footer { background-color: var(--gob-vino); color: white; padding: 40px 8% 20px; text-align: left; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 5px; }
+        footer { background-color: var(--gob-vino); color: white; padding: 50px 8% 30px; margin-top: 60px; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col img { width: 180px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 8px; display: inline-block; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 14px; margin-bottom: 12px; opacity: 0.8; }
+        .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.4); text-align: center; padding: 15px; font-size: 12px; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .section-title { font-size: 28px; }
             .form-actions { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
+            .breadcrumb { font-size: 18px; }
         }
     </style>
 </head>
@@ -147,23 +89,18 @@
     <nav class="nav-superior">
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex">
         <button class="btn-ham-right" onclick="toggleMenu('menuGob')"><i class="fas fa-bars"></i></button>
-        <div id="menuGob" class="mobile-menu" style="background-color: var(--gob-vino);">
-            <a href="#">Trámites</a>
-            <a href="#">Gobierno</a>
-        </div>
     </nav>
-
     <nav class="nav-inferior">
         <button class="btn-ham-left" onclick="toggleMenu('menuRNP')"><i class="fas fa-bars"></i></button>
-        <div id="menuRNP" class="mobile-menu" style="background-color: var(--gob-borgoña);">
-            <a href="#">Inicio <i class="fas fa-caret-down"></i></a>
-            <a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
-            <a href="#">Especialistas</a>
-            <a href="#">Cédulas Estatales</a>
-            <a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a>
-            <a href="#">Contacto</a>
-        </div>
     </nav>
+    <div id="menuRNP" class="mobile-menu">
+        <a href="#">Inicio <i class="fas fa-caret-down"></i></a>
+        <a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
+        <a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
+        <a href="#">Cédulas Estatales</a>
+        <a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a>
+        <a href="#">Contacto</a>
+    </div>
 </header>
 
 <div class="hero-section">
@@ -171,41 +108,38 @@
 </div>
 
 <main>
-    <div class="breadcrumb-container">
-        <i class="fas fa-home"></i>
-        <span class="breadcrumb-text">Inicio > Búsqueda de Cédulas Profesionales</span>
+    <div class="breadcrumb">
+        <i class="fas fa-home"></i> Inicio <br> > Búsqueda de Cédulas Profesionales
     </div>
     
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
-    <div class="oro-line" style="margin: 0 auto 30px;"></div>
+    <div class="oro-line"></div>
+
+    <p class="leyenda-parrafo">
+        Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
+    </p>
+    <p class="leyenda-parrafo">
+        La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.
+    </p>
+
+    <p class="constancia-header">¡Descarga la Constancia de Situación Profesional!</p>
+    <p class="gratuita-sub">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
 
     <div class="search-card">
         <div class="tabs">
-            <div class="tab active" id="tab-datos" onclick="showTab('datos')">Datos generales</div>
-            <div class="tab" id="tab-cedula" onclick="showTab('cedula')">Número de cédula</div>
+            <div class="tab" id="tab-datos" onclick="showTab('datos')">Datos generales</div>
+            <div class="tab active-cedula" id="tab-cedula" onclick="showTab('cedula')">Número de cédula</div>
         </div>
         
         <div class="form-content">
-            <div id="form-datos">
-                <div class="field">
-                    <label>Nombre(s)*:</label>
-                    <input type="text" placeholder="Nombre(s)">
-                </div>
-                <div class="field">
-                    <label>Primer Apellido*:</label>
-                    <input type="text" placeholder="Primer Apellido">
-                </div>
-                <div class="field">
-                    <label>Segundo Apellido:</label>
-                    <input type="text" placeholder="Segundo Apellido">
-                </div>
-                <div class="field">
-                    <label>CURP:</label>
-                    <input type="text" placeholder="CURP">
-                </div>
+            <div id="form-datos" style="display: none;">
+                <div class="field"><label>Nombre(s)*:</label><input type="text" placeholder="Nombre(s)"></div>
+                <div class="field"><label>Primer Apellido*:</label><input type="text" placeholder="Primer Apellido"></div>
+                <div class="field"><label>Segundo Apellido:</label><input type="text" placeholder="Segundo Apellido"></div>
+                <div class="field"><label>CURP:</label><input type="text" placeholder="CURP"></div>
             </div>
 
-            <div id="form-cedula" style="display: none;">
+            <div id="form-cedula">
                 <div class="field">
                     <label>Número de Cédula*:</label>
                     <input type="text" placeholder="Cédula">
@@ -214,9 +148,9 @@
         </div>
 
         <div class="form-actions">
-            <button class="btn btn-search">Buscar</button>
-            <button class="btn btn-clear">Limpiar</button>
-            <button class="btn btn-csv">CSV <i class="fas fa-file-csv"></i></button>
+            <button class="btn btn-buscar">Buscar</button>
+            <button class="btn btn-limpiar">Limpiar</button>
+            <button class="btn btn-csv">CSV <i class="fas fa-file-pdf" style="font-size: 12px;"></i></button>
         </div>
     </div>
 </main>
@@ -224,23 +158,29 @@
 <footer>
     <div class="footer-grid">
         <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 150px;">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg">
         </div>
         <div class="footer-col">
             <h4>Enlaces</h4>
             <a href="#">Datos abiertos</a>
             <a href="#">Marco Jurídico</a>
+            <a href="#">Transparencia</a>
+        </div>
+        <div class="footer-col">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="#">Accesibilidad</a>
+            <a href="#">Aviso de privacidad</a>
+            <a href="#">Términos y Condiciones</a>
         </div>
     </div>
 </footer>
+<div class="version-bar">RNP v1.6.7</div>
 
 <script src="folios.js"></script>
 <script>
     function toggleMenu(id) {
-        const m = document.getElementById(id);
-        const isVisible = m.style.display === 'flex';
-        document.querySelectorAll('.mobile-menu').forEach(el => el.style.display = 'none');
-        m.style.display = isVisible ? 'none' : 'flex';
+        const m = document.getElementById('menuRNP');
+        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
     }
 
     function showTab(type) {
@@ -250,13 +190,13 @@
         const formCedula = document.getElementById('form-cedula');
 
         if(type === 'datos') {
-            tabDatos.classList.add('active');
-            tabCedula.classList.remove('active');
+            tabDatos.className = 'tab active-datos';
+            tabCedula.className = 'tab';
             formDatos.style.display = 'block';
             formCedula.style.display = 'none';
         } else {
-            tabCedula.classList.add('active');
-            tabDatos.classList.remove('active');
+            tabCedula.className = 'tab active-cedula';
+            tabDatos.className = 'tab';
             formDatos.style.display = 'none';
             formCedula.style.display = 'block';
         }
