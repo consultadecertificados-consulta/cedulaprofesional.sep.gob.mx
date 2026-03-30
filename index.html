@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Búsqueda de Cédulas Profesionales | RNP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <style>
         :root {
-            /* Colores según las imágenes proporcionadas */
-            --gob-borgoña-oscuro: #480721; /* Barra Trámites superior */
-            --gob-vino-institucional: #621132; /* Barra RNP y Footer */
+            --gob-vino: #621132;        /* Color superior (Imagen 1) */
+            --gob-borgoña: #480721;     /* Color inferior barra y version-bar */
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
         }
@@ -18,151 +17,86 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; }
 
-        /* HEADER FIJO (Sticky) para que no se pierdan los menús al deslizar */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-        }
+        header { width: 100%; position: relative; z-index: 1000; }
 
-        /* BARRA 1: GOBIERNO (Borgoña Oscuro) */
+        /* BARRA 1: Más ancha y color Vino */
         .nav-gob {
-            background-color: var(--gob-borgoña-oscuro);
-            padding: 10px 5%;
+            background-color: var(--gob-vino);
+            padding: 20px 8%; /* Más ancha verticalmente */
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo-gob-mex { height: 35px; }
+        .logo-gob-mex { height: 45px; } /* Logo más grande */
         
-        /* BARRA 2: RNP (Vino) */
+        .menu-pc-superior { display: flex; gap: 20px; align-items: center; }
+        .menu-pc-superior a { color: white; text-decoration: none; font-size: 15px; font-weight: 400; }
+
+        /* BARRA 2: Borgoña */
         .nav-rnp {
-            background-color: var(--gob-vino-institucional);
-            padding: 10px 5%;
+            background-color: var(--gob-borgoña);
+            padding: 10px 8%;
             display: flex;
             align-items: center;
-            min-height: 50px;
+            min-height: 55px;
         }
 
-        /* ICONOS HAMBURGUESA */
         .btn-ham {
             background: none;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
         }
 
-        /* PORTADA (Se mueve con el contenido) */
-        .hero-section {
-            width: 100%;
-            display: block;
-            border-bottom: 8px solid var(--gob-oro);
-        }
-        .hero-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        /* PORTADA: Se mueve con el flujo */
+        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); }
+        .hero-section img { width: 100%; height: auto; display: block; }
 
-        /* CONTENIDO PRINCIPAL */
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 30px 5%;
-        }
+        /* CONTENIDO */
+        main { max-width: 1100px; margin: 0 auto; padding: 40px 5%; background: #fff; }
         .breadcrumb { font-size: 14px; margin-bottom: 20px; color: #666; }
-        .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-        .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin-bottom: 25px; }
+        .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 20px 0; }
 
-        /* BUSCADOR ESTILO IMAGEN */
-        .search-card {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+        /* BUSCADOR */
+        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
         .tabs { display: flex; background: #F2F2F2; }
-        .tab { padding: 15px 20px; cursor: pointer; font-weight: 600; font-size: 14px; }
-        .tab.active { background: var(--gob-vino-institucional); color: white; }
+        .tab { padding: 15px 25px; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .tab.active { background: var(--gob-vino); color: white; }
         
-        .form-grid {
-            padding: 25px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
+        .form-grid { padding: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .field { display: flex; flex-direction: column; }
         .field label { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
         .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
 
-        .actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            padding: 0 25px 25px;
-        }
-        .btn { padding: 10px 25px; border-radius: 4px; cursor: pointer; font-weight: 600; border: 1px solid transparent; }
-        .btn-buscar { border-color: var(--gob-vino-institucional); color: var(--gob-vino-institucional); background: #fff; }
+        .actions { display: flex; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
+        .btn { padding: 10px 30px; border-radius: 4px; cursor: pointer; font-weight: 600; border: 1px solid; }
+        .btn-buscar { border-color: var(--gob-vino); color: var(--gob-vino); background: #fff; }
         .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
-        /* MENÚS MÓVIL DESPLEGABLES */
+        /* DROPDOWNS */
         .mobile-dropdown {
             display: none;
             flex-direction: column;
-            background-color: var(--gob-vino-institucional);
-            position: absolute;
             width: 100%;
-            left: 0;
-            top: 100%;
-            z-index: 2000;
+            background-color: var(--gob-borgoña);
         }
-        .mobile-dropdown a {
-            color: white;
-            padding: 15px 5%;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+        .mobile-dropdown a { color: white; padding: 15px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
 
-        /* FOOTER */
-        footer {
-            background-color: var(--gob-vino-institucional);
-            color: white;
-            padding: 50px 5% 30px;
-            margin-top: 50px;
-        }
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-        .version-bar {
-            background-color: var(--gob-borgoña-oscuro);
-            text-align: center;
-            color: rgba(255,255,255,0.6);
-            font-size: 11px;
-            padding: 10px;
-        }
+        /* FOOTER COMPLETO (Imagen 1) */
+        footer { background-color: var(--gob-vino); color: white; padding: 60px 8% 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13.5px; margin-bottom: 12px; opacity: 0.9; }
+        
+        .social-media { display: flex; gap: 15px; font-size: 22px; margin-top: 15px; }
+        .contact-079 { margin-top: 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+        .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.5); text-align: center; padding: 12px; font-size: 11px; }
 
-        /* RESPONSIVO PARA PC */
-        @media (min-width: 993px) {
-            .nav-gob .menu-pc { display: flex; gap: 20px; }
-            .nav-gob .btn-ham { display: none; }
-            .nav-rnp .menu-pc-rnp { display: flex; gap: 25px; margin: 0 auto; }
-            .nav-rnp .btn-ham { display: none; }
-            .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
-        }
-
-        /* AJUSTES MÓVIL */
         @media (max-width: 992px) {
-            .menu-pc, .menu-pc-rnp { display: none; }
-            .section-title { font-size: 22px; }
-            .actions { flex-direction: column; }
-            .btn { width: 100%; }
+            .menu-pc-superior { display: none; }
+            .btn-ham { display: block; }
+            .nav-gob { padding: 15px 5%; }
         }
     </style>
 </head>
@@ -171,25 +105,21 @@
 <header>
     <nav class="nav-gob">
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex" alt="Gobierno de México">
-        <div class="menu-pc">
+        <div class="menu-pc-superior">
             <a href="#">Trámites</a>
             <a href="#">Gobierno</a>
+            <a href="#"><i class="fas fa-search"></i></a>
         </div>
-        <button class="btn-ham" onclick="toggleMenu('menuGob')"><i class="fas fa-bars"></i></button>
-        <div id="menuGob" class="mobile-dropdown" style="background-color: var(--gob-borgoña-oscuro);">
-            <a href="#">Trámites</a>
-            <a href="#">Gobierno</a>
-        </div>
+        <button class="btn-ham" onclick="toggleMenu('dropGob')"><i class="fas fa-bars"></i></button>
     </nav>
+    <div id="dropGob" class="mobile-dropdown" style="background-color: var(--gob-vino);">
+        <a href="#">Trámites</a>
+        <a href="#">Gobierno</a>
+    </div>
 
     <nav class="nav-rnp">
-        <button class="btn-ham" onclick="toggleMenu('menuRNP')"><i class="fas fa-bars"></i></button>
-        <div class="menu-pc-rnp">
-            <a href="#" style="color:white; text-decoration:none;">Inicio</a>
-            <a href="#" style="color:white; text-decoration:none;">Cédulas Profesionales</a>
-            <a href="#" style="color:white; text-decoration:none;">Contacto</a>
-        </div>
-        <div id="menuRNP" class="mobile-dropdown">
+        <button class="btn-ham" onclick="toggleMenu('dropRNP')"><i class="fas fa-bars"></i></button>
+        <div id="dropRNP" class="mobile-dropdown">
             <a href="#">Inicio</a>
             <a href="#">Cédulas Profesionales</a>
             <a href="#">Especialistas</a>
@@ -201,16 +131,15 @@
 </header>
 
 <div class="hero-section">
-    <img src="logo.png" alt="Registro Nacional de Profesionistas">
+    <img src="logo.png" alt="RNP Portada">
 </div>
 
 <main>
     <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
-    
-    <h2 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h2>
+    <h2 style="font-size: 28px; font-weight: 700;">Realiza tu búsqueda de forma segura y confiable.</h2>
     <div class="oro-line"></div>
     
-    <p style="font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;">
+    <p style="font-size: 14.5px; line-height: 1.6; margin-bottom: 25px; color: #666;">
         Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.
     </p>
 
@@ -227,20 +156,38 @@
         </div>
         <div class="actions">
             <button class="btn btn-buscar">Buscar</button>
-            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+            <button class="btn btn-limpiar">Limpiar</button>
         </div>
     </div>
 </main>
 
 <footer>
-    <div class="footer-container">
+    <div class="footer-grid">
         <div class="footer-col">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 200px; margin-bottom: 20px;">
         </div>
         <div class="footer-col">
-            <h4 style="border-bottom: 2px solid var(--gob-oro); padding-bottom: 5px; margin-bottom: 15px;">Enlaces</h4>
-            <p style="font-size: 13px; margin-bottom: 10px;">Marco Jurídico</p>
-            <p style="font-size: 13px; margin-bottom: 10px;">Transparencia</p>
+            <h4>Enlaces</h4>
+            <a href="#">Datos abiertos de la SABG</a>
+            <a href="#">Marco Jurídico</a>
+            <a href="#">Plataforma Nacional de Transparencia</a>
+            <a href="#">Transparencia para el pueblo</a>
+            <a href="#">Alerta</a>
+        </div>
+        <div class="footer-col">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="#">Declaración de accesibilidad</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Aviso de Privacidad</a>
+        </div>
+        <div class="footer-col">
+            <h4>Síguenos en</h4>
+            <div class="social-media">
+                <i class="fab fa-facebook-f"></i> <i class="fab fa-x-twitter"></i> <i class="fab fa-instagram"></i> <i class="fab fa-youtube"></i>
+            </div>
+            <div class="contact-079">
+                <i class="fas fa-phone"></i> <b>079</b> Comunícate, estamos para ayudarte
+            </div>
         </div>
     </div>
 </footer>
@@ -249,13 +196,9 @@
 <script src="folios.js"></script>
 <script>
     function toggleMenu(id) {
-        const menu = document.getElementById(id);
-        const isVisible = menu.style.display === 'flex';
-        // Cerrar todos antes de abrir uno
-        document.querySelectorAll('.mobile-dropdown').forEach(d => d.style.display = 'none');
-        menu.style.display = isVisible ? 'none' : 'flex';
+        let m = document.getElementById(id);
+        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
     }
 </script>
-
 </body>
 </html>
