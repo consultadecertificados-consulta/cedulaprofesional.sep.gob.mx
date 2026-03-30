@@ -11,35 +11,43 @@
     <style>
         :root {
             --gob-guinda: #621132;
-            --gob-guinda-sec: #4a0d26; /* Guinda más oscuro para el submenú */
+            --gob-borgona: #480721; /* Tono Borgoña solicitado */
             --gob-oro: #9D843E;
             --gob-gris-fondo: #F2F2F2;
-            --gob-gris-borde: #D9D9D9;
             --gob-texto-p: #6F7271;
-            --gob-texto-negro: #4D4D4D;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; -webkit-font-smoothing: antialiased; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #fff; 
+            overflow-x: hidden;
+        }
 
-        /* ==========================================
-           1. BARRA SUPERIOR PRINCIPAL
-           ========================================== */
+        /* Cabeceras fijas */
+        .header-fixed-group {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
         .nav-gob { 
             background-color: var(--gob-guinda); 
             padding: 12px 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            position: relative;
-            z-index: 1002;
         }
         
-        /* Logo Oficial (Una sola imagen para evitar que salga doble) */
-        .logo-gob-link img {
-            height: 40px;
-            filter: brightness(0) invert(1); /* Lo vuelve totalmente blanco */
-            display: block;
+        .logo-gob-link img { height: 40px; filter: brightness(0) invert(1); }
+
+        /* BARRA SEGUNDA - COLOR BORGOÑA */
+        .nav-gob-sec {
+            background-color: var(--gob-borgona);
+            padding: 12px 5%;
+            display: flex;
+            align-items: center;
         }
 
         .menu-ham-btn {
@@ -50,8 +58,8 @@
             border: none;
         }
 
-        /* Menú Desplegable 1 (Trámites, Gobierno) */
-        .gob-dropdown-menu-1 {
+        /* MENÚS DESPLEGABLES */
+        .gob-dropdown-menu {
             background-color: var(--gob-guinda);
             width: 100%;
             max-height: 0;
@@ -60,265 +68,162 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
+            position: fixed;
+            top: 64px;
             z-index: 1001;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .gob-dropdown-menu-1.active {
-            max-height: 300px;
-            padding-bottom: 30px;
-        }
-        .menu-item-1 {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: 300;
-            margin: 18px 0;
-            opacity: 0.9;
-        }
-
-        /* ==========================================
-           2. BARRA SECUNDARIA (SUBMENÚ GUINDA OSCURO)
-           ========================================== */
-        .nav-gob-sec {
-            background-color: var(--gob-guinda-sec);
-            padding: 12px 5%;
-            display: flex;
-            align-items: center;
-            position: relative;
-            z-index: 1000;
         }
         
-        .menu-ham-btn-sec {
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        /* Menú Desplegable 2 (Cédulas Profesionales, Especialistas, etc.) */
+        /* Segundo menú en Borgoña */
         .gob-dropdown-menu-2 {
-            background-color: var(--gob-guinda-sec);
-            width: 100%;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
+            background-color: var(--gob-borgona);
+            top: 110px;
             z-index: 999;
         }
-        .gob-dropdown-menu-2.active {
-            max-height: 500px; /* Suficiente espacio para las opciones */
-            padding-bottom: 30px;
+
+        .gob-dropdown-menu.active {
+            max-height: 550px;
+            padding: 20px 0;
         }
-        .menu-item-2 {
+
+        .menu-item {
             color: white;
             text-decoration: none;
             font-size: 18px;
             font-weight: 300;
-            margin: 15px 0;
+            margin: 12px 0;
             text-align: center;
             width: 90%;
         }
-        .menu-item-2 i {
-            font-size: 14px;
-            margin-left: 5px;
+
+        /* EFECTO PARALLAX: LA PORTADA SE UNDE */
+        .parallax-container {
+            position: fixed; 
+            top: 110px; 
+            left: 0;
+            width: 100%;
+            height: 420px; 
+            z-index: 1;
+            border-bottom: 8px solid var(--gob-oro);
         }
 
-        /* ==========================================
-           3. PORTADA / BANNER
-           ========================================== */
-        .header-image-container { 
-            width: 100%; 
-            border-bottom: 8px solid var(--gob-oro); 
-            /* Esto ayuda a que el banner se vea más alargado si la imagen lo permite */
-            min-height: 200px; 
-            background-color: var(--gob-guinda);
-        }
-        .header-image-container img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; /* Ajusta la imagen al contenedor alargado */
-            display: block; 
+        .parallax-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* ==========================================
-           4. CONTENIDO PRINCIPAL
-           ========================================== */
+        /* CONTENIDO QUE SE DESLIZA POR ENCIMA */
+        .scroll-content {
+            position: relative;
+            z-index: 2; 
+            margin-top: 530px; /* Altura de navs + portada */
+            background-color: white; 
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
         main { max-width: 1100px; margin: 0 auto; padding: 20px; }
         
         .breadcrumb { padding: 20px 0; font-size: 18px; color: #666; display: flex; align-items: center; gap: 8px; }
-        .breadcrumb i { color: #444; }
-        .breadcrumb b { color: #444; font-weight: 600; }
-
-        .intro-container h2 { font-size: 32px; font-weight: 700; color: #4D4D4D; margin-bottom: 15px; line-height: 1.2; }
+        .intro-container h2 { font-size: 32px; font-weight: 700; color: #4D4D4D; margin-bottom: 15px; }
         .linea-oro { width: 60px; height: 6px; background: var(--gob-oro); margin-bottom: 30px; }
-        .texto-principal { font-size: 17px; color: var(--gob-texto-p); line-height: 1.6; text-align: justify; }
 
-        /* Card y Formulario */
-        .search-card { border: 1px solid var(--gob-gris-borde); border-radius: 4px; margin-top: 20px; overflow: hidden; }
+        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
         .tabs-menu { display: flex; background: var(--gob-gris-fondo); }
         .tab-btn { flex: 1; padding: 18px; font-size: 14px; text-align: center; cursor: pointer; font-weight: 700; color: #666; }
         .tab-btn.active { background: var(--gob-guinda); color: #fff; }
 
-        .form-section { padding: 25px; display: none; gap: 20px; }
-        .form-section.active { display: flex; flex-direction: column; }
-        @media (min-width: 768px) { .form-section.active { display: grid; grid-template-columns: repeat(3, 1fr); } }
+        .form-section { padding: 30px; display: none; }
+        .form-section.active { display: block; }
+        .field { margin-bottom: 20px; }
+        .field label { font-size: 14px; font-weight: 700; display: block; margin-bottom: 8px; }
+        .field input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
 
-        .field label { font-size: 14px; font-weight: 700; margin-bottom: 10px; display: block; }
-        .field input { width: 100%; padding: 14px; border: 1px solid #CCC; border-radius: 4px; }
-
-        .btn-area { display: flex; flex-direction: column; gap: 10px; padding: 0 25px 25px; }
-        @media (min-width: 768px) { .btn-area { flex-direction: row; justify-content: flex-end; } }
-        .btn { padding: 14px 40px; border-radius: 4px; font-weight: 700; border: 2px solid var(--gob-guinda); cursor: pointer; }
+        .btn-area { display: flex; justify-content: flex-end; gap: 10px; padding: 0 30px 30px; }
+        .btn { padding: 12px 35px; border-radius: 4px; font-weight: 700; cursor: pointer; border: 2px solid var(--gob-guinda); }
         .btn-buscar { background: #fff; color: var(--gob-guinda); }
-        .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
-
-        /* ==========================================
-           5. FOOTER OFICIAL
-           ========================================== */
-        footer { background: var(--gob-guinda); color: #fff; padding: 60px 10% 40px; margin-top: 60px; }
-        .f-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
-        @media (min-width: 768px) { .f-grid { grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr; } }
-        .f-col h4 { font-size: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .f-col a { color: #fff; text-decoration: none; display: block; font-size: 13px; margin-bottom: 12px; font-weight: 300; }
-        .f-col a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <nav class="nav-gob">
-        <a href="https://www.gob.mx/" class="logo-gob-link">
+    <div class="header-fixed-group">
+        <nav class="nav-gob">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        </a>
-        <button class="menu-ham-btn" onclick="toggleMenu1()">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+            <button class="menu-ham-btn" onclick="toggleMenu('dropdownMenu1')">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
 
-    <div class="gob-dropdown-menu-1" id="dropdownMenu1">
-        <a href="https://www.gob.mx/tramites" class="menu-item-1">Trámites</a>
-        <a href="https://www.gob.mx/gobierno" class="menu-item-1">Gobierno</a>
-        <div class="search-icon-menu" style="color:white; font-size:22px; margin-top:10px; cursor:pointer;">
-            <i class="fas fa-search"></i>
-        </div>
+        <nav class="nav-gob-sec">
+            <button class="menu-ham-btn" onclick="toggleMenu('dropdownMenu2')">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
     </div>
 
-    <nav class="nav-gob-sec">
-        <button class="menu-ham-btn-sec" onclick="toggleMenu2()">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
-
-    <div class="gob-dropdown-menu-2" id="dropdownMenu2">
-        <a href="#" class="menu-item-2">Inicio <i class="fas fa-caret-down"></i></a>
-        <a href="#" class="menu-item-2">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
-        <a href="#" class="menu-item-2">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
-        <a href="#" class="menu-item-2">Cédulas Estatales</a>
-        <a href="#" class="menu-item-2">Datos Abiertos <i class="fas fa-caret-down"></i></a>
-        <a href="#" class="menu-item-2">Contacto</a>
+    <div class="gob-dropdown-menu" id="dropdownMenu1">
+        <a href="#" class="menu-item">Trámites</a>
+        <a href="#" class="menu-item">Gobierno</a>
+        <i class="fas fa-search" style="color:white; font-size:20px; margin-top:10px;"></i>
     </div>
 
-    <div class="header-image-container">
+    <div class="gob-dropdown-menu gob-dropdown-menu-2" id="dropdownMenu2">
+        <a href="#" class="menu-item">Inicio <i class="fas fa-caret-down"></i></a>
+        <a href="#" class="menu-item">Cédulas Profesionales <i class="fas fa-caret-down"></i></a>
+        <a href="#" class="menu-item">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
+        <a href="#" class="menu-item">Cédulas Estatales</a>
+        <a href="#" class="menu-item">Datos Abiertos <i class="fas fa-caret-down"></i></a>
+        <a href="#" class="menu-item">Contacto</a>
+    </div>
+
+    <div class="parallax-container">
         <img src="banner.png" alt="Registro Nacional de Profesionistas">
     </div>
 
-    <main>
-        <div class="breadcrumb">
-            <i class="fas fa-home"></i> Inicio <b> > Búsqueda de Cédulas Profesionales</b>
-        </div>
-
-        <section class="intro-container">
-            <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
-            <div class="linea-oro"></div>
-            <p class="texto-principal">
-                Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
-            </p>
-        </section>
-
-        <div class="search-card">
-            <div class="tabs-menu">
-                <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">DATOS GENERALES</div>
-                <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">NÚMERO DE CÉDULA</div>
-            </div>
-            
-            <div id="sec-datos" class="form-section active">
-                <div class="field"><label>Nombre(s)*:</label><input type="text" id="in-nombre"></div>
-                <div class="field"><label>Primer Apellido*:</label><input type="text" id="in-ap1"></div>
-                <div class="field"><label>Segundo Apellido:</label><input type="text" id="in-ap2"></div>
+    <div class="scroll-content">
+        <main>
+            <div class="breadcrumb">
+                <i class="fas fa-home"></i> Inicio <b> > Búsqueda de Cédulas Profesionales</b>
             </div>
 
-            <div id="sec-cedula" class="form-section">
-                <div class="field" style="grid-column: span 2;">
-                    <label>Número de Cédula*:</label>
-                    <input type="text" id="in-folio" placeholder="Ej. 10994202">
+            <section class="intro-container">
+                <h2>Realiza tu búsqueda de forma segura y confiable.</h2>
+                <div class="linea-oro"></div>
+                <p class="texto-principal" style="color: var(--gob-texto-p); line-height: 1.6;">
+                    Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida.
+                </p>
+            </section>
+
+            <div class="search-card">
+                <div class="tabs-menu">
+                    <div id="tab-datos" class="tab-btn active" onclick="switchTab('datos')">DATOS GENERALES</div>
+                    <div id="tab-cedula" class="tab-btn" onclick="switchTab('cedula')">NÚMERO DE CÉDULA</div>
+                </div>
+                
+                <div id="sec-datos" class="form-section active">
+                    <div class="field"><label>Nombre(s)*:</label><input type="text"></div>
+                    <div class="field"><label>Primer Apellido*:</label><input type="text"></div>
+                </div>
+
+                <div id="sec-cedula" class="form-section">
+                    <div class="field"><label>Número de Cédula*:</label><input type="text"></div>
+                </div>
+
+                <div class="btn-area">
+                    <button class="btn btn-buscar">BUSCAR</button>
                 </div>
             </div>
-
-            <div class="btn-area">
-                <button class="btn btn-buscar" onclick="alert('Buscando...')">BUSCAR</button>
-                <button class="btn btn-limpiar" onclick="location.reload()">LIMPIAR</button>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="f-grid">
-            <div class="f-col">
-                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 200px;">
-            </div>
-            <div class="f-col">
-                <h4>Enlaces</h4>
-                <a href="https://www.gob.mx/participa">Participa</a>
-                <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-                <a href="http://www.ordenjuridico.gob.mx/">Marco Jurídico</a>
-                <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
-            </div>
-            <div class="f-col">
-                <h4>¿Qué es gob.mx?</h4>
-                <a href="https://www.gob.mx/que-es-gobmx">Es el portal único de trámites e información.</a>
-                <a href="https://www.gob.mx/en/index">English</a>
-                <a href="https://www.gob.mx/temas">Temas</a>
-            </div>
-            <div class="f-col">
-                <h4>Contacto</h4>
-                <a href="mailto:mesadeayuda@gobmx.info">Mesa de ayuda: dudas e información</a>
-                <a href="https://www.gob.mx/tramites/denuncia">Denuncia contra servidores públicos</a>
-            </div>
-        </div>
-    </footer>
+        </main>
+    </div>
 
     <script>
-        // Función para el primer menú hamburguesa (Arriba a la derecha)
-        function toggleMenu1() {
-            const menu1 = document.getElementById('dropdownMenu1');
-            const menu2 = document.getElementById('dropdownMenu2');
-            
-            menu1.classList.toggle('active');
-            
-            // Cierra el menú 2 si estaba abierto para que no se encimen visualmente
-            if(menu2.classList.contains('active')){
-                menu2.classList.remove('active');
-            }
+        function toggleMenu(id) {
+            const menu = document.getElementById(id);
+            const active = menu.classList.contains('active');
+            document.querySelectorAll('.gob-dropdown-menu').forEach(m => m.classList.remove('active'));
+            if (!active) menu.classList.add('active');
         }
 
-        // Función para el segundo menú hamburguesa (Barra guinda oscura)
-        function toggleMenu2() {
-            const menu2 = document.getElementById('dropdownMenu2');
-            const menu1 = document.getElementById('dropdownMenu1');
-            
-            menu2.classList.toggle('active');
-            
-            // Cierra el menú 1 si estaba abierto
-            if(menu1.classList.contains('active')){
-                menu1.classList.remove('active');
-            }
-        }
-
-        // Función de las pestañas de búsqueda
         function switchTab(tipo) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
