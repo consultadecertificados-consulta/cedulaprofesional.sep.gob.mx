@@ -206,10 +206,30 @@
 /* --- CORRECCIÓN FINAL FOOTER --- */
 .footer-oficial { background-color: #621132; color: #fff; font-family: 'Montserrat', sans-serif; width: 100%; margin-top: 50px; }
 .rnp-version-top { text-align: center; padding: 20px 0; font-size: 14px; opacity: 0.8; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; padding: 0 20px 40px; }
-.footer-col { flex: 1; min-width: 250px; }
+/* Esto alinea el contenido del footer a la izquierda */
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* <--- Cambia de 'center' a 'flex-start' */
+    padding: 0 20px 40px;
+    gap: 40px; /* Espacio entre columnas */
+}
 
-.footer-logo-img { width: 200px; filter: brightness(0) invert(1); margin-bottom: 25px; }
+/* Esto asegura que el logo no se mueva al centro */
+.footer-logo-section {
+    text-align: left; /* <--- Fuerza la alineación a la izquierda */
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-logo-img {
+    width: 200px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 25px;
+    display: block; /* Asegura que se comporte como bloque para alinearse */
+}
 .denuncia-link { font-weight: 700; text-decoration: underline; color: #fff; display: block; margin-bottom: 20px; font-size: 18px; }
 
 .social-group { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
@@ -423,7 +443,7 @@
         <div class="form-grid" id="f-ced" style="display:none;">
             <div class="field" style="grid-column: 1 / -1;">
                 <label>Número de Cédula*:</label>
-                <input type="text" id="ced-input" placeholder="Ej. 10994202">
+                <input type="text" id="ced-input" placeholder="Cedula">
             </div>
         </div>
 
