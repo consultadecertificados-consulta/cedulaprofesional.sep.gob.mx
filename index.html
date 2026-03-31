@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --gob-vino: #480721;    /* Color más oscuro solicitado */
-            --gob-borgoña: #330318; /* Barra inferior más oscura */
+            --gob-vino: #480721;
+            --gob-borgoña: #330318;
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
             --gris-claro: #F2F2F2;
@@ -25,37 +25,34 @@
         .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 50px; display: flex; align-items: center; }
         
         .menu-pc { display: flex; gap: 20px; list-style: none; }
-        .menu-pc a { color: white; text-decoration: none; font-size: 14px; font-weight: 400; }
+        .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
         .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
-        /* PORTADA (HERO) - Ajustada para ser más alta en móvil */
+        /* PORTADA (HERO) - Adaptada para móvil (más alta) */
         .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); line-height: 0; background: #fff; }
-        .hero-section img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            object-fit: contain; 
-        }
+        .hero-section img { width: 100%; height: auto; display: block; }
 
         /* MAIN */
         main { max-width: 1200px; margin: 0 auto; padding: 30px 5%; text-align: center; }
-        .breadcrumb { font-size: 15px; color: #666; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .section-title { font-size: 30px; font-weight: 700; color: #333; margin-bottom: 15px; }
+        .breadcrumb { font-size: 15px; color: #666; margin-bottom: 25px; display: flex; justify-content: center; gap: 8px; }
+        .section-title { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 15px; }
         .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 25px; }
 
-        /* LEYENDA */
-        .leyenda-contenedor { text-align: justify; font-size: 15px; color: #545454; margin-bottom: 30px; }
-        .leyenda-contenedor p { margin-bottom: 15px; }
+        /* LEYENDA SUPERIOR */
+        .leyenda-legal { text-align: justify; font-size: 14px; color: #545454; margin-bottom: 25px; }
+        .leyenda-promocional { margin: 30px 0; }
+        .leyenda-promocional h2 { font-size: 22px; color: #333; font-weight: 700; margin-bottom: 10px; }
+        .leyenda-promocional p { font-size: 16px; }
 
         /* BUSCADOR */
-        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; margin-top: 20px; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .tabs { display: flex; background: var(--gris-claro); }
         .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; font-size: 14px; }
         .tab.active { background: var(--gob-vino); color: white; }
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px; }
         .field { display: flex; flex-direction: column; }
-        .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; }
+        .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; color: #333; }
         .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; outline: none; }
 
         .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
@@ -63,7 +60,7 @@
         .btn-buscar { background: var(--gob-borgoña); color: white; border: none; }
         .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: white; }
 
-        /* RESULTADOS */
+        /* TABLA */
         .results-container { padding: 20px; border-top: 1px solid #eee; display: none; }
         .table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; border: 1px solid #eee; }
         table { width: 100%; min-width: 1100px; border-collapse: collapse; font-size: 13px; }
@@ -72,29 +69,31 @@
 
         /* FOOTER */
         footer { background-color: var(--gob-vino); color: white; padding: 50px 8% 30px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
-        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; }
         .footer-col a { color: white; text-decoration: none; display: block; font-size: 14px; margin-bottom: 12px; opacity: 0.8; }
         
-        .social-links { display: flex; gap: 25px; margin-top: 25px; }
-        .social-links a { color: white; font-size: 32px; transition: 0.3s; }
+        /* Solo gob.mx desplegable */
+        .desplegable-h4 { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        
+        .social-container { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .social-links { display: flex; gap: 30px; }
+        .social-links a { color: white; font-size: 35px; transition: 0.3s; }
 
         .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.4); text-align: center; padding: 15px; font-size: 12px; }
 
         /* RESPONSIVO */
         @media (max-width: 992px) {
-            .nav-superior { padding: 10px 5%; }
-            .hero-section img { 
-                min-height: 250px; /* Hace la portada más alargada/alta en móvil */
-                object-fit: cover; 
-            }
+            .hero-section img { min-height: 350px; object-fit: cover; } /* Portada alta en móvil */
             .menu-pc { display: none; flex-direction: column; width: 100%; position: absolute; left: 0; top: 100%; background: var(--gob-borgoña); padding: 10px 0; }
             .menu-pc.active { display: flex; }
             .btn-ham { display: block; }
-            .footer-col .footer-content { display: none; }
-            .footer-col.active .footer-content { display: block; }
-            .footer-col h4 i { transition: 0.3s; }
-            .footer-col.active h4 i { transform: rotate(180deg); }
+            
+            /* Solo sección gob.mx colapsa */
+            #gob-content { display: none; }
+            .active #gob-content { display: block; }
+            .desplegable-h4 i { transition: 0.3s; }
+            .active .desplegable-h4 i { transform: rotate(180deg); }
         }
     </style>
 </head>
@@ -102,7 +101,7 @@
 
 <header>
     <nav class="nav-superior">
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex" alt="GobMx">
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex">
         <button class="btn-ham" onclick="toggleMenu('mSup')"><i class="fas fa-bars"></i></button>
         <ul id="mSup" class="menu-pc">
             <li><a href="#">Trámites</a></li>
@@ -112,7 +111,7 @@
     <nav class="nav-inferior">
         <button class="btn-ham" onclick="toggleMenu('mInf')"><i class="fas fa-bars"></i></button>
         <ul id="mInf" class="menu-pc" style="margin: 0 auto;">
-            <li><a href="#">Inicio <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a></li>
+            <li><a href="#">Inicio</a></li>
             <li><a href="#">Cédulas Profesionales</a></li>
             <li><a href="#">Especialistas</a></li>
             <li><a href="#">Datos Abiertos</a></li>
@@ -121,7 +120,7 @@
 </header>
 
 <div class="hero-section">
-    <img src="logo.png" alt="Portada RNP">
+    <img src="logo.png" alt="RNP">
 </div>
 
 <main>
@@ -129,9 +128,13 @@
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
     <div class="oro-line"></div>
 
-    <div class="leyenda-contenedor">
-        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
-        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+    <div class="leyenda-legal">
+        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley. La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos.</p>
+    </div>
+
+    <div class="leyenda-promocional">
+        <h2>¡Descarga la Constancia de Situación Profesional!</h2>
+        <p>Recuerda: <strong>La emisión de la Constancia es completamente gratuita.</strong></p>
     </div>
 
     <div class="search-card">
@@ -147,10 +150,7 @@
         </div>
 
         <div class="form-grid" id="f-ced" style="display:none;">
-            <div class="field" style="grid-column: 1 / -1;">
-                <label>Número de Cédula*:</label>
-                <input type="text" id="ced-input" placeholder="Ej. 10994202">
-            </div>
+            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ej. 10994202"></div>
         </div>
 
         <div class="form-actions">
@@ -177,29 +177,30 @@
     <div class="footer-grid">
         <div class="footer-col">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 180px; margin-bottom: 20px;">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
         </div>
         
-        <div class="footer-col" onclick="toggleFooter(this)">
-            <h4>Enlaces <i class="fas fa-chevron-down"></i></h4>
-            <div class="footer-content">
-                <a href="#">Participa</a>
-                <a href="#">Publicaciones Oficiales</a>
-                <a href="#">Marco Jurídico</a>
-                <a href="#">Transparencia</a>
-            </div>
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="#">Participa</a>
+            <a href="#">Publicaciones Oficiales</a>
+            <a href="#">Marco Jurídico</a>
+            <a href="#">Transparencia</a>
         </div>
 
-        <div class="footer-col" onclick="toggleFooter(this)">
-            <h4>¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></h4>
-            <div class="footer-content">
+        <div class="footer-col" id="gob-col">
+            <h4 class="desplegable-h4" onclick="toggleGob()">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></h4>
+            <div id="gob-content">
                 <a href="#">Aviso de privacidad</a>
                 <a href="#">Términos y Condiciones</a>
                 <a href="#">Accesibilidad</a>
             </div>
+        </div>
+    </div>
+
+    <div class="social-container">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
     </div>
 </footer>
@@ -208,7 +209,13 @@
 <script src="folios.js"></script>
 <script>
     function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
-    function toggleFooter(el) { if(window.innerWidth <= 992) el.classList.toggle('active'); }
+    
+    // Solo gob.mx es desplegable
+    function toggleGob() { 
+        if(window.innerWidth <= 992) {
+            document.getElementById('gob-col').classList.toggle('active');
+        }
+    }
 
     function switchTab(t) {
         document.getElementById('f-dat').style.display = t === 'dat' ? 'grid' : 'none';
@@ -238,23 +245,21 @@
         if(found.length > 0) {
             cont.style.display = 'block';
             found.forEach(r => {
-                // RUTA CORREGIDA: constancia/NUMERO.pdf
-                const fileURL = `constancia/${r.id}.pdf`;
                 body.innerHTML += `
                     <tr>
                         <td><strong>${r.id}</strong></td>
                         <td>${r.nom}</td><td>${r.ap1}</td><td>${r.ap2}</td><td>${r.gen}</td>
                         <td>${r.inst}</td><td>${r.prof}</td><td>${r.ent}</td><td>${r.anio}</td>
                         <td style="text-align:center;">
-                            <a href="${fileURL}" target="_blank" download="${r.id}.pdf">
-                                <i class="far fa-file-pdf" style="font-size:26px; color:#621132; cursor:pointer;"></i>
+                            <a href="constancia/${r.id}.pdf" target="_blank" download="${r.id}.pdf">
+                                <i class="far fa-file-pdf" style="font-size:26px; color:#621132;"></i>
                             </a>
                         </td>
                     </tr>`;
             });
             cont.scrollIntoView({behavior: 'smooth'});
         } else {
-            alert("No se encontraron coincidencias.");
+            alert("No se encontraron resultados.");
         }
     }
 </script>
