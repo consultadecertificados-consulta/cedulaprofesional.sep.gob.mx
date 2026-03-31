@@ -464,83 +464,44 @@
 </main>
 
 <footer>
-   /* --- FOOTER PROFESIONAL RNP --- */
-.footer-oficial {
-    background-color: #621132; /* Guinda exacto */
-    color: #ffffff;
-    padding: 60px 0 40px 0;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    margin-top: 50px;
-}
+  <footer class="footer-oficial">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
+            <div class="redes-sociales">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
 
-.footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 20px;
-}
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="https://www.gob.mx/participa">Participa</a>
+            <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+            <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+            <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+        </div>
 
-.footer-col {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 30px;
-}
+        <div class="footer-col">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="#">Es el portal único de trámites e información ciudadana.</a>
+            <a href="#">English</a>
+            <a href="#">Temas</a>
+            <a href="#">Accesibilidad</a>
+        </div>
 
-.footer-col h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #9D843E; /* Línea Oro */
-    padding-bottom: 10px;
-    display: inline-block;
-    width: 80%;
-}
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <a href="#">Mesa de ayuda: dudas e información</a>
+            <a href="#">gobmx@funcionpublica.gob.mx</a>
+            <a href="#">Denuncia contra servidores públicos</a>
+        </div>
+    </div>
+</footer>
 
-.footer-col a {
-    display: block;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 12px;
-    opacity: 0.8;
-}
-
-.footer-col a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
-.footer-logo-img {
-    width: 220px;
-    filter: brightness(0) invert(1); /* Hace el logo blanco */
-    margin-bottom: 20px;
-}
-
-.redes-sociales {
-    display: flex;
-    gap: 20px;
-    font-size: 22px;
-}
-
-/* Barra inferior negra/borgoña */
-.footer-sub {
-    background-color: #480721;
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-
-/* Responsivo para celulares */
-@media (max-width: 768px) {
-    .footer-inner { flex-direction: column; text-align: center; }
-    .footer-col h4 { width: 100%; }
-    .redes-sociales { justify-content: center; }
-}
+<div class="footer-sub">
+    RNP v1.6.7 - SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
+</div>
 </footer>
 
 <div class="barra-version">
