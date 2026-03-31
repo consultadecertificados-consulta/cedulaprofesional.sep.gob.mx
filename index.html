@@ -437,78 +437,65 @@
 </main>
 
 
- </main> <footer class="footer-oficial">
+ <footer class="footer-oficial">
     <div class="rnp-version-top">RNP v1.6.7</div>
-
     <div class="footer-inner">
         <div class="footer-col footer-logo-section">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
-            
             <div class="mobile-only-content">
                 <div class="rnp-acordeon">
                     <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> Enlaces <span class="rnp-flecha">v</span></button>
                     <div class="rnp-acordeon-content">
-                        <a href="https://www.gob.mx/participa">Participa</a>
-                        <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-                        <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
-                        <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
-                    </div>
-                </div>
-                <div class="rnp-acordeon">
-                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> ¿Qué es gob.mx? <span class="rnp-flecha">v</span></button>
-                    <div class="rnp-acordeon-content">
-                        <a href="#">Trámites</a>
-                        <a href="#">Gobierno</a>
-                        <a href="#">English</a>
+                        <a href="#">Participa</a>
+                        <a href="#">Publicaciones Oficiales</a>
+                        <a href="#">Marco Jurídico</a>
+                        <a href="#">Transparencia</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="footer-col pc-only-content">
-            <h4>Enlaces</h4>
-            <a href="https://www.gob.mx/participa">Participa</a>
-            <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-            <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
-            <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
-        </div>
-
-        <div class="footer-col pc-only-content">
-            <h4>¿Qué es gob.mx?</h4>
-            <a href="#">Trámites</a>
-            <a href="#">Gobierno</a>
-            <a href="#">English</a>
-        </div>
-
         <div class="footer-col footer-contact-section">
-            <h4 class="pc-only-content">Contacto</h4>
             <a href="#" class="denuncia-link">Denuncia contra servidores públicos</a>
-            
             <div class="social-group">
                 <span>Síguenos en</span>
                 <div class="redes-sociales">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-
             <div class="phone-079">
-                <div class="phone-icon-box">
-                    <i class="fas fa-asterisk"></i>
-                    <span>079</span>
-                </div>
+                <div class="phone-icon-box"><span>*</span><span>079</span></div>
                 <p>Comunícate, estamos para ayudarte</p>
             </div>
         </div>
     </div>
-    <div class="footer-sub">
-        SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
-    </div>
+    <div class="footer-sub">SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026</div>
 </footer>
 
 <script>
+    // Esta función arregla lo que ves en tu segunda imagen
+    function toggleM(id) {
+        const el = document.getElementById(id);
+        if(el) el.classList.toggle('active');
+    }
+
+    function switchT(t) {
+        document.getElementById('f-dat').style.display = t === 'dat' ? 'grid' : 'none';
+        document.getElementById('f-ced').style.display = t === 'ced' ? 'grid' : 'none';
+        
+        const tD = document.getElementById('t-dat');
+        const tC = document.getElementById('t-ced');
+        
+        if(t === 'dat') {
+            tD.className = 'tab active';
+            tC.className = 'tab';
+        } else {
+            tC.className = 'tab active punteada';
+            tD.className = 'tab';
+        }
+    }
+
     function toggleAcordeon(elemento) {
         elemento.classList.toggle("active");
         var content = elemento.nextElementSibling;
@@ -517,10 +504,6 @@
         } else {
             content.style.maxHeight = content.scrollHeight + "px";
         }
-    }
-
-    function toggleM(id) {
-        document.getElementById(id).classList.toggle('active');
     }
 </script>
 </body>
