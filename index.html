@@ -55,52 +55,51 @@
 
 /* --- ESTO ES PARA PC (Diseño de lado) --- */
 /* Esta regla solo se activa si la pantalla es ANCHA */
-@media (min-width: 992px) {
-    .breadcrumb-button {
-        flex-direction: row;    /* Cambia a: Todo en una línea */
-        justify-content: flex-start; /* Empuja todo a la IZQUIERDA */
-        text-align: left;
-    }
-    .home-icon {
-        margin-right: 0px; /* Separa la casa del texto en PC */
-    }
-}
-
-        .breadcrumb-button:hover {
-            opacity: 0.8; /* Efecto visual al pasar el mouse */
-        }
-
-        .home-icon {
-            font-size: 10px;        /* Tamaño del icono de casa */
-            margin-bottom: 0px;     /* Espacio entre icono y texto */
-            color: #333;            /* Un poco más oscuro para resaltar */
-        }
-
-        .breadcrumb-text {
-            text-align: center;
-            line-height: 1.4;
+/* --- DISEÑO RESPONSIVO DEL BREADCRUMB --- */
+        .breadcrumb-button {
+            text-decoration: none;
             color: #333;
+            display: flex;
+            justify-content: center; /* Centrado en móvil */
+            margin-bottom: 40px;
         }
 
-        .text-upper {
-            font-size: 10px;        /* Tamaño de "Inicio" */
-            font-weight: 400;       /* Peso normal/ligero */
-            display: block;         /* Fuerza línea nueva */
+        .breadcrumb-container {
+            display: flex;
+            flex-direction: column; /* Móvil: Uno arriba del otro */
+            align-items: center;
+            gap: 5px;
         }
 
-        .text-lower {
-            font-size: 19px;        /* Tamaño del texto de abajo */
-            font-weight: 700;       /* Negrita (Bold) */
-            margin-top: 5px;        /* Espacio entre líneas */
-            color: #333;
-            white-space: nowrap;
+        .breadcrumb-group {
+            display: flex;
+            align-items: center;    /* Casita e Inicio siempre juntos */
+            gap: 8px;
         }
 
-        /* Ajustes para Móvil */
-        @media (max-width: 767px) {
-            .text-upper { font-size: 18px; }
-            .text-lower { font-size: 17px; }
-            .home-icon { font-size: 18px; }
+        .home-icon { font-size: 18px; color: #333; }
+        .text-upper { font-size: 18px; font-weight: 400; }
+        .text-lower { font-size: 19px; font-weight: 700; white-space: nowrap; }
+
+        /* --- CONFIGURACIÓN SOLO PARA PC (Pantallas grandes) --- */
+        @media (min-width: 992px) {
+            .breadcrumb-button {
+                justify-content: flex-start; /* Alineado a la izquierda */
+            }
+
+            .breadcrumb-container {
+                flex-direction: row;    /* PC: Todo en una sola línea horizontal */
+                gap: 10px;              /* Espacio entre Inicio y Búsqueda */
+            }
+
+            .text-lower {
+                font-size: 17px;        /* Un poco más estilizado en PC */
+            }
+        }
+
+        /* Ajuste para celulares muy pequeños */
+        @media (max-width: 480px) {
+            .text-lower { font-size: 15px; }
         }
         .section-title { font-size: 32px; font-weight: 700; color: #333; margin-bottom: 15px; }
         /* --- ESTILOS PARA LA LÍNEA SEPARADORA REFORMADA --- */
@@ -280,11 +279,16 @@
 
 <main>
    <a href="https://www.gob.mx/" class="breadcrumb-button">
-    <i class="fas fa-home home-icon"></i>
-    <span class="breadcrumb-text">
-        <span class="text-upper">Inicio</span>
-        <span class="text-lower">> Búsqueda de Cédulas Profesionales</span>
-    </span>
+    <div class="breadcrumb-container">
+        <div class="breadcrumb-group">
+            <i class="fas fa-home home-icon"></i>
+            <span class="text-upper">Inicio</span>
+        </div>
+        
+        <div class="breadcrumb-text-main">
+            <span class="text-lower">> Búsqueda de Cédulas Profesionales</span>
+        </div>
+    </div>
 </a>
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
   <div class="oro-line"></div>
