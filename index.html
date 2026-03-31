@@ -44,17 +44,27 @@
         /* MAIN CONTENT */
         main { max-width: 1200px; margin: 0 auto; padding: 40px 5%; text-align: center; }
         /* --- ESTILOS PARA EL BOTÓN BREADCRUMB --- */
-        .breadcrumb-button {
-            display: flex;
-            flex-direction: column; /* Apila icono y texto verticalmente */
-            align-items: center;    /* Centra horizontalmente */
-            justify-content: center;
-            text-decoration: none;  /* Quita el subrayado del link */
-            color: #4D4D4D;         /* Color gris oscuro de tu root */
-            margin-bottom: 30px;    /* Espacio con el título */
-            font-family: 'Montserrat', sans-serif;
-            transition: opacity 0.2s; /* Efecto suave al pasar el mouse */
-        }
+       /* --- ESTO ES PARA CELULAR (Diseño centrado) --- */
+.breadcrumb-button {
+    display: flex;
+    flex-direction: column; /* Apila: Casa arriba, texto abajo */
+    align-items: center;    /* Centra todo */
+    text-align: center;
+    text-decoration: none;
+}
+
+/* --- ESTO ES PARA PC (Diseño de lado) --- */
+/* Esta regla solo se activa si la pantalla es ANCHA */
+@media (min-width: 992px) {
+    .breadcrumb-button {
+        flex-direction: row;    /* Cambia a: Todo en una línea */
+        justify-content: flex-start; /* Empuja todo a la IZQUIERDA */
+        text-align: left;
+    }
+    .home-icon {
+        margin-right: 10px; /* Separa la casa del texto en PC */
+    }
+}
 
         .breadcrumb-button:hover {
             opacity: 0.8; /* Efecto visual al pasar el mouse */
@@ -271,11 +281,11 @@
 </div>
 
 <main>
-    <a href="https://www.gob.mx/" class="breadcrumb-button" title="Ir a Inicio">
+   <a href="https://www.gob.mx/" class="breadcrumb-button">
     <i class="fas fa-home home-icon"></i>
     <span class="breadcrumb-text">
         <span class="text-upper">Inicio</span>
-        <div class="text-lower">> Búsqueda de Cédulas Profesionales</div>
+        <span class="text-lower">> Búsqueda de Cédulas Profesionales</span>
     </span>
 </a>
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
