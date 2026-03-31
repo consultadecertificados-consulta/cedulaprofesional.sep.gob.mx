@@ -3,65 +3,144 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Registro Nacional de Profesionistas</title>
+  <title>Registro Nacional de Profesionistas - Consulta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Dirección General de Bachillerato, Secretaria de Educación Pública SEP CDMX">
 
   <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
   
   <style>
-    body { font-family: 'Noto Sans', sans-serif; background-color: #f4f4f4; }
-    .main-container { max-width: 800px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
-    .logo-portada { max-width: 100%; height: auto; margin-bottom: 30px; }
-    .search-box { margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-    input[type="text"] { padding: 10px; width: 60%; border: 1px solid #ccc; border-radius: 4px; }
-    button { padding: 10px 20px; background-color: #12322b; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background-color: #1d4e42; }
-    #resultado { margin-top: 20px; font-weight: bold; }
-    .btn-download { display: inline-block; margin-top: 15px; padding: 10px 25px; background-color: #9d2449; color: white; text-decoration: none; border-radius: 4px; }
+    body { font-family: 'Noto Sans', sans-serif; background-color: #f5f5f5; padding-bottom: 50px; }
+    .header-image { width: 100%; max-width: 900px; display: block; margin: 20px auto; }
+    .search-container { 
+        max-width: 800px; 
+        margin: 0 auto; 
+        padding: 30px; 
+        background: #fff; 
+        border-top: 5px solid #12322b; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    }
+    .btn-sep { background-color: #12322b; color: white; border: none; padding: 10px 25px; cursor: pointer; }
+    .btn-sep:hover { background-color: #1d4e42; }
+    
+    /* Tarjeta de Resultados */
+    #resultado { margin-top: 30px; }
+    .card-pro { 
+        border: 1px solid #ddd; 
+        padding: 20px; 
+        border-radius: 4px; 
+        text-align: left; 
+        background: #fafafa;
+    }
+    .card-pro h3 { color: #9d2449; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .label { font-weight: bold; color: #545454; font-size: 0.9em; }
+    .value { color: #000; margin-bottom: 5px; }
+    
+    .btn-download { 
+        display: block; 
+        width: 100%; 
+        text-align: center; 
+        background-color: #9d2449; 
+        color: white !important; 
+        padding: 12px; 
+        text-decoration: none; 
+        font-weight: bold;
+        border-radius: 4px;
+    }
+    .alert-error { color: #a94442; background-color: #f2dede; padding: 15px; border-radius: 4px; border: 1px solid #ebccd1; }
   </style>
 </head>
 
 <body>
-  <div class="main-container">
-    <img src="logo.png" alt="Logo Registro Nacional de Profesionistas" class="logo-portada">
 
-    <h2>Consulta de Constancias</h2>
-    <p>Ingrese su folio para validar y descargar su documento.</p>
+  <div class="container">
+    <img src="logo.png" alt="SEP Portada" class="header-image">
 
-    <div class="search-box">
-      <input type="text" id="inputFolio" placeholder="Escriba su folio aquí...">
-      <button onclick="validarFolio()">Buscar</button>
+    <div class="search-container">
+      <h2 class="text-center">Búsqueda de Cédulas Profesionales</h2>
+      <hr>
+      <p>Introduzca el número de cédula (ID) para verificar la autenticidad y descargar la constancia correspondiente.</p>
+      
+      <div class="form-group">
+        <label for="inputFolio">Número de Cédula / Folio:</label>
+        <div class="input-group">
+          <input type="text" id="inputFolio" class="form-control" placeholder="Ej: 10994202">
+          <span class="input-group-btn">
+            <button class="btn btn-primary btn-sep" onclick="consultar()">Consultar</button>
+          </span>
+        </div>
+      </div>
+
+      <div id="resultado"></div>
     </div>
-
-    <div id="resultado"></div>
   </div>
 
   <script src="folios.js"></script>
 
   <script>
-    function validarFolio() {
-      const folioIngresado = document.getElementById('inputFolio').value.trim();
-      const areaResultado = document.getElementById('resultado');
+    function consultar() {
+      const folioBusqueda = document.getElementById('inputFolio').value.trim();
+      const divResultado = document.getElementById('resultado');
       
-      // Verificamos si la variable listaFolios existe en folios.js
-      if (typeof listaFolios !== 'undefined') {
-        if (listaFolios.includes(folioIngresado)) {
-          areaResultado.innerHTML = `
-            <p style="color: green;">✔ Folio encontrado con éxito.</p>
-            <a href="CONSTANCIAS.pdf" download class="btn-download">Descargar CONSTANCIA (PDF)</a>
-          `;
-        } else {
-          areaResultado.innerHTML = `<p style="color: red;">✘ El folio no es válido o no existe en nuestros registros.</p>`;
-        }
+      if (!folioBusqueda) {
+        divResultado.innerHTML = '<p class="alert-error">Por favor, ingrese un número de cédula.</p>';
+        return;
+      }
+
+      // Buscar en el array 'registros' que viene de folios.js
+      const persona = registros.find(r => r.id === folioBusqueda);
+
+      if (persona) {
+        divResultado.innerHTML = `
+          <div class="card-pro">
+            <h3>Información del Profesionista</h3>
+            <div class="info-grid">
+              <div>
+                <div class="label">NOMBRE COMPLETO</div>
+                <div class="value">${persona.nom} ${persona.ap1} ${persona.ap2}</div>
+              </div>
+              <div>
+                <div class="label">CURP</div>
+                <div class="value">${persona.curp}</div>
+              </div>
+              <div>
+                <div class="label">INSTITUCIÓN</div>
+                <div class="value">${persona.inst}</div>
+              </div>
+              <div>
+                <div class="label">CARRERA / PROFESIÓN</div>
+                <div class="value">${persona.prof}</div>
+              </div>
+              <div>
+                <div class="label">AÑO DE EXPEDICIÓN</div>
+                <div class="value">${persona.anio}</div>
+              </div>
+              <div>
+                <div class="label">ESTADO</div>
+                <div class="value">${persona.ent}</div>
+              </div>
+            </div>
+            
+            <a href="${persona.archivo}" download class="btn-download">
+              DESCARGAR CONSTANCIA (PDF)
+            </a>
+          </div>
+        `;
       } else {
-        areaResultado.innerHTML = `<p style="color: orange;">Error técnico: No se pudo cargar la base de datos de folios.</p>`;
-        console.error("La variable 'listaFolios' no está definida en folios.js");
+        divResultado.innerHTML = `
+          <div class="alert-error">
+            <strong>Sin resultados:</strong> El número de cédula "${folioBusqueda}" no se encuentra en el Registro Nacional de Profesionistas.
+          </div>
+        `;
       }
     }
+
+    // Permitir búsqueda al presionar "Enter"
+    document.getElementById('inputFolio').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') consultar();
+    });
   </script>
 
-  <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
 </body>
 </html>
