@@ -559,20 +559,22 @@ function ejecutarBusqueda() {
         mostrarError(valor);
     } else {
         // Aquí iría tu lógica de búsqueda real
-        alert("Buscando cédula: " + valor);
+         mostrarError(valor);
     }
 }
 
 function mostrarError(cedula) {
+    // Pone el número de cédula en el modal
     document.getElementById('cedulaError').innerText = cedula;
     
-    // Pone la fecha de hoy automáticamente
+    // Genera la fecha automática (31/03/2026)
     const hoy = new Date();
     const fechaStr = hoy.getDate().toString().padStart(2, '0') + '/' + 
                      (hoy.getMonth() + 1).toString().padStart(2, '0') + '/' + 
                      hoy.getFullYear();
     document.getElementById('fechaActual').innerText = fechaStr;
     
+    // MUESTRA EL MODAL (Cambia de invisible a visible)
     document.getElementById('miModal').style.display = "block";
 }
 
