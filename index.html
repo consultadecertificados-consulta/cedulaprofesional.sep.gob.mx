@@ -45,43 +45,38 @@
         main { max-width: 1200px; margin: 0 auto; padding: 40px 5%; text-align: center; }
         /* --- ESTILOS PARA EL BOTÓN BREADCRUMB --- */
        /* --- ESTO ES PARA CELULAR (Diseño centrado) --- */
-.breadcrumb-button {
-    display: flex;
-    flex-direction: column; /* Apila: Casa arriba, texto abajo */
-    align-items: center;    /* Centra todo */
-    text-align: center;
-    text-decoration: none;
-}
-
-/* --- ESTO ES PARA PC (Diseño de lado) --- */
-/* Esta regla solo se activa si la pantalla es ANCHA */
-@media (min-width: 992px) {
-    .breadcrumb-button {
-        flex-direction: row;    /* Cambia a: Todo en una línea */
-        justify-content: flex-start; /* Empuja todo a la IZQUIERDA */
-        text-align: left;
-    }
-    .home-icon {
-        margin-right: 10px; /* Separa la casa del texto en PC */
-    }
-}
-
-        .breadcrumb-button:hover {
-            opacity: 0.8; /* Efecto visual al pasar el mouse */
+/* --- ESTILO PARA CASITA E INICIO EN UNA SOLA LÍNEA --- */
+        .breadcrumb-button {
+            display: flex;
+            flex-direction: row;    /* <--- CAMBIO CLAVE: Los pone uno al lado del otro */
+            align-items: center;    /* Centra la casita verticalmente con el texto */
+            justify-content: center; /* Los mantiene al centro (cámbialo a flex-start para la izquierda) */
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 50px;    /* Espacio con el título */
+            gap: 10px;              /* Espacio exacto entre la casita y el texto */
         }
 
         .home-icon {
-            font-size: 20px;        /* Tamaño del icono de casa */
-            margin-bottom: 8px;     /* Espacio entre icono y texto */
-            color: #333;            /* Un poco más oscuro para resaltar */
-        }
-
-        .breadcrumb-text {
-            text-align: center;
-            line-height: 1.4;
+            font-size: 20px;
+            margin-bottom: 0;       /* Quitamos el margen de abajo que lo empujaba */
             color: #333;
         }
 
+        .breadcrumb-text {
+            display: flex;
+            flex-direction: row;    /* Asegura que "Inicio" y "> Búsqueda" sigan en línea */
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Si quieres que en PC se vaya a la IZQUIERDA pero en móvil siga al CENTRO */
+        @media (min-width: 992px) {
+            .breadcrumb-button {
+                justify-content: flex-start; /* Se pega a la izquierda en computadoras */
+                padding-left: 10%;           /* Alinea con el margen de tus leyendas */
+            }
+        }
         .text-upper {
             font-size: 20px;        /* Tamaño de "Inicio" */
             font-weight: 400;       /* Peso normal/ligero */
