@@ -1,179 +1,211 @@
 <!doctype html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8">
   <title>Registro Nacional de Profesionistas | gob.mx</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <link href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico" rel="shortcut icon">
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Montserrat', sans-serif; background-color: #fff; margin: 0; }
+    /* Ajustes para replicar tu imagen exactamente */
+    .bg-guinda { background-color: #480C1D !important; }
+    .bg-guinda-claro { background-color: #6F1C32 !important; }
     
-    /* Barra Superior Guinda */
-    .header-sep { background-color: #480c1d; color: white; padding: 10px 0; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
-    .header-sep img { height: 45px; }
-    .nav-links { display: flex; gap: 20px; font-size: 14px; }
-    
-    /* Barra de Menú Hamburguesa */
-    .menu-bar { background-color: #541526; padding: 10px 5%; color: white; display: flex; align-items: center; }
-    .hamburger { cursor: pointer; font-size: 24px; margin-right: 20px; }
+    .banner-portada {
+        background-color: #480C1D;
+        width: 100%;
+        text-align: center;
+    }
+    .banner-portada img {
+        max-width: 1000px;
+        width: 100%;
+        height: auto;
+    }
 
-    /* Portada (Banner) */
-    .banner-container { width: 100%; background-color: #480c1d; position: relative; }
-    .banner-img { width: 100%; display: block; max-width: 1200px; margin: 0 auto; }
+    .nav-tabs > li.active > a {
+        background-color: #6F1C32 !important;
+        color: #fff !important;
+        border-radius: 4px 4px 0 0;
+    }
 
-    /* Contenido Principal */
-    .main-content { max-width: 1000px; margin: 20px auto; padding: 20px; }
-    .breadcrumb { font-size: 14px; color: #666; margin-bottom: 20px; }
-    .breadcrumb a { color: #480c1d; text-decoration: none; }
+    .form-control {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
 
-    h1 { color: #545454; font-weight: bold; border-bottom: 3px solid #D4C19C; display: inline-block; padding-bottom: 10px; width: 100%; }
-    .intro-text { font-size: 14px; color: #333; line-height: 1.6; margin: 20px 0; }
+    .btn-gob {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        color: #545454;
+    }
 
-    /* Pestañas */
-    .tabs-container { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #f9f9f9; padding: 20px; }
-    .nav-tabs { display: flex; background: #eee; margin: -20px -20px 20px -20px; }
-    .tab-item { padding: 12px 25px; cursor: pointer; border-right: 1px solid #ddd; background: #e0e0e0; }
-    .tab-item.active { background: #6f1c32; color: white; }
+    .btn-primary-custom {
+        background-color: #9D2449;
+        color: white;
+        border: none;
+    }
 
-    /* Formulario */
-    .form-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
-    .form-group { flex: 1; min-width: 250px; }
-    label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 13px; }
-    input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-
-    /* Botones */
-    .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
-    .btn-custom { padding: 8px 25px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer; font-weight: bold; }
-    .btn-search { background: #fff; border: 2px solid #480c1d; color: #480c1d; }
-    .btn-clear { background: #fff; border: 1px solid #D4C19C; color: #D4C19C; }
-    .btn-download { background: #b3b3b3; color: white; border: none; cursor: not-allowed; }
-    .btn-download.enabled { background: #9d2449; cursor: pointer; }
-
-    /* Resultado */
-    #resultado { margin-top: 20px; }
-    .card-result { border-left: 5px solid #6f1c32; background: white; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    /* Menu Lateral (Hamburguesa) */
+    #sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        width: 250px;
+        background: #480C1D;
+        transition: 0.3s;
+        z-index: 9999;
+        padding-top: 60px;
+    }
+    #sidebar.active { left: 0; }
+    #sidebar a { padding: 15px; text-decoration: none; color: white; display: block; }
   </style>
 </head>
 
 <body>
 
-  <header class="header-sep">
-    <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" alt="Gobierno de México">
-    <div class="nav-links">
-      <span>Trámites</span>
-      <span>Gobierno</span>
-      <span>🔍</span>
-    </div>
-  </header>
-
-  <nav class="menu-bar">
-    <div class="hamburger">☰</div>
-  </nav>
-
-  <div class="banner-container">
-    <img src="logo.png" class="banner-img" alt="Registro Nacional de Profesionistas">
+  <div id="sidebar">
+    <a href="#">Trámites</a>
+    <a href="#">Gobierno</a>
+    <a href="#" onclick="toggleMenu()">✕ Cerrar</a>
   </div>
 
-  <main class="main-content">
-    <div class="breadcrumb">
-      🏠 Inicio > <strong>Búsqueda de Cédulas Profesionales</strong>
-    </div>
-
-    <h1>Realiza tu búsqueda de forma segura y confiable.</h1>
-    <p class="intro-text">
-      Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.
-    </p>
-
-    <h4 style="text-align: center; color: #333;">¡Descarga la Constancia de Situación Profesional!</h4>
-    <p style="text-align: center; font-size: 13px;">Recuerda: <strong>La emisión de la Constancia es completamente gratuita.</strong></p>
-
-    <div class="tabs-container">
-      <div class="nav-tabs">
-        <div class="tab-item">Datos generales</div>
-        <div class="tab-item active">Número de cédula</div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Número de cédula*:</label>
-          <input type="text" id="inputFolio" placeholder="Ingrese número de cédula">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top bg-guinda" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" onclick="toggleMenu()">
+            <span class="sr-only">Intercambiar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://www.gob.mx/">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" alt="Página de inicio, Gobierno de México" height="30">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" style="color:white">Trámites</a></li>
+            <li><a href="#" style="color:white">Gobierno</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-search" style="color:white"></i></a></li>
+          </ul>
         </div>
       </div>
+    </nav>
+  </header>
 
-      <div class="actions">
-        <button class="btn-custom btn-search" onclick="consultar()">Buscar</button>
-        <button class="btn-custom btn-clear" onclick="limpiar()">Limpiar</button>
-        <div id="download-container">
-            <button class="btn-custom btn-download" id="btnDown" disabled>Descargar PDF</button>
+  <div class="banner-portada" style="margin-top: 50px;">
+    <img src="logo.png" alt="Registro Nacional de Profesionistas">
+  </div>
+
+  <main class="container">
+    <ol class="breadcrumb" style="background:none;">
+      <li><a href="#"><i class="icon-home"></i></a></li>
+      <li>Inicio</li>
+      <li class="active">Búsqueda de Cédulas Profesionales</li>
+    </ol>
+
+    <h2 class="vertical-line">Realiza tu búsqueda de forma segura y confiable.</h2>
+    <hr class="red">
+    
+    <p class="small">Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado...</p>
+
+    <h4 class="text-center">¡Descarga la Constancia de Situación Profesional!</h4>
+    <p class="text-center">Recuerda: <strong>La emisión de la Constancia es completamente gratuita.</strong></p>
+
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">Datos generales</a></li>
+          <li><a href="#">Número de cédula</a></li>
+        </ul>
+        
+        <div class="panel panel-default" style="padding:20px; border-top:none;">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>Nombre(s)*:</label>
+              <input type="text" id="nom" class="form-control" placeholder="Nombre(s)">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>Primer Apellido*:</label>
+              <input type="text" id="ap1" class="form-control" placeholder="Primer Apellido">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>Segundo Apellido:</label>
+              <input type="text" id="ap2" class="form-control" placeholder="Segundo Apellido">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>CURP:</label>
+              <input type="text" id="curp" class="form-control" placeholder="CURP">
+            </div>
+          </div>
+
+          <div class="text-right" style="margin-top:20px;">
+            <button class="btn btn-default btn-gob" onclick="buscar()">Buscar</button>
+            <button class="btn btn-default btn-gob">Limpiar</button>
+            <button id="btnDescarga" class="btn btn-default" style="background:#ccc;" disabled>Descargar CSV</button>
+          </div>
+          
+          <div id="resultadoBusqueda" style="margin-top:20px;"></div>
         </div>
       </div>
-
-      <div id="resultado"></div>
     </div>
   </main>
 
-  <footer style="background: #480c1d; color: white; padding: 40px 5%; margin-top: 50px;">
-      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-          <div>
-              <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" style="height: 40px; filter: brightness(0) invert(1);">
-          </div>
-          <div>
-              <h5>Enlaces</h5>
-              <ul style="list-style: none; padding: 0; font-size: 12px;">
-                  <li>Datos abiertos</li>
-                  <li>Transparencia</li>
-                  <li>Alerta</li>
-              </ul>
-          </div>
-          <div>
-              <h5>¿Qué es gob.mx?</h5>
-              <p style="font-size: 12px; max-width: 300px;">Es el portal único de trámites, información y participación ciudadana. <a href="#" style="color: white;">Leer más</a></p>
-          </div>
+  <footer class="main-footer" style="background:#480C1D; color:white; padding:40px 0;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" width="200" style="filter: brightness(0) invert(1);">
+        </div>
+        <div class="col-md-3">
+          <h5>Enlaces</h5>
+          <ul class="list-unstyled">
+            <li>Datos abiertos</li>
+            <li>Marco Jurídico</li>
+            <li>Transparencia</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>¿Qué es gob.mx?</h5>
+          <p>Es el portal único de trámites e información ciudadana.</p>
+        </div>
+        <div class="col-md-3">
+            <h5>Síguenos en</h5>
+            <p>FB | TW | IG | YT</p>
+        </div>
       </div>
+    </div>
   </footer>
 
   <script src="folios.js"></script>
   <script>
-    function consultar() {
-      const folio = document.getElementById('inputFolio').value.trim();
-      const res = document.getElementById('resultado');
-      const btnDown = document.getElementById('btnDown');
-      const downloadContainer = document.getElementById('download-container');
+    function toggleMenu() {
+        document.getElementById('sidebar').classList.toggle('active');
+    }
 
-      // 'registros' viene de folios.js
-      const p = registros.find(r => r.id === folio);
+    function buscar() {
+      const nombre = document.getElementById('nom').value.toUpperCase().trim();
+      const resultado = document.getElementById('resultadoBusqueda');
+      
+      // Búsqueda simple por nombre para prueba
+      const encontrado = registros.find(r => r.nom.includes(nombre) && nombre !== "");
 
-      if (p) {
-        res.innerHTML = `
-          <div class="card-result">
-            <h4 style="color:#6f1c32; margin-top:0;">Profesionista Encontrado</h4>
-            <p><strong>Nombre:</strong> ${p.nom} ${p.ap1} ${p.ap2}</p>
-            <p><strong>Cédula:</strong> ${p.id}</p>
-            <p><strong>Institución:</strong> ${p.inst}</p>
-            <p><strong>Carrera:</strong> ${p.prof}</p>
-          </div>
-        `;
-        // Habilitar botón de descarga real
-        downloadContainer.innerHTML = `
-            <a href="${p.archivo}" download class="btn-custom btn-download enabled" style="text-decoration:none; display:inline-block;">Descargar PDF</a>
-        `;
+      if (encontrado) {
+        resultado.innerHTML = `
+          <div class="alert alert-success">
+            <strong>Encontrado:</strong> ${encontrado.nom} ${encontrado.ap1} - Cédula: ${encontrado.id}
+            <br><a href="${encontrado.archivo}" class="btn btn-danger" style="margin-top:10px;">DESCARGAR CONSTANCIA PDF</a>
+          </div>`;
       } else {
-        res.innerHTML = `<p style="color: red; margin-top:15px;">No se encontraron resultados para la cédula ingresada.</p>`;
-        downloadContainer.innerHTML = `<button class="btn-custom btn-download" disabled>Descargar PDF</button>`;
+        resultado.innerHTML = `<div class="alert alert-danger">No se encontraron registros.</div>`;
       }
     }
-
-    function limpiar() {
-        document.getElementById('inputFolio').value = "";
-        document.getElementById('resultado').innerHTML = "";
-        document.getElementById('download-container').innerHTML = `<button class="btn-custom btn-download" disabled>Descargar PDF</button>`;
-    }
   </script>
-
 </body>
 </html>
