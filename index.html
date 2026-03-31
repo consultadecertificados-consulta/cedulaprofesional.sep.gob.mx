@@ -43,7 +43,53 @@
 
         /* MAIN CONTENT */
         main { max-width: 1200px; margin: 0 auto; padding: 40px 5%; text-align: center; }
-        .breadcrumb { font-size: 16px; color: #666; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        /* --- ESTILOS PARA EL BOTÓN BREADCRUMB --- */
+        .breadcrumb-button {
+            display: flex;
+            flex-direction: column; /* Apila icono y texto verticalmente */
+            align-items: center;    /* Centra horizontalmente */
+            justify-content: center;
+            text-decoration: none;  /* Quita el subrayado del link */
+            color: #4D4D4D;         /* Color gris oscuro de tu root */
+            margin-bottom: 30px;    /* Espacio con el título */
+            font-family: 'Montserrat', sans-serif;
+            transition: opacity 0.2s; /* Efecto suave al pasar el mouse */
+        }
+
+        .breadcrumb-button:hover {
+            opacity: 0.8; /* Efecto visual al pasar el mouse */
+        }
+
+        .home-icon {
+            font-size: 20px;        /* Tamaño del icono de casa */
+            margin-bottom: 8px;     /* Espacio entre icono y texto */
+            color: #333;            /* Un poco más oscuro para resaltar */
+        }
+
+        .breadcrumb-text {
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .text-upper {
+            font-size: 20px;        /* Tamaño de "Inicio" */
+            font-weight: 400;       /* Peso normal/ligero */
+            display: block;         /* Fuerza línea nueva */
+        }
+
+        .text-lower {
+            font-size: 19px;        /* Tamaño del texto de abajo */
+            font-weight: 700;       /* Negrita (Bold) */
+            margin-top: 5px;        /* Espacio entre líneas */
+            color: #333;
+        }
+
+        /* Ajustes para Móvil */
+        @media (max-width: 767px) {
+            .text-upper { font-size: 18px; }
+            .text-lower { font-size: 17px; }
+            .home-icon { font-size: 18px; }
+        }
         .section-title { font-size: 32px; font-weight: 700; color: #333; margin-bottom: 15px; }
         .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 30px; }
 
@@ -194,9 +240,47 @@
 </div>
 
 <main>
-    <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
+    <a href="https://www.gob.mx/" class="breadcrumb-button" title="Ir a Inicio">
+    <i class="fas fa-home home-icon"></i>
+    <span class="breadcrumb-text">
+        <span class="text-upper">Inicio</span>
+        <div class="text-lower">> Búsqueda de Cédulas Profesionales</div>
+    </span>
+</a>
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
-    <div class="oro-line"></div>
+  /* --- ESTILOS PARA LA LÍNEA SEPARADORA (REFORMADA) --- */
+        .oro-line { 
+            width: 100%;           /* Ocupa el 100% del contenedor main */
+            max-width: 1100px;     /* Límite para que no toque los bordes en monitores gigantes */
+            height: 1px;           /* Es una línea muy delgada, como en la imagen */
+            background-color: #E6E6E6; /* Color gris claro para la línea larga */
+            margin: 30px auto;     /* Centrada y con espacio arriba/abajo */
+            position: relative;     /* Necesario para poner el acento dorado arriba */
+            border: none;          /* Limpiamos bordes previos */
+        }
+
+        /* Creamos el acento dorado con un pseudo-elemento */
+        .oro-line::before {
+            content: "";            /* Obligatorio para pseudo-elementos */
+            position: absolute;     /* Se posiciona respecto a .oro-line */
+            top: 0;
+            left: 0;                /* Alineado a la izquierda */
+            width: 70px;            /* Longitud del acento dorado (puedes ajustarla) */
+            height: 4px;            /* Grosor del acento dorado (más grueso que la línea gris) */
+            background-color: var(--gob-oro); /* Usamos tu color dorado */
+            transform: translateY(-1.5px); /* Sube un poco para centrarlo visualmente con la línea gris */
+        }
+
+        /* Ajustes para Móvil */
+        @media (max-width: 767px) {
+            .oro-line {
+                max-width: 90%; /* Un poco más corta en móvil para respirar */
+                margin: 20px auto; 
+            }
+            .oro-line::before {
+                width: 50px; /* Un poco más corta también en móvil */
+            }
+        }
 
     <div class="leyenda-contenedor">
         <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
