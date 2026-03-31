@@ -165,38 +165,15 @@
             }
         }
 
-       @media (min-width: 992px) {
-    /* 1. Mueve el Breadcrumb (Casita + Búsqueda de Cédula) */
-    .breadcrumb-button {
-        justify-content: flex-start !important; /* Lo manda a la izquierda */
-        padding-left: 5%;                      /* Pequeño margen para que no toque el borde físico */
-    }
-    
-    .breadcrumb-container {
-        flex-direction: row;                   /* Todo en una línea en PC */
-        align-items: center;
-    }
-
-    /* 2. Mueve el Título (Realiza tu búsqueda...) */
-    .section-title {
-        text-align: left !important;           /* Texto a la izquierda */
-        margin-left: 5% !important;            /* Alineado con el breadcrumb */
-        margin-right: auto;
-    }
-
-    /* 3. Mueve las Leyendas (El texto largo) */
-    .leyenda-contenedor {
-        text-align: left !important;           /* Justificado o Izquierda */
-        margin-left: 5% !important;            /* Alineado con el resto */
-        max-width: 90%;                        /* Que no abarque el 100% para que sea legible */
-    }
-    
-    /* Si tienes la línea dorada, también muévela */
-    .oro-line {
-        margin-left: 5% !important;
-        margin-right: auto;
-    }
-}
+        /* Configuración para PC */
+        @media (min-width: 992px) {
+            .leyenda-contenedor {
+                text-align: justify;
+                font-size: 16px;
+                max-width: 1100px;     /* No deja que el renglón sea infinito en monitores grandes */
+                padding: 0 20px;
+                margin-bottom: 40px;
+            }
         }
         /* FORMULARIO Y TABS */
         .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; margin-top: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
