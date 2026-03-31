@@ -8,39 +8,135 @@
   <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
 
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+  <style>
+    /* Estilos base de la página para que se ajusten al nuevo menú */
+    body {
+        position: relative;
+        overflow-x: hidden; /* Evita scroll horizontal al abrir el menú */
+    }
+
+    /* BARRA SUPERIOR GUINDA (Imagen: fondo más oscuro) */
+    .custom-top-bar {
+        background-color: #2D0014; /* Tono guinda muy oscuro, base */
+        color: white;
+        padding: 10px 0;
+        border-bottom: 3px solid #621132; /* Tono guinda más claro, acento */
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1030; /* Encima de todo */
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 60px; /* Altura de la barra */
+    }
+
+    /* BOTÓN HAMBURGUESA */
+    .menu-hamburger {
+        font-size: 28px;
+        cursor: pointer;
+        padding: 0 15px;
+        border: none;
+        background: none;
+        color: white;
+        margin-left: 15px; /* Espacio desde la izquierda */
+    }
+
+    /* PANEL LATERAL DEL MENÚ DESPLEGABLE */
+    .side-menu {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1040; /* Por encima de la barra */
+        top: 0;
+        left: 0;
+        background-color: #621132; /* Color de fondo guinda de la imagen */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px; /* Altura de la barra para que el contenido empiece después */
+    }
+
+    /* Elementos del menú lateral */
+    .side-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center; /* Centrado como en la imagen */
+    }
+
+    .side-menu ul li {
+        padding: 10px 0;
+    }
+
+    .side-menu ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: #f1f1f1;
+        display: block;
+        transition: 0.3s;
+        padding: 15px 10px;
+    }
+
+    .side-menu ul li a:hover {
+        color: #FFD700; /* Efecto hover dorado opcional */
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    /* ÍCONO DE FLECHA DESPLEGABLE */
+    .dropdown-arrow {
+        font-size: 14px;
+        margin-left: 8px;
+        vertical-align: middle;
+    }
+
+    /* BOTÓN PARA CERRAR EL MENÚ (X) */
+    .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: white;
+        text-decoration: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Ajuste para el contenido principal (para que no quede debajo del menú fijo) */
+    .main-content-adjusted {
+        margin-top: 80px; /* Altura barra + espacio extra */
+    }
+
+  </style>
 </head>
 
 <body>
 
-  <header>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMainCollapse">
-            <span class="sr-only">Interruptor de Navegación</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="https://www.gob.mx/">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="128" height="48" alt="Página de inicio, Gobierno de México">
-          </a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarMainCollapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://www.gob.mx/tramites">Trámites</a></li>
-            <li><a href="https://www.gob.mx/gobierno">Gobierno</a></li>
-            <li><a href="https://www.gob.mx/busqueda"><span class="sr-only">Búsqueda</span><i class="icon-search"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <main class="container" style="margin-top: 100px; min-height: 500px;">
+  <div class="custom-top-bar">
+    <button class="menu-hamburger" onclick="openNav()" aria-label="Abrir menú">
+      &#9776; </button>
+  </div>
+
+  <div id="mySideMenu" class="side-menu">
+    <button class="close-btn" onclick="closeNav()" aria-label="Cerrar menú">&times;</button>
+    
+    <ul>
+      <li><a href="#">Inicio<span class="dropdown-arrow">&#9660;</span></a></li>
+      <li><a href="#">Cédulas Profesionales<span class="dropdown-arrow">&#9660;</span></a></li>
+      <li><a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a></li>
+      <li><a href="#">Cédulas Estatales</a></li>
+      <li><a href="#">Datos Abiertos<span class="dropdown-arrow">&#9660;</span></a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </div>
+
+  <main class="container main-content-adjusted" style="min-height: 500px;">
     <div class="row">
         <div class="col-md-12">
             <h2>Contenido del Registro Nacional de Profesionistas</h2>
-            <p>El primer pie de página ha sido eliminado. Solo queda el cintillo inferior.</p>
+            <p>Se ha añadido la barra guinda personalizada con el menú hamburguesa desplegable, replicando las opciones de la imagen y conservando el estilo institucional.</p>
         </div>
     </div>
   </main>
@@ -60,6 +156,16 @@
   </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySideMenu").style.width = "100%"; // O cambia a "300px" para un panel lateral parcial
+    }
+
+    function closeNav() {
+      document.getElementById("mySideMenu").style.width = "0";
+    }
+  </script>
 
 </body>
 </html>
