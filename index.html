@@ -29,15 +29,20 @@
         .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
         /* PORTADA */
-        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); line-height: 0; background: #f4f4f4; }
-        .hero-section img {
-    width: 100%;           /* Se adapta al ancho en móviles */
-    max-width: 200px;     /* En PC no pasará de este ancho (puedes ajustarlo) */
-    height: auto;          /* Mantiene la proporción real */
+       /* Esto aplica para todos (Móviles) */
+.hero-section img {
+    width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto;        /* Centra la imagen si el monitor es muy grande */
-    max-height: 450px; 
-    object-fit: contain;   /* Cambia 'cover' por 'contain' para que se vea la imagen completa sin cortes */
+}
+
+/* Esto solo aplica cuando la pantalla es grande (PC) */
+@media (min-width: 992px) {
+    .hero-section img {
+        width: 60%;        /* En PC solo ocupará el 60% del ancho */
+        margin: 0 auto;    /* La centramos */
+        max-height: 300px; /* Reducimos la altura en PC */
+    }
 }
 
         /* MAIN CONTENT */
