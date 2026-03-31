@@ -12,115 +12,106 @@
             --gob-borgoña: #330318;
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
-            --gris-claro: #F2F2F2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; }
 
         /* HEADER */
-        header { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .nav-superior { background-color: var(--gob-vino); padding: 12px 8%; display: flex; justify-content: space-between; align-items: center; }
-        .logo-gob-mex { height: 45px; }
-        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 50px; display: flex; align-items: center; }
-        
-        .menu-pc { display: flex; gap: 20px; list-style: none; }
-        .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
-        .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
+        header { position: sticky; top: 0; z-index: 1000; width: 100%; }
+        .nav-superior { background-color: var(--gob-vino); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo-gob-mex { height: 40px; }
+        .nav-inferior { background-color: var(--gob-borgoña); padding: 10px 5%; min-height: 50px; display: flex; align-items: center; }
+        .menu-pc { display: flex; gap: 15px; list-style: none; }
+        .menu-pc a { color: white; text-decoration: none; font-size: 13px; }
+        .btn-ham { display: none; color: white; background: none; border: none; font-size: 22px; cursor: pointer; }
 
-        /* PORTADA (HERO) - Adaptada para móvil (más alta) */
-        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); line-height: 0; background: #fff; }
-        .hero-section img { width: 100%; height: auto; display: block; }
+        /* PORTADA ALARGADA */
+        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); }
+        .hero-section img { width: 100%; height: auto; display: block; max-height: 500px; object-fit: cover; }
 
-        /* MAIN */
-        main { max-width: 1200px; margin: 0 auto; padding: 30px 5%; text-align: center; }
-        .breadcrumb { font-size: 15px; color: #666; margin-bottom: 25px; display: flex; justify-content: center; gap: 8px; }
-        .section-title { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 15px; }
-        .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 25px; }
+        /* CONTENIDO PRINCIPAL */
+        main { max-width: 1100px; margin: 0 auto; padding: 20px; text-align: center; }
+        .breadcrumb { font-size: 14px; color: #666; margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 5px; }
+        .section-title { font-size: 26px; font-weight: 700; color: #333; margin-bottom: 10px; }
+        .oro-line { width: 40px; height: 4px; background: var(--gob-oro); margin: 0 auto 20px; }
 
-        /* LEYENDA SUPERIOR */
-        .leyenda-legal { text-align: justify; font-size: 14px; color: #545454; margin-bottom: 25px; }
-        .leyenda-promocional { margin: 30px 0; }
-        .leyenda-promocional h2 { font-size: 22px; color: #333; font-weight: 700; margin-bottom: 10px; }
-        .leyenda-promocional p { font-size: 16px; }
+        /* TEXTOS LEGALES Y LEYENDAS */
+        .leyenda-legal { text-align: justify; font-size: 14px; color: #555; margin-bottom: 20px; }
+        .descarga-promo { margin: 25px 0; }
+        .descarga-promo h2 { font-size: 20px; font-weight: 800; color: #333; margin-bottom: 5px; }
+        .descarga-promo p { font-size: 15px; }
 
         /* BUSCADOR */
-        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .tabs { display: flex; background: var(--gris-claro); }
-        .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; font-size: 14px; }
-        .tab.active { background: var(--gob-vino); color: white; }
+        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; background: #fff; text-align: left; margin-bottom: 30px; }
+        .tabs { display: flex; background: #f2f2f2; }
+        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-weight: 600; font-size: 13px; border-bottom: 3px solid transparent; }
+        .tab.active { background: var(--gob-vino); color: white; border-bottom: 3px solid var(--gob-oro); }
 
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px; }
-        .field { display: flex; flex-direction: column; }
-        .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; color: #333; }
-        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; outline: none; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 20px; }
+        .field { display: flex; flex-direction: column; margin-bottom: 10px; }
+        .field label { font-weight: 700; font-size: 14px; margin-bottom: 5px; }
+        .field input { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; }
 
-        .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
-        .btn { padding: 10px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: 2px solid; font-size: 15px; min-width: 140px; text-align: center; }
+        .form-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 0 20px 20px; }
+        .btn { padding: 10px 20px; border-radius: 4px; font-weight: 600; cursor: pointer; border: 1px solid; min-width: 110px; }
         .btn-buscar { background: var(--gob-borgoña); color: white; border: none; }
-        .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: white; }
+        .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: #fff; }
 
         /* TABLA */
-        .results-container { padding: 20px; border-top: 1px solid #eee; display: none; }
-        .table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; border: 1px solid #eee; }
-        table { width: 100%; min-width: 1100px; border-collapse: collapse; font-size: 13px; }
-        th { background: #fcfcfc; padding: 12px; border-bottom: 2px solid #eee; text-align: left; color: #666; font-size: 11px; text-transform: uppercase; }
-        td { padding: 15px 12px; border-bottom: 1px solid #eee; color: #333; }
+        .results-container { padding: 20px; display: none; }
+        .table-wrapper { width: 100%; overflow-x: auto; }
+        table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 12px; }
+        th { background: #f9f9f9; padding: 10px; border-bottom: 2px solid #ddd; text-align: left; text-transform: uppercase; }
+        td { padding: 12px 10px; border-bottom: 1px solid #eee; }
 
-        /* FOOTER */
-        footer { background-color: var(--gob-vino); color: white; padding: 50px 8% 30px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-col h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; }
-        .footer-col a { color: white; text-decoration: none; display: block; font-size: 14px; margin-bottom: 12px; opacity: 0.8; }
+        /* FOOTER ESTILO IMAGEN (VERTICAL) */
+        footer { background-color: var(--gob-vino); color: white; padding: 40px 20px; text-align: left; display: flex; flex-direction: column; align-items: center; }
+        .footer-wrap { width: 100%; max-width: 350px; } /* Mantiene el pie de página estrecho */
+        .footer-logo { width: 180px; margin-bottom: 30px; }
+        .footer-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; width: 100%; }
+        .footer-item h4 { display: flex; justify-content: space-between; align-items: center; font-size: 16px; cursor: pointer; }
+        .footer-content { display: none; padding-top: 10px; }
+        .active .footer-content { display: block; }
+
+        .denuncia-link { display: block; margin: 25px 0; color: white; font-weight: 700; text-decoration: underline; font-size: 15px; }
         
-        /* Solo gob.mx desplegable */
-        .desplegable-h4 { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        
-        .social-container { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .social-links { display: flex; gap: 30px; }
-        .social-links a { color: white; font-size: 35px; transition: 0.3s; }
+        .social-box { margin: 20px 0; width: 100%; }
+        .social-box p { margin-bottom: 15px; font-size: 16px; font-weight: 600; }
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a { color: white; font-size: 28px; }
 
-        .version-bar { background-color: var(--gob-borgoña); color: rgba(255,255,255,0.4); text-align: center; padding: 15px; font-size: 12px; }
+        .help-box { display: flex; align-items: center; gap: 15px; margin-top: 30px; }
+        .help-box i { font-size: 40px; }
+        .help-text { font-size: 13px; font-weight: 700; line-height: 1.2; }
 
-        /* RESPONSIVO */
-        @media (max-width: 992px) {
-            .hero-section img { min-height: 350px; object-fit: cover; } /* Portada alta en móvil */
-            .menu-pc { display: none; flex-direction: column; width: 100%; position: absolute; left: 0; top: 100%; background: var(--gob-borgoña); padding: 10px 0; }
-            .menu-pc.active { display: flex; }
+        @media (max-width: 768px) {
+            .menu-pc { display: none; }
             .btn-ham { display: block; }
-            
-            /* Solo sección gob.mx colapsa */
-            #gob-content { display: none; }
-            .active #gob-content { display: block; }
-            .desplegable-h4 i { transition: 0.3s; }
-            .active .desplegable-h4 i { transform: rotate(180deg); }
+            .section-title { font-size: 22px; }
+            .hero-section img { min-height: 300px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <nav class="nav-superior">
+    <div class="nav-superior">
         <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex">
-        <button class="btn-ham" onclick="toggleMenu('mSup')"><i class="fas fa-bars"></i></button>
-        <ul id="mSup" class="menu-pc">
-            <li><a href="#">Trámites</a></li>
-            <li><a href="#">Gobierno</a></li>
-        </ul>
-    </nav>
-    <nav class="nav-inferior">
-        <button class="btn-ham" onclick="toggleMenu('mInf')"><i class="fas fa-bars"></i></button>
-        <ul id="mInf" class="menu-pc" style="margin: 0 auto;">
+        <button class="btn-ham" onclick="document.getElementById('mInf').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="nav-inferior">
+        <ul id="mInf" class="menu-pc">
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Cédulas Profesionales</a></li>
             <li><a href="#">Especialistas</a></li>
             <li><a href="#">Datos Abiertos</a></li>
         </ul>
-    </nav>
+    </div>
 </header>
 
 <div class="hero-section">
-    <img src="logo.png" alt="RNP">
+    <img src="logo.png" alt="Registro Nacional">
 </div>
 
 <main>
@@ -129,10 +120,11 @@
     <div class="oro-line"></div>
 
     <div class="leyenda-legal">
-        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley. La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos.</p>
+        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
+        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos. Esta información se actualiza de manera periódica.</p>
     </div>
 
-    <div class="leyenda-promocional">
+    <div class="descarga-promo">
         <h2>¡Descarga la Constancia de Situación Profesional!</h2>
         <p>Recuerda: <strong>La emisión de la Constancia es completamente gratuita.</strong></p>
     </div>
@@ -144,17 +136,18 @@
         </div>
         
         <div class="form-grid" id="f-dat">
-            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Ej. JORGE LUIS"></div>
-            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Ej. LOPEZ"></div>
-            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Ej. CRUZ"></div>
+            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Ej. ROBERTO CARLOS"></div>
+            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Ej. ARAUJO"></div>
+            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Ej. PARRA"></div>
+            <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="Ingrese CURP"></div>
         </div>
 
         <div class="form-grid" id="f-ced" style="display:none;">
-            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ej. 10994202"></div>
+            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ej. 11731054"></div>
         </div>
 
         <div class="form-actions">
-            <button class="btn btn-buscar" onclick="buscarRegistro()">Buscar</button>
+            <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
             <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
         </div>
 
@@ -163,7 +156,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Cédula</th><th>Nombre</th><th>1er Apellido</th><th>2do Apellido</th><th>Género</th><th>Institución</th><th>Profesión</th><th>Entidad</th><th>Año</th><th>Constancia</th>
+                            <th>Núm. Cédula</th><th>Nombre</th><th>Apellidos</th><th>Género</th><th>Institución</th><th>Profesión</th><th>Año</th><th>Constancia</th>
                         </tr>
                     </thead>
                     <tbody id="res-body"></tbody>
@@ -174,49 +167,45 @@
 </main>
 
 <footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 180px; margin-bottom: 20px;">
-        </div>
+    <div class="footer-wrap">
+        <p style="font-size: 12px; margin-bottom: 10px; opacity: 0.7;">RNP v1.6.7</p>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo" style="filter: brightness(0) invert(1);">
         
-        <div class="footer-col">
-            <h4>Enlaces</h4>
-            <a href="#">Participa</a>
-            <a href="#">Publicaciones Oficiales</a>
-            <a href="#">Marco Jurídico</a>
-            <a href="#">Transparencia</a>
-        </div>
-
-        <div class="footer-col" id="gob-col">
-            <h4 class="desplegable-h4" onclick="toggleGob()">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></h4>
-            <div id="gob-content">
-                <a href="#">Aviso de privacidad</a>
-                <a href="#">Términos y Condiciones</a>
-                <a href="#">Accesibilidad</a>
+        <div class="footer-item" onclick="this.classList.toggle('active')">
+            <h4>Enlaces <span>v</span></h4>
+            <div class="footer-content">
+                <a href="#">Participa</a><br><a href="#">Publicaciones</a>
             </div>
         </div>
-    </div>
 
-    <div class="social-container">
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <div class="footer-item" onclick="this.classList.toggle('active')">
+            <h4>¿Qué es gob.mx? <span>v</span></h4>
+            <div class="footer-content">
+                <a href="#">Aviso de Privacidad</a><br><a href="#">Accesibilidad</a>
+            </div>
+        </div>
+
+        <a href="#" class="denuncia-link">Denuncia contra servidores públicos</a>
+
+        <div class="social-box">
+            <p>Síguenos en</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="help-box">
+            <i class="fas fa-asterisk"></i>
+            <div class="help-text">079 <br>Comunícate, estamos para ayudarte</div>
         </div>
     </div>
 </footer>
-<div class="version-bar">RNP v1.6.7 - Secretaría de Educación Pública</div>
 
 <script src="folios.js"></script>
 <script>
-    function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
-    
-    // Solo gob.mx es desplegable
-    function toggleGob() { 
-        if(window.innerWidth <= 992) {
-            document.getElementById('gob-col').classList.toggle('active');
-        }
-    }
-
     function switchTab(t) {
         document.getElementById('f-dat').style.display = t === 'dat' ? 'grid' : 'none';
         document.getElementById('f-ced').style.display = t === 'ced' ? 'grid' : 'none';
@@ -224,15 +213,14 @@
         document.getElementById('t-ced').className = t === 'ced' ? 'tab active' : 'tab';
     }
 
-    function buscarRegistro() {
+    function ejecutarBusqueda() {
         const tabActiva = document.getElementById('f-dat').style.display !== 'none' ? 'datos' : 'cedula';
         let found = [];
 
         if (tabActiva === 'datos') {
             const n = document.getElementById('nom').value.toUpperCase().trim();
             const a1 = document.getElementById('ap1').value.toUpperCase().trim();
-            const a2 = document.getElementById('ap2').value.toUpperCase().trim();
-            found = registros.filter(r => (n==""||r.nom.includes(n)) && (a1==""||r.ap1.includes(a1)) && (a2==""||r.ap2.includes(a2)));
+            found = registros.filter(r => (n==""||r.nom.includes(n)) && (a1==""||r.ap1.includes(a1)));
         } else {
             const c = document.getElementById('ced-input').value.trim();
             found = registros.filter(r => r.id === c);
@@ -245,22 +233,20 @@
         if(found.length > 0) {
             cont.style.display = 'block';
             found.forEach(r => {
+                // CARPETA ACTUALIZADA A: CONSTANCIAS
                 body.innerHTML += `
                     <tr>
                         <td><strong>${r.id}</strong></td>
-                        <td>${r.nom}</td><td>${r.ap1}</td><td>${r.ap2}</td><td>${r.gen}</td>
-                        <td>${r.inst}</td><td>${r.prof}</td><td>${r.ent}</td><td>${r.anio}</td>
-                        <td style="text-align:center;">
-                            <a href="constancia/${r.id}.pdf" target="_blank" download="${r.id}.pdf">
-                                <i class="far fa-file-pdf" style="font-size:26px; color:#621132;"></i>
+                        <td>${r.nom}</td><td>${r.ap1} ${r.ap2}</td><td>${r.gen}</td>
+                        <td style="font-size:10px">${r.inst}</td><td style="font-size:10px">${r.prof}</td><td>${r.anio}</td>
+                        <td>
+                            <a href="CONSTANCIAS/${r.id}.pdf" target="_blank" download="${r.id}.pdf">
+                                <i class="far fa-file-pdf" style="font-size:24px; color:#621132;"></i>
                             </a>
                         </td>
                     </tr>`;
             });
-            cont.scrollIntoView({behavior: 'smooth'});
-        } else {
-            alert("No se encontraron resultados.");
-        }
+        } else { alert("Sin resultados"); }
     }
 </script>
 </body>
