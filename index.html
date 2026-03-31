@@ -30,14 +30,15 @@
 
         /* PORTADA */
        /* Esto aplica para todos (Móviles) */
-<div class="hero-section" style="text-align: center; background: #f4f4f4;">
-    <picture>
-        <source media="(max-width: 767px)" srcset="logo1.png">
-        <img src="LOGO-PC.png" 
-             alt="Registro Nacional de Profesionistas" 
-             style="width: 100%; max-width: 1000px; height: auto;">
-    </picture>
-</div>
+.hero-section img {
+    width: 100%;           /* Se adapta al ancho en móviles */
+    max-width: 1200px;     /* En PC no pasará de este ancho (puedes ajustarlo) */
+    height: auto;          /* Mantiene la proporción real */
+    display: block;
+    margin: 0 auto;        /* Centra la imagen si el monitor es muy grande */
+    max-height: 450px; 
+    object-fit: contain;   /* Cambia 'cover' por 'contain' para que se vea la imagen completa sin cortes */
+}
 }
 
         /* MAIN CONTENT */
