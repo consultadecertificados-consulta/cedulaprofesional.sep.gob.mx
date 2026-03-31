@@ -82,20 +82,24 @@
         .text-lower { font-size: 19px; font-weight: 700; white-space: nowrap; }
 
         /* --- CONFIGURACIÓN SOLO PARA PC (Pantallas grandes) --- */
-        @media (min-width: 992px) {
-            .breadcrumb-button {
-                justify-content: flex-start; /* Alineado a la izquierda */
-            }
+       /* --- CONFIGURACIÓN PARA PC --- */
+@media (min-width: 992px) {
+    .breadcrumb-button {
+        display: flex;
+        justify-content: flex-start; /* <--- ESTO LO MUEVE A LA IZQUIERDA */
+        width: 100%;                 /* Asegura que use todo el ancho para poder alinearse */
+        max-width: 1100px;           /* Alinea con el borde de tus leyendas */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;            /* Alinea el texto a la izquierda */
+    }
 
-            .breadcrumb-container {
-                flex-direction: row;    /* PC: Todo en una sola línea horizontal */
-                gap: 10px;              /* Espacio entre Inicio y Búsqueda */
-            }
-
-            .text-lower {
-                font-size: 17px;        /* Un poco más estilizado en PC */
-            }
-        }
+    .breadcrumb-container {
+        flex-direction: row;         /* Pone todo en una sola línea en PC */
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
 
         /* Ajuste para celulares muy pequeños */
         @media (max-width: 480px) {
