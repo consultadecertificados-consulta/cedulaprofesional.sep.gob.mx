@@ -6,162 +6,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
-
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
 
   <style>
-    /* Estilos base de la página para que se ajusten al nuevo menú */
     body {
-        position: relative;
-        overflow-x: hidden; /* Evita scroll horizontal al abrir el menú */
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
     }
 
-    /* BARRA SUPERIOR GUINDA (Imagen: fondo más oscuro) */
-    .custom-top-bar {
-        background-color: #2D0014; /* Tono guinda muy oscuro, base */
-        color: white;
-        padding: 10px 0;
-        border-bottom: 3px solid #621132; /* Tono guinda más claro, acento */
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1030; /* Encima de todo */
+    /* BARRA 1: GUINDA OSCURO (HAMBURGUESA) */
+    .bar-dark-guinda {
+        background-color: #2D0014; /* Tono muy oscuro de la imagen */
+        height: 60px;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        height: 60px; /* Altura de la barra */
+        padding-left: 20px;
+        width: 100%;
     }
 
-    /* BOTÓN HAMBURGUESA */
     .menu-hamburger {
-        font-size: 28px;
+        font-size: 30px;
         cursor: pointer;
-        padding: 0 15px;
-        border: none;
         background: none;
+        border: none;
         color: white;
-        margin-left: 15px; /* Espacio desde la izquierda */
     }
 
-    /* PANEL LATERAL DEL MENÚ DESPLEGABLE */
+    /* BARRA 2: GUINDA CLARO (ESCUDO) */
+    .bar-light-guinda {
+        background-color: #621132; /* Tono guinda institucional */
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    .escudo-img {
+        height: 25px; /* Ajuste del escudo dorado */
+        opacity: 0.8;
+    }
+
+    /* PANEL LATERAL (MENÚ) */
     .side-menu {
         height: 100%;
         width: 0;
         position: fixed;
-        z-index: 1040; /* Por encima de la barra */
+        z-index: 2000;
         top: 0;
         left: 0;
-        background-color: #621132; /* Color de fondo guinda de la imagen */
+        background-color: #621132;
         overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px; /* Altura de la barra para que el contenido empiece después */
+        transition: 0.4s;
+        padding-top: 60px;
+        text-align: center;
     }
 
-    /* Elementos del menú lateral */
-    .side-menu ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        text-align: center; /* Centrado como en la imagen */
-    }
-
-    .side-menu ul li {
-        padding: 10px 0;
-    }
-
-    .side-menu ul li a {
+    .side-menu a {
+        padding: 15px;
         text-decoration: none;
         font-size: 18px;
-        color: #f1f1f1;
+        color: white;
         display: block;
         transition: 0.3s;
-        padding: 15px 10px;
     }
 
-    .side-menu ul li a:hover {
-        color: #FFD700; /* Efecto hover dorado opcional */
+    .side-menu a:hover {
         background-color: rgba(255,255,255,0.1);
     }
 
-    /* ÍCONO DE FLECHA DESPLEGABLE */
-    .dropdown-arrow {
-        font-size: 14px;
-        margin-left: 8px;
-        vertical-align: middle;
-    }
-
-    /* BOTÓN PARA CERRAR EL MENÚ (X) */
     .close-btn {
         position: absolute;
-        top: 0;
+        top: 10px;
         right: 25px;
         font-size: 36px;
-        margin-left: 50px;
         color: white;
-        text-decoration: none;
         background: none;
         border: none;
         cursor: pointer;
     }
 
-    /* Ajuste para el contenido principal (para que no quede debajo del menú fijo) */
-    .main-content-adjusted {
-        margin-top: 80px; /* Altura barra + espacio extra */
+    /* CONTENIDO PRINCIPAL */
+    .main-container {
+        padding: 20px;
+        min-height: 400px;
     }
-
   </style>
 </head>
 
 <body>
 
-  <div class="custom-top-bar">
-    <button class="menu-hamburger" onclick="openNav()" aria-label="Abrir menú">
-      &#9776; </button>
+  <div class="bar-dark-guinda">
+    <button class="menu-hamburger" onclick="openNav()">&#9776;</button>
+  </div>
+
+  <div class="bar-light-guinda">
+    <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="escudo-img" style="filter: brightness(0) saturate(100%) invert(86%) sepia(19%) saturate(836%) hue-rotate(3deg) brightness(92%) contrast(89%);" alt="Escudo">
   </div>
 
   <div id="mySideMenu" class="side-menu">
-    <button class="close-btn" onclick="closeNav()" aria-label="Cerrar menú">&times;</button>
-    
-    <ul>
-      <li><a href="#">Inicio<span class="dropdown-arrow">&#9660;</span></a></li>
-      <li><a href="#">Cédulas Profesionales<span class="dropdown-arrow">&#9660;</span></a></li>
-      <li><a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a></li>
-      <li><a href="#">Cédulas Estatales</a></li>
-      <li><a href="#">Datos Abiertos<span class="dropdown-arrow">&#9660;</span></a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
+    <button class="close-btn" onclick="closeNav()">&times;</button>
+    <a href="#">Inicio ▾</a>
+    <a href="#">Cédulas Profesionales ▾</a>
+    <a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a>
+    <a href="#">Cédulas Estatales</a>
+    <a href="#">Datos Abiertos ▾</a>
+    <a href="#">Contacto</a>
   </div>
 
-  <main class="container main-content-adjusted" style="min-height: 500px;">
+  <main class="main-container container">
     <div class="row">
         <div class="col-md-12">
-            <h2>Contenido del Registro Nacional de Profesionistas</h2>
-            <p>Se ha añadido la barra guinda personalizada con el menú hamburguesa desplegable, replicando las opciones de la imagen y conservando el estilo institucional.</p>
+            <h2>Registro Nacional de Profesionistas</h2>
+            <p>Ahora las barras están en el flujo normal del documento y no se enciman con el contenido.</p>
         </div>
     </div>
   </main>
-
 
   <footer class="main-footer">
     <div class="container-fluid footer-plege">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12">
-            <br>
-            <br>
-          </div>
+          <div class="col-sm-12"><br><br></div>
         </div>
       </div>
     </div>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
 
   <script>
     function openNav() {
-      document.getElementById("mySideMenu").style.width = "100%"; // O cambia a "300px" para un panel lateral parcial
+      document.getElementById("mySideMenu").style.width = "100%";
     }
-
     function closeNav() {
       document.getElementById("mySideMenu").style.width = "0";
     }
