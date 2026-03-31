@@ -134,20 +134,23 @@
             .menu-pc a { display: block; padding: 15px; }
             .btn-ham { display: block; }
             .section-title { 
-    font-size: 32px; 
-    font-weight: 900; /* 900 es el máximo nivel de negrita disponible */
-    color: #111;      /* Un color casi negro para que resalte más contra el fondo */
-    margin-bottom: 15px; 
-    letter-spacing: -0.5px; /* Esto hace que las letras estén un poco más juntas, estilo editorial */
+    font-family: "Rockwell Extra Bold", "Rockwell", "Arial Black", serif;
+    font-size: 36px;       /* Un poco más grande para que luzca el estilo */
+    font-weight: 800;      /* Forzamos el grosor máximo */
+    color: #333333;        /* Color gris muy oscuro, casi negro */
+    margin-bottom: 10px; 
+    line-height: 1.1;      /* Reduce el espacio entre renglones para que se vea compacta */
+    text-transform: none;  /* Mantiene mayúsculas y minúsculas como las escribas */
 }
 
-/* Ajuste de tamaño para que en móvil no se vea gigante */
+/* Ajuste para que en celular no se amontone la letra gruesa */
 @media (max-width: 991px) {
     .section-title {
-        font-size: 24px; /* Un poco más pequeño en celular para que no ocupe toda la pantalla */
-        padding: 0 10px;
+        font-size: 26px; 
+        padding: 0 15px;
     }
-}
+
+
             .form-grid { grid-template-columns: 1fr; padding: 20px; }
             .btn { flex: 1; width: 100%; }
             .form-actions { flex-direction: column; }
