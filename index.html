@@ -91,8 +91,39 @@
             .home-icon { font-size: 18px; }
         }
         .section-title { font-size: 32px; font-weight: 700; color: #333; margin-bottom: 15px; }
-        .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 30px; }
+        /* --- ESTILOS PARA LA LÍNEA SEPARADORA REFORMADA --- */
+        .oro-line { 
+            width: 100%;           /* Hace la línea larga */
+            max-width: 1100px;     /* Para que no toque los bordes en pantallas grandes */
+            height: 1px;           /* Grosor de la línea gris (muy fina) */
+            background-color: #D3D3D3; /* Color gris claro de fondo */
+            margin: 20px auto 40px; /* Espacio arriba y abajo */
+            position: relative;    /* Permite acomodar el bloque dorado encima */
+            border: none;
+        }
 
+        /* Este es el bloque dorado que ves al principio de la línea */
+        .oro-line::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;          /* Largo del pedazo dorado (ajústalo a tu gusto) */
+            height: 6px;           /* Grosor del pedazo dorado */
+            background-color: var(--gob-oro); 
+            transform: translateY(-2.5px); /* Lo centra verticalmente sobre la línea gris */
+        }
+
+        /* Ajuste para que en Celular no se pegue a las orillas */
+        @media (max-width: 767px) {
+            .oro-line {
+                width: 90%; 
+                margin: 15px auto 30px;
+            }
+            .oro-line::before {
+                width: 80px; /* Un poco más corto en celular */
+            }
+        }
         /* LEYENDA COMPLETA */
         /* LEYENDA COMPLETA REFORMADA */
         /* --- ESTILOS PARA LAS LEYENDAS --- */
@@ -248,39 +279,9 @@
     </span>
 </a>
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
-  /* --- ESTILOS PARA LA LÍNEA SEPARADORA (REFORMADA) --- */
-        .oro-line { 
-            width: 100%;           /* Ocupa el 100% del contenedor main */
-            max-width: 1100px;     /* Límite para que no toque los bordes en monitores gigantes */
-            height: 1px;           /* Es una línea muy delgada, como en la imagen */
-            background-color: #E6E6E6; /* Color gris claro para la línea larga */
-            margin: 30px auto;     /* Centrada y con espacio arriba/abajo */
-            position: relative;     /* Necesario para poner el acento dorado arriba */
-            border: none;          /* Limpiamos bordes previos */
-        }
-
-        /* Creamos el acento dorado con un pseudo-elemento */
-        .oro-line::before {
-            content: "";            /* Obligatorio para pseudo-elementos */
-            position: absolute;     /* Se posiciona respecto a .oro-line */
-            top: 0;
-            left: 0;                /* Alineado a la izquierda */
-            width: 70px;            /* Longitud del acento dorado (puedes ajustarla) */
-            height: 4px;            /* Grosor del acento dorado (más grueso que la línea gris) */
-            background-color: var(--gob-oro); /* Usamos tu color dorado */
-            transform: translateY(-1.5px); /* Sube un poco para centrarlo visualmente con la línea gris */
-        }
-
-        /* Ajustes para Móvil */
-        @media (max-width: 767px) {
-            .oro-line {
-                max-width: 90%; /* Un poco más corta en móvil para respirar */
-                margin: 20px auto; 
-            }
-            .oro-line::before {
-                width: 50px; /* Un poco más corta también en móvil */
-            }
-        }
+  <div class="oro-line"></div>
+            
+        
 
     <div class="leyenda-contenedor">
         <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
