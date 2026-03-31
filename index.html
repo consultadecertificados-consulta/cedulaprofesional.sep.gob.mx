@@ -15,14 +15,14 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; overflow-x: hidden; }
 
         /* --- HEADER --- */
         header { position: sticky; top: 0; z-index: 2000; width: 100%; }
         .nav-superior { background-color: var(--gob-vino); padding: 12px 5%; display: flex; align-items: center; justify-content: space-between; }
         .logo-gob-mex { height: 40px; }
         .nav-inferior { background-color: var(--gob-borgoña); padding: 10px 5%; min-height: 50px; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); }
-
+        
         .btn-ham { background: none; border: none; color: white; font-size: 24px; cursor: pointer; display: none; }
         .menu-pc { display: flex; gap: 20px; list-style: none; }
         .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
@@ -31,56 +31,68 @@
         .mobile-menu-content.active { display: flex; }
         .mobile-menu-content a { color: white; text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
+        /* --- PORTADA --- */
+        .hero-section { width: 100%; border-bottom: 8px solid var(--gob-oro); background: #eee; }
+        .hero-section img { width: 100%; height: auto; display: block; min-height: 200px; object-fit: cover; }
+
         /* --- CONTENIDO --- */
-        .hero-section img { width: 100%; height: auto; display: block; max-height: 450px; object-fit: cover; border-bottom: 8px solid var(--gob-oro); }
         main { max-width: 1100px; margin: 0 auto; padding: 30px 5%; text-align: center; }
-        .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+        .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; color: #333; }
         .oro-line { width: 50px; height: 5px; background: var(--gob-oro); margin: 0 auto 25px; }
 
-        /* --- CELDAS Y FORMULARIO (DISEÑO IMAGEN) --- */
-        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; background: #fff; text-align: left; }
-        .tabs { display: flex; background: #f2f2f2; }
+        /* LEYENDAS COMPLETAS */
+        .leyendas-contenedor { text-align: justify; font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 30px; }
+        .leyendas-contenedor p { margin-bottom: 15px; }
+        .descarga-promo-box { text-align: center; margin-top: 30px; }
+        .descarga-titulo { font-weight: 700; font-size: 24px; color: #333; display: block; margin-bottom: 10px; }
+
+        /* --- BUSCADOR --- */
+        .search-card { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; background: #fff; text-align: left; margin-top: 20px; }
+        .tabs { display: flex; background: #f2f2f2; border-bottom: 1px solid #ddd; }
         .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; font-size: 14px; color: #666; }
         .tab.active { background: var(--gob-vino); color: white; }
 
         .form-container { padding: 30px; }
         .field { margin-bottom: 20px; display: flex; flex-direction: column; }
         .field label { font-weight: 700; margin-bottom: 8px; font-size: 18px; color: #333; }
-        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; color: #555; background: #f9f9f9; }
+        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; color: #555; background: #fff; }
 
         .form-actions { display: flex; gap: 10px; padding: 0 30px 30px; flex-wrap: wrap; }
-        .btn { padding: 12px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; min-width: 120px; font-size: 14px; text-align: center; }
+        .btn { padding: 12px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; min-width: 120px; text-align: center; font-size: 14px; }
         .btn-buscar { background: #fff; color: var(--gob-vino); border: 2px solid var(--gob-vino); }
         .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); background: #fff; }
-        .btn-csv { background: #b3b3b3; color: white; border: none; opacity: 0.8; }
+        .btn-csv { background: #b3b3b3; color: white; border: none; display: flex; align-items: center; gap: 8px; }
 
         /* --- TABLA DE RESULTADOS --- */
-        .results-container { display: none; padding: 20px; overflow-x: auto; }
+        #res-box { display: none; padding: 20px; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; min-width: 800px; margin-top: 20px; }
-        th { text-align: left; padding: 12px; border-bottom: 2px solid #ddd; font-size: 13px; color: #333; }
-        td { padding: 12px; border-bottom: 1px solid #eee; font-size: 13px; }
+        th { text-align: left; padding: 12px; border-bottom: 2px solid #ddd; font-size: 13px; color: #333; background: #f9f9f9; }
+        td { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+        .pdf-icon { color: var(--gob-vino); font-size: 22px; text-decoration: none; }
 
-        /* --- FOOTER EXPANDIBLE --- */
-        footer { background-color: var(--gob-vino); color: white; padding: 40px 5%; display: flex; flex-direction: column; align-items: center; }
-        .footer-wrap { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+        /* --- FOOTER --- */
+        footer { background-color: var(--gob-vino); color: white; padding: 40px 5%; }
+        .footer-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+        .footer-version { font-size: 12px; opacity: 0.6; margin-bottom: 10px; display: block; text-align: center; }
         
-        .footer-item { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
-        .footer-item h4 { cursor: pointer; display: flex; justify-content: space-between; }
-        .footer-content { display: none; padding-top: 10px; }
-        .footer-content a { color: white; text-decoration: none; display: block; margin-bottom: 8px; }
-        .footer-item.active .footer-content { display: block; }
+        /* PC Footer Layout */
+        .footer-pc { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
+        .footer-col { flex: 1; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 18px; }
+        .footer-col a { color: white !important; text-decoration: none; display: block; margin-bottom: 10px; font-size: 15px; opacity: 0.9; }
 
-        /* PC Footer Expands */
-        @media (min-width: 993px) {
-            .footer-wrap { flex-direction: row; justify-content: space-between; align-items: flex-start; max-width: 1200px; }
-            .footer-item { border: none; flex: 1; }
-            .footer-content { display: block; }
-            .footer-item h4 i { display: none; }
-        }
+        /* Mobile Footer Layout */
+        .footer-mob { display: none; flex-direction: column; align-items: center; text-align: left; }
+        .footer-item-mob { border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; padding: 15px 0; }
+        .footer-item-mob h4 { display: flex; justify-content: space-between; cursor: pointer; }
+        .footer-sub-content { display: none; padding-top: 15px; }
+        .footer-item-mob.active .footer-sub-content { display: block; }
 
         @media (max-width: 992px) {
             .menu-pc { display: none; }
             .btn-ham { display: block; }
+            .footer-pc { display: none; }
+            .footer-mob { display: flex; }
         }
     </style>
 </head>
@@ -93,7 +105,6 @@
         <ul class="menu-pc">
             <li><a href="#">Trámites</a></li>
             <li><a href="#">Gobierno</a></li>
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
         </ul>
     </nav>
     <div id="mob-sup" class="mobile-menu-content">
@@ -106,7 +117,6 @@
         <ul class="menu-pc" style="margin-left: 20px;">
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Cédulas Profesionales</a></li>
-            <li><a href="#">Datos Abiertos</a></li>
         </ul>
     </nav>
     <div id="mob-inf" class="mobile-menu-content" style="background-color: var(--gob-borgoña);">
@@ -116,9 +126,23 @@
     </div>
 </header>
 
+<div class="hero-section">
+    <img src="logo.png" alt="Registro Nacional de Profesionistas">
+</div>
+
 <main>
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
     <div class="oro-line"></div>
+
+    <div class="leyendas-contenedor">
+        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
+        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+        
+        <div class="descarga-promo-box">
+            <span class="descarga-titulo">¡Descarga la Constancia de Situación Profesional!</span>
+            <p>Recuerda: <strong>La emisión de la Constancia es completamente gratuita.</strong></p>
+        </div>
+    </div>
 
     <div class="search-card">
         <div class="tabs">
@@ -133,7 +157,6 @@
                 <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
                 <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
             </div>
-
             <div id="f-ced" style="display:none;">
                 <div class="field"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Cédula"></div>
             </div>
@@ -142,14 +165,20 @@
         <div class="form-actions">
             <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
             <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
-            <button class="btn btn-csv">Descargar CSV</button>
+            <button class="btn btn-csv">CSV <i class="fas fa-file-csv"></i></button>
         </div>
 
-        <div class="results-container" id="res-box">
+        <div id="res-box">
             <table id="tabla-res">
                 <thead>
                     <tr>
-                        <th>Núm. Cédula</th><th>Nombre</th><th>Apellidos</th><th>Institución</th><th>Profesión</th><th>Constancia</th>
+                        <th>Número de Cédula</th>
+                        <th>Nombre(s)</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Institución</th>
+                        <th>Profesión</th>
+                        <th>Constancia</th>
                     </tr>
                 </thead>
                 <tbody id="res-body"></tbody>
@@ -159,23 +188,44 @@
 </main>
 
 <footer>
-    <div class="footer-wrap">
-        <div class="footer-item">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 150px; margin-bottom: 20px;">
-        </div>
-        <div class="footer-item" onclick="this.classList.toggle('active')">
-            <h4>Enlaces <i class="fas fa-chevron-down"></i></h4>
-            <div class="footer-content">
-                <a href="#">Participa</a>
-                <a href="#">Publicaciones</a>
+    <div class="footer-container">
+        <span class="footer-version">RNP v1.6.7</span>
+        
+        <div class="footer-pc">
+            <div class="footer-col">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 200px;">
             </div>
-        </div>
-        <div class="footer-item" onclick="this.classList.toggle('active')">
-            <h4>¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></h4>
-            <div class="footer-content">
+            <div class="footer-col">
+                <h4>Enlaces</h4>
+                <a href="#">Participa</a>
+                <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Marco Jurídico</a>
+            </div>
+            <div class="footer-col">
+                <h4>¿Qué es gob.mx?</h4>
                 <a href="#">Aviso de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
                 <a href="#">Accesibilidad</a>
             </div>
+        </div>
+
+        <div class="footer-mob">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="filter: brightness(0) invert(1); width: 180px; margin-bottom: 20px;">
+            <div class="footer-item-mob" onclick="this.classList.toggle('active')">
+                <h4>Enlaces <i class="fas fa-chevron-down"></i></h4>
+                <div class="footer-sub-content">
+                    <a href="#">Participa</a>
+                    <a href="#">Publicaciones Oficiales</a>
+                </div>
+            </div>
+            <div class="footer-item-mob" onclick="this.classList.toggle('active')">
+                <h4>¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></h4>
+                <div class="footer-sub-content">
+                    <a href="#">Aviso de Privacidad</a>
+                    <a href="#">Términos y Condiciones</a>
+                </div>
+            </div>
+            <p style="margin-top: 25px; font-weight: 700; text-decoration: underline;">Denuncia contra servidores públicos</p>
         </div>
     </div>
 </footer>
@@ -193,13 +243,13 @@
 
     function ejecutarBusqueda() {
         const nom = document.getElementById('nom').value.toUpperCase();
-        const ced = document.getElementById('ced-input').value;
+        const cedInput = document.getElementById('ced-input').value;
         const body = document.getElementById('res-body');
         const box = document.getElementById('res-box');
         
-        // Filtrado de folios.js
+        // Filtrado de datos desde folios.js
         const filtrados = registros.filter(r => 
-            (ced && r.id === ced) || (nom && r.nom.includes(nom))
+            (cedInput && r.id === cedInput) || (nom && r.nom.includes(nom))
         );
 
         body.innerHTML = "";
@@ -207,12 +257,22 @@
             box.style.display = "block";
             filtrados.forEach(r => {
                 body.innerHTML += `<tr>
-                    <td>${r.id}</td><td>${r.nom}</td><td>${r.ap1} ${r.ap2}</td>
-                    <td>${r.inst}</td><td>${r.prof}</td>
-                    <td><a href="CONSTANCIAS/${r.id}.pdf" target="_blank"><i class="far fa-file-pdf"></i></a></td>
+                    <td>${r.id}</td>
+                    <td>${r.nom}</td>
+                    <td>${r.ap1}</td>
+                    <td>${r.ap2}</td>
+                    <td>${r.inst}</td>
+                    <td>${r.prof}</td>
+                    <td>
+                        <a href="CONSTANCIAS/${r.id}.pdf" download class="pdf-icon">
+                            <i class="far fa-file-pdf"></i>
+                        </a>
+                    </td>
                 </tr>`;
             });
-        } else { alert("No se encontraron resultados."); }
+        } else {
+            alert("No se encontraron registros coincidentes.");
+        }
     }
 </script>
 </body>
