@@ -203,75 +203,48 @@
         td { padding: 15px 10px; border-bottom: 1px solid #eee; color: #333; vertical-align: middle; }
 
      /* --- FOOTER PROFESIONAL RNP --- */
-.footer-oficial {
-    background-color: #621132; /* Guinda exacto */
-    color: #ffffff;
-    padding: 60px 0 40px 0;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    margin-top: 50px;
+/* --- CORRECCIÓN FINAL FOOTER --- */
+.footer-oficial { background-color: #621132; color: #fff; font-family: 'Montserrat', sans-serif; width: 100%; margin-top: 50px; }
+.rnp-version-top { text-align: center; padding: 20px 0; font-size: 14px; opacity: 0.8; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; padding: 0 20px 40px; }
+.footer-col { flex: 1; min-width: 250px; }
+
+.footer-logo-img { width: 200px; filter: brightness(0) invert(1); margin-bottom: 25px; }
+.denuncia-link { font-weight: 700; text-decoration: underline; color: #fff; display: block; margin-bottom: 20px; font-size: 18px; }
+
+.social-group { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.redes-sociales { display: flex; gap: 15px; font-size: 22px; }
+.redes-sociales a { color: #fff; }
+
+.phone-079 { display: flex; align-items: center; gap: 10px; }
+.phone-icon-box { display: flex; align-items: center; font-size: 30px; font-weight: 800; }
+.phone-079 p { font-size: 13px; line-height: 1.2; max-width: 150px; }
+
+/* ACORDEONES MÓVIL */
+.rnp-acordeon-btn { 
+    background: none; border: none; color: #fff; width: 100%; text-align: left; 
+    font-size: 20px; font-weight: 700; padding: 15px 0; display: flex; justify-content: space-between;
+}
+.rnp-acordeon-content { max-height: 0; overflow: hidden; transition: 0.3s; padding-left: 15px; }
+.rnp-acordeon-content a { color: #fff; text-decoration: none; display: block; padding: 8px 0; }
+
+/* LOGICA PC vs MÓVIL */
+@media (min-width: 992px) {
+    .mobile-only-content { display: none; }
+    .footer-col h4 { border-bottom: 2px solid #9D843E; padding-bottom: 10px; margin-bottom: 20px; width: 80%; }
 }
 
-.footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 20px;
+@media (max-width: 991px) {
+    .pc-only-content { display: none; }
+    .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+    .footer-col { width: 100%; }
+    .social-group { justify-content: center; }
+    .phone-079 { justify-content: center; }
+    .footer-logo-section { order: 1; }
+    .footer-contact-section { order: 2; }
 }
 
-.footer-col {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 30px;
-}
-
-.footer-col h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #9D843E; /* Línea Oro */
-    padding-bottom: 10px;
-    display: inline-block;
-    width: 80%;
-}
-
-.footer-col a {
-    display: block;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 12px;
-    opacity: 0.8;
-}
-
-.footer-col a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
-.footer-logo-img {
-    width: 220px;
-    filter: brightness(0) invert(1); /* Hace el logo blanco */
-    margin-bottom: 20px;
-}
-
-.redes-sociales {
-    display: flex;
-    gap: 20px;
-    font-size: 22px;
-}
-
-/* Barra inferior negra/borgoña */
-.footer-sub {
-    background-color: #480721;
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
+.footer-sub { background-color: #480721; padding: 20px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.5); }
 
 /* Responsivo para celulares */
 @media (max-width: 768px) {
@@ -464,17 +437,35 @@
 </main>
 
 
-  <footer class="footer-oficial">
+ </main> <footer class="footer-oficial">
+    <div class="rnp-version-top">RNP v1.6.7</div>
+
     <div class="footer-inner">
-        <div class="footer-col">
+        <div class="footer-col footer-logo-section">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
-            <div class="redes-sociales">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+            
+            <div class="mobile-only-content">
+                <div class="rnp-acordeon">
+                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> Enlaces <span class="rnp-flecha">v</span></button>
+                    <div class="rnp-acordeon-content">
+                        <a href="https://www.gob.mx/participa">Participa</a>
+                        <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+                        <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+                        <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+                    </div>
+                </div>
+                <div class="rnp-acordeon">
+                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> ¿Qué es gob.mx? <span class="rnp-flecha">v</span></button>
+                    <div class="rnp-acordeon-content">
+                        <a href="#">Trámites</a>
+                        <a href="#">Gobierno</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col pc-only-content">
             <h4>Enlaces</h4>
             <a href="https://www.gob.mx/participa">Participa</a>
             <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
@@ -482,49 +473,58 @@
             <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col pc-only-content">
             <h4>¿Qué es gob.mx?</h4>
-            <a href="#">Es el portal único de trámites e información ciudadana.</a>
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
             <a href="#">English</a>
-            <a href="#">Temas</a>
-            <a href="#">Accesibilidad</a>
         </div>
 
-        <div class="footer-col">
-            <h4>Contacto</h4>
-            <a href="#">Mesa de ayuda: dudas e información</a>
-            <a href="#">gobmx@funcionpublica.gob.mx</a>
-            <a href="#">Denuncia contra servidores públicos</a>
+        <div class="footer-col footer-contact-section">
+            <h4 class="pc-only-content">Contacto</h4>
+            <a href="#" class="denuncia-link">Denuncia contra servidores públicos</a>
+            
+            <div class="social-group">
+                <span>Síguenos en</span>
+                <div class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="phone-079">
+                <div class="phone-icon-box">
+                    <i class="fas fa-asterisk"></i>
+                    <span>079</span>
+                </div>
+                <p>Comunícate, estamos para ayudarte</p>
+            </div>
         </div>
     </div>
-</footer>
-
-<div class="footer-sub">
-    RNP v1.6.7 - SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
-</div>
-
-
-<div class="barra-version">
-    Registro Nacional de Profesionistas v1.6.7 — Secretaría de Educación Pública | Gobierno de México 2026
-</div>
-
-</footer>
-
-<div class="footer-pleat">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-        <p>Registro Nacional de Profesionistas - SEP | Versión 1.6.7</p>
-      </div>
+    <div class="footer-sub">
+        SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
     </div>
-  </div>
-</div>
-
-<div class="version-bar">RNP v1.6.7 - Secretaría de Educación Pública | Gobierno de México</div>
-
-<script src="folios.js"></script>
+</footer>
 
 <script>
+    function toggleAcordeon(elemento) {
+        elemento.classList.toggle("active");
+        var content = elemento.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
+
+    function toggleM(id) {
+        document.getElementById(id).classList.toggle('active');
+    }
+</script>
+</body>
+</html>
     // Toggle Menús Móvil
     function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
 
