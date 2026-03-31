@@ -38,7 +38,7 @@
     margin: 0 auto;        /* Centra la imagen si el monitor es muy grande */
     max-height: 450px; 
     object-fit: contain;   /* Cambia 'cover' por 'contain' para que se vea la imagen completa sin cortes */
-}
+
 }
 
         /* MAIN CONTENT */
@@ -133,7 +133,11 @@
 </header>
 
 <div class="hero-section">
-    <img src="logo.png" alt="Registro Nacional de Profesionistas">
+    <picture>
+        <source media="(max-width: 767px)" srcset="logo-movil.png">
+        
+        <img src="logo-pc.png" alt="Registro Nacional de Profesionistas">
+    </picture>
 </div>
 
 <main>
