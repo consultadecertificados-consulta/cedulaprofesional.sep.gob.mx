@@ -614,6 +614,18 @@
             contenedor.style.display = 'none';
         }
     }
-</script>
+<script>
+    // Función para abrir/cerrar los acordeones móviles
+    function toggleAcordeon(elemento) {
+        elemento.classList.toggle("active");
+        var content = elemento.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null; // Cerrar
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // Abrir
+        }
+    }
+            </script>
+    
 </body>
 </html>
