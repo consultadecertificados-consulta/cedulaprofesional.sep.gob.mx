@@ -552,15 +552,15 @@
     </div>
 </footer>
 
-    <div id="miModal" class="modal-overlay">
+   <div id="miModal" class="modal-overlay">
     <div class="modal-content">
-        <div class="modal-header">
-            <span>Mensaje</span>
-            <button onclick="cerrarModal()" class="close-btn">&times;</button>
+        <div class="modal-header" style="background:#33373d; color:white; padding:15px; display:flex; justify-content:space-between;">
+            <span style="font-size:20px; font-weight:600;">Mensaje</span>
+            <button onclick="cerrarModal()" style="background:none; border:none; color:white; cursor:pointer; font-size:20px;">&times;</button>
         </div>
-        <div class="modal-body">
-            <p>No se encontró información para la cédula <strong id="cedulaError"></strong>.</p>
-            <p class="fecha-modal"><strong>Fecha:</strong> <span id="fechaActual"></span></p>
+        <div class="modal-body" style="padding:40px 20px; text-align:center;">
+            <p style="font-size:18px; margin-bottom:10px;">No se encontró información para la cédula <strong id="cedulaError"></strong>.</p>
+            <p style="font-size:20px;"><strong>Fecha:</strong> <span id="fechaActual"></span></p>
         </div>
     </div>
 </div>
