@@ -8,6 +8,67 @@
   <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
 
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+  <style>
+    /* Ajuste para el contenido principal debido al header fijo */
+    body {
+        padding-top: 90px; /* Espacio para que el contenido no quede debajo del header negro */
+    }
+
+    /* BARRA COLOR VINO (GUINDA) */
+    .barra-vino {
+        background-color: #621132; /* Color guinda institucional */
+        color: white;
+        padding: 15px 0;
+        margin-bottom: 20px; /* Espacio con el contenido de abajo */
+        width: 100%;
+    }
+
+    .barra-vino .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .titulo-barra {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    /* Buscador simple dentro de la barra vino (opcional, basado en diseño común) */
+    .search-box-vino {
+        display: flex;
+        gap: 5px;
+    }
+    .search-box-vino input {
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        border-radius: 4px;
+        color: #333;
+    }
+    .search-box-vino button {
+        background-color: #D4C19C; /* Dorado pálido */
+        color: #621132;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    /* SECCIÓN DE LA PORTADA (LOGO.PNG) */
+    .portada-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .portada-img {
+        max-width: 100%; /* Se adapta al ancho de la pantalla */
+        height: auto;
+        border-radius: 8px; /* Opcional: bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opcional: sombra suave */
+    }
+  </style>
 </head>
 
 <body>
@@ -37,15 +98,35 @@
     </nav>
   </header>
 
-  <main class="container" style="margin-top: 90px; min-height: 600px;">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header">
-                <h1>Registro Nacional de Profesionistas</h1>
+  <main>
+    
+    <div class="barra-vino">
+        <div class="container">
+            <h1 class="titulo-barra">Registro Nacional de Profesionistas</h1>
+            <div class="search-box-vino">
+                <input type="text" placeholder="Buscar cédula...">
+                <button type="button">Buscar</button>
             </div>
-            <p>El diseño de inicio y pie de página ha sido restablecido a su formato original.</p>
         </div>
     </div>
+
+    <div class="container portada-container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="logo.png" alt="Portada Registro Nacional de Profesionistas" class="portada-img">
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="min-height: 300px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Búsqueda de Cédulas</h3>
+                <p>Aquí irá el formulario de búsqueda en el siguiente paso.</p>
+            </div>
+        </div>
+    </div>
+
   </main>
 
 
