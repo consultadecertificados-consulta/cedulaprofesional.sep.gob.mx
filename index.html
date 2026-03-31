@@ -4,36 +4,56 @@
 <head>
   <meta charset="utf-8">
   <title>Registro Nacional de Profesionistas</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico" rel="shortcut icon">
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-  <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico">
 
   <style>
-    /* Estilos para la barra color vino y menú hamburguesa */
-    .sub-navbar {
-      background-color: #480c1d; /* Color vino oficial */
-      padding: 10px 0;
-      color: white;
+    /* 1. Corrección de encimado: El body necesita espacio para el header fijo */
+    body {
+      padding-top: 50px; 
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    .hamburger-btn {
+    /* 2. Barra Color Vino */
+    .navbar-vino {
+      background-color: #480c1d;
+      color: #ffffff;
+      min-height: 45px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #D4C19C;
+    }
+
+    .btn-hamburguesa {
       background: none;
       border: none;
       color: white;
-      font-size: 24px;
+      font-size: 20px;
+      padding: 10px 15px;
       cursor: pointer;
-      padding: 0 15px;
-      display: flex;
-      align-items: center;
     }
 
-    /* Ajuste para que el footer se vea correctamente */
-    footer {
-      background-color: #12322b; /* Verde institucional footer */
+    /* 3. Espaciado del contenido principal */
+    main {
+      flex: 1; /* Empuja el footer hacia abajo */
+      padding: 20px 0;
+    }
+
+    /* 4. Pie de página institucional */
+    .footer-institucional {
+      background-color: #12322b;
       color: white;
       padding: 40px 0;
-      margin-top: 50px;
+      margin-top: auto;
+    }
+    
+    .footer-institucional a {
+      color: white;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -44,63 +64,54 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMain" aria-expanded="false">
-            <span class="sr-only">Interruptor de Navegación</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="https://www.gob.mx/">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" alt="Página de inicio, Gobierno de México" height="29">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" alt="Gobierno de México" height="29">
           </a>
         </div>
-        <div class="collapse navbar-collapse" id="navbarMain">
+        <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://www.gob.mx/tramites">Trámites</a></li>
-            <li><a href="https://www.gob.mx/gobierno">Gobierno</a></li>
-            <li><a href="https://www.gob.mx/busqueda"><span class="sr-only">Búsqueda</span><i class="icon-search"></i></a></li>
+            <li><a href="#">Trámites</a></li>
+            <li><a href="#">Gobierno</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <div class="sub-navbar" style="margin-top: 50px;">
+  <nav class="navbar-vino">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <button class="hamburger-btn" onclick="console.log('Menú lateral abierto')">
-            <i class="icon-menu"></i> <span style="font-size: 16px; margin-left: 10px;">☰</span>
-          </button>
-        </div>
-      </div>
+      <button class="btn-hamburguesa">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
     </div>
-  </div>
+  </nav>
 
-  <main class="container" style="min-height: 400px;">
-    </main>
+  <main>
+    <div class="container">
+       </div>
+  </main>
 
-  <footer class="main-footer">
+  <footer class="footer-institucional">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" alt="Logo Gobierno de México" class="img-responsive" style="margin-bottom: 20px;">
+          <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-header.svg" alt="Logo México" class="img-responsive" style="filter: brightness(0) invert(1); margin-bottom: 20px;">
         </div>
         <div class="col-md-3">
           <h5>Enlaces</h5>
           <ul class="list-unstyled">
-            <li><a href="https://www.gob.mx/publicaciones" style="color: white;">Publicaciones Oficiales</a></li>
-            <li><a href="http://www.ordenjuridico.gob.mx" style="color: white;">Marco Jurídico</a></li>
-            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/" style="color: white;">Plataforma Nacional de Transparencia</a></li>
+            <li><a href="#">Participa</a></li>
+            <li><a href="#">Publicaciones Oficiales</a></li>
+            <li><a href="#">Marco Jurídico</a></li>
           </ul>
         </div>
         <div class="col-md-3">
           <h5>¿Qué es gob.mx?</h5>
-          <p>Es el portal único de trámites, información y participación ciudadana. <a href="https://www.gob.mx/que-es-gobmx" style="color: white;">Leer más</a></p>
+          <p>Es el portal único de trámites, información y participación ciudadana.</p>
         </div>
         <div class="col-md-3">
-          <h5>Denuncia contra servidores públicos</h5>
-          <p><a href="https://sidec.funcionpublica.gob.mx/" style="color: white;">Ficha de trámite</a></p>
+          <h5>Síguenos en</h5>
+          <p>Facebook | Twitter</p>
         </div>
       </div>
     </div>
