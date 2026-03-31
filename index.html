@@ -7,229 +7,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <style>
-        :root {
-            --gob-vino: #621132;    
-            --gob-borgoña: #480721; 
-            --gob-oro: #9D843E;
-            --gob-texto: #4D4D4D;
-            --gris-claro: #F2F2F2;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; overflow-x: hidden; }
-
-        /* HEADER */
-        header { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; }
-        .logo-gob-mex { height: 40px; }
-        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; }
-        
-        .menu-pc { display: flex; gap: 20px; list-style: none; }
-        .menu-pc a { color: white; text-decoration: none; font-size: 14px; font-weight: 400; }
-        .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
-
-        /* PORTADA */
-       /* Esto aplica para todos (Móviles) */
-.hero-section img {
-    width: 100%;           /* Se adapta al ancho en móviles */
-    max-width: 1400px;     /* En PC no pasará de este ancho (puedes ajustarlo) */
-    height: auto;          /* Mantiene la proporción real */
-    display: block;
-    margin: 0 auto;        /* Centra la imagen si el monitor es muy grande */
-    max-height: 450px; 
-    object-fit: contain;   /* Cambia 'cover' por 'contain' para que se vea la imagen completa sin cortes */
-
-}
-
-        /* MAIN CONTENT */
-        main { max-width: 1200px; margin: 0 auto; padding: 40px 5%; text-align: center; }
-        /* --- ESTILOS PARA EL BOTÓN BREADCRUMB --- */
-       /* --- ESTO ES PARA CELULAR (Diseño centrado) --- */
-.breadcrumb-button {
-    display: flex;
-    flex-direction: column; /* Apila: Casa arriba, texto abajo */
-    align-items: center;    /* Centra todo */
-    text-align: center;
-    text-decoration: none;
-}
-
-/* --- ESTO ES PARA PC (Diseño de lado) --- */
-/* Esta regla solo se activa si la pantalla es ANCHA */
-/* --- DISEÑO RESPONSIVO DEL BREADCRUMB --- */
-        .breadcrumb-button {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            justify-content: center; /* Centrado en móvil */
-            margin-bottom: 40px;
-        }
-
-        .breadcrumb-container {
-            display: flex;
-            flex-direction: column; /* Móvil: Uno arriba del otro */
-            align-items: center;
-            gap: 5px;
-        }
-
-        .breadcrumb-group {
-            display: flex;
-            align-items: center;    /* Casita e Inicio siempre juntos */
-            gap: 8px;
-        }
-
-        .home-icon { font-size: 18px; color: #333; }
-        .text-upper { font-size: 18px; font-weight: 400; }
-        .text-lower { font-size: 25px; font-weight: 600; white-space: nowrap; }
-
-        /* --- CONFIGURACIÓN SOLO PARA PC (Pantallas grandes) --- */
-       /* --- CONFIGURACIÓN PARA PC --- */
-@media (min-width: 992px) {
-    .breadcrumb-button {
-        display: flex;
-        justify-content: flex-start; /* <--- ESTO LO MUEVE A LA IZQUIERDA */
-        width: 100%;                 /* Asegura que use todo el ancho para poder alinearse */
-        max-width: 1100px;           /* Alinea con el borde de tus leyendas */
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;            /* Alinea el texto a la izquierda */
+    :root {
+        --gob-vino: #621132;    
+        --gob-borgoña: #480721; 
+        --gob-oro: #9D843E;
+        --gob-texto: #4D4D4D;
+        --gris-claro: #F2F2F2;
     }
 
-    .breadcrumb-container {
-        flex-direction: row;         /* Pone todo en una sola línea en PC */
-        align-items: center;
-        justify-content: flex-start;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; }
+
+    /* RESET DE LINKS (Para que no salgan azules) */
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header { width: 100%; position: sticky; top: 0; z-index: 1000; }
+    .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; }
+    .nav-inferior { background-color: var(--gob-borgoña); padding: 15px 8%; display: flex; justify-content: center; }
+    .menu-pc { display: flex; gap: 25px; list-style: none; }
+    .menu-pc a { color: white; font-size: 14px; }
+
+    /* CUERPO PRINCIPAL (Centrado) */
+    main { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    
+    .section-title { 
+        font-size: 32px; 
+        font-weight: 800; 
+        color: #333; 
+        margin: 30px 0; 
+        text-align: center; 
     }
-}
 
-        /* Ajuste para celulares muy pequeños */
-        @media (max-width: 480px) {
-            .text-lower { font-size: 15px; }
-        }
-        .section-title { font-size: 25px; font-weight: 700; color: #333; margin-bottom: 15px; }
-        /* --- ESTILOS PARA LA LÍNEA SEPARADORA REFORMADA --- */
-        .oro-line { 
-            width: 100%;           /* Hace la línea larga */
-            max-width: 1100px;     /* Para que no toque los bordes en pantallas grandes */
-            height: 1px;           /* Grosor de la línea gris (muy fina) */
-            background-color: #D3D3D3; /* Color gris claro de fondo */
-            margin: 20px auto 40px; /* Espacio arriba y abajo */
-            position: relative;    /* Permite acomodar el bloque dorado encima */
-            border: none;
-        }
+    /* LÍNEA DORADA */
+    .oro-line { 
+        width: 100%; height: 1px; background: #D3D3D3; margin: 20px 0 40px; position: relative; 
+    }
+    .oro-line::before { 
+        content: ""; position: absolute; top: -3px; left: 0; width: 120px; height: 6px; background: var(--gob-oro); 
+    }
 
-        /* Este es el bloque dorado que ves al principio de la línea */
-        .oro-line::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 120px;          /* Largo del pedazo dorado (ajústalo a tu gusto) */
-            height: 6px;           /* Grosor del pedazo dorado */
-            background-color: var(--gob-oro); 
-            transform: translateY(-2.5px); /* Lo centra verticalmente sobre la línea gris */
-        }
+    /* LEYENDA */
+    .leyenda-contenedor { text-align: justify; color: #545454; margin-bottom: 40px; }
 
-        /* Ajuste para que en Celular no se pegue a las orillas */
-        @media (max-width: 767px) {
-            .oro-line {
-                width: 90%; 
-                margin: 15px auto 30px;
-            }
-            .oro-line::before {
-                width: 80px; /* Un poco más corto en celular */
-            }
-        }
-        /* LEYENDA COMPLETA */
-        /* LEYENDA COMPLETA REFORMADA */
-        /* --- ESTILOS PARA LAS LEYENDAS --- */
-       /* --- ESTILO DE LEYENDAS PARA MÓVIL Y PC --- */
-        .leyenda-contenedor { 
-            width: 100%;
-            margin: 0 auto; 
-            color: #545454;
-            line-height: 1.6;
-            display: block;
-        }
-
-        /* Configuración para MÓVIL (Abarca toda la pantalla ordenadamente) */
-        @media (max-width: 991px) {
-            .leyenda-contenedor {
-                text-align: justify;   /* Bordes parejitos */
-                font-size: 16px;       /* Tamaño legible */
-                padding: 0 5%;         /* Solo 5% de margen a los lados (Casi toda la pantalla) */
-                margin-top: 20px;
-            }
-            .leyenda-contenedor p {
-                margin-bottom: 20px;   /* Separa los párrafos */
-                width: 100%;           /* Fuerza a usar todo el ancho */
-            }
-        }
-
-        /* Configuración para PC */
-        @media (min-width: 992px) {
-            .leyenda-contenedor {
-                text-align: justify;
-                font-size: 16px;
-                max-width: 1100px;     /* No deja que el renglón sea infinito en monitores grandes */
-                padding: 0 20px;
-                margin-bottom: 40px;
-            }
-        }
-        /* FORMULARIO Y TABS */
-        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; margin-top: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .tabs { display: flex; background: var(--gris-claro); }
-        .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; font-size: 14px; transition: 0.3s; }
-        .tab.active { background: var(--gob-vino); color: white; }
-        .tab.punteada { border: 1px dashed #fff; }
-
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px; }
-        .field { display: flex; flex-direction: column; }
-        .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; color: #333; }
-        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; width: 100%; outline: none; }
-        .field input:focus { border-color: var(--gob-oro); }
-
-        .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
-        .btn { padding: 10px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: 2px solid; font-size: 15px; min-width: 140px; transition: 0.2s; text-align: center; }
-        .btn-buscar { background: var(--gob-borgoña); color: white; border: none; }
-        .btn-buscar:hover { background: var(--gob-vino); }
-        .btn-limpiar { border-color: var(--gob-oro); color: var(--gob-oro); background: white; }
-        .btn-csv { border-color: #ccc; color: #999; background: #f9f9f9; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 8px; }
-
-        /* RESULTADOS RESPONSIVOS */
-        .results-container { padding: 20px; border-top: 1px solid #eee; display: none; }
-        .table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; border: 1px solid #eee; border-radius: 4px; }
-        table { width: 100%; min-width: 1100px; border-collapse: collapse; font-size: 13px; }
-        th { background: #fcfcfc; padding: 12px 10px; border-bottom: 2px solid #eee; text-align: left; color: #666; font-weight: 700; text-transform: uppercase; font-size: 11px; }
-        td { padding: 15px 10px; border-bottom: 1px solid #eee; color: #333; vertical-align: middle; }
-
-     /* --- FOOTER PROFESIONAL RNP --- */
-/* --- CORRECCIÓN FINAL FOOTER --- */
-.footer-oficial { background-color: #621132; color: #fff; font-family: 'Montserrat', sans-serif; width: 100%; margin-top: 50px; }
-.rnp-version-top { text-align: center; padding: 20px 0; font-size: 14px; opacity: 0.8; }
-/* Esto alinea el contenido del footer a la izquierda */
-.footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* <--- Cambia de 'center' a 'flex-start' */
-    padding: 0 20px 40px;
-    gap: 40px; /* Espacio entre columnas */
-}
-
-/* Esto asegura que el logo no se mueva al centro */
-.footer-logo-section {
-    text-align: left; /* <--- Fuerza la alineación a la izquierda */
-    flex: 1;
-    min-width: 250px;
-}
-
-.footer-logo-img {
-    width: 200px;
-    filter: brightness(0) invert(1);
-    margin-bottom: 25px;
-    display: block; /* Asegura que se comporte como bloque para alinearse */
-}
+    /* FOOTER (Aquí es donde se arregla lo de la izquierda) */
+    .footer-oficial { background-color: var(--gob-vino); color: #fff; padding: 60px 0 20px; margin-top: 50px; }
+    .footer-inner { 
+        max-width: 1100px; 
+        margin: 0 auto; 
+        display: flex; 
+        justify-content: space-between; /* Esto separa el logo de los contactos en PC */
+        padding: 0 20px;
+    }
+    
+    .footer-logo-img { width: 200px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+    
+    /* MEDIA QUERY PARA CELULAR */
+    @media (max-width: 768px) {
+        .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+        .menu-pc { display: none; }
+        .section-title { font-size: 24px; }
+    }
+</style>
 .denuncia-link { font-weight: 700; text-decoration: underline; color: #fff; display: block; margin-bottom: 20px; font-size: 18px; }
 
 .social-group { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
