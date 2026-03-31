@@ -202,77 +202,82 @@
         th { background: #fcfcfc; padding: 12px 10px; border-bottom: 2px solid #eee; text-align: left; color: #666; font-weight: 700; text-transform: uppercase; font-size: 11px; }
         td { padding: 15px 10px; border-bottom: 1px solid #eee; color: #333; vertical-align: middle; }
 
-        /* --- ESTILOS DEL FOOTER FUNCIONAL --- */
-:root {
-    --gob-vino: #621132;    
-    --gob-borgoña: #480721; 
-    --gob-oro: #9D843E;
-}
-
-.footer-principal {
-    background-color: var(--gob-vino);
-    color: white;
-    padding: 60px 5% 40px;
-    margin-top: 50px;
+     /* --- FOOTER PROFESIONAL RNP --- */
+.footer-oficial {
+    background-color: #621132; /* Guinda exacto */
+    color: #ffffff;
+    padding: 60px 0 40px 0;
     font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    margin-top: 50px;
 }
 
-.footer-container {
-    max-width: 1200px;
+.footer-inner {
+    max-width: 1100px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 30px;
 }
 
 .footer-col h4 {
     font-size: 16px;
-    margin-bottom: 25px;
-    border-bottom: 2px solid var(--gob-oro);
-    padding-bottom: 10px;
     font-weight: 600;
-    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #9D843E; /* Línea Oro */
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 80%;
 }
 
 .footer-col a {
-    color: white;
-    text-decoration: none;
     display: block;
+    color: #ffffff;
+    text-decoration: none;
     font-size: 14px;
     margin-bottom: 12px;
     opacity: 0.8;
-    transition: 0.3s;
 }
 
 .footer-col a:hover {
     opacity: 1;
-    padding-left: 5px;
-    color: var(--gob-oro);
+    text-decoration: underline;
 }
 
-.footer-logo {
-    width: 200px;
-    margin-bottom: 25px;
-    filter: brightness(0) invert(1);
+.footer-logo-img {
+    width: 220px;
+    filter: brightness(0) invert(1); /* Hace el logo blanco */
+    margin-bottom: 20px;
 }
 
-.social-icons {
+.redes-sociales {
     display: flex;
     gap: 20px;
-    font-size: 24px;
+    font-size: 22px;
 }
 
-.social-icons a {
-    opacity: 1;
-}
-
-.barra-version {
-    background-color: var(--gob-borgoña);
-    color: rgba(255,255,255,0.5);
+/* Barra inferior negra/borgoña */
+.footer-sub {
+    background-color: #480721;
+    color: rgba(255,255,255,0.4);
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     font-size: 12px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-col h4 { width: 100%; }
+    .redes-sociales { justify-content: center; }
 }
 
 /* Ajuste para móviles */
@@ -459,39 +464,83 @@
 </main>
 
 <footer>
-    <footer class="footer-principal">
-    <div class="footer-container">
-        <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo" alt="Logo Gobierno">
-            <div class="social-icons">
-                <a href="https://www.facebook.com/gobmexico" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/GobiernoMX" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
+   /* --- FOOTER PROFESIONAL RNP --- */
+.footer-oficial {
+    background-color: #621132; /* Guinda exacto */
+    color: #ffffff;
+    padding: 60px 0 40px 0;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    margin-top: 50px;
+}
 
-        <div class="footer-col">
-            <h4>Enlaces</h4>
-            <a href="https://www.gob.mx/participa">Participa</a>
-            <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-            <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
-            <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
-        </div>
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
 
-        <div class="footer-col">
-            <h4>¿Qué es gob.mx?</h4>
-            <a href="#">Es el portal único de trámites e información.</a>
-            <a href="https://www.gob.mx/en/index">English</a>
-            <a href="https://www.gob.mx/temas">Temas</a>
-            <a href="https://www.gob.mx/accesibilidad">Accesibilidad</a>
-        </div>
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 30px;
+}
 
-        <div class="footer-col">
-            <h4>Contacto</h4>
-            <a href="#">Mesa de ayuda: dudas e información</a>
-            <a href="mailto:gobmx@funcionpublica.gob.mx">gobmx@funcionpublica.gob.mx</a>
-            <a href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54">Denuncia contra servidores públicos</a>
-        </div>
-    </div>
+.footer-col h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #9D843E; /* Línea Oro */
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 80%;
+}
+
+.footer-col a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.footer-col a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-logo-img {
+    width: 220px;
+    filter: brightness(0) invert(1); /* Hace el logo blanco */
+    margin-bottom: 20px;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+}
+
+/* Barra inferior negra/borgoña */
+.footer-sub {
+    background-color: #480721;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-col h4 { width: 100%; }
+    .redes-sociales { justify-content: center; }
+}
 </footer>
 
 <div class="barra-version">
