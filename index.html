@@ -30,19 +30,10 @@
 
         /* PORTADA */
        /* Esto aplica para todos (Móviles) */
-.hero-section img {
-    width: 900%;
-    height: 200 auto;
-    display: block;
-}
-
-/* Esto solo aplica cuando la pantalla es grande (PC) */
-@media (min-width: 0px) {
-    .hero-section img {
-        width: 100%;        /* En PC solo ocupará el 60% del ancho */
-        margin: 600 auto;    /* La centramos */
-        max-height: 350px; /* Reducimos la altura en PC */
-    }
+<div class="hero-section">
+    <img src="logo-pc.png" class="img-pc" alt="Versión PC">
+    <img src="logo-movil.png" class="img-movil" alt="Versión Móvil">
+</div>
 }
 
         /* MAIN CONTENT */
