@@ -164,41 +164,106 @@
     </div>
 </main>
 
-<footer class="footer-oficial">
-    <div class="footer-container">
-        <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo Gobierno">
+<style>
+    .footer-custom {
+        background-color: #621132; /* Color vino oficial */
+        color: white;
+        padding: 20px 0;
+        margin-top: 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .f-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 5%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .f-col { flex: 1; min-width: 220px; }
+    .f-col img { width: 150px; filter: brightness(0) invert(1); margin-bottom: 15px; }
+    .f-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 8px; opacity: 0.8; }
+    .f-col a:hover { opacity: 1; text-decoration: underline; }
+
+    /* Estilo para los botones en Móvil */
+    .f-btn-mobile {
+        display: none; /* Oculto en PC */
+        width: 100%;
+        background: none;
+        border: none;
+        color: white;
+        padding: 15px 0;
+        text-align: left;
+        font-weight: 700;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        display: none; 
+        justify-content: space-between;
+        align-items: center;
+    }
+    .f-list { overflow: hidden; transition: max-height 0.3s ease; }
+    .f-title-pc { font-weight: 700; font-size: 14px; margin-bottom: 15px; border-bottom: 2px solid #9D843E; display: inline-block; padding-bottom: 3px; }
+
+    /* Ajustes específicos para Celular */
+    @media (max-width: 767px) {
+        .f-wrap { flex-direction: column; gap: 0; }
+        .f-btn-mobile { display: flex; } /* Aparece el botón a lo largo */
+        .f-list { max-height: 0; display: flex; flex-direction: column; }
+        .f-list a { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .f-title-pc { display: none; } /* Oculta el título de PC */
+    }
+</style>
+
+<footer class="footer-custom">
+    <div class="f-wrap">
+        <div class="f-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
         </div>
 
-        <div class="footer-col">
-            <button class="acordeon-btn" onclick="toggleFooter(this)">
+        <div class="f-col">
+            <button class="f-btn-mobile" onclick="toggleFooterSection(this)">
                 Enlaces <i class="fas fa-chevron-down"></i>
             </button>
-            <div class="acordeon-content">
-                <p class="pc-title">Enlaces</p>
+            <div class="f-list">
+                <p class="f-title-pc">Enlaces</p>
                 <a href="#">Participa</a>
                 <a href="#">Publicaciones Oficiales</a>
                 <a href="#">Marco Jurídico</a>
-                <a href="#">Transparencia</a>
             </div>
         </div>
 
-        <div class="footer-col">
-            <button class="acordeon-btn" onclick="toggleFooter(this)">
+        <div class="f-col">
+            <button class="f-btn-mobile" onclick="toggleFooterSection(this)">
                 ¿Qué es gob.mx? <i class="fas fa-chevron-down"></i>
             </button>
-            <div class="acordeon-content">
-                <p class="pc-title">¿Qué es gob.mx?</p>
+            <div class="f-list">
+                <p class="f-title-pc">¿Qué es gob.mx?</p>
                 <a href="#">Trámites</a>
                 <a href="#">Gobierno</a>
                 <a href="#">English</a>
-                <a href="#">Temas</a>
             </div>
         </div>
     </div>
 </footer>
 
 <script>
+    function toggleFooterSection(btn) {
+        const lista = btn.nextElementSibling;
+        const icono = btn.querySelector('i');
+        
+        // Si ya está abierto, lo cerramos
+        if (lista.style.maxHeight && lista.style.maxHeight !== "0px") {
+            lista.style.maxHeight = "0px";
+            icono.style.transform = "rotate(0deg)";
+        } else {
+            // Abrimos la sección
+            lista.style.maxHeight = lista.scrollHeight + "px";
+            icono.style.transform = "rotate(180deg)";
+        }
+    }
+</script>
+
     // Función para que los botones funcionen en el celular
     function toggleFooter(boton) {
         // Si no es móvil, no hace nada
