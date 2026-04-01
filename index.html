@@ -514,6 +514,24 @@
     }
     .pleca-links a { margin: 0; }
 }
+    /* Esto asegura que los logos no se vean oscuros sobre el guinda */
+.logo-footer-mex {
+    height: 45px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Fuerza el logo a ser blanco */
+}
+
+.img-footer-sep {
+    height: 60px;
+    width: auto;
+    opacity: 0.9;
+}
+
+/* Evita que el footer se encime con el contenido anterior */
+footer {
+    clear: both;
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -636,25 +654,26 @@
 
 <footer>
 <footer class="footer-gob">
-    <!-- Sección de Logos y Redes (Opcional pero estándar) -->
     <div class="footer-top">
         <div class="container-footer">
             <div class="footer-grid">
                 <div class="footer-col-logo">
-                    <img src="https://cdn.gob.mx" alt="SEP" class="img-footer-sep">
+                    <!-- Logo SEP Estable -->
+                    <img src="https://wikimedia.org" alt="SEP" class="img-footer-sep">
                 </div>
                 <div class="footer-col-links">
                     <h5>Enlaces de Interés</h5>
                     <ul>
-                        <li><a href="#">Participa</a></li>
-                        <li><a href="#">Publicaciones Oficiales</a></li>
-                        <li><a href="#">Marco Jurídico</a></li>
-                        <li><a href="#">PNT</a></li>
+                        <li><a href="https://www.gob.mx">Participa</a></li>
+                        <li><a href="https://datos.gob.mx">Datos Abiertos</a></li>
+                        <li><a href="https://www.gob.mx">Publicaciones Oficiales</a></li>
+                        <li><a href="http://ordenjuridico.gob.mx">Marco Jurídico</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-links">
                     <h5>Contacto</h5>
-                    <p>Mesa de ayuda: <br> <a href="mailto:mesadeayuda@nube.sep.gob.mx">mesadeayuda@nube.sep.gob.mx</a></p>
+                    <p>Mesa de ayuda: <br> 
+                    <a href="mailto:mesadeayuda@nube.sep.gob.mx" style="font-weight: 600;">mesadeayuda@nube.sep.gob.mx</a></p>
                 </div>
                 <div class="footer-col-social">
                     <h5>Síguenos en</h5>
@@ -667,15 +686,15 @@
         </div>
     </div>
 
-    <!-- Barra de pleca de identidad (La franja guinda oscuro) -->
+    <!-- Pleca Institucional Guinda -->
     <div class="footer-pleca">
         <div class="container-footer flex-pleca">
-            <img src="https://cdn.gob.mx" alt="Gobierno de México" class="logo-footer-mex">
+            <!-- Logo Gobierno de México Blanco -->
+            <img src="https://wikimedia.org" alt="Gobierno de México" class="logo-footer-mex">
             <div class="pleca-links">
-                <a href="#">¿Qué es gob.mx?</a>
-                <a href="#">Temas</a>
-                <a href="#">Accesibilidad</a>
-                <a href="#">Aviso de Privacidad</a>
+                <a href="https://www.gob.mx">¿Qué es gob.mx?</a>
+                <a href="https://www.gob.mx">Temas</a>
+                <a href="https://www.gob.mx">Accesibilidad</a>
             </div>
         </div>
     </div>
