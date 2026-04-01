@@ -39,17 +39,14 @@
         .portada-pc { display: block; width: 100%; height: auto; }
         .portada-movil { display: none; }
 
-        @media (max-width: 767px) {
-    .f-btn-mobile { 
-        display: flex !important; /* Obliga a que se vea en móvil */
-        width: 100%;
-        justify-content: space-between;
-        background: none;
-        border: none;
-        color: white;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+  @media (max-width: 767px) {
+        .f-contenedor { flex-direction: column; gap: 0; }
+        .f-btn-movil { display: flex; }
+        .f-desplegable { max-height: 0; display: flex; flex-direction: column; }
+        .f-desplegable a { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .f-titulo-pc { display: none; }
     }
+</style>
     .f-list { 
         max-height: 0; 
         transition: max-height 0.4s ease-out; /* Animación de apertura */
