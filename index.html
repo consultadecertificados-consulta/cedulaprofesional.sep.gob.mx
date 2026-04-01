@@ -165,29 +165,62 @@
 </main>
 
 <footer class="footer-oficial">
-    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap;">
-        <div style="flex:1; min-width:250px;"><img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="width: 200px; filter: brightness(0) invert(1); margin-bottom: 20px;"></div>
-        <div style="flex:1; min-width:250px;">
-            <button class="acordeon-btn" onclick="toggleF(this)">Enlaces <i class="fas fa-chevron-down"></i></button>
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo Gobierno">
+        </div>
+
+        <div class="footer-col">
+            <button class="acordeon-btn" onclick="toggleFooter(this)">
+                Enlaces <i class="fas fa-chevron-down"></i>
+            </button>
             <div class="acordeon-content">
-                <p class="pc-title" style="font-weight:700; margin-bottom:15px;">Enlaces</p>
+                <p class="pc-title">Enlaces</p>
                 <a href="#">Participa</a>
                 <a href="#">Publicaciones Oficiales</a>
                 <a href="#">Marco Jurídico</a>
                 <a href="#">Transparencia</a>
             </div>
         </div>
-        <div style="flex:1; min-width:250px;">
-            <button class="acordeon-btn" onclick="toggleF(this)">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></button>
+
+        <div class="footer-col">
+            <button class="acordeon-btn" onclick="toggleFooter(this)">
+                ¿Qué es gob.mx? <i class="fas fa-chevron-down"></i>
+            </button>
             <div class="acordeon-content">
-                <p class="pc-title" style="font-weight:700; margin-bottom:15px;">¿Qué es gob.mx?</p>
+                <p class="pc-title">¿Qué es gob.mx?</p>
                 <a href="#">Trámites</a>
                 <a href="#">Gobierno</a>
                 <a href="#">English</a>
+                <a href="#">Temas</a>
             </div>
         </div>
     </div>
 </footer>
+
+<script>
+    // Función para que los botones funcionen en el celular
+    function toggleFooter(boton) {
+        // Si no es móvil, no hace nada
+        if (window.innerWidth > 991) return;
+
+        const contenido = boton.nextElementSibling;
+        const icono = boton.querySelector('i');
+
+        if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
+            contenido.style.maxHeight = "0px";
+            icono.classList.replace('fa-chevron-up', 'fa-chevron-down');
+        } else {
+            // Cerramos otros si estuvieran abiertos (opcional)
+            document.querySelectorAll('.acordeon-content').forEach(el => el.style.maxHeight = "0px");
+            document.querySelectorAll('.acordeon-btn i').forEach(i => i.classList.replace('fa-chevron-up', 'fa-chevron-down'));
+            
+            contenido.style.maxHeight = contenido.scrollHeight + "px";
+            icono.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        }
+    }
+</script>
+
 
 <div id="miModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
     <div style="background:#fff; margin:15vh auto; width:90%; max-width:400px; padding:30px; border-radius:10px; text-align:center;">
