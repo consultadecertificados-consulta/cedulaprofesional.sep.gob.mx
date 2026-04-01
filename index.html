@@ -28,88 +28,33 @@
         .menu-pc a { color: white; text-decoration: none; font-size: 14px; font-weight: 400; }
         .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
-        /* PORTADA */
-        .hero-section img {
-            width: 100%;
-            max-width: 1400px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            max-height: 450px; 
-            object-fit: contain;
-        }
+        /* HERO SECTION */
+        .hero-section { text-align: center; background: #fff; }
+        .hero-section img { width: 100%; max-width: 1400px; height: auto; display: block; margin: 0 auto; max-height: 450px; object-fit: contain; }
 
         /* MAIN CONTENT */
         main { max-width: 1200px; margin: 0 auto; padding: 40px 5%; text-align: center; }
 
-        .breadcrumb-button {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .breadcrumb-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .breadcrumb-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .breadcrumb-button { text-decoration: none; color: #333; display: flex; justify-content: center; margin-bottom: 40px; }
+        .breadcrumb-container { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .breadcrumb-group { display: flex; align-items: center; gap: 8px; }
         .home-icon { font-size: 18px; color: #333; }
         .text-upper { font-size: 18px; font-weight: 400; }
-        .text-lower { font-size: 25px; font-weight: 600; white-space: nowrap; }
+        .text-lower { font-size: 22px; font-weight: 600; color: #545454; }
 
         @media (min-width: 992px) {
-            .breadcrumb-button {
-                justify-content: flex-start;
-                width: 100%;
-                max-width: 1100px;
-                margin-left: auto;
-                margin-right: auto;
-                text-align: left;
-            }
+            .breadcrumb-button { justify-content: flex-start; text-align: left; }
             .breadcrumb-container { flex-direction: row; }
         }
 
-        @media (max-width: 480px) { .text-lower { font-size: 15px; } }
-
         .section-title { 
-            font-family: "Rockwell Extra Bold", "Rockwell", "Arial Black", serif;
-            font-size: 40px;
-            font-weight: 1000;
-            color: #333333;
-            margin-top: 60px;
-            margin-bottom: 20px; 
-            line-height: 1.1;
+            font-family: "Rockwell Extra Bold", serif; font-size: 35px; font-weight: 800; color: #333; margin: 40px 0 20px; line-height: 1.1; 
         }
 
-        @media (max-width: 991px) { .section-title { font-size: 26px; padding: 0 15px; } }
+        .oro-line { width: 100%; max-width: 1100px; height: 1px; background-color: #D3D3D3; margin: 20px auto 40px; position: relative; }
+        .oro-line::before { content: ""; position: absolute; top: 0; left: 0; width: 120px; height: 6px; background-color: var(--gob-oro); transform: translateY(-2.5px); }
 
-        .oro-line { 
-            width: 100%; max-width: 1100px; height: 1px; background-color: #D3D3D3; margin: 20px auto 40px; position: relative; border: none;
-        }
-
-        .oro-line::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 120px; height: 6px; background-color: var(--gob-oro); transform: translateY(-2.5px);
-        }
-
-        .leyenda-contenedor { width: 100%; margin: 0 auto; color: #545454; line-height: 1.6; text-align: justify; }
-
-        @media (min-width: 992px) { .leyenda-contenedor { max-width: 1100px; padding: 0 20px; margin-bottom: 40px; } }
-
-        .constancia-promo {
-            font-family: "Rockwell Extra Bold", serif; color: #000000; font-weight: 800; text-align: center; margin-top: 40px; margin-bottom: 30px; font-size: 35px; 
-        }
-
-        @media (max-width: 991px) { .constancia-promo { font-size: 20px; padding: 0 15px; } }
+        .leyenda-contenedor { text-align: justify; color: #545454; font-size: 16px; margin-bottom: 40px; }
 
         /* FORMULARIO */
         .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; margin-top: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
@@ -119,39 +64,35 @@
 
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px; }
         .field { display: flex; flex-direction: column; }
-        .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; color: #333; }
+        .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; }
         .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; outline: none; }
 
         .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
-        .btn { padding: 10px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 15px; min-width: 140px; transition: 0.2s; }
+        .btn { padding: 10px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 15px; transition: 0.2s; }
         .btn-buscar { background: var(--gob-borgoña); color: white; }
         .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); background: white; }
-        .btn-csv { background: #f9f9f9; color: #999; cursor: not-allowed; border: 1px solid #ccc; }
 
-        /* MODAL CSS */
-        .modal-overlay { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
-        .modal-content { background-color: #fff; margin: 15vh auto; width: 90%; max-width: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 25px rgba(0,0,0,0.4); animation: aparecer 0.3s; }
-        @keyframes aparecer { from {transform: translateY(-30px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
-        .modal-header { background-color: #33373d; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .close-btn { background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
-        .modal-body { padding: 45px 20px; text-align: center; }
-
-        /* FOOTER CSS */
-        .footer-oficial { background-color: #621132; color: #fff; width: 100%; margin-top: 50px; padding-bottom: 0; }
-        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: flex-start; padding: 0 20px 40px; gap: 40px; }
-        .footer-col { flex: 1; min-width: 200px; }
-        .footer-col h4 { border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 20px; }
-        .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; }
-        .footer-logo-img { width: 200px; filter: brightness(0) invert(1); margin-bottom: 25px; }
-        .footer-sub { background-color: #480721; padding: 20px; text-align: center; font-size: 12px; }
+        /* MODAL */
+        .modal-overlay { display: none; position: fixed; z-index: 10001; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+        .modal-content { background: #fff; margin: 15vh auto; width: 90%; max-width: 500px; border-radius: 10px; overflow: hidden; }
+        .modal-header { background: #33373d; color: #fff; padding: 15px; display: flex; justify-content: space-between; }
+        .modal-body { padding: 40px 20px; text-align: center; }
+        
+        /* FOOTER DINÁMICO */
+        .footer-oficial { background: #621132; color: #fff; padding-top: 40px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .footer-col h4 { border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 15px; font-size: 18px; }
+        .footer-col a { color: #fff; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; }
+        .acordeon-btn { display: none; width: 100%; background: none; border: none; color: #fff; text-align: left; font-size: 18px; font-weight: 700; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); justify-content: space-between; align-items: center; }
 
         @media (max-width: 991px) {
+            .footer-container { grid-template-columns: 1fr; }
+            .pc-only-footer { display: none; }
+            .acordeon-btn { display: flex; }
+            .acordeon-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding-left: 15px; }
             .btn-ham { display: block; }
-            .menu-pc { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--gob-borgoña); }
+            .menu-pc { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: var(--gob-borgoña); }
             .menu-pc.active { display: flex; }
-            .footer-inner { flex-direction: column; text-align: center; }
-            .footer-col h4 { width: 100%; }
-            .social-group, .phone-079 { justify-content: center; display: flex; align-items: center; flex-direction: column; }
         }
     </style>
 </head>
@@ -160,7 +101,7 @@
 <header>
     <nav class="nav-superior">
         <a href="https://www.gob.mx/">
-            <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex" alt="Gobierno de México">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex" alt="Gobierno de México">
         </a>
         <button class="btn-ham" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
         <ul id="mSup" class="menu-pc">
@@ -180,7 +121,10 @@
 </header>
 
 <div class="hero-section">
-    <img src="logo-pc.png" alt="Registro Nacional de Profesionistas">
+    <picture>
+        <source media="(max-width: 767px)" srcset="https://consultadelestadoactual.info/images/logo-sep-movil.png">
+        <img src="https://consultadelestadoactual.info/images/logo-sep-pc.png" alt="Registro Nacional de Profesionistas">
+    </picture>
 </div>
 
 <main>
@@ -199,11 +143,7 @@
 
     <div class="leyenda-contenedor">
         <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida...</p>
-        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos...</p>
     </div>
-
-    <p class="constancia-promo">¡Descarga la Constancia de Situación Profesional!</p>
-    <p style="margin-bottom: 30px;">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
 
     <div class="search-card">
         <div class="tabs">
@@ -215,52 +155,59 @@
             <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre(s)"></div>
             <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Primer Apellido"></div>
             <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
-            <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
         </div>
 
         <div class="form-grid" id="f-ced" style="display:none;">
             <div class="field" style="grid-column: 1 / -1;">
                 <label>Número de Cédula*:</label>
-                <input type="text" id="ced-input" placeholder="Ej. 1234567">
+                <input type="text" id="ced-input" placeholder="Ingresa los números de la cédula">
             </div>
         </div>
 
         <div class="form-actions">
-            <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
+            <button class="btn btn-buscar" onclick="iniciarBusqueda()">Buscar</button>
             <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
-            <button class="btn btn-csv">Descargar CSV <i class="fas fa-file-csv"></i></button>
         </div>
     </div>
-    </main>
-    <footer class="footer-oficial">
-    <div style="text-align: right; padding: 10px 8%; font-size: 12px; opacity: 0.8;">RNP v1.6.7</div>
-    <div class="footer-inner">
+</main>
+<footer class="footer-oficial">
+    <div class="footer-container">
         <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="width: 200px; filter: brightness(0) invert(1);" alt="Gob.mx">
         </div>
 
-        <div class="footer-col pc-only-content">
-            <h4>Enlaces</h4>
-            <a href="#">Participa</a>
-            <a href="#">Publicaciones Oficiales</a>
-            <a href="#">Marco Jurídico</a>
-            <a href="#">Transparencia</a>
+        <div class="footer-col">
+            <button class="acordeon-btn" onclick="toggleAcordeon(this)">Enlaces <i class="fas fa-chevron-down"></i></button>
+            <div class="acordeon-content pc-only-footer">
+                <h4>Enlaces</h4>
+                <a href="#">Participa</a>
+                <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Marco Jurídico</a>
+                <a href="#">Transparencia</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <button class="acordeon-btn" onclick="toggleAcordeon(this)">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></button>
+            <div class="acordeon-content pc-only-footer">
+                <h4>¿Qué es gob.mx?</h4>
+                <a href="#">Trámites</a>
+                <a href="#">Gobierno</a>
+                <a href="#">English</a>
+            </div>
         </div>
 
         <div class="footer-col">
             <h4>Contacto</h4>
-            <a href="#" style="font-weight:700">Denuncia contra servidores públicos</a>
-            <div class="social-group">
-                <p>Síguenos en</p>
-                <div style="display: flex; gap: 15px; font-size: 20px; margin-top:10px;">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+            <a href="#">Denuncia contra servidores públicos</a>
+            <p style="font-size: 13px; margin-top: 15px;">Síguenos en</p>
+            <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 20px;">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </div>
-    <div class="footer-sub">
+    <div style="background: #480721; text-align: center; padding: 20px; font-size: 12px; margin-top: 40px;">
         SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
     </div>
 </footer>
@@ -268,18 +215,20 @@
 <div id="miModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
-            <span>Mensaje</span>
-            <button onclick="cerrarModal()" class="close-btn">&times;</button>
+            <span>Aviso del Sistema</span>
+            <button onclick="cerrarModal()" style="background:none; border:none; color:#fff; font-size:24px; cursor:pointer;">&times;</button>
         </div>
         <div class="modal-body">
-            <p>No se encontró información para la cédula <strong id="cedulaError"></strong>.</p>
-            <p style="margin-top:20px;"><strong>Fecha:</strong> <span id="fechaActual"></span></p>
+            <p>No se encontró información para la cédula: <strong id="cedulaError"></strong></p>
+            <p style="margin-top: 20px; font-size: 14px; color: #666;">Verifique que los datos sean correctos e intente de nuevo.</p>
         </div>
     </div>
 </div>
 
+<script src="folios.js"></script>
+
 <script>
-    // Control de pestañas
+    // 1. Lógica de Pestañas
     function switchT(tipo) {
         document.getElementById('f-dat').style.display = (tipo === 'dat') ? 'grid' : 'none';
         document.getElementById('f-ced').style.display = (tipo === 'ced') ? 'grid' : 'none';
@@ -287,34 +236,47 @@
         document.getElementById('t-ced').classList.toggle('active', tipo === 'ced');
     }
 
-    // Menú hamburguesa
-    function toggleM(id) {
-        document.getElementById(id).classList.toggle('active');
+    // 2. Menú Móvil
+    function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
+
+    // 3. Acordeón Footer Móvil
+    function toggleAcordeon(btn) {
+        if (window.innerWidth > 991) return; // No hacer nada en PC
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+        
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+            content.style.maxHeight = "0px";
+            icon.style.transform = "rotate(0deg)";
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.style.transform = "rotate(180deg)";
+        }
     }
 
-    // Validación y Modal
-    document.getElementById('ced-input').addEventListener('input', function(e) {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
-
-    function ejecutarBusqueda() {
-        const cedula = document.getElementById('ced-input').value || "No ingresada";
-        mostrarError(cedula);
+    // 4. Lógica de Búsqueda Conectada a folios.js
+    function iniciarBusqueda() {
+        const inputCedula = document.getElementById('ced-input').value.trim();
+        
+        // Esta función debe existir dentro de tu archivo folios.js
+        // Ejemplo: function buscarEnFolios(id) { ... }
+        if (typeof buscarEnFolios === "function") {
+            buscarEnFolios(inputCedula);
+        } else {
+            // Si folios.js no ha cargado o la función tiene otro nombre, muestra el error
+            mostrarError(inputCedula || "No ingresada");
+        }
     }
 
-    function mostrarError(cedula) {
-        document.getElementById('cedulaError').innerText = cedula;
-        const hoy = new Date();
-        document.getElementById('fechaActual').innerText = hoy.toLocaleDateString('es-MX');
+    function mostrarError(txt) {
+        document.getElementById('cedulaError').innerText = txt;
         document.getElementById('miModal').style.display = "block";
     }
 
-    function cerrarModal() {
-        document.getElementById('miModal').style.display = "none";
-    }
+    function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
 
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('miModal')) cerrarModal();
+    window.onclick = function(e) { 
+        if (e.target.className === "modal-overlay") cerrarModal(); 
     }
 </script>
 </body>
