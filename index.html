@@ -39,21 +39,10 @@
         .portada-pc { display: block; width: 100%; height: auto; }
         .portada-movil { display: none; }
 
-  @media (max-width: 767px) {
-        .f-contenedor { flex-direction: column; gap: 0; }
-        .f-btn-movil { display: flex; }
-        .f-desplegable { max-height: 0; display: flex; flex-direction: column; }
-        .f-desplegable a { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .f-titulo-pc { display: none; }
-    }
-</style>
-    .f-list { 
-        max-height: 0; 
-        transition: max-height 0.4s ease-out; /* Animación de apertura */
-    }
-    .f-title-pc { display: none; }
-}
-
+        @media (max-width: 767px) {
+            .portada-pc { display: none; }
+            .portada-movil { display: block; width: 100%; height: auto; }
+        }
 
         /* PESTAÑAS GRISES */
         .tabs { display: flex; background: #e0e0e0; }
@@ -420,30 +409,4 @@
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap1}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap2 || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.curp || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.inst || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.prof || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.entidad || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.anio || ''}</td>
-                        
-<td style="padding:12px; border-bottom:1px solid #eee;">
-    <a href="CONSTANCIAS/${r.archivo}" download="${r.archivo}" style="background:var(--gob-vino); color:white; padding:5px 10px; border-radius:4px; text-decoration:none; font-weight:700; font-size:10px;">
-        DESCARGAR PDF
-    </a>
-</td>
-
-                    </tr>`;
-            });
-            resDiv.style.display = 'block';
-            resDiv.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            resDiv.style.display = 'none';
-            document.getElementById('errDato').innerText = ced || curpIn || nom || "los datos ingresados";
-            document.getElementById('miModal').style.display = 'block';
-        }
-    }
-
-    
-</script>
-</body>
-                </html>
-    
+                        <td style="padding:12px; border
