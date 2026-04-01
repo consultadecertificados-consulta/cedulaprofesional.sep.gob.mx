@@ -29,7 +29,6 @@
         .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
         /* HERO SECTION */
-        .hero-section { text-align: center; background: #fff; }
         .hero-section img { width: 100%; max-width: 1400px; height: auto; display: block; margin: 0 auto; max-height: 450px; object-fit: contain; }
 
         /* MAIN CONTENT */
@@ -40,11 +39,12 @@
         .breadcrumb-group { display: flex; align-items: center; gap: 8px; }
         .home-icon { font-size: 18px; color: #333; }
         .text-upper { font-size: 18px; font-weight: 400; }
-        .text-lower { font-size: 22px; font-weight: 600; color: #545454; }
+        .text-lower { font-size: 22px; font-weight: 600; }
 
         @media (min-width: 992px) {
             .breadcrumb-button { justify-content: flex-start; text-align: left; }
             .breadcrumb-container { flex-direction: row; }
+            .btn-ham { display: none; }
         }
 
         .section-title { 
@@ -54,7 +54,7 @@
         .oro-line { width: 100%; max-width: 1100px; height: 1px; background-color: #D3D3D3; margin: 20px auto 40px; position: relative; }
         .oro-line::before { content: ""; position: absolute; top: 0; left: 0; width: 120px; height: 6px; background-color: var(--gob-oro); transform: translateY(-2.5px); }
 
-        .leyenda-contenedor { text-align: justify; color: #545454; font-size: 16px; margin-bottom: 40px; }
+        .leyenda-contenedor { text-align: justify; color: #545454; font-size: 16px; margin-bottom: 40px; padding: 0 5%; }
 
         /* FORMULARIO */
         .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; margin-top: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
@@ -65,31 +65,40 @@
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px; }
         .field { display: flex; flex-direction: column; }
         .field label { font-weight: 700; margin-bottom: 8px; font-size: 15px; }
-        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; outline: none; }
+        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; outline: none; width: 100%; }
 
         .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
         .btn { padding: 10px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 15px; transition: 0.2s; }
         .btn-buscar { background: var(--gob-borgoña); color: white; }
         .btn-limpiar { border: 2px solid var(--gob-oro); color: var(--gob-oro); background: white; }
 
+        /* TABLA DE RESULTADOS */
+        .results-container { padding: 20px; border-top: 1px solid #eee; display: none; }
+        .table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; min-width: 1000px; border-collapse: collapse; font-size: 13px; }
+        th { background: #fcfcfc; padding: 12px; border-bottom: 2px solid #eee; text-align: left; color: #666; font-weight: 700; }
+        td { padding: 15px 12px; border-bottom: 1px solid #eee; }
+        .btn-descargar { color: var(--gob-vino); text-decoration: none; font-weight: 700; }
+
         /* MODAL */
         .modal-overlay { display: none; position: fixed; z-index: 10001; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
-        .modal-content { background: #fff; margin: 15vh auto; width: 90%; max-width: 500px; border-radius: 10px; overflow: hidden; }
-        .modal-header { background: #33373d; color: #fff; padding: 15px; display: flex; justify-content: space-between; }
+        .modal-content { background: #fff; margin: 15vh auto; width: 90%; max-width: 500px; border-radius: 10px; overflow: hidden; animation: aparecer 0.3s; }
+        @keyframes aparecer { from {transform: translateY(-20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .modal-header { background: #33373d; color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
         .modal-body { padding: 40px 20px; text-align: center; }
-        
-        /* FOOTER DINÁMICO */
-        .footer-oficial { background: #621132; color: #fff; padding-top: 40px; }
-        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        .footer-col h4 { border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 15px; font-size: 18px; }
+
+        /* FOOTER */
+        .footer-oficial { background: #621132; color: #fff; padding-top: 40px; margin-top: 50px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .footer-col h4 { border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 15px; }
         .footer-col a { color: #fff; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; }
-        .acordeon-btn { display: none; width: 100%; background: none; border: none; color: #fff; text-align: left; font-size: 18px; font-weight: 700; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); justify-content: space-between; align-items: center; }
+        .acordeon-btn { display: none; width: 100%; background: none; border: none; color: #fff; text-align: left; font-size: 18px; font-weight: 700; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); justify-content: space-between; }
 
         @media (max-width: 991px) {
             .footer-container { grid-template-columns: 1fr; }
             .pc-only-footer { display: none; }
             .acordeon-btn { display: flex; }
-            .acordeon-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding-left: 15px; }
+            .acordeon-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
             .btn-ham { display: block; }
             .menu-pc { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: var(--gob-borgoña); }
             .menu-pc.active { display: flex; }
@@ -122,18 +131,15 @@
 
 <div class="hero-section">
     <picture>
-        <source media="(max-width: 767px)" srcset="https://consultadelestadoactual.info/images/logo-sep-movil.png">
-        <img src="https://consultadelestadoactual.info/images/logo-sep-pc.png" alt="Registro Nacional de Profesionistas">
+        <source media="(max-width: 767px)" srcset="logo-movil.png">
+        <img src="logo-pc.png" alt="Registro Nacional de Profesionistas">
     </picture>
 </div>
 
 <main>
     <a href="https://www.gob.mx/" class="breadcrumb-button">
         <div class="breadcrumb-container">
-            <div class="breadcrumb-group">
-                <i class="fas fa-home home-icon"></i>
-                <span class="text-upper">Inicio</span>
-            </div>
+            <div class="breadcrumb-group"><i class="fas fa-home home-icon"></i><span class="text-upper">Inicio</span></div>
             <span class="text-lower">> Búsqueda de Cédulas Profesionales</span>
         </div>
     </a>
@@ -165,12 +171,52 @@
         </div>
 
         <div class="form-actions">
-            <button class="btn btn-buscar" onclick="iniciarBusqueda()">Buscar</button>
+            <button class="btn btn-buscar" onclick="buscarCedula()">Buscar</button>
             <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+        </div>
+
+        <div class="results-container" id="res">
+            <p style="text-align:center; font-weight:700; margin-bottom:20px;">Resultados de la Búsqueda</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cédula</th><th>Nombre</th><th>Apellidos</th><th>Institución</th><th>Profesión</th><th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </main>
+            <div class="results-container" id="res">
+            <p style="text-align:center; font-weight:700; margin-bottom:20px; font-size: 18px;">Resultados de la Búsqueda</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Núm. Cédula</th>
+                            <th>Nombre</th>
+                            <th>1er Apellido</th>
+                            <th>2do Apellido</th>
+                            <th>Género</th>
+                            <th>Institución</th>
+                            <th>Profesión</th>
+                            <th>Entidad</th>
+                            <th>Año</th>
+                            <th>Constancia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res-body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>
+
 <footer class="footer-oficial">
+    <div style="text-align: right; padding: 10px 8%; font-size: 12px; opacity: 0.6;">RNP v1.6.7</div>
     <div class="footer-container">
         <div class="footer-col">
             <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="width: 200px; filter: brightness(0) invert(1);" alt="Gob.mx">
@@ -179,18 +225,18 @@
         <div class="footer-col">
             <button class="acordeon-btn" onclick="toggleAcordeon(this)">Enlaces <i class="fas fa-chevron-down"></i></button>
             <div class="acordeon-content pc-only-footer">
-                <h4>Enlaces</h4>
-                <a href="#">Participa</a>
-                <a href="#">Publicaciones Oficiales</a>
-                <a href="#">Marco Jurídico</a>
-                <a href="#">Transparencia</a>
+                <h4 class="pc-only-footer">Enlaces</h4>
+                <a href="https://www.gob.mx/participa">Participa</a>
+                <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+                <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+                <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
             </div>
         </div>
 
         <div class="footer-col">
             <button class="acordeon-btn" onclick="toggleAcordeon(this)">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></button>
             <div class="acordeon-content pc-only-footer">
-                <h4>¿Qué es gob.mx?</h4>
+                <h4 class="pc-only-footer">¿Qué es gob.mx?</h4>
                 <a href="#">Trámites</a>
                 <a href="#">Gobierno</a>
                 <a href="#">English</a>
@@ -199,11 +245,12 @@
 
         <div class="footer-col">
             <h4>Contacto</h4>
-            <a href="#">Denuncia contra servidores públicos</a>
-            <p style="font-size: 13px; margin-top: 15px;">Síguenos en</p>
+            <a href="#" style="font-weight:700">Denuncia contra servidores públicos</a>
+            <p style="margin-top:15px; font-size:14px;">Síguenos en</p>
             <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 20px;">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
@@ -215,12 +262,12 @@
 <div id="miModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
-            <span>Aviso del Sistema</span>
-            <button onclick="cerrarModal()" style="background:none; border:none; color:#fff; font-size:24px; cursor:pointer;">&times;</button>
+            <span>Mensaje</span>
+            <button onclick="cerrarModal()" style="background:none; border:none; color:white; font-size:28px; cursor:pointer;">&times;</button>
         </div>
         <div class="modal-body">
-            <p>No se encontró información para la cédula: <strong id="cedulaError"></strong></p>
-            <p style="margin-top: 20px; font-size: 14px; color: #666;">Verifique que los datos sean correctos e intente de nuevo.</p>
+            <p>No se encontró información para los datos ingresados o la cédula <strong id="cedulaError"></strong>.</p>
+            <p style="margin-top:20px;"><strong>Fecha de consulta:</strong> <span id="fechaActual"></span></p>
         </div>
     </div>
 </div>
@@ -234,50 +281,86 @@
         document.getElementById('f-ced').style.display = (tipo === 'ced') ? 'grid' : 'none';
         document.getElementById('t-dat').classList.toggle('active', tipo === 'dat');
         document.getElementById('t-ced').classList.toggle('active', tipo === 'ced');
+        document.getElementById('res').style.display = 'none';
     }
 
-    // 2. Menú Móvil
+    // 2. Menú Hamburguesa Header
     function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
 
     // 3. Acordeón Footer Móvil
     function toggleAcordeon(btn) {
-        if (window.innerWidth > 991) return; // No hacer nada en PC
+        if (window.innerWidth > 991) return;
         const content = btn.nextElementSibling;
-        const icon = btn.querySelector('i');
-        
         if (content.style.maxHeight && content.style.maxHeight !== "0px") {
             content.style.maxHeight = "0px";
-            icon.style.transform = "rotate(0deg)";
         } else {
             content.style.maxHeight = content.scrollHeight + "px";
-            icon.style.transform = "rotate(180deg)";
         }
     }
 
     // 4. Lógica de Búsqueda Conectada a folios.js
-    function iniciarBusqueda() {
-        const inputCedula = document.getElementById('ced-input').value.trim();
+    function buscarCedula() {
+        const queryCedula = document.getElementById('ced-input').value.trim();
+        const nom = document.getElementById('nom').value.trim().toUpperCase();
+        const ap1 = document.getElementById('ap1').value.trim().toUpperCase();
         
-        // Esta función debe existir dentro de tu archivo folios.js
-        // Ejemplo: function buscarEnFolios(id) { ... }
-        if (typeof buscarEnFolios === "function") {
-            buscarEnFolios(inputCedula);
-        } else {
-            // Si folios.js no ha cargado o la función tiene otro nombre, muestra el error
-            mostrarError(inputCedula || "No ingresada");
+        let resultados = [];
+
+        // Si busca por cédula
+        if (queryCedula !== "") {
+            resultados = registros.filter(r => r.id === queryCedula);
+        } 
+        // Si busca por nombre y apellido
+        else if (nom !== "" && ap1 !== "") {
+            resultados = registros.filter(r => r.nom.includes(nom) && r.ap1 === ap1);
         }
+
+        if (resultados.length > 0) {
+            mostrarResultados(resultados);
+        } else {
+            mostrarError(queryCedula || nom || "Sin datos");
+        }
+    }
+
+    function mostrarResultados(lista) {
+        const body = document.getElementById('res-body');
+        body.innerHTML = "";
+        lista.forEach(r => {
+            body.innerHTML += `
+                <tr>
+                    <td>${r.id}</td>
+                    <td>${r.nom}</td>
+                    <td>${r.ap1}</td>
+                    <td>${r.ap2}</td>
+                    <td>${r.gen}</td>
+                    <td>${r.inst}</td>
+                    <td>${r.prof}</td>
+                    <td>${r.ent}</td>
+                    <td>${r.anio}</td>
+                    <td><a href="CONSTANCIAS/${r.archivo}" class="btn-descargar" target="_blank">Descargar PDF</a></td>
+                </tr>`;
+        });
+        document.getElementById('res').style.display = 'block';
+        document.getElementById('res').scrollIntoView({ behavior: 'smooth' });
     }
 
     function mostrarError(txt) {
         document.getElementById('cedulaError').innerText = txt;
+        document.getElementById('fechaActual').innerText = new Date().toLocaleDateString('es-MX');
         document.getElementById('miModal').style.display = "block";
+        document.getElementById('res').style.display = 'none';
     }
 
     function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
-
+    
     window.onclick = function(e) { 
         if (e.target.className === "modal-overlay") cerrarModal(); 
     }
+
+    // Bloquear letras en input de cédula
+    document.getElementById('ced-input').addEventListener('input', function(e) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
 </script>
 </body>
 </html>
