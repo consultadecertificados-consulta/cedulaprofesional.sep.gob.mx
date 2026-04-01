@@ -564,7 +564,25 @@
 </body>
 </html>
 
-   <div id="miModal" class="modal-overlay">
+ 
+</script>
+
+</body>
+</html>
+
+<script>
+    // Función para abrir/cerrar los acordeones móviles
+    function toggleAcordeon(elemento) {
+        elemento.classList.toggle("active");
+        var content = elemento.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null; // Cerrar
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // Abrir
+        }
+    }
+            </script>
+      <div id="miModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
             <span>Mensaje</span>
@@ -643,23 +661,5 @@ window.onclick = function(event) {
     function toggleM(id) {
         document.getElementById(id).classList.toggle('active');
     }
-</script>
-
-</body>
-</html>
-
-<script>
-    // Función para abrir/cerrar los acordeones móviles
-    function toggleAcordeon(elemento) {
-        elemento.classList.toggle("active");
-        var content = elemento.nextElementSibling;
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null; // Cerrar
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px"; // Abrir
-        }
-    }
-            </script>
-    
 </body>
 </html>
