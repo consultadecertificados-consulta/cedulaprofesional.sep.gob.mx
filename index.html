@@ -23,7 +23,7 @@
         header { position: sticky; top: 0; z-index: 1000; width:100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; }
         .logo-gob-mex { height: 40px; }
-        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; }
+        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; position: relative; }
         
         .menu-pc { display: flex; gap: 20px; list-style: none; }
         .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
@@ -39,32 +39,31 @@
             .menu-pc a { padding: 15px; display: block; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
         }
 
-        /* PORTADAS (BANNER RESPONSIVO) */
-        .hero-section { width: 100%; background: #fff; text-align: center; }
-        .hero-section img { width: 100%; height: auto; display: block; }
-        .img-pc { display: block; }
-        .img-movil { display: none; }
+        /* CORRECCIÓN PORTADA DOBLE */
+        .hero-section { width: 100%; background: #fff; }
+        .portada-pc { display: block; width: 100%; height: auto; }
+        .portada-movil { display: none; }
 
         @media (max-width: 767px) {
-            .img-pc { display: none; }
-            .img-movil { display: block; }
+            .portada-pc { display: none; }
+            .portada-movil { display: block; width: 100%; height: auto; }
         }
 
         /* BREADCRUMB */
         main { max-width: 1200px; margin: 0 auto; padding: 20px 5%; }
-        .breadcrumb { display: flex; align-items: center; gap: 5px; font-size: 14px; margin-bottom: 20px; color: #333; }
+        .breadcrumb { display: flex; align-items: center; gap: 5px; font-size: 14px; margin-bottom: 20px; color: #333; justify-content: flex-start; }
 
         .section-title { font-family: "Rockwell", serif; font-size: 26px; font-weight: 800; color: #333; text-align: left; margin-bottom: 10px; }
         .oro-line { width: 100%; height: 1px; background: #D3D3D3; margin-bottom: 30px; position: relative; }
         .oro-line::before { content: ""; position: absolute; top: 0; left: 0; width: 100px; height: 5px; background: var(--gob-oro); transform: translateY(-2px); }
 
         /* PESTAÑAS */
-        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .tabs { display: flex; background: var(--gris-pestaña); }
-        .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; font-size: 14px; background: #f2f2f2; color: #777; }
+        .tabs { display: flex; background: var(--gris-pestaña); border-radius: 8px 8px 0 0; overflow: hidden; }
+        .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; font-size: 14px; background: #f2f2f2; color: #777; transition: 0.3s; }
         .tab.active { background: var(--gob-vino); color: white; }
 
         /* FORMULARIO */
+        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 30px; }
         @media (min-width: 992px) { .form-grid { grid-template-columns: repeat(3, 1fr); } }
         .field { display: flex; flex-direction: column; text-align: left; }
@@ -76,13 +75,31 @@
         .btn-buscar { background: var(--gob-borgoña); color: white; }
         .btn-limpiar { border: 1px solid var(--gob-oro); color: var(--gob-oro); background: white; }
         .btn-csv { background: #b0b0b0; color: white; }
+
+        /* FOOTER ACORDEÓN */
+        .footer-oficial { background: var(--gob-vino); color: white; padding: 30px 0; margin-top: 50px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; }
+        .footer-col { flex: 1; min-width: 250px; }
+        .acordeon-btn { 
+            display: none; width: 100%; background: none; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
+            color: white; padding: 18px 0; text-align: left; font-weight: 700; cursor: pointer; justify-content: space-between;
+        }
+        .acordeon-content { overflow: hidden; transition: 0.3s; }
+        @media (max-width: 991px) {
+            .footer-container { flex-direction: column; }
+            .acordeon-btn { display: flex; }
+            .acordeon-content { max-height: 0; display: flex; flex-direction: column; }
+            .acordeon-content a { padding: 12px 10px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .pc-only-title { display: none; }
+        }
+        .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <header>
     <nav class="nav-superior">
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="logo-gob-mex">
+        <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex">
         <button class="btn-ham" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
         <ul id="mSup" class="menu-pc">
             <li><a href="#">Trámites</a></li>
@@ -97,24 +114,25 @@
         </ul>
     </nav>
 </header>
-
 <div class="hero-section">
-    <img src="logo-pc.png" class="img-pc" alt="Banner PC">
-    <img src="logo-movil.png" class="img-movil" alt="Banner Móvil">
+    <img src="logo-pc.png" class="portada-pc" alt="Versión Escritorio">
+    <img src="logo-movil.png" class="portada-movil" alt="Versión Móvil">
 </div>
+
 <main>
     <div class="breadcrumb"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
+    
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
     <div class="oro-line"></div>
 
-    <div style="text-align: justify; font-size: 14px; color: #545454; margin-bottom: 30px;">
+    <div style="text-align: justify; font-size: 14px; color: #545454; margin-bottom: 30px; line-height: 1.6;">
         <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con <strong>título registrado y cédula profesional expedida</strong>, cumpliendo con todos los requisitos de la ley.</p>
         <br>
-        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación...</p>
-     </div>
+        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+    </div>
 
-    <p style="font-weight: 800; font-size: 20px; color: #333;">¡Descarga la Constancia de Situación Profesional!</p>
-    <p style="margin-bottom: 30px; color: #666;">Recuerda: La emisión de la Constancia es <strong>completamente gratuita</strong>.</p>
+    <p style="font-weight: 800; font-size: 20px; color: #333; text-align: center;">¡Descarga la Constancia de Situación Profesional!</p>
+    <p style="margin-bottom: 30px; color: #666; text-align: center;">Recuerda: La emisión de la Constancia es <strong>completamente gratuita</strong>.</p>
 
     <div class="search-card">
         <div class="tabs">
@@ -129,7 +147,7 @@
         </div>
 
         <div class="form-grid" id="f-ced" style="display:none;">
-            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Cédula"></div>
+            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ingresa la cédula"></div>
         </div>
 
         <div class="form-actions">
@@ -140,12 +158,12 @@
 
         <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
             <div style="overflow-x:auto;">
-                <table style="width:100%; min-width:800px; border-collapse:collapse; font-size:13px; text-align:left;">
+                <table style="width:100%; min-width:900px; border-collapse:collapse; font-size:13px; text-align: left;">
                     <thead><tr style="background:#f9f9f9;">
-                        <th style="padding:10px; border-bottom:2px solid #ddd;">Cédula</th>
-                        <th style="padding:10px; border-bottom:2px solid #ddd;">Nombre</th>
-                        <th style="padding:10px; border-bottom:2px solid #ddd;">Profesión</th>
-                        <th style="padding:10px; border-bottom:2px solid #ddd;">Acción</th>
+                        <th style="padding:12px; border-bottom:2px solid #ddd;">Cédula</th>
+                        <th style="padding:12px; border-bottom:2px solid #ddd;">Nombre Completo</th>
+                        <th style="padding:12px; border-bottom:2px solid #ddd;">Institución</th>
+                        <th style="padding:12px; border-bottom:2px solid #ddd;">Acción</th>
                     </tr></thead>
                     <tbody id="res-body"></tbody>
                 </table>
@@ -154,57 +172,37 @@
     </div>
 </main>
 
-<style>
-    .footer-oficial { background: var(--gob-vino); color: white; padding: 30px 0; margin-top: 50px; }
-    .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 20px; }
-    .footer-col { flex: 1; min-width: 250px; }
-    
-    .acordeon-btn { 
-        display: none; width: 100%; background: none; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
-        color: white; padding: 15px 0; text-align: left; font-weight: 700; font-size: 16px; cursor: pointer;
-        justify-content: space-between; align-items: center;
-    }
-    .acordeon-content { overflow: hidden; max-height: none; transition: 0.3s; }
-    
-    @media (max-width: 991px) {
-        .footer-container { flex-direction: column; gap: 0; }
-        .acordeon-btn { display: flex; }
-        .acordeon-content { max-height: 0; display: flex; flex-direction: column; }
-        .acordeon-content a { padding: 10px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .pc-title { display: none; }
-    }
-    .footer-col a { color: white; text-decoration: none; font-size: 14px; margin-bottom: 10px; display: block; }
-</style>
-
 <footer class="footer-oficial">
     <div class="footer-container">
         <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="width: 180px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="width: 200px; filter: brightness(0) invert(1); margin-bottom: 20px;">
         </div>
         <div class="footer-col">
             <button class="acordeon-btn" onclick="toggleF(this)">Enlaces <i class="fas fa-chevron-down"></i></button>
             <div class="acordeon-content">
-                <p class="pc-title" style="font-weight:700; margin-bottom:15px;">Enlaces</p>
+                <p class="pc-only-title" style="font-weight:700; margin-bottom:15px;">Enlaces</p>
                 <a href="#">Participa</a>
                 <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Marco Jurídico</a>
                 <a href="#">Transparencia</a>
             </div>
         </div>
         <div class="footer-col">
             <button class="acordeon-btn" onclick="toggleF(this)">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></button>
             <div class="acordeon-content">
-                <p class="pc-title" style="font-weight:700; margin-bottom:15px;">¿Qué es gob.mx?</p>
+                <p class="pc-only-title" style="font-weight:700; margin-bottom:15px;">¿Qué es gob.mx?</p>
                 <a href="#">Trámites</a>
                 <a href="#">Gobierno</a>
+                <a href="#">English</a>
             </div>
         </div>
     </div>
 </footer>
 
 <div id="miModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
-    <div style="background:#fff; margin:20vh auto; width:80%; max-width:400px; padding:30px; border-radius:10px; text-align:center;">
-        <p>No se encontraron registros para: <br><strong id="errDato"></strong></p>
-        <button onclick="document.getElementById('miModal').style.display='none'" style="margin-top:20px; padding:10px; background:var(--gob-borgoña); color:white; border:none; border-radius:5px;">Cerrar</button>
+    <div style="background:#fff; margin:15vh auto; width:90%; max-width:400px; padding:30px; border-radius:10px; text-align:center;">
+        <p>No se encontraron resultados para: <br><strong id="errDato"></strong></p>
+        <button onclick="document.getElementById('miModal').style.display='none'" style="margin-top:20px; padding:10px 20px; background:var(--gob-borgoña); color:white; border:none; border-radius:5px; cursor:pointer;">Cerrar</button>
     </div>
 </div>
 
@@ -213,6 +211,7 @@
     function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
     
     function toggleF(btn) {
+        if (window.innerWidth > 991) return;
         const content = btn.nextElementSibling;
         const icon = btn.querySelector('i');
         if (content.style.maxHeight && content.style.maxHeight !== "0px") {
@@ -234,28 +233,29 @@
     function ejecutarBusqueda() {
         const ced = document.getElementById('ced-input').value.trim();
         const nom = document.getElementById('nom').value.trim().toUpperCase();
-        let filtrados = registros.filter(r => r.id === ced || (nom !== "" && r.nom.includes(nom)));
+        const ap1 = document.getElementById('ap1').value.trim().toUpperCase();
+        
+        let encontrados = registros.filter(r => r.id === ced || (nom !== "" && r.nom.includes(nom) && r.ap1 === ap1));
 
-        if(filtrados.length > 0) {
+        if(encontrados.length > 0) {
             const body = document.getElementById('res-body');
             body.innerHTML = "";
-            filtrados.forEach(r => {
+            encontrados.forEach(r => {
                 body.innerHTML += `<tr>
-                    <td style="padding:10px; border-bottom:1px solid #eee;">${r.id}</td>
-                    <td style="padding:10px; border-bottom:1px solid #eee;">${r.nom} ${r.ap1}</td>
-                    <td style="padding:10px; border-bottom:1px solid #eee;">${r.prof}</td>
-                    <td style="padding:10px; border-bottom:1px solid #eee;">
-                        <a href="CONSTANCIAS/${r.archivo}" style="color:var(--gob-vino); font-weight:700;" target="_blank">PDF</a>
+                    <td style="padding:12px; border-bottom:1px solid #eee; font-weight:700;">${r.id}</td>
+                    <td style="padding:12px; border-bottom:1px solid #eee;">${r.nom} ${r.ap1} ${r.ap2}</td>
+                    <td style="padding:12px; border-bottom:1px solid #eee;">${r.inst}</td>
+                    <td style="padding:12px; border-bottom:1px solid #eee;">
+                        <a href="CONSTANCIAS/${r.archivo}" style="color:var(--gob-vino); font-weight:700; text-decoration:none;" target="_blank">VER PDF</a>
                     </td>
                 </tr>`;
             });
             document.getElementById('res').style.display = 'block';
         } else {
-            document.getElementById('errDato').innerText = ced || nom;
+            document.getElementById('errDato').innerText = ced || nom || "los datos";
             document.getElementById('miModal').style.display = 'block';
         }
     }
 </script>
 </body>
-    </html>
-    
+</html>
