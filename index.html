@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,8 +25,8 @@
         .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; }
         
         .menu-pc { display: flex; gap: 20px; list-style: none; }
-        .menu-pc a { color: #fff;; text-decoration: none; font-size: 14px; font-weight: 400; }
-        .btn-ham { display: none; #fff;: white; background: none; border: none; font-size: 24px; cursor: pointer; }
+        .menu-pc a { color: white; text-decoration: none; font-size: 14px; font-weight: 400; }
+        .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
         /* PORTADA */
        /* Esto aplica para todos (Móviles) */
@@ -342,7 +341,7 @@
                 line-height: 1.3;  /* Espacio entre renglones si se corta */
             }
           }
-            <style>
+           
        /* --- ESTILOS DEL MODAL --- */
 .modal-overlay {
     display: none; position: fixed; z-index: 9999; left: 0; top: 0;
@@ -489,6 +488,9 @@
 
     <p class="constancia-promo">¡Descarga la Constancia de Situación Profesional!</p>
     <p style="margin-bottom: 30px;">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
+    
+    adquirir.</p<
+  </div>                  
 
     <div class="search-card">
         <div class="tabs">
@@ -502,7 +504,7 @@
             <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
             <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
         </div>
-
+        </main>
         <div class="form-grid" id="f-ced" style="display:none;">
             <div class="field" style="grid-column: 1 / -1;">
                 <label>Número de Cédula*:</label>
@@ -542,7 +544,7 @@
 </main>
 
 
-</main>
+
 <footer>
 <footer class="footer-oficial">
     <div class="rnp-version-top">RNP v1.6.7</div>
@@ -609,34 +611,17 @@
                 <p style="margin-left: 10px; font-size: 14px; line-height: 1.2;">Comunícate, estamos para ayudarte</p>
             </div>
         </div>
-     </div>
+    </div>
     <div class="footer-sub">
         SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
     </div>
 </footer></body></html>
-       </div>
-     </div>
- 
-</body>
-</html>
 
-<script>
-    // Función para abrir/cerrar los acordeones móviles
-    function toggleAcordeon(elemento) {
-        elemento.classList.toggle("active");
-        var content = elemento.nextElementSibling;
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null; // Cerrar
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px"; // Abrir
-        }
-    }
-            </script>
-      <div id="miModal" class="modal-overlay">
+   <div id="miModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
             <span>Mensaje</span>
-            
+            <button onclick="cerrarModal()" class="close-btn">&times;</button>
         </div>
         <div class="modal-body">
             <p>No se encontró información para la cédula <strong id="cedulaError"></strong>.</p>
@@ -713,5 +698,21 @@ window.onclick = function(event) {
     }
 </script>
 
+</body>
+</html>
+
+<script>
+    // Función para abrir/cerrar los acordeones móviles
+    function toggleAcordeon(elemento) {
+        elemento.classList.toggle("active");
+        var content = elemento.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null; // Cerrar
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // Abrir
+        }
+    }
+            </script>
+    
 </body>
 </html>
