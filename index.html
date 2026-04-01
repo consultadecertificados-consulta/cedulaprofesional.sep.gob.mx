@@ -12,178 +12,264 @@
             --gob-borgoña: #480721; 
             --gob-oro: #9D843E;
             --gob-texto: #4D4D4D;
-            --gris-claro: #f2f2f2;
-            --gris-boton: #b0b0b0;
+            --gris-pestaña: #f2f2f2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; overflow-x: hidden; }
 
         /* HEADER */
         header { position: sticky; top: 0; z-index: 1000; width:100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; }
         .logo-gob-mex { height: 40px; }
-        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; }
+        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; position: relative; }
         
         .menu-pc { display: flex; gap: 20px; list-style: none; }
         .menu-pc a { color: white; text-decoration: none; font-size: 14px; }
+        .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
 
-        /* CONTENEDOR DE PESTAÑAS */
-        .tabs-container {
-            background: #f9f9f9;
-            display: flex;
-            border-bottom: 1px solid #ddd;
-        }
-        .tab-btn {
-            padding: 15px 25px;
-            cursor: pointer;
-            border: none;
-            background: #f2f2f2;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            color: #666;
-            transition: 0.3s;
-        }
-        .tab-btn.active {
-            background: var(--gob-vino);
-            color: white;
+        @media (max-width: 991px) {
+            .btn-ham { display: block; }
+            .menu-pc { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: var(--gob-borgoña); padding: 10px 0; }
+            .menu-pc.active { display: flex; }
+            .menu-pc a { padding: 15px; display: block; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
         }
 
-        /* CARD DE FORMULARIO */
-        .search-card {
-            border: 1px solid #eee;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-top: 20px;
-            background: #fff;
-        }
-
-        .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 25px; }
-        @media (min-width: 768px) { .form-grid { grid-template-columns: repeat(3, 1fr); } }
-        
-        .field { display: flex; flex-direction: column; }
-        .field label { font-weight: 700; margin-bottom: 8px; font-size: 18px; color: #333; }
-        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
-
-        /* BOTONES (IGUAL A LA IMAGEN) */
-        .form-actions { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            padding: 20px; 
-            flex-wrap: wrap;
-        }
-        .btn { 
-            padding: 12px 35px; 
-            border-radius: 4px; 
-            font-weight: 400; 
-            cursor: pointer; 
-            font-size: 18px; 
-            min-width: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .btn-buscar { 
-            background: white; 
-            color: var(--gob-borgoña); 
-            border: 2px solid var(--gob-borgoña); 
-        }
-        .btn-limpiar { 
-            background: white; 
-            color: var(--gob-oro); 
-            border: 2px solid var(--gob-oro); 
-        }
-        .btn-csv { 
-            background: #b3b3b3; 
-            color: white; 
-            border: none;
-            gap: 8px;
-        }
-
-        @media (max-width: 600px) {
-            .btn { width: 100%; }
-            .tab-btn { flex: 1; font-size: 14px; padding: 12px 5px; }
-        }
-
-        .portada-pc { width: 100%; display: block; }
+        .portada-pc { display: block; width: 100%; height: auto; }
         .portada-movil { display: none; }
+
         @media (max-width: 767px) {
             .portada-pc { display: none; }
-            .portada-movil { display: block; width: 100%; }
+            .portada-movil { display: block; width: 100%; height: auto; }
+        }
+
+        /* PESTAÑAS */
+        .tabs { display: flex; background: #e0e0e0; }
+        .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; background: #f2f2f2; color: #777; border-right: 1px solid #ccc; }
+        .tab.active { background: var(--gob-vino); color: white; border-right: none; }
+
+        /* FORMULARIO */
+        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 30px; }
+        @media (min-width: 992px) { .form-grid { grid-template-columns: repeat(3, 1fr); } }
+        .field { display: flex; flex-direction: column; text-align: left; }
+        .field label { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
+
+        .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
+        .btn { padding: 12px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 14px; }
+        .btn-buscar { background: var(--gob-borgoña); color: white; }
+        .btn-limpiar { border: 1px solid var(--gob-oro); color: var(--gob-oro); background: white; }
+        .btn-csv { background: #b0b0b0; color: white; }
+
+        /* FOOTER */
+        .footer-final { background-color: #621132; color: white; padding: 20px 0; margin-top: 50px; width: 100%; position: relative; z-index: 10; }
+        .f-contenedor { max-width: 1100px; margin: 0 auto; padding: 0 5%; display: flex; flex-wrap: wrap; gap: 20px; }
+        .f-columna { flex: 1; min-width: 250px; }
+        .f-columna img { width: 180px; filter: brightness(0) invert(1); margin-bottom: 15px; }
+        .f-columna a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; }
+        
+        .f-btn-movil { display: none; width: 100%; background: none; border: none; color: white; padding: 15px 0; text-align: left; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; justify-content: space-between; align-items: center; }
+        .f-desplegable { overflow: hidden; transition: max-height 0.3s ease; }
+        .f-titulo-pc { font-weight: 700; margin-bottom: 15px; border-bottom: 2px solid #9D843E; display: inline-block; padding-bottom: 5px; }
+
+        @media (max-width: 767px) {
+            .f-contenedor { flex-direction: column; gap: 0; }
+            .f-btn-movil { display: flex; }
+            .f-desplegable { max-height: 0; display: flex; flex-direction: column; }
+            .f-desplegable a { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .f-titulo-pc { display: none; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="nav-superior"><img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex"></div>
-    <div class="nav-inferior"></div>
+    <nav class="nav-superior">
+        <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex">
+        <button class="btn-ham" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
+        <ul id="mSup" class="menu-pc">
+            <li><a href="#">Trámites</a></li>
+            <li><a href="#">Gobierno</a></li>
+        </ul>
+    </nav>
+    <nav class="nav-inferior">
+        <button class="btn-ham" onclick="toggleM('mInf')"><i class="fas fa-bars"></i></button>
+        <ul id="mInf" class="menu-pc" style="margin: 0 auto;">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Búsqueda de Cédulas</a></li>
+        </ul>
+    </nav>
 </header>
 
-<main style="max-width: 1100px; margin: 0 auto; padding: 20px;">
-    
-    <div style="font-size: 14px; margin-bottom: 20px;"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
-    <h1 style="font-size: 28px; font-weight: 800; margin-bottom: 10px;">Realiza tu búsqueda de forma segura y confiable.</h1>
-    <div style="width: 60px; height: 4px; background: var(--gob-oro); margin-bottom: 30px;"></div>
+<div class="hero-section">
+    <img src="logo-pc.png" class="portada-pc" alt="Banner Escritorio">
+    <img src="logo-movil.png" class="portada-movil" alt="Banner Móvil">
+</div>
 
-    <div style="font-size: 14px; color: #545454; margin-bottom: 40px;">
-        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con <strong>título registrado y cédula profesional expedida</strong>...</p>
+<main style="max-width: 1200px; margin: 0 auto; padding: 20px 5%;">
+    <div style="font-size: 14px; margin-bottom: 20px; text-align: left;"><i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales</div>
+    <h1 style="font-family: Rockwell, serif; font-size: 26px; font-weight: 800; text-align: left; margin-bottom: 10px;">Realiza tu búsqueda de forma segura y confiable.</h1>
+    <div style="width: 100%; height: 1px; background: #ddd; margin-bottom: 30px; position: relative;">
+        <div style="width: 100px; height: 5px; background: var(--gob-oro); position: absolute; top: -2px;"></div>
     </div>
 
-    <div class="search-card">
-        <div class="tabs-container">
-            <button class="tab-btn active" id="btn-dat" onclick="cambiarTab('dat')">Datos generales</button>
-            <button class="tab-btn" id="btn-ced" onclick="cambiarTab('ced')">Número de cédula</button>
-        </div>
+    <div style="text-align: justify; font-size: 14px; color: #545454; margin-bottom: 30px; line-height: 1.6;">
+        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con <strong>título registrado y cédula profesional expedida</strong>, cumpliendo con todos los requisitos de la ley.</p>
+        <br>
+        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+    </div>
 
-        <div id="vista-datos" class="form-grid">
-            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre(s)"></div>
-            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Primer Apellido"></div>
-            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
+    <p style="font-weight: 800; font-size: 20px; color: #333; text-align: center;">¡Descarga la Constancia de Situación Profesional!</p>
+    <p style="margin-bottom: 30px; color: #666; text-align: center;">Recuerda: La emisión de la Constancia es <strong>completamente gratuita</strong>.</p>
+
+    <div
+        
+        <div class="form-grid" id="f-dat">
+            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre"></div>
+            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Apellido 1"></div>
+            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Apellido 2"></div>
             <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
         </div>
 
-        <div id="vista-cedula" class="form-grid" style="display:none;">
-            <div class="field" style="grid-column: 1 / -1;">
-                <label>Número de Cédula*:</label>
-                <input type="text" id="ced-input" placeholder="Cédula">
-            </div>
+        <div class="form-grid" id="f-ced" style="display:none;">
+            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ingresa la cédula"></div>
         </div>
 
         <div class="form-actions">
             <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
-            <button class="btn btn-limpiar" onclick="window.location.reload()">Limpiar</button>
-            <button class="btn btn-csv" disabled>CSV <i class="fas fa-file-csv"></i></button>
+            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+        </div>
+
+        <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
+            <div style="overflow-x:auto;">
+                <table style="width:100%; min-width:1200px; border-collapse:collapse; font-size:12px; text-align: left;">
+                    <thead>
+                        <tr style="background:#f9f9f9; color: #666;">
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Cédula</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Nombre(s)</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 1</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 2</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Institución</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Profesión</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Entidad</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Año</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res-body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>
 
-<script>
-    function cambiarTab(tipo) {
-        const vistaDatos = document.getElementById('vista-datos');
-        const vistaCedula = document.getElementById('vista-cedula');
-        const btnDat = document.getElementById('btn-dat');
-        const btnCed = document.getElementById('btn-ced');
+<footer class="footer-final">
+    <div class="f-contenedor">
+        <div class="f-columna">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+        </div>
+        <div class="f-columna">
+            <button class="f-btn-movil" onclick="toggleFooter(this)">Enlaces <i class="fas fa-chevron-down"></i></button>
+            <div class="f-desplegable">
+                <p class="f-titulo-pc">Enlaces</p>
+                <a href="#">Participa</a>
+                <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Transparencia</a>
+            </div>
+        </div>
+        <div class="f-columna">
+            <button class="f-btn-movil" onclick="toggleFooter(this)">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></button>
+            <div class="f-desplegable">
+                <p class="f-titulo-pc">¿Qué es gob.mx?</p>
+                <a href="#">Trámites</a>
+                <a href="#">Gobierno</a>
+                <a href="#">English</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-        if (tipo === 'dat') {
-            vistaDatos.style.display = 'grid';
-            vistaCedula.style.display = 'none';
-            btnDat.classList.add('active');
-            btnCed.classList.remove('active');
+<div id="miModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
+    <div style="background:#fff; margin:15vh auto; width:90%; max-width:400px; padding:30px; border-radius:10px; text-align:center;">
+        <div style="background:#333; color:#fff; padding:10px; margin:-30px -30px 20px -30px; border-radius:10px 10px 0 0;">Mensaje del Sistema</div>
+        <p>No se encontraron registros para: <br><strong id="errDato"></strong></p>
+        <button onclick="document.getElementById('miModal').style.display='none'" style="margin-top:20px; padding:10px 25px; background:var(--gob-borgoña); color:white; border:none; border-radius:5px; cursor:pointer; font-weight:700;">Cerrar</button>
+    </div>
+</div>
+
+<script src="folios.js"></script>
+<script>
+    function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
+    
+    function toggleFooter(boton) {
+        const contenido = boton.nextElementSibling;
+        const icono = boton.querySelector('i');
+        if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
+            contenido.style.maxHeight = "0px";
+            icono.style.transform = "rotate(0deg)";
         } else {
-            vistaDatos.style.display = 'none';
-            vistaCedula.style.display = 'grid';
-            btnDat.classList.remove('active');
-            btnCed.classList.add('active');
+            contenido.style.maxHeight = contenido.scrollHeight + "px";
+            icono.style.transform = "rotate(180deg)";
         }
     }
 
+    function switchT(tipo) {
+        document.getElementById('f-dat').style.display = (tipo === 'dat') ? 'grid' : 'none';
+        document.getElementById('f-ced').style.display = (tipo === 'ced') ? 'grid' : 'none';
+        document.getElementById('t-dat').classList.toggle('active', tipo === 'dat');
+        document.getElementById('t-ced').classList.toggle('active', tipo === 'ced');
+    }
+
     function ejecutarBusqueda() {
-        // Aquí va tu lógica de búsqueda existente
-        alert("Buscando...");
+        const ced = document.getElementById('ced-input').value.trim();
+        const curpIn = document.getElementById('curp').value.trim().toUpperCase();
+        const nom = document.getElementById('nom').value.trim().toUpperCase();
+        const ap1 = document.getElementById('ap1').value.trim().toUpperCase();
+        
+        if (typeof registros === 'undefined') {
+            alert("Error: El archivo folios.js no está cargado.");
+            return;
+        }
+
+        let encontrados = registros.filter(r => 
+            (ced !== "" && r.id === ced) || 
+            (curpIn !== "" && r.curp === curpIn) || 
+            (nom !== "" && r.nom.includes(nom) && r.ap1 === ap1)
+        );
+
+        const resDiv = document.getElementById('res');
+        const body = document.getElementById('res-body');
+
+        if(encontrados.length > 0) {
+            body.innerHTML = "";
+            encontrados.forEach(r => {
+                body.innerHTML += `
+                    <tr>
+                        <td style="padding:12px; border-bottom:1px solid #eee; font-weight:700;">${r.id}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.nom}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap1}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap2 || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.inst || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.prof || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.entidad || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.anio || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">
+                            <a href="CONSTANCIAS/${r.archivo}" download="${r.archivo}" style="background:var(--gob-vino); color:white; padding:8px 12px; border-radius:4px; text-decoration:none; font-weight:700; font-size:10px; display:inline-block;">
+                                DESCARGAR PDF
+                            </a>
+                        </td>
+                    </tr>`;
+            });
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            resDiv.style.display = 'none';
+            document.getElementById('errDato').innerText = ced || curpIn || nom || "los datos ingresados";
+            document.getElementById('miModal').style.display = 'block';
+        }
     }
 </script>
-
 </body>
-</html>
+            </html>
+            
