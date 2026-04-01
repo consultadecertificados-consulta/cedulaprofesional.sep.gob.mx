@@ -19,8 +19,7 @@
         body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; overflow-x: hidden; }
 
         /* HEADER */
-        header { position: sticky; top: 0; z-index: 1000; width:100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; }
         .logo-gob-mex { height: 40px; }
         .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; }
@@ -206,7 +205,7 @@
      /* --- FOOTER PROFESIONAL RNP --- */
 /* --- CORRECCIÓN FINAL FOOTER --- */
 .footer-oficial { background-color: #621132; color: #fff; font-family: 'Montserrat', sans-serif; width: 100%; margin-top: 50px; }
-.rnp-version-top { text-align: right; padding: 20px 0; font-size: 14px; opacity: 0.8; }
+.rnp-version-top { text-align: center; padding: 20px 0; font-size: 14px; opacity: 0.8; }
 /* Esto alinea el contenido del footer a la izquierda */
 .footer-inner {
     max-width: 1100px;
@@ -233,17 +232,17 @@
 }
 .denuncia-link { font-weight: 700; text-decoration: underline; color: #fff; display: block; margin-bottom: 20px; font-size: 18px; }
 
-.social-group { display: flex; align-items: right; gap: 15px; margin-bottom: 25px; }
+.social-group { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
 .redes-sociales { display: flex; gap: 15px; font-size: 22px; }
 .redes-sociales a { color: #fff; }
 
-.phone-079 { display: flex; align-items: right; gap: 10px; }
-.phone-icon-box { display: flex; align-items: right; font-size: 30px; font-weight: 800; }
+.phone-079 { display: flex; align-items: center; gap: 10px; }
+.phone-icon-box { display: flex; align-items: center; font-size: 30px; font-weight: 800; }
 .phone-079 p { font-size: 13px; line-height: 1.2; max-width: 150px; }
 
 /* ACORDEONES MÓVIL */
 .rnp-acordeon-btn { 
-    background: none; border: none; color: #fff; width: 100%; text-align: right; 
+    background: none; border: none; color: #fff; width: 100%; text-align: left; 
     font-size: 20px; font-weight: 700; padding: 15px 0; display: flex; justify-content: space-between;
 }
 .rnp-acordeon-content { max-height: 0; overflow: hidden; transition: 0.3s; padding-left: 15px; }
@@ -257,19 +256,19 @@
 
 @media (max-width: 991px) {
     .pc-only-content { display: none; }
-    .footer-inner { flex-direction: column; align-items: right; text-align: right; }
+    .footer-inner { flex-direction: column; align-items: center; text-align: center; }
     .footer-col { width: 100%; }
-    .social-group { justify-content: right; }
-    .phone-079 { justify-content: right; }
+    .social-group { justify-content: center; }
+    .phone-079 { justify-content: center; }
     .footer-logo-section { order: 1; }
     .footer-contact-section { order: 2; }
 }
 
-.footer-sub { background-color: #480721; padding: 20px; text-align: right; font-size: 12px; color: #fff;(255,255,255,0.5); }
+.footer-sub { background-color: #480721; padding: 20px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.5); }
 
 /* Responsivo para celulares */
 @media (max-width: 768px) {
-    .footer-inner { flex-direction: column; text-align: right; }
+    .footer-inner { flex-direction: column; text-align: center; }
     .footer-col h4 { width: 100%; }
     .redes-sociales { justify-content: center; }
 }
@@ -484,4 +483,223 @@
 
     <div class="leyenda-contenedor">
         <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
-        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecu
+        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+    </div>
+
+    <p class="constancia-promo">¡Descarga la Constancia de Situación Profesional!</p>
+    <p style="margin-bottom: 30px;">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
+    
+    
+  </div>                  
+
+    <div class="search-card">
+        <div class="tabs">
+            <div class="tab active" id="t-dat" onclick="switchT('dat')">Datos generales</div>
+            <div class="tab" id="t-ced" onclick="switchT('ced')">Número de cédula</div>
+        </div>
+        
+        <div class="form-grid" id="f-dat">
+            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre(s)"></div>
+            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Primer Apellido"></div>
+            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
+            <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
+        </div>
+        </main>
+        <div class="form-grid" id="f-ced" style="display:none;">
+            <div class="field" style="grid-column: 1 / -1;">
+                <label>Número de Cédula*:</label>
+                <input type="text" id="ced-input" placeholder="Cedula">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
+            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+            <button class="btn btn-csv">Descargar CSV <i class="fas fa-file-csv"></i></button>
+        </div>
+
+        <div class="results-container" id="res">
+            <p style="text-align:center; font-weight:700; margin-bottom:20px; font-size: 18px;">Resultados de la Búsqueda</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Núm. Cédula</th>
+                            <th>Nombre</th>
+                            <th>1er Apellido</th>
+                            <th>2do Apellido</th>
+                            <th>Género</th>
+                            <th>Institución</th>
+                            <th>Profesión</th>
+                            <th>Entidad</th>
+                            <th>Año</th>
+                            <th>Constancia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<footer>
+<footer class="footer-oficial">
+    <div class="rnp-version-top">RNP v1.6.7</div>
+
+    <div class="footer-inner">
+        <div class="footer-col footer-logo-section">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
+            
+            <div class="mobile-only-content">
+                <div class="rnp-acordeon">
+                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> Enlaces <span class="rnp-flecha">v</span></button>
+                    <div class="rnp-acordeon-content">
+                        <a href="https://www.gob.mx/participa">Participa</a>
+                        <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+                        <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+                        <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+                    </div>
+                </div>
+                <div class="rnp-acordeon">
+                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> ¿Qué es gob.mx? <span class="rnp-flecha">v</span></button>
+                    <div class="rnp-acordeon-content">
+                        <a href="#">Trámites</a>
+                        <a href="#">Gobierno</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-col pc-only-content">
+            <h4>Enlaces</h4>
+            <a href="https://www.gob.mx/participa">Participa</a>
+            <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+            <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+            <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+        </div>
+
+        <div class="footer-col pc-only-content">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
+            <a href="#">English</a>
+        </div>
+
+        <div class="footer-col footer-contact-section">
+            <h4 class="pc-only-content">Contacto</h4>
+            <a href="#" class="denuncia-link">Denuncia contra servidores públicos</a>
+            
+            <div class="social-group">
+                <span>Síguenos en</span>
+                <div class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="phone-079">
+                <div class="phone-icon-box">
+                    <i class="fas fa-asterisk" style="font-size: 25px; margin-right: 5px;"></i>
+                    <span style="font-size: 35px; font-weight: 800;">079</span>
+                </div>
+                <p style="margin-left: 10px; font-size: 14px; line-height: 1.2;">Comunícate, estamos para ayudarte</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-sub">
+        SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
+    </div>
+</footer></body></html>
+
+   <div id="miModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span>Mensaje</span>
+            <button onclick="cerrarModal()" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>No se encontró información para la cédula <strong id="cedulaError"></strong>.</p>
+            <p class="fecha-modal"><strong>Fecha:</strong> <span id="fechaActual"></span></p>
+        </div>
+    </div>
+</div>
+<script>
+    // 1. Bloquear letras en el campo de cédula
+document.getElementById('ced-input').addEventListener('input', function(e) {
+    this.value = this.value.replace(/[^0-9]/g, ''); // Solo permite números
+});
+
+// 2. Función de Búsqueda y Alerta
+function ejecutarBusqueda() {
+    const inputCedula = document.getElementById('ced-input');
+    const valor = inputCedula.value;
+    
+    // Si está vacío o no es el número correcto (Ejemplo: simulamos que no existe)
+    if (valor.length < 7) { 
+        mostrarError(valor);
+    } else {
+        // Aquí iría tu lógica de búsqueda real
+         mostrarError(valor);
+    }
+}
+
+function mostrarError(cedula) {
+    // Pone el número de cédula en el modal
+    document.getElementById('cedulaError').innerText = cedula;
+    
+    // Genera la fecha automática (31/03/2026)
+    const hoy = new Date();
+    const fechaStr = hoy.getDate().toString().padStart(2, '0') + '/' + 
+                     (hoy.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+                     hoy.getFullYear();
+    document.getElementById('fechaActual').innerText = fechaStr;
+    
+    // MUESTRA EL MODAL (Cambia de invisible a visible)
+    document.getElementById('miModal').style.display = "block";
+}
+
+function cerrarModal() {
+    document.getElementById('miModal').style.display = "none";
+}
+
+// Cerrar si hacen clic fuera del cuadrito
+window.onclick = function(event) {
+    const modal = document.getElementById('miModal');
+    if (event.target == modal) modal.style.display = "none";
+}
+    // 1. Script para el Acordeón del Footer (Móvil)
+    function toggleAcordeon(elemento) {
+        elemento.classList.toggle("active");
+        var content = elemento.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
+
+    // 2. Script para cambiar entre pestañas de búsqueda
+    function switchT(tipo) {
+        document.getElementById('f-dat').style.display = (tipo === 'dat') ? 'grid' : 'none';
+        document.getElementById('f-ced').style.display = (tipo === 'ced') ? 'grid' : 'none';
+        document.getElementById('t-dat').classList.toggle('active', tipo === 'dat');
+        document.getElementById('t-ced').classList.toggle('active', tipo === 'ced');
+    }
+
+    // 3. Script para el menú hamburguesa del header
+    function toggleM(id) {
+        document.getElementById(id).classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
+
+</body>
+    </html>
