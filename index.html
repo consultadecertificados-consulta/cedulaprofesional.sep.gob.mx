@@ -547,20 +547,14 @@
 
 <footer>
 <footer class="footer-oficial">
-    <div class="rnp-version-top">RNP v1.6.7</div>
-
     <div class="footer-inner">
-        <div class="footer-col footer-logo-section">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
-            
-            <div class="mobile-only-content">
-                <div class="rnp-acordeon">
-                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> Enlaces <span class="rnp-flecha">v</span></button>
-                    <div class="rnp-acordeon-content">
-                        <a href="https://www.gob.mx/participa">Participa</a>
-                        <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-                        <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
-                        <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+        <div class="footer-col">
+            <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="footer-logo-img">
+            <ul style="list-style: none;">
+                <li><a href="#" style="color:white">Participa</a></li>
+                <li><a href="#" style="color:white">Publicaciones Oficiales</a></li>
+                <li><a href="#" style="color:white">Marco Jurídico</a></li>
+                <li><a href="#" style="color:white">Transparencia</a></li>
                     </div>
                 </div>
                 <div class="rnp-acordeon">
@@ -614,8 +608,14 @@
     </div>
     <div class="footer-sub">
         SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
-    </div>
-</footer></body></html>
+ </footer>
+
+<script>
+    function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
+</script>
+
+</body>
+</html>
 
    <div id="miModal" class="modal-overlay">
     <div class="modal-content">
