@@ -145,14 +145,15 @@
                 <table style="width:100%; min-width:1200px; border-collapse:collapse; font-size:12px; text-align: left;">
                     <thead>
                         <tr style="background:#f9f9f9; color: #666;">
-                            <th style="padding:12px;">Cédula</th>
-                            <th style="padding:12px;">Nombre(s)</th>
-                            <th style="padding:12px;">Apellido 1</th>
-                            <th style="padding:12px;">Apellido 2</th>
-                            <th style="padding:12px;">CURP</th>
-                            <th style="padding:12px;">Institución</th>
-                            <th style="padding:12px;">Profesión</th>
-                            <th style="padding:12px;">Acción</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Cédula</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Nombre(s)</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 1</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 2</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Institución</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Profesión</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Entidad</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Año</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">Acción</th>
                         </tr>
                     </thead>
                     <tbody id="res-body"></tbody>
@@ -173,6 +174,16 @@
                 <p class="f-titulo-pc">Enlaces</p>
                 <a href="#">Participa</a>
                 <a href="#">Publicaciones Oficiales</a>
+                <a href="#">Transparencia</a>
+            </div>
+        </div>
+        <div class="f-columna">
+            <button class="f-btn-movil" onclick="toggleFooter(this)">¿Qué es gob.mx? <i class="fas fa-chevron-down"></i></button>
+            <div class="f-desplegable">
+                <p class="f-titulo-pc">¿Qué es gob.mx?</p>
+                <a href="#">Trámites</a>
+                <a href="#">Gobierno</a>
+                <a href="#">English</a>
             </div>
         </div>
     </div>
@@ -180,8 +191,9 @@
 
 <div id="miModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
     <div style="background:#fff; margin:15vh auto; width:90%; max-width:400px; padding:30px; border-radius:10px; text-align:center;">
+        <div style="background:#333; color:#fff; padding:10px; margin:-30px -30px 20px -30px; border-radius:10px 10px 0 0;">Mensaje del Sistema</div>
         <p>No se encontraron registros para: <br><strong id="errDato"></strong></p>
-        <button onclick="document.getElementById('miModal').style.display='none'" style="margin-top:20px; padding:10px 25px; background:var(--gob-borgoña); color:white; border:none; border-radius:5px; cursor:pointer;">Cerrar</button>
+        <button onclick="document.getElementById('miModal').style.display='none'" style="margin-top:20px; padding:10px 25px; background:var(--gob-borgoña); color:white; border:none; border-radius:5px; cursor:pointer; font-weight:700;">Cerrar</button>
     </div>
 </div>
 
@@ -215,11 +227,15 @@
         const ap1 = document.getElementById('ap1').value.trim().toUpperCase();
         
         if (typeof registros === 'undefined') {
-            alert("Error: El archivo folios.js no se encuentra cargado.");
+            alert("Error: El archivo folios.js no está cargado.");
             return;
         }
 
-        let encontrados = registros.filter(r => r.id === ced || r.curp === curpIn || (nom !== "" && r.nom.includes(nom) && r.ap1 === ap1));
+        let encontrados = registros.filter(r => 
+            (ced !== "" && r.id === ced) || 
+            (curpIn !== "" && r.curp === curpIn) || 
+            (nom !== "" && r.nom.includes(nom) && r.ap1 === ap1)
+        );
 
         const resDiv = document.getElementById('res');
         const body = document.getElementById('res-body');
@@ -233,11 +249,14 @@
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.nom}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap1}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap2 || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.curp || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.inst || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.prof || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.entidad || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.anio || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">
-                            <a href="CONSTANCIAS/${r.archivo}" download style="background:var(--gob-vino); color:white; padding:5px 10px; border-radius:4px; text-decoration:none; font-size:10px;">DESCARGAR PDF</a>
+                            <a href="CONSTANCIAS/${r.archivo}" download="${r.archivo}" style="background:var(--gob-vino); color:white; padding:8px 12px; border-radius:4px; text-decoration:none; font-weight:700; font-size:10px; display:inline-block;">
+                                DESCARGAR PDF
+                            </a>
                         </td>
                     </tr>`;
             });
@@ -251,4 +270,5 @@
     }
 </script>
 </body>
-</html>
+            </html>
+            
