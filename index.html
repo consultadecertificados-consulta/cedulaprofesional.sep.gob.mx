@@ -136,32 +136,47 @@
             <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ingresa la cédula"></div>
         </div>
 
-        <div class="form-actions">
-            <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
-            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+        <div class="search-card">
+    <div class="tabs-header">
+        <div class="tab-item active" id="tab-datos" onclick="cambiarVista('datos')">
+            Datos generales
         </div>
-
-        <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
-            <div style="overflow-x:auto;">
-                <table style="width:100%; min-width:1200px; border-collapse:collapse; font-size:12px; text-align: left;">
-                    <thead>
-                        <tr style="background:#f9f9f9; color: #666;">
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Cédula</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Nombre(s)</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 1</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 2</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Institución</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Profesión</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Entidad</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Año</th>
-                            <th style="padding:12px; border-bottom:2px solid #ddd;">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="res-body"></tbody>
-                </table>
-            </div>
+        <div class="search-card">
+    <div class="tabs-header">
+        <div class="tab-item active" id="tab-datos" onclick="cambiarVista('datos')">
+            Datos generales
+        </div>
+        <div class="tab-item" id="tab-cedula" onclick="cambiarVista('cedula')">
+            Número de cédula
         </div>
     </div>
+
+    <div id="vista-datos" class="tab-content">
+        </div>
+
+    <div id="vista-cedula" class="tab-content" style="display:none;">
+        </div>
+</div>
+
+<style>
+    .search-card { border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; }
+    .tabs-header { display: flex; background: #f2f2f2; border-bottom: 1px solid #ddd; }
+    .tab-item { padding: 15px 25px; cursor: pointer; color: #666; flex: 1; text-align: center; }
+    .tab-item.active { background: #621132; color: #fff; font-weight: bold; }
+    .tab-content { padding: 20px; }
+</style>
+
+<script>
+    function cambiarVista(tipo) {
+        document.getElementById('vista-datos').style.display = (tipo === 'datos') ? 'block' : 'none';
+        document.getElementById('vista-cedula').style.display = (tipo === 'cedula') ? 'block' : 'none';
+        
+        document.getElementById('tab-datos').classList.toggle('active', tipo === 'datos');
+        document.getElementById('tab-cedula').classList.toggle('active', tipo === 'cedula');
+    }
+</script>
+
+
 </main>
 
 <footer class="footer-final">
