@@ -482,27 +482,75 @@
         
 
    <div class="leyenda-contenedor">
-        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley. La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en distintos sitios web.</p>
+        <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con título registrado y cédula profesional expedida, cumpliendo con todos los requisitos de la ley.</p>
+        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
     </div>
 
+    <p class="constancia-promo">¡Descarga la Constancia de Situación Profesional!</p>
+    <p style="margin-bottom: 30px;">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
+    
+  
+  </div>                  
+
     <div class="search-card">
-        <div class="tabs"><div class="tab active">BÚSQUEDA POR DETALLE</div></div>
-        <div class="form-grid">
-            <div class="field"><label>Nombre(s):</label><input type="text"></div>
-            <div class="field"><label>Primer Apellido:</label><input type="text"></div>
-            <div class="field"><label>Segundo Apellido:</label><input type="text"></div>
+        <div class="tabs">
+            <div class="tab active" id="t-dat" onclick="switchT('dat')">Datos generales</div>
+            <div class="tab" id="t-ced" onclick="switchT('ced')">Número de cédula</div>
         </div>
+        
+        <div class="form-grid" id="f-dat">
+            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre(s)"></div>
+            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Primer Apellido"></div>
+            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
+            <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
+        </div>
+        </main>
+        <div class="form-grid" id="f-ced" style="display:none;">
+            <div class="field" style="grid-column: 1 / -1;">
+                <label>Número de Cédula*:</label>
+                <input type="text" id="ced-input" placeholder="Cedula">
+            </div>
+        </div>
+
         <div class="form-actions">
-            <button class="btn btn-buscar">Consultar</button>
+            <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
+            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+            <button class="btn btn-csv">Descargar CSV <i class="fas fa-file-csv"></i></button>
+        </div>
+
+        <div class="results-container" id="res">
+            <p style="text-align:center; font-weight:700; margin-bottom:20px; font-size: 18px;">Resultados de la Búsqueda</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Núm. Cédula</th>
+                            <th>Nombre</th>
+                            <th>1er Apellido</th>
+                            <th>2do Apellido</th>
+                            <th>Género</th>
+                            <th>Institución</th>
+                            <th>Profesión</th>
+                            <th>Entidad</th>
+                            <th>Año</th>
+                            <th>Constancia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="res-body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>
-
+<footer class="footer-oficial">
+    <div class="footer-inner">
+        <div class="footer-col">
+            
+            <footer>
 <footer class="footer-oficial">
     <div class="footer-inner">
         <div class="footer-col">
             <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="footer-logo-img">
-            <ul style="list-style: none; padding: 0;">
                 <li><a href="#" style="color:white !important; text-decoration:none;">Participa</a></li>
                 <li><a href="#" style="color:white !important; text-decoration:none;">Publicaciones Oficiales</a></li>
                 <li><a href="#" style="color:white !important; text-decoration:none;">Marco Jurídico</a></li>
