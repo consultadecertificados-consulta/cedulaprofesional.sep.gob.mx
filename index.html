@@ -92,25 +92,6 @@
     background-color: #621132; /* El color guinda oficial */
     border-top: 1px solid #9D843E; /* Línea dorada opcional para resaltar */
 }
-        /* Esto hace que las opciones nuevas se vean blancas y centradas */
-.nav-inferior .menu-pc li a {
-    color: white;
-    text-align: center;
-    font-size: 15px;
-    padding: 12px 15px;
-    display: block;
-    text-decoration: none;
-}
-
-/* Para que en el celular se amontonen uno abajo del otro */
-@media (max-width: 991px) {
-    #mInf.active {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        background: #480721; /* El guinda oscuro de tu foto */
-    }
-    }
         
     </style>
 </head>
@@ -118,18 +99,20 @@
 
 <header>
     <nav class="nav-superior">
+        <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex">
+        <button class="btn-ham" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
+        <ul id="mSup" class="menu-pc">
+            <li><a href="#">Trámites</a></li>
+            <li><a href="#">Gobierno</a></li>
+        </ul>
+    </nav>
     <nav class="nav-inferior">
-    <button class="btn-ham" onclick="toggleM('mInf')"><i class="fas fa-bars"></i></button>
-    <ul id="mInf" class="menu-pc">
-        <li><a href="#">Inicio <i class="fas fa-caret-down"></i></a></li>
-        <li><a href="#">Cédulas Profesionales <i class="fas fa-caret-down"></i></a></li>
-        <li><a href="#">Especialistas: Cirugía Plástica, Estética y Reconstructiva</a></li>
-        <li><a href="#">Cédulas Estatales</a></li>
-        <li><a href="#">Datos Abiertos <i class="fas fa-caret-down"></i></a></li>
-        <li><a href="#">Contacto</a></li>
-    </ul>
-</nav>
-
+        <button class="btn-ham" onclick="toggleM('mInf')"><i class="fas fa-bars"></i></button>
+        <ul id="mInf" class="menu-pc" style="margin: 0 auto;">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Búsqueda de Cédulas</a></li>
+        </ul>
+    </nav>
 </header>
 
 <div class="hero-section">
