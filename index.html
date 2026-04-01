@@ -40,9 +40,23 @@
         .portada-movil { display: none; }
 
         @media (max-width: 767px) {
-            .portada-pc { display: none; }
-            .portada-movil { display: block; width: 100%; height: auto; }
-        }
+    .f-btn-mobile { 
+        display: flex !important; /* Obliga a que se vea en móvil */
+        width: 100%;
+        justify-content: space-between;
+        background: none;
+        border: none;
+        color: white;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .f-list { 
+        max-height: 0; 
+        transition: max-height 0.4s ease-out; /* Animación de apertura */
+    }
+    .f-title-pc { display: none; }
+}
+
 
         /* PESTAÑAS GRISES */
         .tabs { display: flex; background: #e0e0e0; }
@@ -406,7 +420,4 @@
                     <tr>
                         <td style="padding:12px; border-bottom:1px solid #eee; font-weight:700;">${r.id}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.nom}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap1}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap2 || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.curp || ''}</td>
-                        <td style="padding:12px; border
+            
