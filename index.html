@@ -444,23 +444,7 @@
             document.getElementById('miModal').style.display = 'block';
         }
     }
-    /* ESTA ES LA FUNCIÓN QUE ABRE EL PIE DE PÁGINA EN MÓVIL */
-function toggleFooter(elemento) {
-    // 1. Buscamos la lista que sigue al botón
-    var panel = elemento.nextElementSibling;
-    var icono = elemento.querySelector('i');
 
-    // 2. Si está cerrado (o mide 0px), lo abrimos calculando su altura real
-    if (!panel.style.maxHeight || panel.style.maxHeight === "0px") {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        if(icono) icono.style.transform = "rotate(180deg)";
-    } 
-    // 3. Si ya está abierto, lo regresamos a 0px para que se guarde
-    else {
-        panel.style.maxHeight = "0px";
-        if(icono) icono.style.transform = "rotate(0deg)";
-    }
-}
     
 </script>
 </body>
