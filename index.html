@@ -1,54 +1,89 @@
-<style>
-    /* ... (mantener tus estilos anteriores) ... */
-
-    /* PESTAÑAS CON RESALTE GRIS */
-    .tabs { display: flex; background: #e0e0e0; border-bottom: 1px solid #ddd; }
-    .tab { 
-        flex: 1; padding: 15px; text-align: center; cursor: pointer; 
-        font-weight: 600; font-size: 14px; color: #666; transition: 0.3s;
-        background: #f2f2f2; /* Tono gris para las no activas */
-    }
-    .tab.active { 
-        background: var(--gob-vino); 
-        color: white; 
-    }
-
-    /* BREADCRUMB MÓVIL (Todo junto en una línea) */
-    .breadcrumb-button {
-        text-decoration: none;
-        color: #333;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin-bottom: 25px;
-        font-size: 14px;
-        width: 100%;
-    }
-    .breadcrumb-group { display: flex; align-items: center; gap: 5px; }
-
-    /* MENÚ HAMBURGUESA MÓVIL */
-    @media (max-width: 991px) {
-        .menu-pc { 
-            display: none; 
-            flex-direction: column; 
-            width: 100%; 
-            position: absolute; 
-            top: 100%; 
-            left: 0; 
-            background: var(--gob-borgoña); 
-            padding: 10px 0;
-            z-index: 1001;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Cédulas Profesionales | RNP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        :root {
+            --gob-vino: #621132;    
+            --gob-borgoña: #480721; 
+            --gob-oro: #9D843E;
+            --gob-texto: #4D4D4D;
+            --gris-claro: #F2F2F2;
+            --gris-pestaña: #e0e0e0;
         }
-        .menu-pc.active { display: flex; }
-        .btn-ham { display: block !important; }
-        .nav-inferior, .nav-superior { position: relative; }
-    }
-</style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        /* HEADER Y MENÚS HAMBURGUESA */
+        header { position: sticky; top: 0; z-index: 1000; width:100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo-gob-mex { height: 40px; }
+        .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; position: relative; }
+        
+        .menu-pc { display: flex; gap: 20px; list-style: none; }
+        .menu-pc a { color: white; text-decoration: none; font-size: 14px; font-weight: 400; }
+        .btn-ham { display: none; color: white; background: none; border: none; font-size: 24px; cursor: pointer; }
+
+        @media (max-width: 991px) {
+            .btn-ham { display: block; }
+            .menu-pc { 
+                display: none; flex-direction: column; width: 100%; position: absolute; 
+                top: 100%; left: 0; background: var(--gob-borgoña); padding: 10px 0; z-index: 10;
+            }
+            .menu-pc.active { display: flex; }
+            .menu-pc li { border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; }
+            .menu-pc a { display: block; padding: 15px; }
+        }
+
+        /* HERO SECTION */
+        .hero-section img { width: 100%; max-width: 1400px; height: auto; display: block; margin: 0 auto; max-height: 450px; object-fit: contain; }
+
+        /* BREADCRUMB (Versión Móvil junta) */
+        main { max-width: 1200px; margin: 0 auto; padding: 30px 5%; text-align: center; }
+        .breadcrumb-button { 
+            text-decoration: none; color: #333; display: flex; align-items: center; 
+            gap: 5px; margin-bottom: 30px; font-size: 14px; justify-content: flex-start;
+        }
+
+        .section-title { font-family: "Rockwell", serif; font-size: 26px; font-weight: 800; color: #333; text-align: left; line-height: 1.2; margin-bottom: 15px; }
+        @media (min-width: 992px) { .section-title { font-size: 35px; } }
+
+        .oro-line { width: 100%; height: 1px; background: #D3D3D3; margin-bottom: 35px; position: relative; }
+        .oro-line::before { content: ""; position: absolute; top: 0; left: 0; width: 100px; height: 5px; background: var(--gob-oro); transform: translateY(-2px); }
+
+        /* PESTAÑAS RESALTADAS */
+        .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .tabs { display: flex; background: var(--gris-pestaña); }
+        .tab { 
+            flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; 
+            font-size: 14px; background: #e8e8e8; color: #777; border-right: 1px solid #ccc;
+        }
+        .tab.active { background: var(--gob-vino); color: white; border-right: none; }
+
+        /* FORMULARIO ADAPTADO */
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 30px; }
+        @media (min-width: 992px) { .form-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .field { display: flex; flex-direction: column; }
+        .field label { font-weight: 700; margin-bottom: 8px; font-size: 14px; color: #333; }
+        .field input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; outline: none; }
+        
+        .form-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 15px; padding: 0 30px 30px; }
+        .btn { padding: 12px 25px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 14px; min-width: 130px; text-align: center; }
+        .btn-buscar { background: var(--gob-borgoña); color: white; }
+        .btn-limpiar { border: 1px solid var(--gob-oro); color: var(--gob-oro); background: white; }
+        .btn-csv { background: #ccc; color: white; cursor: not-allowed; }
+    </style>
+</head>
+<body>
 <header>
     <nav class="nav-superior">
-        <a href="https://www.gob.mx/">
-            <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex" alt="Gobierno">
-        </a>
+        <img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex" alt="Logo Gob">
         <button class="btn-ham" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
         <ul id="mSup" class="menu-pc">
             <li><a href="#">Trámites</a></li>
@@ -65,14 +100,106 @@
     </nav>
 </header>
 
+<div class="hero-section">
+    <picture>
+        <source media="(max-width: 767px)" srcset="logo-movil.png">
+        <img src="logo-pc.png" alt="RNP Banner">
+    </picture>
+</div>
+
 <main>
-    <a href="#" class="breadcrumb-button">
-        <div class="breadcrumb-group">
-            <i class="fas fa-home"></i>
-            <span>Inicio</span>
-        </div>
-        <span>> Búsqueda de Cédulas Profesionales</span>
-    </a>
+    <div class="breadcrumb-button">
+        <i class="fas fa-home"></i> Inicio > Búsqueda de Cédulas Profesionales
+    </div>
 
     <h1 class="section-title">Realiza tu búsqueda de forma segura y confiable.</h1>
+    <div class="oro-line"></div>
+
+    <div class="search-card">
+        <div class="tabs">
+            <div class="tab active" id="t-dat" onclick="switchT('dat')">Datos generales</div>
+            <div class="tab" id="t-ced" onclick="switchT('ced')">Número de cédula</div>
+        </div>
+        
+        <div class="form-grid" id="f-dat">
+            <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre(s)"></div>
+            <div class="field"><label>Primer Apellido*:</label><input type="text" id="ap1" placeholder="Primer Apellido"></div>
+            <div class="field"><label>Segundo Apellido:</label><input type="text" id="ap2" placeholder="Segundo Apellido"></div>
+            <div class="field"><label>CURP:</label><input type="text" id="curp" placeholder="CURP"></div>
+        </div>
+
+        <div class="form-grid" id="f-ced" style="display:none;">
+            <div class="field" style="grid-column: 1 / -1;"><label>Número de Cédula*:</label><input type="text" id="ced-input" placeholder="Ingresa la cédula"></div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
+            <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+            <button class="btn btn-csv">Descargar CSV</button>
+        </div>
+
+        <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
+            <div style="overflow-x:auto;">
+                <table style="width:100%; min-width:800px; border-collapse:collapse; font-size:13px;">
+                    <thead><tr style="background:#f9f9f9;">
+                        <th style="padding:10px; border-bottom:2px solid #ddd;">Cédula</th>
+                        <th style="padding:10px; border-bottom:2px solid #ddd;">Nombre Completo</th>
+                        <th style="padding:10px; border-bottom:2px solid #ddd;">Acción</th>
+                    </tr></thead>
+                    <tbody id="res-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </main>
+
+<footer style="background: var(--gob-vino); color: white; padding: 40px 0; margin-top: 50px;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="width: 200px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <div>
+                <p style="font-weight: 700; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 10px;">Enlaces</p>
+                <a href="#" style="color:white; display:block; text-decoration:none; margin-bottom:5px;">Participa</a>
+            </div>
+            <div>
+                <p style="font-weight: 700; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 10px;">Contacto</p>
+                <p>Síguenos en redes</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="folios.js"></script>
+<script>
+    function toggleM(id) { document.getElementById(id).classList.toggle('active'); }
+
+    function switchT(tipo) {
+        document.getElementById('f-dat').style.display = (tipo === 'dat') ? 'grid' : 'none';
+        document.getElementById('f-ced').style.display = (tipo === 'ced') ? 'grid' : 'none';
+        document.getElementById('t-dat').classList.toggle('active', tipo === 'dat');
+        document.getElementById('t-ced').classList.toggle('active', tipo === 'ced');
+    }
+
+    function ejecutarBusqueda() {
+        const ced = document.getElementById('ced-input').value.trim();
+        const nom = document.getElementById('nom').value.trim().toUpperCase();
+        let filtrados = registros.filter(r => r.id === ced || (nom !== "" && r.nom.includes(nom)));
+
+        if(filtrados.length > 0) {
+            const body = document.getElementById('res-body');
+            body.innerHTML = "";
+            filtrados.forEach(r => {
+                body.innerHTML += `<tr>
+                    <td style="padding:10px; border-bottom:1px solid #eee;">${r.id}</td>
+                    <td style="padding:10px; border-bottom:1px solid #eee;">${r.nom} ${r.ap1}</td>
+                    <td style="padding:10px; border-bottom:1px solid #eee;">
+                        <a href="CONSTANCIAS/${r.archivo}" style="color:var(--gob-vino); font-weight:700;" target="_blank">Descargar PDF</a>
+                    </td>
+                </tr>`;
+            });
+            document.getElementById('res').style.display = 'block';
+        } else { alert("No se encontraron resultados"); }
+    }
+</script>
+</body>
+</html>
