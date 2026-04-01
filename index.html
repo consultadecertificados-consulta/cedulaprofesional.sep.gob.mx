@@ -489,7 +489,7 @@
     <p class="constancia-promo">¡Descarga la Constancia de Situación Profesional!</p>
     <p style="margin-bottom: 30px;">Recuerda: <strong>La emisión de la Constancia</strong> es <strong>completamente gratuita</strong>.</p>
     
-    adquirir.</p<
+    
   </div>                  
 
     <div class="search-card">
@@ -546,16 +546,90 @@
 
 
 <footer>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="https://siged.sep.gob.mx/SIGED/aviso_simplificado.html"><span aria-hidden="true"></span> Simplificado </a>
-                        <a class="dropdown-item" href="https://siged.sep.gob.mx/SIGED/aviso_integral.html"><span aria-hidden="true"></span> Integral</a>
-                      </div>
-                    </li>
-                </ul>
+<footer class="footer-oficial">
+    <div class="rnp-version-top">RNP v1.6.7</div>
+
+    <div class="footer-inner">
+        <div class="footer-col footer-logo-section">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
+            
+            <div class="mobile-only-content">
+                <div class="rnp-acordeon">
+                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> Enlaces <span class="rnp-flecha">v</span></button>
+                    <div class="rnp-acordeon-content">
+                        <a href="https://www.gob.mx/participa">Participa</a>
+                        <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+                        <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+                        <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+                    </div>
+                </div>
+                <div class="rnp-acordeon">
+                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> ¿Qué es gob.mx? <span class="rnp-flecha">v</span></button>
+                    <div class="rnp-acordeon-content">
+                        <a href="#">Trámites</a>
+                        <a href="#">Gobierno</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
             </div>
         </div>
-</nav>
-        </header>
+
+        <div class="footer-col pc-only-content">
+            <h4>Enlaces</h4>
+            <a href="https://www.gob.mx/participa">Participa</a>
+            <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
+            <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
+            <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+        </div>
+
+        <div class="footer-col pc-only-content">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
+            <a href="#">English</a>
+        </div>
+
+        <div class="footer-col footer-contact-section">
+            <h4 class="pc-only-content">Contacto</h4>
+            <a href="#" class="denuncia-link">Denuncia contra servidores públicos</a>
+            
+            <div class="social-group">
+                <span>Síguenos en</span>
+                <div class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="phone-079">
+                <div class="phone-icon-box">
+                    <i class="fas fa-asterisk" style="font-size: 25px; margin-right: 5px;"></i>
+                    <span style="font-size: 35px; font-weight: 800;">079</span>
+                </div>
+                <p style="margin-left: 10px; font-size: 14px; line-height: 1.2;">Comunícate, estamos para ayudarte</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-sub">
+        SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
+    </div>
+</footer></body></html>
+
+   <div id="miModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span>Mensaje</span>
+            <button onclick="cerrarModal()" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>No se encontró información para la cédula <strong id="cedulaError"></strong>.</p>
+            <p class="fecha-modal"><strong>Fecha:</strong> <span id="fechaActual"></span></p>
+        </div>
+    </div>
+</div>
+<script>
     // 1. Bloquear letras en el campo de cédula
 document.getElementById('ced-input').addEventListener('input', function(e) {
     this.value = this.value.replace(/[^0-9]/g, ''); // Solo permite números
