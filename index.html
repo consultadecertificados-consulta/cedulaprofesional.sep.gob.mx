@@ -424,6 +424,95 @@
         justify-content: flex-start !important;
         text-align: left !important;
     }
+/* --- FOOTER ESTILO GOB --- */
+.footer-gob {
+    width: 100%;
+    margin-top: 50px;
+    border-top: 5px solid var(--gob-oro);
+}
+
+.footer-top {
+    background-color: #f6f6f6;
+    padding: 40px 0;
+    color: var(--gob-texto);
+}
+
+.container-footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer-col-logo .img-footer-sep {
+    height: 60px;
+    filter: grayscale(100%); /* Efecto formal de gobierno */
+    opacity: 0.8;
+}
+
+.footer-col-links h5, .footer-col-social h5 {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-col-links ul { list-style: none; }
+.footer-col-links ul li { margin-bottom: 8px; }
+.footer-col-links a, .footer-col-links p {
+    color: var(--gob-texto);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.social-icons a {
+    color: var(--gob-texto);
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+/* Pleca Final (Guinda) */
+.footer-pleca {
+    background-color: var(--gob-borgoña);
+    padding: 25px 0;
+}
+
+.flex-pleca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo-footer-mex { height: 35px; }
+
+.pleca-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: 20px;
+}
+
+.pleca-links a:hover { text-decoration: underline; }
+
+/* Responsive footer */
+@media (max-width: 768px) {
+    .flex-pleca {
+        flex-direction: column;
+        text-align: center;
+    }
+    .pleca-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .pleca-links a { margin: 0; }
 }
     </style>
 </head>
@@ -546,75 +635,51 @@
 
 
 <footer>
-<footer class="footer-oficial">
-    <div class="rnp-version-top">RNP v1.6.7</div>
-
-    <div class="footer-inner">
-        <div class="footer-col footer-logo-section">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" class="footer-logo-img" alt="Gobierno de México">
-            
-            <div class="mobile-only-content">
-                <div class="rnp-acordeon">
-                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> Enlaces <span class="rnp-flecha">v</span></button>
-                    <div class="rnp-acordeon-content">
-                        <a href="https://www.gob.mx/participa">Participa</a>
-                        <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-                        <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
-                        <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
+<footer class="footer-gob">
+    <!-- Sección de Logos y Redes (Opcional pero estándar) -->
+    <div class="footer-top">
+        <div class="container-footer">
+            <div class="footer-grid">
+                <div class="footer-col-logo">
+                    <img src="https://cdn.gob.mx" alt="SEP" class="img-footer-sep">
+                </div>
+                <div class="footer-col-links">
+                    <h5>Enlaces de Interés</h5>
+                    <ul>
+                        <li><a href="#">Participa</a></li>
+                        <li><a href="#">Publicaciones Oficiales</a></li>
+                        <li><a href="#">Marco Jurídico</a></li>
+                        <li><a href="#">PNT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-links">
+                    <h5>Contacto</h5>
+                    <p>Mesa de ayuda: <br> <a href="mailto:mesadeayuda@nube.sep.gob.mx">mesadeayuda@nube.sep.gob.mx</a></p>
+                </div>
+                <div class="footer-col-social">
+                    <h5>Síguenos en</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="rnp-acordeon">
-                    <button class="rnp-acordeon-btn" onclick="toggleAcordeon(this)"> ¿Qué es gob.mx? <span class="rnp-flecha">v</span></button>
-                    <div class="rnp-acordeon-content">
-                        <a href="#">Trámites</a>
-                        <a href="#">Gobierno</a>
-                        <a href="#">English</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-col pc-only-content">
-            <h4>Enlaces</h4>
-            <a href="https://www.gob.mx/participa">Participa</a>
-            <a href="https://www.gob.mx/publicaciones">Publicaciones Oficiales</a>
-            <a href="http://www.ordenjuridico.gob.mx">Marco Jurídico</a>
-            <a href="https://consultapublicamx.inai.org.mx/vut-web/">Transparencia</a>
-        </div>
-
-        <div class="footer-col pc-only-content">
-            <h4>¿Qué es gob.mx?</h4>
-            <a href="#">Trámites</a>
-            <a href="#">Gobierno</a>
-            <a href="#">English</a>
-        </div>
-
-        <div class="footer-col footer-contact-section">
-            <h4 class="pc-only-content">Contacto</h4>
-            <a href="#" class="denuncia-link">Denuncia contra servidores públicos</a>
-            
-            <div class="social-group">
-                <span>Síguenos en</span>
-                <div class="redes-sociales">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <div class="phone-079">
-                <div class="phone-icon-box">
-                    <i class="fas fa-asterisk" style="font-size: 25px; margin-right: 5px;"></i>
-                    <span style="font-size: 35px; font-weight: 800;">079</span>
-                </div>
-                <p style="margin-left: 10px; font-size: 14px; line-height: 1.2;">Comunícate, estamos para ayudarte</p>
             </div>
         </div>
     </div>
-    <div class="footer-sub">
-        SECRETARÍA DE EDUCACIÓN PÚBLICA | GOBIERNO DE MÉXICO 2026
+
+    <!-- Barra de pleca de identidad (La franja guinda oscuro) -->
+    <div class="footer-pleca">
+        <div class="container-footer flex-pleca">
+            <img src="https://cdn.gob.mx" alt="Gobierno de México" class="logo-footer-mex">
+            <div class="pleca-links">
+                <a href="#">¿Qué es gob.mx?</a>
+                <a href="#">Temas</a>
+                <a href="#">Accesibilidad</a>
+                <a href="#">Aviso de Privacidad</a>
+            </div>
+        </div>
     </div>
+</footer>
 </footer></body></html>
 
    <div id="miModal" class="modal-overlay">
