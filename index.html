@@ -43,7 +43,7 @@
             .portada-movil { display: block; width: 100%; height: auto; }
         }
 
-        /* PESTAÑAS */
+        /* PESTAÑAS GRISES */
         .tabs { display: flex; background: #e0e0e0; }
         .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; background: #f2f2f2; color: #777; border-right: 1px solid #ccc; }
         .tab.active { background: var(--gob-vino); color: white; border-right: none; }
@@ -117,13 +117,17 @@
     <div style="text-align: justify; font-size: 14px; color: #545454; margin-bottom: 30px; line-height: 1.6;">
         <p>Al ingresar los datos, los resultados te mostrarán que la persona profesionista cuenta con <strong>título registrado y cédula profesional expedida</strong>, cumpliendo con todos los requisitos de la ley.</p>
         <br>
-        <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
+       <p>La información publicada en este sitio se realiza en estricto apego a la Política de Datos Abiertos y en congruencia con los principios que rigen su publicación. Dicha información se actualiza de manera periódica; en consecuencia, la Secretaría de Educación Pública se deslinda de cualquier responsabilidad derivada del uso, reproducción, adecuación o modalidad que pudiera adquirir en sitios web distintos al oficial.</p>
     </div>
 
     <p style="font-weight: 800; font-size: 20px; color: #333; text-align: center;">¡Descarga la Constancia de Situación Profesional!</p>
     <p style="margin-bottom: 30px; color: #666; text-align: center;">Recuerda: La emisión de la Constancia es <strong>completamente gratuita</strong>.</p>
 
-    <div
+    <div class="search-card">
+        <div class="tabs">
+            <div class="tab active" id="t-dat" onclick="switchT('dat')">Datos generales</div>
+            <div class="tab" id="t-ced" onclick="switchT('ced')">Número de cédula</div>
+        </div>
         
         <div class="form-grid" id="f-dat">
             <div class="field"><label>Nombre(s)*:</label><input type="text" id="nom" placeholder="Nombre"></div>
@@ -139,6 +143,7 @@
         <div class="form-actions">
             <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
             <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
+            <button class="btn btn-csv" onclick=>Descargar CSV</button>
         </div>
 
         <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
@@ -150,6 +155,7 @@
                             <th style="padding:12px; border-bottom:2px solid #ddd;">Nombre(s)</th>
                             <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 1</th>
                             <th style="padding:12px; border-bottom:2px solid #ddd;">Apellido 2</th>
+                            <th style="padding:12px; border-bottom:2px solid #ddd;">CURP</th>
                             <th style="padding:12px; border-bottom:2px solid #ddd;">Institución</th>
                             <th style="padding:12px; border-bottom:2px solid #ddd;">Profesión</th>
                             <th style="padding:12px; border-bottom:2px solid #ddd;">Entidad</th>
