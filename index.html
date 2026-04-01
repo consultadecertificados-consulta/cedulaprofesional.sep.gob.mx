@@ -150,7 +150,29 @@
         </div>
     </div>
 </main>
+/* 1. Por defecto (en PC), ocultamos la de móvil y mostramos la de PC */
+.portada-pc {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
+.portada-movil {
+    display: none; /* Esto evita que salga doble en PC */
+}
+
+/* 2. Cuando la pantalla es menor a 768px (Celulares) */
+@media (max-width: 767px) {
+    .portada-pc {
+        display: none; /* Escondemos la de PC */
+    }
+    .portada-movil {
+        display: block; /* Mostramos la de móvil */
+        width: 100%;
+        height: auto;
+    }
+}
+    
 <style>
     .footer-oficial { background: var(--gob-vino); color: white; padding: 30px 0; margin-top: 50px; }
     .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 20px; }
