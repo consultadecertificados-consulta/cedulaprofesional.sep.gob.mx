@@ -18,10 +18,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; color: var(--gob-texto); background-color: #fff; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER */
         header { position: sticky; top: 0; z-index: 1000; width:100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .nav-superior { background-color: var(--gob-vino); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; }
-        .logo-gob-mex { height: 70px; }
+        .logo-gob-mex { height: 70px; transition: opacity 0.3s; }
+        .logo-gob-mex:hover { opacity: 0.8; }
         .nav-inferior { background-color: var(--gob-borgoña); padding: 0 8%; min-height: 60px; display: flex; align-items: center; position: relative; }
         
         .menu-pc { display: flex; gap: 20px; list-style: none; }
@@ -43,12 +43,10 @@
             .portada-movil { display: block; width: 100%; height: auto; }
         }
 
-        /* PESTAÑAS GRISES */
         .tabs { display: flex; background: #e0e0e0; }
         .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; background: #f2f2f2; color: #777; border-right: 1px solid #ccc; }
         .tab.active { background: var(--gob-vino); color: white; border-right: none; }
 
-        /* FORMULARIO */
         .search-card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 30px; }
         @media (min-width: 992px) { .form-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -62,11 +60,11 @@
         .btn-limpiar { border: 1px solid var(--gob-oro); color: var(--gob-oro); background: white; }
         .btn-csv { background: #b0b0b0; color: white; }
 
-        /* FOOTER */
-        .footer-final { background-color: #621132; color: white; padding: 20px 0; margin-top: 50px; width: 100%; position: relative; z-index: 10; }
+        .footer-final { background-color: #621132; color: white; padding: 20px 0; margin-top: 50px; width: 100%; position: relative; z-index: 10; border-top: 1px solid #9D843E; }
         .f-contenedor { max-width: 1100px; margin: 0 auto; padding: 0 5%; display: flex; flex-wrap: wrap; gap: 20px; }
         .f-columna { flex: 1; min-width: 250px; }
-        .f-columna img { width: 180px; filter: brightness(0) invert(1); margin-bottom: 15px; }
+        .logo-footer-guinda { width: 220px; height: auto; margin-bottom: 20px; transition: opacity 0.3s; }
+        .logo-footer-guinda:hover { opacity: 0.8; }
         .f-columna a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; }
         
         .f-btn-movil { display: none; width: 100%; background: none; border: none; color: white; padding: 15px 0; text-align: left; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; justify-content: space-between; align-items: center; }
@@ -80,26 +78,13 @@
             .f-desplegable a { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
             .f-titulo-pc { display: none; }
         }
-        .logo-footer-guinda {
-    width: 220px; /* Tamaño del logo en el footer */
-    height: auto;
-    filter: none; /* Esto quita el efecto que lo pone todo blanco */
-    margin-bottom: 20px;
-}
-
-/* Ajuste para que el fondo del footer no se "coma" el color guinda del logo */
-.footer-final {
-    background-color: #621132; /* El color guinda oficial */
-    border-top: 1px solid #9D843E; /* Línea dorada opcional para resaltar */
-}
-        
     </style>
 </head>
 <body>
 
 <header>
     <nav class="nav-superior">
-        <a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" alt="Gobierno de México"></a>
+        <a href="https://www.gob.mx/"><img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-gob-mex" alt="Gobierno de México"></a>
         <button class="btn-ham" onclick="toggleM('mSup')"><i class="fas fa-bars"></i></button>
         <ul id="mSup" class="menu-pc">
             <li><a href="https://www.gob.mx/">Trámites</a></li>
@@ -122,20 +107,15 @@
 
 <main style="max-width: 1200px; margin: 0 auto; padding: 20px 5%;">
     <div style="font-size: 14px; margin-bottom: 20px; text-align: left;">
-    <a href="https://www.cedulaprofesionalsep.goobmx.com/" style="text-decoration: none; color: inherit;">
-        <i class="fas fa-home"></i> Inicio
-    </a> 
-    > 
-    <a href="https://www.cedulaprofesionalsep.goobmx.com" style="text-decoration: none; color: inherit;">
-        Búsqueda de Cédulas Profesionales
-    </a>
-</div>
+        <a href="https://www.cedulaprofesionalsep.goobmx.com/" style="text-decoration: none; color: inherit;"><i class="fas fa-home"></i> Inicio</a> > 
+        <a href="#" style="text-decoration: none; color: inherit;">Búsqueda de Cédulas Profesionales</a>
+    </div>
 
     <h1 style="font-family: Rockwell, serif; font-size: 26px; font-weight: 800; text-align: center; margin: 0 auto 10px auto; width: 100%; max-width: 900px;">
-    Realiza tu búsqueda de forma segura y confiable.
-</h1>
+        Realiza tu búsqueda de forma segura y confiable.
+    </h1>
 
-    <div style="width: 100%; height: 1px; background: #ddd; margin-bottom: 30px; position: relative;">
+    <div style="width: 100%; height: 1px; background: #ddd; margin-bottom: 30px; position: relative; display: flex; justify-content: center;">
         <div style="width: 100px; height: 5px; background: var(--gob-oro); position: absolute; top: -2px;"></div>
     </div>
 
@@ -168,10 +148,11 @@
         <div class="form-actions">
             <button class="btn btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
             <button class="btn btn-limpiar" onclick="location.reload()">Limpiar</button>
-            <button class="btn btn-csv" onclick=>Descargar CSV</button>
+            <button class="btn btn-csv">Descargar CSV</button>
         </div>
 
         <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
+            <div id="res-titulo"></div>
             <div style="overflow-x:auto;">
                 <table style="width:100%; min-width:1200px; border-collapse:collapse; font-size:12px; text-align: left;">
                     <thead>
@@ -197,7 +178,8 @@
 
 <footer class="footer-final">
     <div class="f-contenedor">
-        <div class="f-columna"><a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" alt="Gobierno de México"></a>
+        <div class="f-columna">
+            <a href="https://www.gob.mx/"><img src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" class="logo-footer-guinda" alt="Gobierno de México"></a>
         </div>
         <div class="f-columna">
             <button class="f-btn-movil" onclick="toggleFooter(this)">Enlaces <i class="fas fa-chevron-down"></i></button>
@@ -265,13 +247,18 @@
         let encontrados = registros.filter(r => 
             (ced !== "" && r.id === ced) || 
             (curpIn !== "" && r.curp === curpIn) || 
-            (nom !== "" && r.nom.includes(nom) && r.ap1 === ap1)
+            (nom !== "" && r.nom.toUpperCase().includes(nom) && r.ap1.toUpperCase() === ap1)
         );
+
+        encontrados.sort((a, b) => a.ap1.localeCompare(b.ap1));
 
         const resDiv = document.getElementById('res');
         const body = document.getElementById('res-body');
+        const tituloDiv = document.getElementById('res-titulo');
 
         if(encontrados.length > 0) {
+            tituloDiv.innerHTML = `<h2 style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; color: #4D4D4D; text-transform: uppercase; border-left: 5px solid var(--gob-oro); padding-left: 15px; margin-bottom: 20px;">Resultado de la búsqueda</h2>`;
+            
             body.innerHTML = "";
             encontrados.forEach(r => {
                 body.innerHTML += `
@@ -280,12 +267,13 @@
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.nom}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap1}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap2 || ''}</td>
+                        <td style="padding:12px; border-bottom:1px solid #eee;">${r.curp || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.inst || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.prof || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.entidad || ''}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.anio || ''}</td>
-                        <td style="padding:12px; border-bottom:1px solid #eee;">
-                            <a href="CONSTANCIAS/${r.archivo}" download="${r.archivo}" style="background:var(--gob-vino); color:white; padding:8px 12px; border-radius:4px; text-decoration:none; font-weight:700; font-size:10px; display:inline-block;">
+                        <td style="padding:12px; border-bottom:1px solid #eee; text-align:center;">
+                            <a href="CONSTANCIAS/${r.archivo}" download="${r.archivo}" style="background:var(--gob-vino); color:white; padding:8px 12px; border-radius:4px; text-decoration:none; font-weight:700; font-size:10px; display:inline-block; white-space:nowrap;">
                                 DESCARGAR PDF
                             </a>
                         </td>
@@ -295,11 +283,12 @@
             resDiv.scrollIntoView({ behavior: 'smooth' });
         } else {
             resDiv.style.display = 'none';
+            tituloDiv.innerHTML = "";
             document.getElementById('errDato').innerText = ced || curpIn || nom || "los datos ingresados";
             document.getElementById('miModal').style.display = 'block';
         }
     }
 </script>
 </body>
-            </html>
-            
+    </html>
+    
