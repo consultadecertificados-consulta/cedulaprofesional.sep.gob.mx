@@ -1,7 +1,7 @@
 // Archivo de base de datos para Cédulas Profesionales con soporte para descargas
 const registros = [
     { id: "10994202", curp: "LOCJ900817HVZPLL01", nom: "JORGE LUIS ", ap1: "LOPEZ", ap2: "CRUZ", gen: "MASCULINO", inst: "UNIVERSIDAD TRES CULTURAS", prof: "ADMINISTRACION DE EMPRESAS", entidad: "ESTADO DE MEXICO", anio: "2018", archivo: "10994202.pdf" },
-    { id: "5920371", curp: "GOAM980430HJCNLR09", nom: "MARTIN SALVADOR", ap1: "ALVAREZ", ap2: "GONZALEZ", gen: "MASCULINO", inst: "UNIVERSIDAD NACIONAL AUTÓNOMA DE GUADALAJARA", prof: "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS", ent: "JALISCO", anio: "2026", archivo: "5920371.pdf" },
+    { id: "5920371", curp: "GOAM980430HJCNLR09", nom: "MARTIN SALVADOR", ap1: "ALVAREZ", ap2: "GONZALEZ", gen: "MASCULINO", inst: "UNIVERSIDAD NACIONAL AUTÓNOMA DE GUADALAJARA", prof: "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS", entidad: "JALISCO", anio: "2026", archivo: "5920371.pdf" },
     { id: "8432105", curp: "LOPE900522HGR", nom: "ALEJANDRO", ap1: "LOPEZ", ap2: "SANCHEZ", gen: "MASCULINO", inst: "INSTITUTO POLITÉCNICO NACIONAL", prof: "INGENIERÍA MECÁNICA", ent: "ESTADO DE MÉXICO", anio: "2014", archivo: "8432105.pdf" },
     { id: "9564128", curp: "MART921010MJS", nom: "CLAUDIA", ap1: "MARTINEZ", ap2: "GOMEZ", gen: "FEMENINO", inst: "UNIVERSIDAD DE GUADALAJARA", prof: "LICENCIATURA EN MEDICINA", ent: "JALISCO", anio: "2016", archivo: "9564128.pdf" },
     { id: "7321094", curp: "HERN850804HNL", nom: "RICARDO", ap1: "HERNANDEZ", ap2: "DIAZ", gen: "MASCULINO", inst: "UNIVERSIDAD AUTÓNOMA DE NUEVO LEÓN", prof: "LICENCIATURA EN CONTADURÍA", ent: "NUEVO LEÓN", anio: "2010", archivo: "7321094.pdf" },
