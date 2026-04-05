@@ -172,6 +172,10 @@
         </div>
 
         <div id="res" style="display:none; padding: 20px; border-top: 1px solid #eee;">
+    <div id="res-titulo" style="margin-bottom: 20px;"></div> <div style="overflow-x:auto;">
+        <table style="width:100%; min-width:1200px; border-collapse:collapse; font-size:12px; text-align: left;">
+        ...
+
             <div style="overflow-x:auto;">
                 <table style="width:100%; min-width:1200px; border-collapse:collapse; font-size:12px; text-align: left;">
                     <thead>
@@ -252,30 +256,30 @@
     }
 
     function ejecutarBusqueda() {
-        const ced = document.getElementById('ced-input').value.trim();
-        const curpIn = document.getElementById('curp').value.trim().toUpperCase();
-        const nom = document.getElementById('nom').value.trim().toUpperCase();
-        const ap1 = document.getElementById('ap1').value.trim().toUpperCase();
+    function ejecutarBusqueda() {
+    // ... (tus variables de entrada se mantienen igual)
+
+    const resDiv = document.getElementById('res');
+    const body = document.getElementById('res-body');
+    const tituloDiv = document.getElementById('res-titulo'); // Nueva referencia
+
+    if(encontrados.length > 0) {
+        // Insertamos la leyenda con estilo
+        tituloDiv.innerHTML = `<h2 style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; color: #4D4D4D; text-transform: uppercase; border-left: 5px solid var(--gob-oro); padding-left: 15px;">Resultado de la búsqueda</h2>`;
         
-        if (typeof registros === 'undefined') {
-            alert("Error: El archivo folios.js no está cargado.");
-            return;
-        }
+        body.innerHTML = "";
+        encontrados.forEach(r => {
+            // ... (el contenido de tu tabla se mantiene igual)
+            body.innerHTML += `<tr> ... </tr>`;
+        });
+        
+        resDiv.style.display = 'block';
+        resDiv.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        // ... (tu lógica de error se mantiene igual)
+    }
+}
 
-        let encontrados = registros.filter(r => 
-            (ced !== "" && r.id === ced) || 
-            (curpIn !== "" && r.curp === curpIn) || 
-            (nom !== "" && r.nom.includes(nom) && r.ap1 === ap1)
-        );
-
-        const resDiv = document.getElementById('res');
-        const body = document.getElementById('res-body');
-
-        if(encontrados.length > 0) {
-            body.innerHTML = "";
-            encontrados.forEach(r => {
-                body.innerHTML += `
-                    <tr>
                         <td style="padding:12px; border-bottom:1px solid #eee; font-weight:700;">${r.id}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.nom}</td>
                         <td style="padding:12px; border-bottom:1px solid #eee;">${r.ap1}</td>
@@ -293,11 +297,12 @@
             });
             resDiv.style.display = 'block';
             resDiv.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            resDiv.style.display = 'none';
-            document.getElementById('errDato').innerText = ced || curpIn || nom || "los datos ingresados";
-            document.getElementById('miModal').style.display = 'block';
-        }
+            } else {
+        resDiv.style.display = 'none';
+        tituloDiv.innerHTML = ""; // Limpia el título si no hay resultados
+        document.getElementById('errDato').innerText = ...
+    }
+
     }
 </script>
 </body>
