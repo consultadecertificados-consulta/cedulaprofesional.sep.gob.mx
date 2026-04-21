@@ -1,7 +1,7 @@
 // Archivo de base de datos para Cédulas Profesionales con soporte para descargas
 const registros = [
     { id: "10994202", curp: "LOCJ900817HVZPLL01", nom: "JORGE LUIS ", ap1: "LOPEZ", ap2: "CRUZ", gen: "MASCULINO", inst: "UNIVERSIDAD TRES CULTURAS", prof: "ADMINISTRACION DE EMPRESAS", entidad: "ESTADO DE MEXICO", anio: "2018", archivo: "10994202.pdf" },
-    { id: "5920371", curp: "GOAM980430HJCNLR09", nom: "MARTIN SALVADOR", ap1: "ALVAREZ", ap2: "GONZALEZ", gen: "MASCULINO", inst: "UNIVERSIDAD NACIONAL AUTÓNOMA DE GUADALAJARA", prof: "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS", entidad: "JALISCO", anio: "2026", archivo: "5920371.pdf" },
+    { id: "5920371", curp: "GOAM980430HJCNLR09", nom: "MARTIN SALVADOR", ap1: "GONZALEZ", ap2: "ALVAREZ", gen: "MASCULINO", inst: "UNIVERSIDAD NACIONAL AUTÓNOMA DE GUADALAJARA", prof: "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS", entidad: "JALISCO", anio: "2026", archivo: "5920371.pdf" },
     { id: "84321000", curp: "RIRI820515HSPVMS04", nom: "ISIDRO", ap1: "RIVERA", ap2: "RAMOS", gen: "MASCULINO", inst: "UNIVERSIDAD LUX", prof: "LICENCIATURA EN ARQUITECTURA", entidad: "NUEVO LEON", anio: "2022", archivo: "84321000.pdf" },
     { id: "9564128", curp: "CUGA020731MOCRTRA2", nom: "ARACELI", ap1: "CRUZ", ap2: "GAETA", gen: "FEMENINO", inst: "UNIVERSIDAD PEDAGÓGICA NACIONAL", prof: "LICENCIATURA EN PEDAGOGÍA", entidad: "CIUDAD DE MÉXICO", anio: "2026", archivo: "9564128.pdf" },
     { id: "7321094", curp: "PEZY940111MVZRMR07", nom: "YARITZA", ap1: "PEREZ", ap2: "ZAMORA", gen: "FEMENINO", inst: "UNIVERSIDAD PEDAGÓGICA NACIONAL", prof: "LICENCIATURA EN PEDAGOGÍA", entidad: "CIUDAD DE MÉXICO", anio: "2026", archivo: "7321094.pdf" },
